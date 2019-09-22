@@ -5,25 +5,42 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../asset/css/style.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/style.css">
 	
 </head>
 <body>
     <div id="wrapper">
     <!-- bagian navbar  -->
-    <div id="top">
-        <div id="navbar_kiri">
-            <a href="<?php echo base_url();?>index.php/"> Seminar Go </a>
-        </div>
-        <div id="navbar_kanan">
-            <a href="<?php echo base_url();?>index.php/ads">Advertising </a> 
-            <a href="<?php echo base_url();?>index.php/login">Sign in</a>
-        </div>
-    </div>   
+    <?php if(isset($user_id))
+    {
+        echo '
+        <div id="top">
+            <div id="navbar_kiri">
+                <a href="#"> Seminar Go </a>
+            </div>
+            <div id="navbar_kanan">
+                <a href="'.base_url().'index.php/logout">LOGOUT </a> 
+            </div>
+        </div> ';
+    }
+    else{
+        echo '
+        <div id="top">
+            <div id="navbar_kiri">
+                <a href="'.base_url().'index.php/"> Seminar Go </a>
+            </div>
+            <div id="navbar_kanan">
+                <a href="'.base_url().'index.php/ads">Advertising </a> 
+                <a href="'.base_url().'index.php/login">Sign in</a>
+            </div>
+        </div> ';
+    }
+    
+    ?>  
 
     <!-- bagian header  -->
     <div id="header">
-        <img src="../asset/pict/header1.png">
+        <img src="<?php echo base_url();?>asset/pict/header1.png">
     </div>
 
     <!-- bagian pencarian  -->
@@ -92,7 +109,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div id="body">
     <div id="postinduk">
             <div id="post">
-                <a href="<?php echo base_url();?>index.php/event_detail"> <img src="../asset/pict/seminar1.png"> </a>
+                <a href="<?php echo base_url();?>index.php/event_detail"> <img src="<?php echo base_url();?>asset/pict/seminar1.png"> </a>
                 <div id="descbox"> 
                     <div id="namaseminar"> Indonesia Ves 2019 </div>
                     <div id="dateseminar"> Wed, 10 April, 12.30</div>
@@ -101,7 +118,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
 
             <div id="post">
-                <img src="../asset/pict/seminar2.png">
+                <img src="<?php echo base_url();?>asset/pict/seminar2.png">
                 <div id="descbox"> 
                     <div id="namaseminar"> National Youth Summit </div>
                     <div id="dateseminar"> Sun, 14 April, 12.00 </div>
@@ -112,7 +129,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         
         <div id="postinduk"> 
             <div id="post">
-                <img src="../asset/pict/seminar3.png">
+                <img src="<?php echo base_url();?>asset/pict/seminar3.png">
                 <div id="descbox"> 
                     <div id="namaseminar"> Machine Learning dan IoT </div>
                     <div id="dateseminar"> Sat, 31 Agustus, 08.00 </div>
@@ -121,7 +138,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
           
             <div id="post">
-                <img src="../asset/pict/seminar1.png">
+                <img src="<?php echo base_url();?>asset/pict/seminar1.png">
                 <div id="descbox"> 
                     <div id="namaseminar"> Indonesia Ves 2019 </div>
                     <div id="dateseminar"> Wed, 10 April, 12.30</div>
@@ -133,7 +150,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div id="postinduk">  
 
             <div id="post">
-                <img src="../asset/pict/seminar2.png">
+                <img src="<?php echo base_url();?>asset/pict/seminar2.png">
                 <div id="descbox"> 
                     <div id="namaseminar"> National Youth Summit </div>
                     <div id="dateseminar"> Sun, 14 April, 12.00 </div>
@@ -142,7 +159,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
 
             <div id="post">
-                <img src="../asset/pict/seminar3.png">
+                <img src="<?php echo base_url();?>asset/pict/seminar3.png">
                 <div id="descbox"> 
                     <div id="namaseminar"> Machine Learning dan IoT </div>
                     <div id="dateseminar"> Sat, 31 Agustus, 08.00 </div>
