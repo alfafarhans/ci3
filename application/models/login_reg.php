@@ -23,9 +23,10 @@ class login_reg extends CI_Model{
 		return $this->db->get('user');
     }
     //validation function
-    function can_login($username, $password)  
+    
+    function can_login($email, $password)  
       {  
-           $this->db->where('username', $username);  
+           $this->db->where('email', $email);  
            $this->db->where('password', $password);  
            $query = $this->db->get('user');  
            //SELECT * FROM users WHERE username = '$username' AND password = '$password'  
