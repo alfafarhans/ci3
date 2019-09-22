@@ -28,13 +28,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div id="register">
                 <form method="post" action="<?php echo base_url(); ?>index.php/signing">
                     <div id="row">
-                        <input type="text" name="email" placeholder="Email">
+                        <input type="email" name="email" placeholder="Email" requred>
                     </div>
 
                     <div id="space"></div>
 
                     <div id="row">
-                        <input type="password" name="password" placeholder="Password">
+                        <input type="password" name="password" placeholder="Password" requred>
                     </div>
                     
                     <div id="row">
@@ -43,6 +43,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </div>
                         
                         <div id="col-75">
+                        <div id="alerts"> <?php echo $this->session->flashdata('gagal'); ?> </div>
                             <p> Belum punya akun? <a href="<?php echo base_url(); ?>index.php/register"> Daftar sekarang </a>
                         </div>
                     </div>
