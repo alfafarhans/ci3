@@ -25,6 +25,7 @@ class login extends CI_Controller {
 		$this->load->view('login');
 	}
 	 function login_val(){
+		if(isset($_POST['submit'])){
 		//http://localhost:8080/ci3/index.php/login/login_val
 			$this->load->library('form_validation');  
            $this->form_validation->set_rules('email', 'Email', 'required');  
@@ -32,31 +33,35 @@ class login extends CI_Controller {
            if($this->form_validation->run())  
            {  
                 //true  
-                $username = $this->input->post('email');  
-                $password = $this->input->post('password');  
+                $email = $this->input->post('email');  
+				$password = $this->input->post('password');
+				$enpass = md5($password);
                 //model function   
-                if($this->login_reg->can_login($username, $password))  
+                if($this->login_reg->can_login($email, $enpass))  
 				{  	
 					//setsession *here
-					//http://localhost:8080/ci3/index.php/home/dashboard_signed
-					 redirect(base_url() . 'index.php/home');
+					$this->session->set_userdata('user_id', $email);
+					redirect('index.php/home');
                 }  
                 else  
                 {  
-                     //$this->session->set_flashdata('error', 'Invalid Username and Password');  
-                     redirect(base_url() . 'index.php/login');  
+                   $this->session->set_flashdata('gagal', 'Invalid Username and Password');  
+                    redirect('index.php/login');  
                 }  
            }  
            else  
            {  
                 //false  
                 $this->index();  
-           }  
+		   }  
+		}
 		
 	}
 	function logout(){
-		http://localhost:8080/ci3/index.php/login/logout
-		$this->load->view('home');
+	//	http://localhost:8080/ci3/index.php/login/logout
+	$this->session->unset_userdata('user_id');
+	$this->session->sess_destroy();
+	$this->load->view('home');
 	}
 
 }
