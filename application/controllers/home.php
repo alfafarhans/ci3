@@ -20,11 +20,20 @@ class home extends CI_Controller {
 	 */
 	public function index()
 	{	//http://localhost:8080/ci3/index.php/home
-		$this->load->view('home');
+		$userid = $this->session->userdata('user_id');
+		if(empty($userid)){
+			$this->load->view('home');
+		}
+		else{	//setting user if already login
+			$data['user_id'] = $userid;
+			$this->load->view('home',$data);
+		}
+		
 	}
-	 function dashboard_signed()
+	 function signed($user_id)
 	{	//http://localhost:8080/ci3/index.php/home/dashboard_signed
-		$this->load->view('home');
+		$data['test'] = $user_id;
+		$this->load->view('test',$data);
 	}
 
 }
