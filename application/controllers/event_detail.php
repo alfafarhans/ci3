@@ -18,7 +18,7 @@ class event_detail extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index()
+	public function index()//this should use ID parameter
 	{	//http://localhost:8080/ci3/index.php/home
 		$this->load->view('event_detail');
 	}
