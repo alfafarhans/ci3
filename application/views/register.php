@@ -16,8 +16,34 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			var firstname = $("#firstname").val();
             var lastname = $("#lastname").val();
             var submit = $("#submit").val();
-			var dataString = 'email=' + email + '&password=' + password + '&firstname=' + firstname + '&lastname=' + lastname+ '&submit=' + submit;
-				$.ajax({
+            var cek = false;
+            if ((email.indexOf('@') > -1) && (email.length > 0))
+            {
+                if(firstname.length > 0 ){
+                    if(lastname.length > 0 ){
+                         if(password.length > 0 ){
+                                cek = true;
+                            }
+                             else{
+                                 alert("Emmm, You dont have password ?");
+                                     }
+
+                             }
+                         else{
+                               alert("Emmm, You dont have lastname ?");
+                               }
+                     }
+                    else{
+                        alert("Emmm, You dont have firstname ?");
+                    }
+                }
+        
+                  else{
+                    alert("Hey, Use '@' to fill Email");
+                  }
+                if (cek) {
+                    var dataString = 'email=' + email + '&password=' + password + '&firstname=' + firstname + '&lastname=' + lastname+ '&submit=' + submit;
+				        $.ajax({
 					type: "POST",
 					url: "<?php echo base_url();?>index.php/register/register_proceses",
 					data: dataString,
@@ -38,6 +64,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                    
 					}
 				});
+                }
+              
 			
 			return false;
 		});
@@ -74,7 +102,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </div>
 
                         <div class="col-75">
-                            <input type="text" id="email" name="email" placeholder="Your email.." required>
+                            <input type="text" id="email" name="email" placeholder="Your email.." >
                         </div>
                     </div>
 
@@ -84,7 +112,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </div>
 
                         <div class="col-75">
-                            <input type="text" id="firstname" name="firstname" placeholder="Your name.." required>
+                            <input type="text" id="firstname" name="firstname" placeholder="Your name.." >
                         </div>
                     </div>
 
@@ -94,7 +122,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </div>
 
                         <div class="col-75">
-                            <input type="text" id="lastname" name="lastname" placeholder="Your last name.." required>
+                            <input type="text" id="lastname" name="lastname" placeholder="Your last name..">
                         </div>
                     </div>
 
