@@ -116,7 +116,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     
     <!-- bagian isi  -->
     <div id="body">
-    <div id="postinduk">
+        <div id="postinduk">
             <div id="post">
                 <a href="<?php echo base_url();?>index.php/event_detail"> <img src="<?php echo base_url();?>asset/pict/seminar1.png"> </a>
                 <div id="descbox"> 
