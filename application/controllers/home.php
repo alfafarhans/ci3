@@ -22,7 +22,9 @@ class home extends CI_Controller {
 	{	//http://localhost:8080/ci3/index.php/home
 		$userid = $this->session->userdata('user_id');
 		if(empty($userid)){
-			$this->load->view('home');
+			$this->load->model('seminar_data');
+			$data['fetched_arr']= $this->seminar_data->getseminar();
+		$this->load->view('home');
 		}
 		else{	//setting user if already login
 			$data['user_id'] = $userid;

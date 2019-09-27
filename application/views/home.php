@@ -107,9 +107,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <label for="category"> Price </label>
             <br>
             <select name="category" >
-            <option value="anyprice" selected> Any Price </option>
-            <option value="free"> Free </option>
-            <option value="paid"> Paid </option>
+                <option value="anyprice" selected> Any Price </option>
+                <option value="free"> Free </option>
+                <option value="paid"> Paid </option>
             <select>
         </div>
     </div>   
