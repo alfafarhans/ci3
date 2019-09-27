@@ -20,15 +20,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
             <div id="navbar_kanan">
                 <a href="'.base_url().'index.php/logout">LOGOUT </a> 
-                <div id="dropdown">
-                <img src="../asset/pict/profile1.png">
-
-                <div id="dropdown-content">
-                    <a href="#"> Profile </a> <br> <br>
-                    <a href="#"> My Event </a> <br> <br>
-                    <a href="#"> Sign Out </a>
-                </div>
-            </div>
             </div>
         </div> ';
     }
@@ -39,8 +30,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <a href="'.base_url().'index.php/"> Seminar Go </a>
             </div>
             <div id="navbar_kanan">
-                <a href="'.base_url().'index.php/ads">Advertising </a> 
-                <a href="'.base_url().'index.php/login">Sign in</a>
+                
+                <a id="a" href="'.base_url().'index.php/ads">Advertising </a> 
+                <a id="a" href="'.base_url().'index.php/login">Sign in</a>
+                
+                <div id="dropdown">
+                    <img src="../asset/pict/profile1.png">
+
+                    <div id="dropdown-content">
+                        <a href="'.base_url().'index.php/profile"> Profile </a> 
+                        <a href="#"> My Event </a> 
+                        <a href="#"> Settings </a> 
+                        <a href="#"> Sign Out </a>
+                    </div>
+                </div>
+
             </div>
         </div> ';
     }
@@ -116,7 +120,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     
     <!-- bagian isi  -->
     <div id="body">
-        <div id="postinduk">
+    <div id="postinduk">
             <div id="post">
                 <a href="<?php echo base_url();?>index.php/event_detail"> <img src="<?php echo base_url();?>asset/pict/seminar1.png"> </a>
                 <div id="descbox"> 

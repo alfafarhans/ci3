@@ -60,6 +60,11 @@
                         <div id="obj-judul"> Location </div>
                         <p> Senayan, Jakarta Selatan
                     </div>
+
+                    <div id="obj-post">
+                        <div id="obj-judul"> Dress Code </div>
+                        <p> Batik
+                    </div>
                 </div>
         
                 <div id="rightpost">

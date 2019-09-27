@@ -96,52 +96,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <h1> Create your account </h1>
 
             <div id="register">
-                    <div class="row">
-                        <div class="col-25">
-                            <label for="email"> Email </label>
-                        </div>
+                <label for="email"> Email </label>
+                <input type="email" id="email" name="email" placeholder="Your email.." >
 
-                        <div class="col-75">
-                            <input type="email" id="email" name="email" placeholder="Your email.." >
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-25">
-                            <label for="firstname"> First Name </label>
-                        </div>
-
-                        <div class="col-75">
-                            <input type="text" id="firstname" name="firstname" placeholder="Your name.." >
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-25">
-                            <label for="lastname"> Last Name </label>
-                        </div>
-
-                        <div class="col-75">
-                            <input type="text" id="lastname" name="lastname" placeholder="Your last name..">
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-25">
-                            <label for="password"> Password </label>
-                        </div>
-
-                        <div class="col-75">
-                            <input type="password" id="password" name="password" placeholder="Password" required>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div id="right">
-                            <input type="submit" id="submit" name="submit" value="Register">
-                        </div>
-                    </div>
-              
+                <label for="firstname"> First Name </label>
+                <input type="text" id="firstname" name="firstname" placeholder="Your name.." >
+                
+                <label for="lastname"> Last Name </label>
+                <input type="text" id="lastname" name="lastname" placeholder="Your last name..">
+                
+                <label for="password"> Password </label>
+                <input type="password" id="password" name="password" placeholder="Password" required>
+                  
+                <div id="rights">
+                    <input type="submit" id="submit" name="submit" value="Register">
+                </div>
             </div>
 
 
@@ -149,6 +118,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
 
     <!-- bagian footer  -->
+
+    <div id="infofooter600">
+    </div>
+    
     <div id="footer">
         <p>Copyright © 2019 </p>
     </div>
