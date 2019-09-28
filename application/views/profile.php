@@ -12,7 +12,7 @@
     <!-- bagian navbar  -->
     <div id="top">
         <div id="navbar_kiri">
-            <a href="<?php echo base_url();?>index.php/"> Seminar Go </a>
+            <a href="<?php echo base_url();?>home"> Seminar Go </a>
         </div>
         <div id="navbar_kanan">
 
@@ -20,7 +20,7 @@
                 <img src="../asset/pict/profile1.png">
             
                 <div id="dropdown-content">
-                    <a href="<?php echo base_url();?>index.php/profile"> Profile </a>
+                    <a href="<?php echo base_url();?>profile"> Profile </a>
                     <a href="#"> My Event </a>
                     <a href="#"> Settings </a> 
                     <a href="#"> Sign Out </a>

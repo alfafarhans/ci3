@@ -6,7 +6,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/home.css">
-	
+    <script type="text/javascript" src="<?php echo base_url();?>asset/js/jquery-3.4.1.min.js"></script>
 </head>
 <body>
     <div id="wrapper">
@@ -17,20 +17,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         echo '
         <div id="top">
             <div id="navbar_kiri">
-                <a href="'.base_url().'index.php/"> Seminar Go </a>
+                <a href="'.base_url().'home"> Seminar Go </a>
             </div>
             <div id="navbar_kanan">
                 
-                <a id="a" href="'.base_url().'index.php/ads">Advertising </a>
+                <a id="a" href="'.base_url().'ads">Advertising </a>
                 
                 <div id="dropdown">
-                    <img src="../asset/pict/profile1.png">
+                    <img src="./asset/pict/profile/fajarbarokah98@yahoo.co.id.png">
 
                     <div id="dropdown-content">
-                        <a href="'.base_url().'index.php/profile"> Profile </a> 
+                        <a href="'.base_url().'profile"> Profile </a> 
                         <a href="#"> My Event </a> 
                         <a href="#"> Settings </a> 
-                        <a href="'.base_url().'index.php/logout"> Sign Out </a>
+                        <a href="'.base_url().'logout"> Sign Out </a>
                     </div>
                 </div>
 
@@ -41,11 +41,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         echo '
         <div id="top">
             <div id="navbar_kiri">
-                <a href="'.base_url().'index.php/"> Seminar Go </a>
+                <a href="'.base_url().'home"> Seminar Go </a>
             </div>
             <div id="navbar_kanan">
-            <a id="a" href="'.base_url().'index.php/ads">Advertising </a> 
-            <a id="a" href="'.base_url().'index.php/login">Sign in</a>
+            <a id="a" href="'.base_url().'ads">Advertising </a> 
+            <a id="a" href="'.base_url().'login/">Sign in</a>
             </div>
         </div> ';
     }

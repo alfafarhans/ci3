@@ -55,7 +55,7 @@ class register extends CI_Controller {
 			}
 	}
 	else{
-		redirect('index.php/');
+		redirect('home');
 	}
 	echo json_encode(
         array(

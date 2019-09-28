@@ -14,10 +14,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- bagian navbar  -->
     <div id="top">
         <div id="navbar_kiri">
-            <a href="<?php echo base_url();?>index.php/"> Seminar Go </a>
+            <a href="<?php echo base_url();?>home"> Seminar Go </a>
         </div>
         <div id="navbar_kanan">
-            <a href="<?php echo base_url();?>index.php/ads">Advertising </a> 
+            <a href="<?php echo base_url();?>ads">Advertising </a> 
         </div>
     </div>   
 
@@ -26,7 +26,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div id="bodyartikel">
             <h1> Sign in </h1>
             <div id="register">
-                <form method="post" action="<?php echo base_url(); ?>index.php/signing">
+                <form method="post" action="<?php echo base_url(); ?>signing">
                     <div id="row">
                         <input type="email" name="email" placeholder="Email" requred>
                     </div>

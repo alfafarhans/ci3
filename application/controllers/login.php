@@ -41,12 +41,12 @@ class login extends CI_Controller {
 				{  	
 					//setsession *here
 					$this->session->set_userdata('user_id', $email);
-					redirect('index.php/home');
+					redirect('home');
                 }  
                 else  
                 {  
                    $this->session->set_flashdata('gagal', 'Invalid Username and Password');  
-                    redirect('index.php/login');  
+                    redirect('login');  
                 }  
            }  
            else  
@@ -61,7 +61,7 @@ class login extends CI_Controller {
 	//	http://localhost:8080/ci3/index.php/login/logout
 	$this->session->unset_userdata('user_id');
 	$this->session->sess_destroy();
-	$this->load->view('home');
+	redirect('home');  
 	}
 
 }

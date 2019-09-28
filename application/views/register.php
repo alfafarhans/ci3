@@ -56,7 +56,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         if( responParse.msg == "Yeay!"  ){
                             alert(responParse.msg);
                             alert('Your Account Succesfully Created');
-                            window.location.replace("<?php echo base_url();?>index.php/login");
+                            window.location.replace("<?php echo base_url();?>login");
                         }
                         else{
                             alert(responParse.msg);
