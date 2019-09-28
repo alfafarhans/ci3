@@ -13,13 +13,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- bagian navbar  -->
     <?php if(isset($user_id))
     {
+      
         echo '
         <div id="top">
             <div id="navbar_kiri">
-                <a href="#"> Seminar Go </a>
+                <a href="'.base_url().'index.php/"> Seminar Go </a>
             </div>
             <div id="navbar_kanan">
-                <a href="'.base_url().'index.php/logout">LOGOUT </a> 
+                
+                <a id="a" href="'.base_url().'index.php/ads">Advertising </a>
+                
+                <div id="dropdown">
+                    <img src="../asset/pict/profile1.png">
+
+                    <div id="dropdown-content">
+                        <a href="'.base_url().'index.php/profile"> Profile </a> 
+                        <a href="#"> My Event </a> 
+                        <a href="#"> Settings </a> 
+                        <a href="'.base_url().'index.php/logout"> Sign Out </a>
+                    </div>
+                </div>
+
             </div>
         </div> ';
     }
@@ -30,21 +44,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <a href="'.base_url().'index.php/"> Seminar Go </a>
             </div>
             <div id="navbar_kanan">
-                
-                <a id="a" href="'.base_url().'index.php/ads">Advertising </a> 
-                <a id="a" href="'.base_url().'index.php/login">Sign in</a>
-                
-                <div id="dropdown">
-                    <img src="../asset/pict/profile1.png">
-
-                    <div id="dropdown-content">
-                        <a href="'.base_url().'index.php/profile"> Profile </a> 
-                        <a href="#"> My Event </a> 
-                        <a href="#"> Settings </a> 
-                        <a href="#"> Sign Out </a>
-                    </div>
-                </div>
-
+            <a id="a" href="'.base_url().'index.php/ads">Advertising </a> 
+            <a id="a" href="'.base_url().'index.php/login">Sign in</a>
             </div>
         </div> ';
     }
@@ -121,67 +122,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- bagian isi  -->
     <div id="body">
     <div id="postinduk">
-            <div id="post">
-                <a href="<?php echo base_url();?>index.php/event_detail"> <img src="<?php echo base_url();?>asset/pict/seminar1.png"> </a>
-                <div id="descbox"> 
-                    <div id="namaseminar"> Indonesia Ves 2019 </div>
-                    <div id="dateseminar"> Wed, 10 April, 12.30</div>
-                    <div id="locseminar"> Senayan, Jakarta Selatan</div>
-                </div>
-            </div>
 
-            <div id="post">
-                <img src="<?php echo base_url();?>asset/pict/seminar2.png">
-                <div id="descbox"> 
-                    <div id="namaseminar"> National Youth Summit </div>
-                    <div id="dateseminar"> Sun, 14 April, 12.00 </div>
-                    <div id="dateseminar"> Hotel Grand Sahid, Jakarta </div>
-                </div>
+    <?php
+        foreach ($fetched_arr as $value) {
+            echo "<br>";
+            echo 
+            '<div id="post">
+            <a href="'. base_url().'index.php/event_detail"> 
+            <img src="'.base_url().'asset/pict/banner/'. $value['seminar_banner'].'">
+            </a>
+            <div id="descbox"> 
+                <div id="namaseminar">'.$value['seminar_name'].' </div>
+                <div id="dateseminar">'.$value['seminar_date'].'</div>
+                <div id="locseminar">'.$value['seminar_held'].'</div>
             </div>
-        </div>
+        </div>';
+        }
         
-        <div id="postinduk"> 
-            <div id="post">
-                <img src="<?php echo base_url();?>asset/pict/seminar3.png">
-                <div id="descbox"> 
-                    <div id="namaseminar"> Machine Learning dan IoT </div>
-                    <div id="dateseminar"> Sat, 31 Agustus, 08.00 </div>
-                    <div id="dateseminar"> Auditorium Lt7 Mercubuana Meruya, Jakarta </div>
-                </div>
-            </div>
-          
-            <div id="post">
-                <img src="<?php echo base_url();?>asset/pict/seminar1.png">
-                <div id="descbox"> 
-                    <div id="namaseminar"> Indonesia Ves 2019 </div>
-                    <div id="dateseminar"> Wed, 10 April, 12.30</div>
-                    <div id="locseminar"> Senayan, Jakarta Selatan</div>
-                </div>
-            </div>
-        </div>
-        
-        <div id="postinduk">  
-
-            <div id="post">
-                <img src="<?php echo base_url();?>asset/pict/seminar2.png">
-                <div id="descbox"> 
-                    <div id="namaseminar"> National Youth Summit </div>
-                    <div id="dateseminar"> Sun, 14 April, 12.00 </div>
-                    <div id="dateseminar"> Hotel Grand Sahid, Jakarta </div>
-                </div>
-            </div>
-
-            <div id="post">
-                <img src="<?php echo base_url();?>asset/pict/seminar3.png">
-                <div id="descbox"> 
-                    <div id="namaseminar"> Machine Learning dan IoT </div>
-                    <div id="dateseminar"> Sat, 31 Agustus, 08.00 </div>
-                    <div id="dateseminar"> Auditorium Lt7 Mercubuana Meruya, Jakarta </div>
-                </div>
-            </div>
-        
-        </div> 
-    </div>
+    ?>
 
     <!-- bagian footer  -->
 

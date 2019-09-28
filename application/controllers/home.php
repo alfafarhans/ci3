@@ -2,6 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class home extends CI_Controller {
+	
 
 	/**
 	 * Index Page for this controller.
@@ -20,13 +21,14 @@ class home extends CI_Controller {
 	 */
 	public function index()
 	{	//http://localhost:8080/ci3/index.php/home
+		$this->load->model('seminar_data');
 		$userid = $this->session->userdata('user_id');
 		if(empty($userid)){
-			$this->load->model('seminar_data');
-			$data['fetched_arr']= $this->seminar_data->getseminar();
-		$this->load->view('home');
+			$data['fetched_arr']= $this->seminar_data->getseminar();//if not signing
+			$this->load->view('home',$data);
 		}
 		else{	//setting user if already login
+			$data['fetched_arr']= $this->seminar_data->getseminar();
 			$data['user_id'] = $userid;
 			$this->load->view('home',$data);
 		}
