@@ -7,6 +7,30 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/home.css">
     <script type="text/javascript" src="<?php echo base_url();?>asset/js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        function filcat(params) {
+            $.ajax({
+            url:"<?php echo base_url(); ?>home/filcat",
+            method:"POST",
+            data:{query:params},
+            success:function(data){
+            $('#postinduk').html(data);
+                }
+            });
+        }
+
+        $('#category').on('change', function() {
+            if(this.value.length > 0){
+                filcat(this.value);
+            }
+            else{
+                window.location.replace("<?php echo base_url(); ?>home")
+            }
+            
+        });
+    });
+    </script>
 </head>
 <body>
     <div id="wrapper">
@@ -73,38 +97,38 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <label for="date"> Date </label>
             <br>
             <select name="date">
-            <option value="anydate" selected> Any Date </option>
-            <option value="today"> Today </option>
-            <option value="tomorrow"> Tomorrow</option>
-            <option value="thisweekend"> This Weekend</option>
-            <option value="thisweek"> This Week</option>
-            <option value="nextweek"> Next Week</option>
-            <option value="thismonth"> This Month</option>
-            <option value="nextmonth"> Next Month</option>
+                <option value="anydate" selected> Any Date </option>
+                <option value="today"> Today </option>
+                <option value="tomorrow"> Tomorrow</option>
+                <option value="thisweekend"> This Weekend</option>
+                <option value="thisweek"> This Week</option>
+                <option value="nextweek"> Next Week</option>
+                <option value="thismonth"> This Month</option>
+                <option value="nextmonth"> Next Month</option>
             <select>
         </div>
         <div id="item">
             <label for="category"> Category </label>
             <br>
-            <select name="category" >
-            <option value="anycategory" selected> Any Category </option>
-            <option value="otomotif"> Auto, Boat & air</option>
-            <option value="business"> Business</option>
-            <option value="charity"> Charity & Causes</option>
-            <option value="family"> Family & Education</option>
-            <option value="fashion"> Fashion</option>
-            <option value="film"> Film & Media</option>
-            <option value="fooddrink"> Food & Drink</option>
-            <option value="goverment"> Govevrment </option>
-            <option value="health"> Health</option>
-            <option value="hobbies"> Hobbies</option>
-            <option value="holiday"> Holiday</option>
-            <option value="homelifefstyle"> Home & Lifefstyle</option>
-            <option value="schoolactivies"> School Activies</option>
-            <option value="sciencetech"> Science & Tech</option>
-            <option value="spiritually"> Spiritually</option>
-            <option value="sportitness"> Sport & Fitness</option>
-            <option value="traveloutdoor"> Travel & Outdoor</option>
+            <select id="category" >
+                <option value="" selected> Any Category </option>
+                <option value="otomotif"> Auto, Boat & air</option>
+                <option value="business"> Business</option>
+                <option value="charity"> Charity & Causes</option>
+                <option value="family"> Family & Education</option>
+                <option value="fashion"> Fashion</option>
+                <option value="film"> Film & Media</option>
+                <option value="fooddrink"> Food & Drink</option>
+                <option value="goverment"> Govevrment </option>
+                <option value="health"> Health</option>
+                <option value="hobbies"> Hobbies</option>
+                <option value="holiday"> Holiday</option>
+                <option value="homelifefstyle"> Home & Lifefstyle</option>
+                <option value="schoolactivies"> School Activies</option>
+                <option value="sciencetech"> Science & Tech</option>
+                <option value="spiritually"> Spiritually</option>
+                <option value="sportitness"> Sport & Fitness</option>
+                <option value="traveloutdoor"> Travel & Outdoor</option>
             <select>
         </div>
 
@@ -122,10 +146,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- bagian isi  -->
     <div id="body">
     <div id="postinduk">
-
     <?php
-
-
         foreach ($fetched_arr as $value) {
             //convert time
             $dayname = date('l', strtotime($value['seminar_date']));
@@ -141,7 +162,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             //show reulst
             if(isset($user_id)){
             echo 
-            '<div id="post">
+        '<div id="post">
             <a href="'. base_url().'event_detail/'. $value['seminar_id'].'"> ';
                 }
             else{
@@ -161,7 +182,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         }
         
     ?>
-
+    </div>
     <!-- bagian footer  -->
 
     <div id="infofooter">

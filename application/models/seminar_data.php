@@ -25,7 +25,18 @@ class seminar_data extends CI_Model{
     $this->db->where('seminar_id',$id);
     $query = $this->db->get('seminar');
     return $query->result_array();
-}
+  }
+
+  function get_filtercat($cat)
+  {
+  $this->db->select("*");
+  $this->db->from("seminar");
+  $this->db->like('seminar_tag', $cat);
+  return $this->db->get();
+  }
+
+
+
 
 
   }//endclass
