@@ -21,8 +21,15 @@ class login extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+	 
 	public function index(){
+		$userid = $this->session->userdata('user_id');
+		if(isset($userid)){
+			redirect('home');
+		}
+		else {
 		$this->load->view('login');
+		}
 	}
 	 function login_val(){
 		if(isset($_POST['submit'])){

@@ -124,6 +124,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div id="postinduk">
 
     <?php
+
+
         foreach ($fetched_arr as $value) {
             //convert time
             $dayname = date('l', strtotime($value['seminar_date']));
@@ -137,9 +139,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $sbstr =  substr($dayname,0,3);
             
             //show reulst
+            if(isset($user_id)){
             echo 
             '<div id="post">
-            <a href="'. base_url().'event_detail/'. $value['seminar_id'].'"> 
+            <a href="'. base_url().'event_detail/'. $value['seminar_id'].'"> ';
+                }
+            else{
+            echo 
+            '<div id="post">
+            <a href="'. base_url().'login/"> ';
+            }
+            echo'
             <img src="'.base_url().'asset/pict/banner/'. $value['seminar_banner'].'">
             </a>
             <div id="descbox"> 
