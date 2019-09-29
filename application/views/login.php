@@ -44,7 +44,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         
                         <div id="col-75">
                         <div id="alerts"> <?php echo $this->session->flashdata('gagal'); ?> </div>
-                            <p> Belum punya akun? <a href="<?php echo base_url(); ?>index.php/register"> Daftar sekarang </a>
+                            <p> Belum punya akun? <a href="<?php echo base_url(); ?>register"> Daftar sekarang </a>
                         </div>
                     </div>
                 </form>

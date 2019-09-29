@@ -82,11 +82,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- bagian navbar  -->
     <div id="top">
         <div id="navbar_kiri">
-            <a href="<?php echo base_url();?>index.php/"> Seminar Go </a>
+            <a href="<?php echo base_url();?>home"> Seminar Go </a>
         </div>
         <div id="navbar_kanan">
-            <a href="<?php echo base_url();?>index.php/ads">Advertising </a> 
-            <a href="<?php echo base_url();?>index.php/login">Sign in</a>
+            <a href="<?php echo base_url();?>ads">Advertising </a> 
+            <a href="<?php echo base_url();?>login/">Sign in</a>
         </div>
     </div>
 
