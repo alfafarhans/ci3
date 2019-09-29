@@ -46,7 +46,7 @@ class login extends CI_Controller {
                 else  
                 {  
                    $this->session->set_flashdata('gagal', 'Invalid Username and Password');  
-                    redirect('login');  
+                    redirect('login/');  
                 }  
            }  
            else  

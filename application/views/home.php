@@ -27,7 +27,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <img src="./asset/pict/profile/fajarbarokah98@yahoo.co.id.png">
 
                     <div id="dropdown-content">
-                        <a href="'.base_url().'profile"> Profile </a> 
+                        <a href="'.base_url().'profile/"> Profile </a> 
                         <a href="#"> My Event </a> 
                         <a href="#"> Settings </a> 
                         <a href="'.base_url().'logout"> Sign Out </a>
@@ -125,15 +125,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <?php
         foreach ($fetched_arr as $value) {
-            echo "<br>";
+            //convert time
+            $dayname = date('l', strtotime($value['seminar_date']));
+            $daynum = date('d', strtotime($value['seminar_date']));
+            $mounth = date('m', strtotime($value['seminar_date']));
+           // $year = date('Y', strtotime($value['seminar_date']));
+            $hours =  date('H', strtotime($value['seminar_date']));
+            $minute =  date('i', strtotime($value['seminar_date']));
+            $month_num =$mounth; 
+            $month_name = date("F", mktime(0, 0, 0, $month_num, 10));  
+            $sbstr =  substr($dayname,0,3);
+            
+            //show reulst
             echo 
             '<div id="post">
-            <a href="'. base_url().'index.php/event_detail"> 
+            <a href="'. base_url().'event_detail/'. $value['seminar_id'].'"> 
             <img src="'.base_url().'asset/pict/banner/'. $value['seminar_banner'].'">
             </a>
             <div id="descbox"> 
                 <div id="namaseminar">'.$value['seminar_name'].' </div>
-                <div id="dateseminar">'.$value['seminar_date'].'</div>
+                <div id="dateseminar">'.$sbstr.',&nbsp;'.$daynum.'&nbsp;'.$month_name.',&nbsp;'.$hours.'.'.$minute.'</div>
                 <div id="locseminar">'.$value['seminar_held'].'</div>
             </div>
         </div>';

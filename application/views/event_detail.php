@@ -11,29 +11,35 @@
     <!-- bagian navbar  -->
     <div id="top">
         <div id="navbar_kiri">
-            <a href="<?php echo base_url();?>index.php/"> Seminar Go </a>
+            <a href="<?php echo base_url();?>home"> Seminar Go </a>
         </div>
         <div id="navbar_kanan">
-            <a href="<?php echo base_url();?>index.php/ads">Advertising </a> 
-            <a href="<?php echo base_url();?>index.php/login">Sign in </a>
+            <a href="<?php echo base_url();?>ads">Advertising </a>
         </div>
     </div>   
 
     <!-- bagian isi  -->
+  
     <div id="body">
         <div id="bodyartikel2">
             <div id="flexbod">
+            <?php
+                 foreach ($seminar as $value) {
+                     echo'
                 <div id="leftposttop">
-                    <img src="../asset/pict/seminar1.png">
+                    <img src="'.base_url().'asset/pict/banner/'. $value['seminar_banner'].'">
                 </div>
         
                 <div id="rightposttop">
                     <div id="padding">
-                        <h2> Indonesia Ves 2019 </h2> 
-                        <p> Rp. 35.000 </p>
+                        <h2> '.$value['seminar_name'].' </h2> 
+                        <p> Rp&nbsp;'.$value['seminar_price'].' </p>
                     </div>
-                </div>
-            </div>
+                </div>';
+                  }
+        
+            ?>
+        </div>
 
             <div id="flexbod">
                 <div id="leftpost">
@@ -51,32 +57,64 @@
 
             <div id="flexbod">
                 <div id="leftpost">
-                    <div id="obj-post">
-                        <div id="obj-judul"> Date and Time </div>
-                        <p> Wed, 10 April 2019, 12.30
-                    </div>
+                <?php
+                
+                 foreach ($seminar as $value) {
+             //convert time
+            $dayname = date('l', strtotime($value['seminar_date']));
+            $daynum = date('d', strtotime($value['seminar_date']));
+            $mounth = date('m', strtotime($value['seminar_date']));
+            $year = date('Y', strtotime($value['seminar_date']));
+            $hours =  date('H', strtotime($value['seminar_date']));
+            $minute =  date('i', strtotime($value['seminar_date']));
+            $month_num =$mounth; 
+            $month_name = date("F", mktime(0, 0, 0, $month_num, 10));  
+            $sbstr =  substr($dayname,0,3);
 
-                    <div id="obj-post">
-                        <div id="obj-judul"> Location </div>
-                        <p> Senayan, Jakarta Selatan
-                    </div>
 
-                    <div id="obj-post">
-                        <div id="obj-judul"> Dress Code </div>
-                        <p> Batik
-                    </div>
+             echo' 
+                <div id="obj-post">
+                     <div id="obj-judul"> Date and Time </div>
+                     <p>'.$sbstr.',&nbsp;'.$daynum.'&nbsp;'.$month_name.'&nbsp;'.$year.',&nbsp;'.$hours.'.'.$minute.'</p>
+                </div>
+
+                <div id="obj-post">
+                     <div id="obj-judul"> Location </div>
+                     <p>'.$value['seminar_held'].'</p>
+                </div>
+
+                <div id="obj-post">
+                     <div id="obj-judul"> Dress Code </div>
+                     <p>'.$value['seminar_drcode'].'</p>
+                </div>';
+                }
+        
+                ?>
                 </div>
         
                 <div id="rightpost">
-                    <div id="obj-post">
-                        <div id="obj-judul"> Description </div>
-                        <p> Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum </p>
-                    </div>
+                 <?php
+                 foreach ($seminar as $value) {
+                     //convert to array
+                    $cnvt = explode(',' , $value['seminar_tag']);
 
-                    <div id="obj-post">
-                        <div id="obj-judul"> Tag </div>
-                        <p> <a href="#">bussiness</a> <a href="#">kewirausahaan</a> <a href="#">enterpreneur</a> </p>
-                    </div>
+                    echo 
+                    '<div id="obj-post">
+                        <div id="obj-judul"> Description </div>
+                        <p> '.$value['seminar_desc'].'</p>
+                     </div>
+                     <div id="obj-post">
+                    <div id="obj-judul"> Tag </div>
+                         <p>';
+                    foreach ($cnvt as $newloop) {
+                        echo'
+                            <a href="#">'.$newloop.'</a>' ;
+                         }
+                         echo' </p>
+                     </div>';
+                    }
+        
+        ?>
                 </div>
             </div>
         </div>

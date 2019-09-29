@@ -17,9 +17,16 @@ class seminar_data extends CI_Model{
     function getseminar()
     {
 		$query =  $this->db->get('seminar');
-      return $query->result_array();
-      
+    return $query->result_array();
   }
+
+  function get_seminar_detail($id=null)
+  {
+    $this->db->where('seminar_id',$id);
+    $query = $this->db->get('seminar');
+    return $query->result_array();
+}
+
 
   }//endclass
 ?>
