@@ -9,25 +9,32 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script type="text/javascript" src="<?php echo base_url();?>asset/js/jquery-3.4.1.min.js"></script>
     <script type="text/javascript">
     $(function() {
-        function filcat(params) {
+        function filcat(cat,price,date) {
+
             $.ajax({
             url:"<?php echo base_url(); ?>home/filcat",
             method:"POST",
-            data:{query:params},
+            data:{cat1:cat,price1:price,date1:date},
             success:function(data){
             $('#postinduk').html(data);
                 }
             });
         }
+        function ceklunch() {
+            var price =  $("#price").val();
+            var category =  $("#category").val();
+            var date =  $("#date").val();
+            filcat(category,price,date);
+        }
 
         $('#category').on('change', function() {
-            if(this.value.length > 0){
-                filcat(this.value);
-            }
-            else{
-                window.location.replace("<?php echo base_url(); ?>home")
-            }
-            
+            ceklunch();
+        });
+        $('#price').on('change', function() {
+            ceklunch();
+        });
+        $('#date').on('change', function() {
+            ceklunch();
         });
     });
     </script>
@@ -96,8 +103,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div id="item">
             <label for="date"> Date </label>
             <br>
-            <select name="date">
-                <option value="anydate" selected> Any Date </option>
+            <select id="date">
+                <option value="" selected> Any Date </option>
                 <option value="today"> Today </option>
                 <option value="tomorrow"> Tomorrow</option>
                 <option value="thisweekend"> This Weekend</option>
@@ -135,8 +142,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div id="item">
             <label for="category"> Price </label>
             <br>
-            <select name="category" >
-                <option value="anyprice" selected> Any Price </option>
+            <select id="price" >
+                <option value="" selected> Any Price </option>
                 <option value="free"> Free </option>
                 <option value="paid"> Paid </option>
             <select>
@@ -149,15 +156,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <?php
         foreach ($fetched_arr as $value) {
             //convert time
-            $dayname = date('l', strtotime($value['seminar_date']));
+            $dayname = date('D', strtotime($value['seminar_date']));
             $daynum = date('d', strtotime($value['seminar_date']));
-            $mounth = date('m', strtotime($value['seminar_date']));
+            $mounth = date('F', strtotime($value['seminar_date']));
            // $year = date('Y', strtotime($value['seminar_date']));
             $hours =  date('H', strtotime($value['seminar_date']));
-            $minute =  date('i', strtotime($value['seminar_date']));
-            $month_num =$mounth; 
-            $month_name = date("F", mktime(0, 0, 0, $month_num, 10));  
-            $sbstr =  substr($dayname,0,3);
+            $minute =  date('i', strtotime($value['seminar_date'])); 
             
             //show reulst
             if(isset($user_id)){
@@ -175,7 +179,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </a>
             <div id="descbox"> 
                 <div id="namaseminar">'.$value['seminar_name'].' </div>
-                <div id="dateseminar">'.$sbstr.',&nbsp;'.$daynum.'&nbsp;'.$month_name.',&nbsp;'.$hours.'.'.$minute.'</div>
+                <div id="dateseminar">'.$dayname.',&nbsp;'.$daynum.'&nbsp;'.$mounth.',&nbsp;'.$hours.'.'.$minute.'</div>
                 <div id="locseminar">'.$value['seminar_held'].'</div>
             </div>
         </div>';

@@ -27,11 +27,31 @@ class seminar_data extends CI_Model{
     return $query->result_array();
   }
 
-  function get_filtercat($cat)
+  function get_filtercat($cat,$price,$datestart=null,$datemax=null)
   {
-  $this->db->select("*");
-  $this->db->from("seminar");
-  $this->db->like('seminar_tag', $cat);
+   $this->db->select("*");
+    $this->db->from("seminar");
+    if (!empty($datemax)) {
+      $this->db->where('seminar_date >= ',$datestart);
+      $this->db->where('seminar_date <=',$datemax);
+    }
+    else{
+      $this->db->where('DATE(seminar_date)',$datestart);
+    }
+  
+    if (!empty($price)) {
+      if($price == "free"){
+        $this->db->where('seminar_price', 0);
+      }
+      else{
+        $this->db->where('seminar_price >', 0);
+      }
+    }
+    
+    if(!empty($cat)){
+      $this->db->like('seminar_tag', $cat);
+      }
+      $this->db->order_by('seminar_date', 'ASC');
   return $this->db->get();
   }
 

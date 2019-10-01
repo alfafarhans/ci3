@@ -25,6 +25,12 @@
             <div id="flexbod">
             <?php
                  foreach ($seminar as $value) {
+                     if($value['seminar_price'] == 0){
+                        $price = "FREE";
+                     }
+                     else {
+                         $price = $value['seminar_price'];
+                     }
                      echo'
                 <div id="leftposttop">
                     <img src="'.base_url().'asset/pict/banner/'. $value['seminar_banner'].'">
@@ -33,7 +39,7 @@
                 <div id="rightposttop">
                     <div id="padding">
                         <h2> '.$value['seminar_name'].' </h2> 
-                        <p> Rp&nbsp;'.$value['seminar_price'].' </p>
+                        <p> Rp&nbsp;'.$price.' </p>
                     </div>
                 </div>';
                   }
