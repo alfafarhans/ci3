@@ -9,6 +9,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <script type="text/javascript" src="<?php echo base_url();?>asset/js/jquery-3.4.1.min.js"></script>
     <script type="text/javascript">
     $(function() {
+        function search_seminar() {
+        var seminar_search =  $("#seminar").val();
+        $.ajax({
+        url:"<?php echo base_url(); ?>home/search/",
+        method:"POST",
+        data:{datasearch:seminar_search},
+        success:function(data){
+        $('#result').html(data);
+        console.log(data);}
+              });
+            }
         function filcat(cat,price,date) {
 
             $.ajax({
@@ -26,7 +37,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             var date =  $("#date").val();
             filcat(category,price,date);
         }
-
+        $('#seminar').on('keyup', function() {
+            search_seminar();
+        });
         $('#category').on('change', function() {
             ceklunch();
         });
@@ -153,6 +166,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- bagian isi  -->
     <div id="body">
     <div id="postinduk">
+    <div id = "result"></div>
     <?php
         foreach ($fetched_arr as $value) {
             //convert time

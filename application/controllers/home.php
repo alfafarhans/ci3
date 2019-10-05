@@ -132,4 +132,19 @@ class home extends CI_Controller {
 			  echo $output;
 		  }
 		}
+	function search (){
+		$output="";
+		$datasearch = $this->input->post('datasearch');
+		//var_dump($datasearch);
+		$this->load->model('seminar_data');
+		$result = $this->seminar_data->s_seminar_name($datasearch);
+		if($result->num_rows() > 0)
+ 		 {
+			foreach ($result->result_array() as $value) {
+				$output .='<a href="'. base_url().'event_detail/'. $value['seminar_id'].'" >'.$value['seminar_name'].' </a> <br>';
+				
+			}
+			echo $output;
+		}
+	}
 }//end

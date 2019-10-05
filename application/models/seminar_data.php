@@ -55,7 +55,15 @@ class seminar_data extends CI_Model{
   return $this->db->get();
   }
 
-
+  function s_seminar_name($key = null){
+    $curdate = date('Y-m-d');
+    $this->db->select("seminar_id,seminar_name");
+    $this->db->from("seminar");
+    $this->db->where('seminar_date >=', $curdate);
+    $this->db->like('seminar_name', $key);
+    $this->db->order_by('seminar_date', 'ASC');
+    return $this->db->get();
+  }
 
 
 
