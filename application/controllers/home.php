@@ -89,6 +89,9 @@ class home extends CI_Controller {
 					$newdate1 = date('Y-m-d', strtotime ('last day of this month') ) ; //> min
 					$newdate2 = date('Y-m-d', strtotime ('last day of next month') ) ;//<= max
 				}
+				else{
+					$newdate1 = "anydate";
+				}
 		$category = $this->input->post('cat1');
 		$pricer = $this->input->post('price1');
 		$this->load->model('seminar_data');
