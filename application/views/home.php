@@ -21,6 +21,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             }
         }
     }*/
+
     $(function() {
         function search_seminar(search,result) {
            // console.log(search);
