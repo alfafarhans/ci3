@@ -86,11 +86,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div id="navbar_kanan">
                 
                 <a id="a" href="'.base_url().'ads">Advertising </a>
-                
+                <div id="p"> Welcome Alfa! </div>
                 <div id="dropdown">
-                    <img src="./asset/pict/profile/fajarbarokah98@yahoo.co.id.png">
-
-                    <div id="dropdown-content">
+                    <img id="imgdrop" src="./asset/pict/profile/fajarbarokah98@yahoo.co.id.png">
+                
+                    <div id="myDropDown" class="dropdown-content">
                         <a href="'.base_url().'profile/"> Profile </a> 
                         <a href="#"> My Event </a> 
                         <a href="#"> Settings </a> 
