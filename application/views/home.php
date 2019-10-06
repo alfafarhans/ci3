@@ -21,6 +21,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             }
         }
     }*/
+    window.onclick = function(event) {
+        if ( (!event.target.matches('.dropdown')) &&(!event.target.matches('.imgdrop')) &&(!event.target.matches('.p')) ){
+            $('#jcdrop').slideUp();
+        }
+    }
 
     $(function() {
         function search_seminar(search,result) {
@@ -58,6 +63,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             var date =  $("#date").val();
             filcat(category,price,date);
         }
+
+        //ALL TRIGEER
+        
+        $('#jdrop').on('click', function() {
+            $('#jcdrop').slideDown( "slow" );
+        });
         $('#seminar').on('keyup', function() {
             var res = '#result_sem';
             //console.log($(this).val());
@@ -174,19 +185,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <a href="'.base_url().'home"> Seminar Go </a>
             </div>
             <div id="navbar_kanan">
-                
                 <a id="a" href="'.base_url().'ads">Advertising </a>
-                <div id="p"> Welcome Alfa ! </div>
-                <div id="dropdown">
-                    <img id="imgdrop" src="./asset/pict/profile/fajarbarokah98@yahoo.co.id.png">
-                    <div id="myDropDown" class="dropdown-content">
-                        <a href="'.base_url().'profile/"> Profile </a> 
-                        <a href="#"> My Event </a> 
-                        <a href="#"> Settings </a> 
-                        <a href="'.base_url().'logout"> Sign Out </a>
-                    </div>
-                </div>
 
+
+                
+                <div id="jdrop" class="dropdown">
+                    <div id="jdrop" class="p"> Welcome Alfa ! </div>
+                    <img id="jdrop" class="imgdrop" src="./asset/pict/profile/fajarbarokah98@yahoo.co.id.png">
+                 </div>
+                <div id="jcdrop" class="dropdown-content">
+                    <a href="'.base_url().'profile/"> Profile </a> 
+                    <a href="#"> My Event </a> 
+                    <a href="#"> Settings </a> 
+                    <a href="'.base_url().'logout"> Sign Out </a>
+                </div>
             </div>
         </div> ';
     }
