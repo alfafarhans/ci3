@@ -15,15 +15,15 @@ body{
     padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     height: 100%;
-    background-color: #F5F5F5;
+    background-color: #ffffff;
 }
 
 #topr{
     top: 0;
     position: relative;
     z-index: 1;
-    background-color: white;
-    height: 68px;
+    background-color: #0F63C0;
+    height: 67px;
 }
 
 #top{
@@ -31,9 +31,8 @@ body{
     top: 0;
     position: fixed;
     z-index: 15;
-    border-bottom: 1px solid #E8E8E8;
     display: flex;
-    background-color: white;
+    background-color: #0F63C0;
 }
 
     #navbar_kiri{
@@ -46,15 +45,50 @@ body{
     }
 
         #navbar_kiri a{
-            margin: 20px;
+            display: block;
+            padding: 20px 40px;
             text-decoration: none;
-            color: #ff8000;
+            color: #000000;
+            background-color: #5890CF;
         }
+
+        #navbar_kiri input[type=text] {
+            display: block;
+            width: 25vw;
+            padding: 5px 5px;
+            margin: 10px 15px;
+            box-sizing: border-box;
+            border: none;
+            font-size: 17px;
+            background-color: #ffffff;
+        }
+
+        #result_sem {
+            margin-top: 67px;
+            margin-left: 177px;
+            position: absolute;
+            background-color: #f9f9f9;
+            z-index: 25;
+            width: 500px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        }   
+
+            #result_sem a{
+                display: block;
+                text-decoration: none;
+                color: black;
+                padding: 15px 30px 15px 20px;
+            }      
+
+            #result_sem a:hover{
+                color: #063A74;
+                background-color: #dedede;
+            }  
 
     #navbar_kanan {
         display: inline-flex;
         justify-content: flex-end;
-        background-color: white;
+        background-color: #0F63C0;
         position: relative;
         z-index: 11;
         flex-grow: 1;
@@ -66,12 +100,12 @@ body{
             text-align: center;
             padding: 20px 40px;
             text-decoration: none;
-            color: black;
-            border-left: 1px solid #E8E8E8;
+            color: #ffffff;
+            background-color: #084B95;
         }
 
         #navbar_kanan #a:hover{
-            color: orangered;
+            color: #FFEF00;
         }
 
         #navbar_kanan #p{
@@ -79,14 +113,15 @@ body{
             width: 100%;
             padding: 20px 0 20px 5px;
             text-decoration: none;
-            color: black;
-            border-left: 1px solid #E8E8E8;
+            color: #ffffff;
+            background-color: #063A74;
         }
 
 
         #navbar_kanan #dropdown {
             position: relative;
             display: inline-block;
+            background-color: #063A74;
         }
 
         .dropdown-content {
@@ -106,26 +141,26 @@ body{
         .dropdown-content a{
             display: block;
             width: 100%;
-            padding: 10px 30px;
+            padding: 10px 40px;
             text-decoration: none;
             color: black;
         }
 
         .dropdown-content a:hover{
             background-color: #dedede;
-            color: orangered;
+            color: #063A74;
         }
 
         #imgdrop{
             border-radius: 50%;
-            border: 2px solid white;
+            border: 2px solid #063A74;
             margin: 10px 10px 5px -20px;
             max-width: 38px;
             padding: 3px;
         }
 
         #imgdrop:hover{
-            border: 2px solid orangered;
+            border: 2px solid #5890CF;
             padding: 3px;
         }
         
@@ -162,12 +197,13 @@ body{
     }
 
 #smart {
-    margin: -50px 50px 20px 50px;
+    margin: -70px 130px 20px 130px;
     border-radius: 5px;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    background-color: rgb(255, 104, 49);
+    background-color: #E5D600;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 12;
     position: relative;
 }
@@ -176,7 +212,7 @@ body{
         margin: 20px;
     }   
 
-        #smart #item #result_sem, #smart #item #result_loc{
+        #result_loc{
             margin-top: 10px;
             position: absolute;
             background-color: #f9f9f9;
@@ -185,45 +221,93 @@ body{
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
         }   
 
-            #smart #item #result_sem a, #smart #item #result_loc a{
+            #result_loc a{
                 display: block;
                 text-decoration: none;
                 color: black;
                 padding: 15px 30px 15px 20px;
             }      
 
-            #smart #item #result_sem a:hover, #smart #item #result_loc a:hover{
-                color: rgb(255, 104, 49);
+            #result_loc a:hover{
+                color: #063A74;
                 background-color: #dedede;
             }  
     
         #smart input[type=text] {
             display: block;
-            width: 220px;
+            width: 15vw;
             padding: 5px 5px;
             margin: 5px 0;
             box-sizing: border-box;
             border: none;
             font-size: 20px;
-            border-bottom: 2px solid white;
-            background-color: rgb(255, 104, 49);
+            border-bottom: 2px solid rgba(0,0,0,0.2);
+            background-color: #E5D600;
         }
           
-        #smart select {
-            width: 220px;
-            border: none;
-            padding: 5px 5px;
-            margin: 2px 0;
-            border-bottom: 2px solid white;
-            background-color: rgb(255, 104, 49);
-            -webkit-appearance: none;
+        /*the container must be positioned relative:*/
+        .custom-select {
+            position: relative;
+            width: 15vw;
+            font-size: 20px;
         }
-    
-            #smart option {
-                background-color: white;
-                padding: 10px;
-                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            }
+  
+        .custom-select select {
+            display: none; /*hide original SELECT element:*/
+        }
+  
+        .select-selected {
+            background-color: #E5D600;
+            border-bottom: 2px solid rgba(0,0,0,0.2);
+        }
+  
+        /*style the arrow inside the select element:*/
+        .select-selected:after {
+            position: absolute;
+            content: "";
+            top: 14px;
+            right: 10px;
+            width: 0;
+            height: 0;
+            border: 6px solid transparent;
+            border-color: rgba(0, 0, 0, 0.5) transparent transparent transparent;
+        }
+  
+        /*point the arrow upwards when the select box is open (active):*/
+        .select-selected.select-arrow-active:after {
+            border-color: transparent transparent rgba(0, 0, 0, 0.5) transparent;
+            top: 7px;
+        }
+  
+        /*style the items (options), including the selected item:*/
+        .select-items div,.select-selected {
+            color: #000000;
+            padding: 8px 16px;
+            cursor: pointer;
+            user-select: none;
+        }
+  
+        /*style items (options):*/
+        .select-items {
+            position: absolute;
+            background-color: #ffffff;
+            border: 1px solid #000000;
+            border-color: rgba(0, 0, 0, 0.1);
+            top: 100%;
+            left: 0;
+            right: 0;
+            z-index: 99;
+        }
+  
+        /*hide the items when the select box is closed:*/
+        .select-hide {
+            display: none;
+        }
+  
+        .select-items div:hover, .same-as-selected {
+            background-color: rgba(0, 0, 0, 0.1);
+            color: #063A74;
+        }
 
 #body {
     float: center;
@@ -286,7 +370,7 @@ body{
     width: 100%;
     height: 100px;
     bottom: 0;
-    background-color: #ff8000;
+    background-color: #F10034;
     text-align: center;
     padding: 5px;
 }   
@@ -297,10 +381,12 @@ body{
     height: 50px;
     bottom: 0;
     color: white;
-    background-color: orangered;
+    background-color: #A50023;
     text-align: center;
     padding: 5px;
 }
+
+
 
 @media screen and (max-width: 600px) {
 

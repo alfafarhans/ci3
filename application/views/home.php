@@ -82,80 +82,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     /* Js custom select smart search */
 
-    var x, i, j, selElmnt, a, b, c;
-    /*look for any elements with the class "custom-select":*/
-    x = document.getElementsByClassName("custom-select");
-    for (i = 0; i < x.length; i++) {
-        selElmnt = x[i].getElementsByTagName("select")[0];
-        /*for each element, create a new DIV that will act as the selected item:*/
-        a = document.createElement("DIV");
-        a.setAttribute("class", "select-selected");
-        a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
-        x[i].appendChild(a);
-        /*for each element, create a new DIV that will contain the option list:*/
-        b = document.createElement("DIV");
-        b.setAttribute("class", "select-items select-hide");
-        for (j = 1; j < selElmnt.length; j++) {
-            /*for each option in the original select element,
-            create a new DIV that will act as an option item:*/
-            c = document.createElement("DIV");
-            c.innerHTML = selElmnt.options[j].innerHTML;
-            c.addEventListener("click", function(e) {
-                /*when an item is clicked, update the original select box,
-                and the selected item:*/
-                var y, i, k, s, h;
-                s = this.parentNode.parentNode.getElementsByTagName("select")[0];
-                h = this.parentNode.previousSibling;
-                for (i = 0; i < s.length; i++) {
-                    if (s.options[i].innerHTML == this.innerHTML) {
-                        s.selectedIndex = i;
-                        h.innerHTML = this.innerHTML;
-                        y = this.parentNode.getElementsByClassName("same-as-selected");
-                        for (k = 0; k < y.length; k++) {
-                            y[k].removeAttribute("class");
-                        }
-                        this.setAttribute("class", "same-as-selected");
-                        break;
-                    }
-                }
-                h.click();
-            });
-            b.appendChild(c);
-        }
-        x[i].appendChild(b);
-        a.addEventListener("click", function(e) {
-        /*when the select box is clicked, close any other select boxes,
-        and open/close the current select box:*/
-        e.stopPropagation();
-        closeAllSelect(this);
-        this.nextSibling.classList.toggle("select-hide");
-        this.classList.toggle("select-arrow-active");
-        });
-    }
-    
-    function closeAllSelect(elmnt) {
-        /*a function that will close all select boxes in the document,
-        except the current select box:*/
-        var x, y, i, arrNo = [];
-        x = document.getElementsByClassName("select-items");
-        y = document.getElementsByClassName("select-selected");
-        for (i = 0; i < y.length; i++) {
-            if (elmnt == y[i]) {
-                arrNo.push(i)
-            } else {
-                y[i].classList.remove("select-arrow-active");
-            }
-        }
-        for (i = 0; i < x.length; i++) {
-            if (arrNo.indexOf(i)) {
-                x[i].classList.add("select-hide");
-            }
-        }
-    }
 
-    /*if the user clicks anywhere outside the select box,
-    then close all select boxes:*/
-    document.addEventListener("click", closeAllSelect);
     </script>
 </head>
 <body>
@@ -172,7 +99,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div id="top">
             <div id="navbar_kiri">
                 <a href="'.base_url().'home"> Seminar Go </a>
+                <input type="text" id="seminar" name="seminar" placeholder="Cari seminar">
             </div>
+            
+            <div id = "result_sem"></div>
             <div id="navbar_kanan">
                 
                 <a id="a" href="'.base_url().'ads">Advertising </a>
@@ -189,6 +119,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
             </div>
         </div> ';
+        
     }
     else{
         echo '
@@ -207,70 +138,71 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <!-- bagian header  -->
     <div id="header">
-        <img src="<?php echo base_url();?>asset/pict/header1.png">
+        <img src="<?php echo base_url();?>asset/pict/header2.png">
     </div>
 
     <!-- bagian pencarian  -->
     <div id="smart">
-        <div id="item">
-            <label for="seminar"> Seminar </label>
-            <input type="text" id="seminar" name="seminar">
-            <div id = "result_sem"></div>
-        </div>
 
         <div id="item">
             <label for="location"> Location </label>
-            <input type="text" id="location" name="location" >
+            <input type="text" id="location" name="location" value="Any location">
             <div id = "result_loc"></div>
         </div>
 
         <div id="item">
             <label for="date"> Date </label>
             <br>
-            <select id="date">
-                <option value="anydate" selected> Any Date </option>
-                <option value="today"> Today </option>
-                <option value="tomorrow"> Tomorrow</option>
-                <option value="thisweekend"> This Weekend</option>
-                <option value="thisweek"> This Week</option>
-                <option value="nextweek"> Next Week</option>
-                <option value="thismonth"> This Month</option>
-                <option value="nextmonth"> Next Month</option>
-            <select>
+            <div class="custom-select">
+                <select id="date">
+                    <option value="anydate" selected> Any Date </option>
+                    <option value="today"> Today </option>
+                    <option value="tomorrow"> Tomorrow</option>
+                    <option value="thisweekend"> This Weekend</option>
+                    <option value="thisweek"> This Week</option>
+                    <option value="nextweek"> Next Week</option>
+                    <option value="thismonth"> This Month</option>
+                    <option value="nextmonth"> Next Month</option>
+                <select>
+            </div>
         </div>
         <div id="item">
             <label for="category"> Category </label>
             <br>
-            <select id="category" >
-                <option value="" selected> Any Category </option>
-                <option value="otomotif"> Auto, Boat & air</option>
-                <option value="business"> Business</option>
-                <option value="charity"> Charity & Causes</option>
-                <option value="family"> Family & Education</option>
-                <option value="fashion"> Fashion</option>
-                <option value="film"> Film & Media</option>
-                <option value="fooddrink"> Food & Drink</option>
-                <option value="goverment"> Govevrment </option>
-                <option value="health"> Health</option>
-                <option value="hobbies"> Hobbies</option>
-                <option value="holiday"> Holiday</option>
-                <option value="homelifefstyle"> Home & Lifefstyle</option>
-                <option value="schoolactivies"> School Activies</option>
-                <option value="sciencetech"> Science & Tech</option>
-                <option value="spiritually"> Spiritually</option>
-                <option value="sportitness"> Sport & Fitness</option>
-                <option value="traveloutdoor"> Travel & Outdoor</option>
-            <select>
+            <div class="custom-select">
+                <select id="category" >
+                    <option value="" selected> Any Category </option>
+                    <option value="otomotif"> Auto, Boat & air</option>
+                    <option value="business"> Business</option>
+                    <option value="charity"> Charity & Causes</option>
+                    <option value="family"> Family & Education</option>
+                    <option value="fashion"> Fashion</option>
+                    <option value="film"> Film & Media</option>
+                    <option value="fooddrink"> Food & Drink</option>
+                    <option value="goverment"> Govevrment </option>
+                    <option value="health"> Health</option>
+                    <option value="hobbies"> Hobbies</option>
+                    <option value="holiday"> Holiday</option>
+                    <option value="homelifefstyle"> Home & Lifefstyle</option>
+                    <option value="schoolactivies"> School Activies</option>
+                    <option value="sciencetech"> Science & Tech</option>
+                    <option value="spiritually"> Spiritually</option>
+                    <option value="sportitness"> Sport & Fitness</option>
+                    <option value="traveloutdoor"> Travel & Outdoor</option>
+                <select>
+            </div>
         </div>
 
         <div id="item">
             <label for="category"> Price </label>
             <br>
-            <select id="price" >
-                <option value="" selected> Any Price </option>
-                <option value="free"> Free </option>
-                <option value="paid"> Paid </option>
-            <select>
+            <div class="custom-select">
+                <select id="price" >
+                    <option value="" selected> Any Price </option>
+                    <option value="free"> Free </option>
+                    <option value="paid"> Paid </option>
+                <select>
+            </div>
         </div>
     </div>   
     
@@ -287,5 +219,81 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <p>Copyright © 2019 </p>
     </div>
     </div>
+
+    <script>
+    var x, i, j, selElmnt, a, b, c;
+/*look for any elements with the class "custom-select":*/
+x = document.getElementsByClassName("custom-select");
+for (i = 0; i < x.length; i++) {
+  selElmnt = x[i].getElementsByTagName("select")[0];
+  /*for each element, create a new DIV that will act as the selected item:*/
+  a = document.createElement("DIV");
+  a.setAttribute("class", "select-selected");
+  a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+  x[i].appendChild(a);
+  /*for each element, create a new DIV that will contain the option list:*/
+  b = document.createElement("DIV");
+  b.setAttribute("class", "select-items select-hide");
+  for (j = 1; j < selElmnt.length; j++) {
+    /*for each option in the original select element,
+    create a new DIV that will act as an option item:*/
+    c = document.createElement("DIV");
+    c.innerHTML = selElmnt.options[j].innerHTML;
+    c.addEventListener("click", function(e) {
+        /*when an item is clicked, update the original select box,
+        and the selected item:*/
+        var y, i, k, s, h;
+        s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+        h = this.parentNode.previousSibling;
+        for (i = 0; i < s.length; i++) {
+          if (s.options[i].innerHTML == this.innerHTML) {
+            s.selectedIndex = i;
+            h.innerHTML = this.innerHTML;
+            y = this.parentNode.getElementsByClassName("same-as-selected");
+            for (k = 0; k < y.length; k++) {
+              y[k].removeAttribute("class");
+            }
+            this.setAttribute("class", "same-as-selected");
+            break;
+          }
+        }
+        h.click();
+    });
+    b.appendChild(c);
+  }
+  x[i].appendChild(b);
+  a.addEventListener("click", function(e) {
+      /*when the select box is clicked, close any other select boxes,
+      and open/close the current select box:*/
+      e.stopPropagation();
+      closeAllSelect(this);
+      this.nextSibling.classList.toggle("select-hide");
+      this.classList.toggle("select-arrow-active");
+    });
+}
+function closeAllSelect(elmnt) {
+  /*a function that will close all select boxes in the document,
+  except the current select box:*/
+  var x, y, i, arrNo = [];
+  x = document.getElementsByClassName("select-items");
+  y = document.getElementsByClassName("select-selected");
+  for (i = 0; i < y.length; i++) {
+    if (elmnt == y[i]) {
+      arrNo.push(i)
+    } else {
+      y[i].classList.remove("select-arrow-active");
+    }
+  }
+  for (i = 0; i < x.length; i++) {
+    if (arrNo.indexOf(i)) {
+      x[i].classList.add("select-hide");
+    }
+  }
+}
+/*if the user clicks anywhere outside the select box,
+then close all select boxes:*/
+document.addEventListener("click", closeAllSelect);
+</script>
+
 </body>
 </html>
