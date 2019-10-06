@@ -150,7 +150,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <label for="date"> Date </label>
             <br>
             <select id="date">
-                <option value="" selected> Any Date </option>
+                <option value="anydate" selected> Any Date </option>
                 <option value="today"> Today </option>
                 <option value="tomorrow"> Tomorrow</option>
                 <option value="thisweekend"> This Weekend</option>
