@@ -21,6 +21,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             }
         }
     }*/
+    window.onclick = function(event) {
+        if ( (!event.target.matches('.dropdown')) &&(!event.target.matches('.imgdrop')) && (!event.target.matches('.result_sem')) && (!event.target.matches('.result_loc')) && (!event.target.matches('.p')) ){
+            $('#jcdrop').slideUp();
+            $("#result_sem").html("");
+            $("#result_loc").html("");
+            $('#seminar').val("");
+            $('#location').val("");
+        }
+    }
 
     $(function() {
         function search_seminar(search,result) {
@@ -58,6 +67,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             var date =  $("#date").val();
             filcat(category,price,date);
         }
+
+        //ALL TRIGEER
+        
+        $('#jdrop').on('click', function() {
+            $('#jcdrop').slideDown( "slow" );
+        });
         $('#seminar').on('keyup', function() {
             var res = '#result_sem';
             //console.log($(this).val());
@@ -99,24 +114,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div id="top">
             <div id="navbar_kiri">
                 <a href="'.base_url().'home"> Seminar Go </a>
-                <input type="text" id="seminar" name="seminar" placeholder="Cari seminar">
+                <input type="text" id="seminar" name="seminar" class = "result_sem" placeholder="Cari seminar">
             </div>
             
-            <div id = "result_sem"></div>
+            <div id = "result_sem" ></div>
             <div id="navbar_kanan">
-                
                 <a id="a" href="'.base_url().'ads">Advertising </a>
-                <div id="p"> Welcome Alfa ! </div>
-                <div id="dropdown">
-                    <img id="imgdrop" src="./asset/pict/profile/fajarbarokah98@yahoo.co.id.png">
-                    <div id="myDropDown" class="dropdown-content">
-                        <a href="'.base_url().'profile/"> Profile </a> 
-                        <a href="#"> My Event </a> 
-                        <a href="#"> Settings </a> 
-                        <a href="'.base_url().'logout"> Sign Out </a>
-                    </div>
-                </div>
 
+
+                
+                <div id="jdrop" class="dropdown">
+                    <div id="jdrop" class="p"> Welcome Alfa ! </div>
+                    <img id="jdrop" class="imgdrop" src="./asset/pict/profile/fajarbarokah98@yahoo.co.id.png">
+                 </div>
+                <div id="jcdrop" class="dropdown-content">
+                    <a href="'.base_url().'profile/"> Profile </a> 
+                    <a href="#"> My Event </a> 
+                    <a href="#"> Settings </a> 
+                    <a href="'.base_url().'logout"> Sign Out </a>
+                </div>
             </div>
         </div> ';
         
@@ -145,13 +161,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div id="smart">
 
         <div id="item">
-            <label for="location"> Location </label>
-            <input type="text" id="location" name="location" value="Any location">
+            <label for="location" id="label"> Location </label>
+            <input type="text" id="location" name="location" placeholder="Any location" class = "result_loc">
             <div id = "result_loc"></div>
         </div>
 
         <div id="item">
-            <label for="date"> Date </label>
+            <label for="date" id="label"> Date </label>
             <br>
             <div class="custom-select">
                 <select id="date">
@@ -167,7 +183,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
         </div>
         <div id="item">
-            <label for="category"> Category </label>
+            <label for="category" id="label"> Category </label>
             <br>
             <div class="custom-select">
                 <select id="category" >
@@ -194,7 +210,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
 
         <div id="item">
-            <label for="category"> Price </label>
+            <label for="category" id="label"> Price </label>
             <br>
             <div class="custom-select">
                 <select id="price" >
