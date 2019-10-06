@@ -74,6 +74,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 <body>
     <div id="wrapper">
+
+    <div id="topr">
+    </div>
+    
     <!-- bagian navbar  -->
     <?php if(isset($user_id))
     {
@@ -86,7 +90,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div id="navbar_kanan">
                 
                 <a id="a" href="'.base_url().'ads">Advertising </a>
-                <div id="p"> Welcome Alfa! </div>
+                <div id="p"> Welcome Alfa ! </div>
                 <div id="dropdown">
                     <img id="imgdrop" src="./asset/pict/profile/fajarbarokah98@yahoo.co.id.png">
                 
