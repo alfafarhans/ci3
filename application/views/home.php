@@ -126,6 +126,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div id="item">
             <label for="seminar"> Seminar </label>
             <input type="text" id="seminar" name="seminar">
+            <div id = "result"></div>
         </div>
 
         <div id="item">
