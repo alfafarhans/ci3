@@ -66,12 +66,16 @@ class seminar_data extends CI_Model{
   return $this->db->get();
   }
 
-  function s_seminar_name($key = null){
+  function search_seminar($key = nulld, $type = null){
     $curdate = date('Y-m-d');
-    $this->db->select("seminar_id,seminar_name");
+    $this->db->select("seminar_id,seminar_name,seminar_city");
     $this->db->from("seminar");
     $this->db->where('seminar_date >=', $curdate);
-    $this->db->like('seminar_name', $key);
+    if($type === "#result_sem"){
+      $this->db->like('seminar_name', $key);}
+    elseif ($type === "#result_loc") {
+      $this->db->like('seminar_city', $key);
+    }
     $this->db->order_by('seminar_date', 'ASC');
     return $this->db->get();
   }

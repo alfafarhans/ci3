@@ -176,7 +176,7 @@ body{
         margin: 20px;
     }   
 
-        #smart #item #result{
+        #smart #item #result_sem, #smart #item #result_loc{
             margin-top: 10px;
             position: absolute;
             background-color: #f9f9f9;
@@ -185,14 +185,14 @@ body{
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
         }   
 
-            #smart #item #result a{
+            #smart #item #result_sem a, #smart #item #result_loc a{
                 display: block;
                 text-decoration: none;
                 color: black;
                 padding: 15px 30px 15px 20px;
             }      
 
-            #smart #item #result a:hover{
+            #smart #item #result_sem a:hover, #smart #item #result_loc a:hover{
                 color: rgb(255, 104, 49);
                 background-color: #dedede;
             }  

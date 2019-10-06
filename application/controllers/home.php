@@ -122,7 +122,7 @@ class home extends CI_Controller {
 				<div id="descbox"> 
 					<div id="namaseminar">'.$value['seminar_name'].' </div>
 					<div id="dateseminar">'.$dayname.',&nbsp;'.$daynum.'&nbsp;'.$mounth.',&nbsp;'.$hours.'.'.$minute.'</div>
-					<div id="locseminar">'.$value['seminar_held'].'</div>
+					<div id="locseminar">'.$value['seminar_city'].'</div>
 				</div>
 			</div>';
 				 }
@@ -136,16 +136,30 @@ class home extends CI_Controller {
 	function search (){
 		$output="";
 		$datasearch = $this->input->post('datasearch');
+		$type = $this->input->post('type');
 		//var_dump($datasearch);
+	//	var_dump($type);
 		$this->load->model('seminar_data');
-		$result = $this->seminar_data->s_seminar_name($datasearch);
-		if($result->num_rows() > 0)
- 		 {
-			foreach ($result->result_array() as $value) {
+		$result = $this->seminar_data->search_seminar($datasearch,$type);
+
+		if($type === "#result_sem"){
+			if($result->num_rows() > 0)
+ 		 	{
+				foreach ($result->result_array() as $value) {
 				$output .='<a href="'. base_url().'event_detail/'. $value['seminar_id'].'" >'.$value['seminar_name'].' </a>';
 				
 			}
-			echo $output;
 		}
 	}
+	elseif($type === "#result_loc"){
+		if($result->num_rows() > 0)
+		{
+		  foreach ($result->result_array() as $value) {
+		  $output .='<a href="'. base_url().'event_detail/'. $value['seminar_id'].'" >'.$value['seminar_city'].' </a>';
+	  }
+  		}
+	}
+	echo $output;
+		}
+	
 }//end
