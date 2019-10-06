@@ -22,8 +22,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         }
     }*/
     window.onclick = function(event) {
-        if ( (!event.target.matches('.dropdown')) &&(!event.target.matches('.imgdrop')) &&(!event.target.matches('.p')) ){
+        if ( (!event.target.matches('.dropdown')) &&(!event.target.matches('.imgdrop')) && (!event.target.matches('.result_sem')) && (!event.target.matches('.result_loc')) && (!event.target.matches('.p')) ){
             $('#jcdrop').slideUp();
+            $("#result_sem").html("");
+            $("#result_loc").html("");
+            $('#seminar').val("");
+            $('#location').val("");
         }
     }
 
@@ -226,14 +230,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div id="smart">
         <div id="item">
             <label for="seminar"> Seminar </label>
-            <input type="text" id="seminar" name="seminar">
-            <div id = "result_sem"></div>
+            <input type="text" id="seminar" name="seminar" class = "result_sem">
+            <div id = "result_sem" ></div>
         </div>
 
         <div id="item">
             <label for="location"> Location </label>
-            <input type="text" id="location" name="location" >
-            <div id = "result_loc"></div>
+            <input type="text" id="location" name="location" class = "result_loc" >
+            <div id = "result_loc"  ></div>
         </div>
 
         <div id="item">
