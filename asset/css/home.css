@@ -329,6 +329,12 @@ body{
         border:1px solid #dedede;
         position: relative;
     }
+    #postinduk #post:hover {
+        --colpos:yellow;
+    }
+    :root{
+        --colpos: rgba(0, 0, 0, 0.8);
+    }
 
         #postinduk #post img {
 	        min-width: 100px;
@@ -338,11 +344,12 @@ body{
         }
 
         #postinduk #post #descbox {
+            cursor: pointer;
             position: absolute;
             top: 0px;
             right: 0px;
             bottom: 0px;
-            background-color: rgba(0, 0, 0, 0.8);
+            background-color:var(--colpos);
             color: white;
             padding-left: 20px;
             padding-right: 20px;
