@@ -50,7 +50,19 @@
             <div id="flexbod">
                 <div id="leftpost">
                     <div id="padding">
-                        <a href="#"> Daftar </a>
+            <?php
+            $userid = $this->session->userdata('user_id');
+			if(isset($userid)){
+                    echo 
+                '<a href="#"/> Daftar </a>';
+                	}
+				else{
+				echo
+                '<a href='. base_url().'login/> Daftar </a>';
+                }
+        
+                ?>
+                       
                     </div>
                 </div>
         

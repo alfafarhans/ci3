@@ -8,10 +8,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/home.css">
     <script type="text/javascript" src="<?php echo base_url();?>asset/js/jquery-3.4.1.min.js"></script>
     <script type="text/javascript">
+    /* Icon User Click Close
+    window.onclick = function(event) {
+        if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    }*/
     $(function() {
         function search_seminar() {
         var seminar_search =  $("#seminar").val();
-        $.ajax({
+        if(seminar_search.length<=0){
+            $('#result').html("");
+        }
+        else{
+            $.ajax({
         url:"<?php echo base_url(); ?>home/search/",
         method:"POST",
         data:{datasearch:seminar_search},
@@ -19,6 +36,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         $('#result').html(data);
         console.log(data);}
               });
+           
+        }
             }
         function filcat(cat,price,date) {
 
@@ -49,6 +68,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         $('#date').on('change', function() {
             ceklunch();
         });
+    $(document).ready(function() {ceklunch();});
     });
     </script>
 </head>
@@ -166,40 +186,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- bagian isi  -->
     <div id="body">
     <div id="postinduk">
-    <div id = "result"></div>
-    <?php
-        foreach ($fetched_arr as $value) {
-            //convert time
-            $dayname = date('D', strtotime($value['seminar_date']));
-            $daynum = date('d', strtotime($value['seminar_date']));
-            $mounth = date('F', strtotime($value['seminar_date']));
-           // $year = date('Y', strtotime($value['seminar_date']));
-            $hours =  date('H', strtotime($value['seminar_date']));
-            $minute =  date('i', strtotime($value['seminar_date'])); 
-            
-            //show reulst
-            if(isset($user_id)){
-            echo 
-        '<div id="post">
-            <a href="'. base_url().'event_detail/'. $value['seminar_id'].'"> ';
-                }
-            else{
-            echo 
-            '<div id="post">
-            <a href="'. base_url().'login/"> ';
-            }
-            echo'
-            <img src="'.base_url().'asset/pict/banner/'. $value['seminar_banner'].'">
-            </a>
-            <div id="descbox"> 
-                <div id="namaseminar">'.$value['seminar_name'].' </div>
-                <div id="dateseminar">'.$dayname.',&nbsp;'.$daynum.'&nbsp;'.$mounth.',&nbsp;'.$hours.'.'.$minute.'</div>
-                <div id="locseminar">'.$value['seminar_held'].'</div>
-            </div>
-        </div>';
-        }
-        
-    ?>
     </div>
     <!-- bagian footer  -->
 
