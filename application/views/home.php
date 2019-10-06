@@ -22,19 +22,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         }
     }*/
     $(function() {
-        function search_seminar() {
-        var seminar_search =  $("#seminar").val();
-        if(seminar_search.length<=0){
-            $('#result').html("");
+        function search_seminar(search,result) {
+           // console.log(search);
+        if(search.length<=0){
+            $(result).html("");
         }
         else{
             $.ajax({
         url:"<?php echo base_url(); ?>home/search/",
         method:"POST",
-        data:{datasearch:seminar_search},
+        data:{datasearch:search,type:result},
         success:function(data){
-        $('#result').html(data);
-        console.log(data);}
+        $(result).html(data);
+        //console.log(data);
+        }
               });
            
         }
@@ -57,7 +58,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             filcat(category,price,date);
         }
         $('#seminar').on('keyup', function() {
-            search_seminar();
+            var res = '#result_sem';
+            //console.log($(this).val());
+            search_seminar($(this).val(),res);
+        });
+        $('#location').on('keyup', function() {
+            var res = '#result_loc';
+            //console.log($(this).val());
+            search_seminar($(this).val(),res);
         });
         $('#category').on('change', function() {
             ceklunch();
@@ -93,7 +101,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div id="p"> Welcome Alfa ! </div>
                 <div id="dropdown">
                     <img id="imgdrop" src="./asset/pict/profile/fajarbarokah98@yahoo.co.id.png">
-                
                     <div id="myDropDown" class="dropdown-content">
                         <a href="'.base_url().'profile/"> Profile </a> 
                         <a href="#"> My Event </a> 
@@ -130,12 +137,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div id="item">
             <label for="seminar"> Seminar </label>
             <input type="text" id="seminar" name="seminar">
-            <div id = "result"></div>
+            <div id = "result_sem"></div>
         </div>
 
         <div id="item">
             <label for="location"> Location </label>
             <input type="text" id="location" name="location" >
+            <div id = "result_loc"></div>
         </div>
 
         <div id="item">
