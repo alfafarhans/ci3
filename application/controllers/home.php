@@ -142,7 +142,7 @@ class home extends CI_Controller {
 		if($result->num_rows() > 0)
  		 {
 			foreach ($result->result_array() as $value) {
-				$output .='<a href="'. base_url().'event_detail/'. $value['seminar_id'].'" >'.$value['seminar_name'].' </a> <br>';
+				$output .='<a href="'. base_url().'event_detail/'. $value['seminar_id'].'" >'.$value['seminar_name'].' </a>';
 				
 			}
 			echo $output;

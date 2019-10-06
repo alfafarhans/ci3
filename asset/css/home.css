@@ -162,11 +162,12 @@ body{
     }
 
 #smart {
-    margin: 10px 0 20px 0;
+    margin: -50px 50px 20px 50px;
+    border-radius: 5px;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    background-color: orangered;
+    background-color: rgb(255, 104, 49);
     z-index: 12;
     position: relative;
 }
@@ -174,15 +175,38 @@ body{
     #smart #item{
         margin: 20px;
     }   
+
+        #smart #item #result{
+            margin-top: 10px;
+            position: absolute;
+            background-color: #f9f9f9;
+            z-index: 25;
+            width: 500px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        }   
+
+            #smart #item #result a{
+                display: block;
+                text-decoration: none;
+                color: black;
+                padding: 15px 30px 15px 20px;
+            }      
+
+            #smart #item #result a:hover{
+                color: rgb(255, 104, 49);
+                background-color: #dedede;
+            }  
     
         #smart input[type=text] {
-            width: 100%;
+            display: block;
+            width: 220px;
             padding: 5px 5px;
             margin: 5px 0;
             box-sizing: border-box;
             border: none;
+            font-size: 20px;
             border-bottom: 2px solid white;
-            background-color: orangered;
+            background-color: rgb(255, 104, 49);
         }
           
         #smart select {
@@ -191,14 +215,14 @@ body{
             padding: 5px 5px;
             margin: 2px 0;
             border-bottom: 2px solid white;
-            background-color: orangered;
+            background-color: rgb(255, 104, 49);
             -webkit-appearance: none;
         }
     
             #smart option {
-                font-weight:normal;
                 background-color: white;
-                padding: 6px;
+                padding: 10px;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             }
 
 #body {
@@ -227,12 +251,6 @@ body{
             margin:0;
             margin-bottom: -5px;
             max-width: 290px;
-        }
-
-        #postinduk #post img2 {
-            margin:0;
-            margin-bottom: -5px;
-            max-width: 100%;
         }
 
         #postinduk #post #descbox {
