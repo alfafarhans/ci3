@@ -8,21 +8,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/home.css">
     <script type="text/javascript" src="<?php echo base_url();?>asset/js/jquery-3.4.1.min.js"></script>
     <script type="text/javascript">
-
-    /* Icon User Click Close
-    window.onclick = function(event) {
-        if (!event.target.matches('.dropbtn')) {
-            var dropdowns = document.getElementsByClassName("dropdown-content");
-            var i;
-            for (i = 0; i < dropdowns.length; i++) {
-                var openDropdown = dropdowns[i];
-                if (openDropdown.classList.contains('show')) {
-                    openDropdown.classList.remove('show');
-                }
-            }
-        }
-    }*/
-
     $(function() {
         function search_seminar() {
         var seminar_search =  $("#seminar").val();
@@ -35,10 +20,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         console.log(data);}
               });
             }
-
-        /* Icon User Click
-        $('img').bind('click', function(){document.getElementById("myDropDown").classList.toggle("show");});*/
-
         function filcat(cat,price,date) {
 
             $.ajax({
@@ -69,20 +50,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             ceklunch();
         });
     });
-
-    
-
     </script>
-
 </head>
 <body>
     <div id="wrapper">
-
     <!-- bagian navbar  -->
-
-    <div id="topr">
-    </div>
-
     <?php if(isset($user_id))
     {
       
@@ -94,11 +66,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div id="navbar_kanan">
                 
                 <a id="a" href="'.base_url().'ads">Advertising </a>
-                <div id="p"> Welcome Alfa! </div>
-                <div id="dropdown">
-                    <img id="imgdrop" src="./asset/pict/profile/fajarbarokah98@yahoo.co.id.png">
                 
-                    <div id="myDropDown" class="dropdown-content">
+                <div id="dropdown">
+                    <img src="./asset/pict/profile/fajarbarokah98@yahoo.co.id.png">
+
+                    <div id="dropdown-content">
                         <a href="'.base_url().'profile/"> Profile </a> 
                         <a href="#"> My Event </a> 
                         <a href="#"> Settings </a> 
@@ -123,7 +95,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     }
     
     ?>  
-    
 
     <!-- bagian header  -->
     <div id="header">
@@ -135,7 +106,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div id="item">
             <label for="seminar"> Seminar </label>
             <input type="text" id="seminar" name="seminar">
-            <div id = "result"></div>
         </div>
 
         <div id="item">
@@ -147,7 +117,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <label for="date"> Date </label>
             <br>
             <select id="date">
-                <option value="" selected> Any Date </option>
+                <option value="anydate" selected> Any Date </option>
                 <option value="today"> Today </option>
                 <option value="tomorrow"> Tomorrow</option>
                 <option value="thisweekend"> This Weekend</option>
@@ -196,7 +166,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- bagian isi  -->
     <div id="body">
     <div id="postinduk">
-
+    <div id = "result"></div>
     <?php
         foreach ($fetched_arr as $value) {
             //convert time

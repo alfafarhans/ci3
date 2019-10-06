@@ -15,34 +15,23 @@ body{
     padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     height: 100%;
-    background-color: #F5F5F5;
-}
-
-#topr{
-    top: 0;
-    position: relative;
-    z-index: 1;
-    background-color: white;
-    height: 68px;
 }
 
 #top{
-    width: 100%;
     top: 0;
-    position: fixed;
-    z-index: 2;
+    position: relative;
+    z-index: 1;
     border-bottom: 1px solid #E8E8E8;
     display: flex;
-    background-color: white;
-}
 
+}
     #navbar_kiri{
         position: relative;
         display: flex;
         justify-content: flex-start;
         z-index: 10;
         width: 50%;
-        flex-grow: 7;
+        flex-grow: 8;
     }
 
         #navbar_kiri a{
@@ -58,96 +47,58 @@ body{
         position: relative;
         z-index: 11;
         flex-grow: 1;
-        
     }
 
         #navbar_kanan #a{
             display: block;
             text-align: center;
-            padding: 20px 40px;
+            width: 100%;
+            padding: 20px 0;
             text-decoration: none;
             color: black;
-            border-left: 1px solid #E8E8E8;
         }
 
         #navbar_kanan #a:hover{
             color: orangered;
         }
 
-        #navbar_kanan #p{
-            text-align: center;
-            width: 100%;
-            padding: 20px 0 20px 5px;
-            text-decoration: none;
-            color: black;
-            border-left: 1px solid #E8E8E8;
-        }
-
-
         #navbar_kanan #dropdown {
             position: relative;
             display: inline-block;
         }
 
-        .dropdown-content {
+            #navbar_kanan #dropdown img{
+                border-radius: 50%;
+                margin: 12px 20px 7px 0;
+                max-width: 40px;
+            }
+
+        #navbar_kanan #dropdown-content {
             display: none;
             position: absolute;
             right: 0px;
             background-color: #f9f9f9;
-            min-width: 225px;
+            min-width: 160px;
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
             z-index: 25;
         }
 
-        #dropdown:hover .dropdown-content {
+        #dropdown:hover #dropdown-content {
             display: block;
         }
 
-        .dropdown-content a{
+        #navbar_kanan #dropdown #dropdown-content a{
             display: block;
             width: 100%;
-            padding: 10px 30px;
+            padding: 20px 20px;
             text-decoration: none;
             color: black;
         }
 
-        .dropdown-content a:hover{
+        #navbar_kanan #dropdown #dropdown-content a:hover{
             background-color: #dedede;
             color: orangered;
         }
-
-        #imgdrop{
-            border-radius: 50%;
-            border: 2px solid white;
-            margin: 10px 10px 5px -20px;
-            max-width: 38px;
-            padding: 3px;
-        }
-
-        #imgdrop:hover{
-            border: 2px solid orangered;
-            padding: 3px;
-        }
-        
-        /* CSS Icon User Click
-        
-        .dropbtn {
-            background-color: #3498DB;
-            color: white;
-            padding: 16px;
-            font-size: 16px;
-            border: none;
-            cursor: pointer;
-            z-index: 30;
-          }
-          
-        .dropbtn:hover, .dropbtn:focus {
-            background-color: #2980B9;
-        }
-
-        .show {
-            display: block;
-        }*/
 
 #header {
     position: relative;
@@ -208,6 +159,7 @@ body{
 #postinduk{
     display: flex;
     justify-content: center;
+    background: #fff;
     position: relative;
     flex-wrap: wrap;
 }
