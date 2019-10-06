@@ -23,12 +23,10 @@ class home extends CI_Controller {
 	{	//http://localhost:8080/ci3/index.php/home
 		$this->load->model('seminar_data');
 		$userid = $this->session->userdata('user_id');
-		if(empty($userid)){
-			$data['fetched_arr']= $this->seminar_data->getseminar();//if not signing
-			$this->load->view('home',$data);
+		if(empty($userid)){//if not signing
+			$this->load->view('home');
 		}
 		else{	//setting user if already login
-			$data['fetched_arr']= $this->seminar_data->getseminar();
 			$data['user_id'] = $userid;
 			$this->load->view('home',$data);
 		}
@@ -107,17 +105,17 @@ class home extends CI_Controller {
             $mounth = date('F', strtotime($value['seminar_date']));
             $hours =  date('H', strtotime($value['seminar_date']));
             $minute =  date('i', strtotime($value['seminar_date']));
-			$userid = $this->session->userdata('user_id');
-			if(isset($userid)){
+			//$userid = $this->session->userdata('user_id');
+			//if(isset($userid)){
 				$output .= 
 			'<div id="post">
 				<a href="'. base_url().'event_detail/'. $value['seminar_id'].'"> ';
-					}
+				/*	}
 				else{
 				$output .= 
 				'<div id="post">
 					<a href="'. base_url().'login/"> ';
-				}
+				}*/
 				$output .='
 						<img src="'.base_url().'asset/pict/banner/'. $value['seminar_banner'].'">
 					</a>
