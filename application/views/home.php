@@ -99,8 +99,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <a id="a" href="'.base_url().'ads">Advertising </a>
                 <div id="p"> Welcome Alfa! </div>
                 <div id="dropdown">
-                    <img src="./asset/pict/profile/fajarbarokah98@yahoo.co.id.png">
-                    <div id="dropdown-content">
+                    <img id="imgdrop" src="./asset/pict/profile/fajarbarokah98@yahoo.co.id.png">
+                
+                    <div id="myDropDown" class="dropdown-content">
                         <a href="'.base_url().'profile/"> Profile </a> 
                         <a href="#"> My Event </a> 
                         <a href="#"> Settings </a> 
@@ -149,7 +150,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <label for="date"> Date </label>
             <br>
             <select id="date">
-                <option value="anydate" selected> Any Date </option>
+                <option value="" selected> Any Date </option>
                 <option value="today"> Today </option>
                 <option value="tomorrow"> Tomorrow</option>
                 <option value="thisweekend"> This Weekend</option>
