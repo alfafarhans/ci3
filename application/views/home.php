@@ -32,6 +32,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     }
 
     $(function() {
+        //select tag
         var x, i, j, selElmnt, a, b, c;
 /*look for any elements with the class "custom-select":*/
 x = document.getElementsByClassName("custom-select");
@@ -61,7 +62,7 @@ for (i = 0; i < x.length; i++) {
           if (s.options[i].innerHTML == this.innerHTML) {
             s.selectedIndex = i;
             h.innerHTML = this.innerHTML;
-            ceklunch();
+            ceklunch(); // call funtion
             y = this.parentNode.getElementsByClassName("same-as-selected");
             for (k = 0; k < y.length; k++) {
               y[k].removeAttribute("class");
