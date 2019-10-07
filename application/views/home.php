@@ -121,8 +121,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div id="navbar_kanan">
                 <a id="a" href="'.base_url().'ads">Advertising </a>
 
-
-                
                 <div id="jdrop" class="dropdown">
                     <div id="jdrop" class="p"> Welcome Alfa ! </div>
                     <img id="jdrop" class="imgdrop" src="./asset/pict/profile/fajarbarokah98@yahoo.co.id.png">
@@ -142,7 +140,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div id="top">
             <div id="navbar_kiri">
                 <a href="'.base_url().'home"> Seminar Go </a>
+                <input type="text" id="seminar" name="seminar" class = "result_sem" placeholder="Cari seminar">
             </div>
+            
+            <div id = "result_sem" ></div>
+            
             <div id="navbar_kanan">
             <a id="a" href="'.base_url().'ads">Advertising </a> 
             <a id="a" href="'.base_url().'login/">Sign in</a>
