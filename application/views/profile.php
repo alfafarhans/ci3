@@ -4,6 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../asset/css/profile.css">
+    <script type="text/javascript" src="<?php echo base_url();?>asset/js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript">
+    
+    </script>
 	
 </head>
 <body>
@@ -54,56 +58,68 @@
                 </div>
 
                 <div id="objright2">
-                    <div id="row">
-                        <div id="col-25"> 
-                            Profile Picture
-                        </div>
-                        <div id="avatar"> 
-                            <img src="../asset/pict/profile1.png"> 
-                        </div>
-                        <div id="upload"> 
-                            <input type="file" name="profilepic">
-                        </div>
-                    </div>
+                <?php
+                foreach ($userdata->result_array() as $value) {
+                 $firstnamefill = str_replace(" ","&nbsp;",$value['first_name']);
+                 $name = ucwords($firstnamefill."&nbsp;".$value['last_name']);
+        echo '<div id="row">
+        <div id="col-25"> 
+            Profile Picture
+        </div>
+        <div id="avatar"> 
+            <img src="../asset/pict/profile/'.$user_id.'.png"> 
+        </div>
+        <div id="upload"> 
+            <input type="file" name="profilepic">
+        </div>
+    </div>
 
-                    <div id="row">
-                        <div id="col-25"> 
-                            Nama 
-                        </div>
-                        <div id="col-75"> 
-                            <input type="text" id="firstname" name="firstname" value="Alfa Farhan">
-                        </div>
-                    </div>
+    <div id="row">
+        <div id="col-25"> 
+            Nama 
+        </div>
+        <div id="col-75"> 
+            <input type="text" id="firstname" name="firstname" value='.$name.'>
+        </div>
+    </div>
 
-                    <div id="row">
-                        <div id="col-25"> 
-                            Tanggal Lahir
-                        </div>
-                        <div id="col-75"> 
-                            <input type="date" id="email" name="tanggallahir">
-                        </div>
-                    </div>
+    <div id="row">
+        <div id="col-25"> 
+            Tanggal Lahir
+        </div>
+        <div id="col-75"> 
+            <input type="date" id="email" name="tanggallahir">
+        </div>
+    </div>
 
-                    <div id="row">
-                        <div id="col-25"> 
-                            Jenis Kelamin
-                        </div>
-                        <div id="col-75"> 
-                            <select name="sex">
-                                <option value="pria" selected> Laki-Laki </option>
-                                <option value="wanita"> Perempuan </option>
-                            </select>
-                        </div>
-                    </div>
+    <div id="row">
+        <div id="col-25"> 
+            Jenis Kelamin
+        </div>
+        <div id="col-75"> 
+            <select name="sex">
+                <option value="pria" selected> Laki-Laki </option>
+                <option value="wanita"> Perempuan </option>
+            </select>
+        </div>
+    </div>
 
-                    <div id="row">
-                        <div id="col-25"> 
-                            Alamat
-                        </div>
-                        <div id="col-75"> 
-                            <textarea name="alamat" style="height: 200px;" value="Jl KH Noer Ali No.1 Jakasampurna Bekasi Barat"></textarea>
-                        </div>
-                    </div>
+    <div id="row">
+        <div id="col-25"> 
+            Alamat
+        </div>
+        <div id="col-75"> 
+            <textarea name="alamat" style="height: 200px;" value="Jl KH Noer Ali No.1 Jakasampurna Bekasi Barat"></textarea>
+        </div>
+    </div>
+';
+
+
+                }
+                
+                ?>
+                    
+
 
                 </div>
             </div>
