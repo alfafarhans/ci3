@@ -97,13 +97,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
             <div id="register">
                 <label for="email"> Email </label>
-                <input type="email" id="email" name="email" placeholder="Your email.." >
+                <input type="email" id="email" name="email" placeholder="You@seminar-go.com" >
 
                 <label for="firstname"> First Name </label>
-                <input type="text" id="firstname" name="firstname" placeholder="Your name.." >
+                <input type="text" id="firstname" name="firstname" placeholder="ex: Thomas Cruise " >
                 
                 <label for="lastname"> Last Name </label>
-                <input type="text" id="lastname" name="lastname" placeholder="Your last name..">
+                <input type="text" id="lastname" name="lastname" placeholder="ex: Mapother">
                 
                 <label for="password"> Password </label>
                 <input type="password" id="password" name="password" placeholder="Password" required>

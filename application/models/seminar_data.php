@@ -13,7 +13,22 @@ class seminar_data extends CI_Model{
                }
       }
     */
-    //show function
+    function input_data($data,$table){
+    
+      $this->db->insert($table,$data);
+      }
+      
+    function cekbooking($number){
+      $this->db->where('booking_id ',$number);
+      $query =  $this->db->get('user_trx');
+      if($query->num_rows()>0){
+        return false;
+      }
+      else{
+        return true;
+      }
+      
+    }
     function getseminar()
     {
     $curdate = date('Y-m-d');
@@ -22,8 +37,7 @@ class seminar_data extends CI_Model{
     return $query->result_array();
   }
 
-  function get_seminar_detail($id=null)
-  {
+  function get_seminar_detail($id=null){
     $this->db->where('seminar_id',$id);
     $query = $this->db->get('seminar');
     return $query->result_array();

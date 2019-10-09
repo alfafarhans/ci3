@@ -20,10 +20,10 @@
                 <img src="../asset/pict/profile1.png">
             
                 <div id="dropdown-content">
-                    <a href="<?php echo base_url();?>profile"> Profile </a>
-                    <a href="#"> My Event </a>
+                    <a href="'.base_url().'profile/"> Profile </a> 
+                    <a href="#"> My Event </a> 
                     <a href="#"> Settings </a> 
-                    <a href="#"> Sign Out </a>
+                    <a href="'.base_url().'logout"> Sign Out </a>
                 </div>
             </div>
         </div>

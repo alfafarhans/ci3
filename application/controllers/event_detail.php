@@ -26,5 +26,37 @@ class event_detail extends CI_Controller {
 		$seminar['seminar']= $this->seminar_data->get_seminar_detail($s_id);
 		$this->load->view('event_detail',$seminar);
 	}
+	function applyevent($eventid = null,$userid = null){
+		$this->load->helper('string');
+	do {
+		$bookid =  random_string('nozero', 6);
+		$resbook = $this->seminar_data->cekbooking($bookid);
+		if ($resbook){
+			$reservedid = $bookid;
+		}
+	} while ($resbook == false);
+
+
+		if($resbook){
+			$data = array(
+				'booking_id' => $reservedid,
+				'user_id' => $userid,
+				'seminar_id' => $eventid,
+				'payment_id' => $reservedid.$userid,
+				'atten_status' => 'Waiting for payment' );
+				$this->seminar_data->input_data($data,'user_trx');
+				$msg = "Yeay!";
+				//redirect('home');
+		}	
+		else{
+			echo "eror";
+		}	
+		echo json_encode(
+			array(
+				'msg' => $msg
+			   )
+			);
+
+	}
 
 }
