@@ -120,12 +120,12 @@ class home extends CI_Controller {
 				}*/
 				$output .='
 						<img src="'.base_url().'asset/pict/banner/'. $value['seminar_banner'].'">
-					</a>
 				<div id="descbox"> 
 					<div id="namaseminar">'.$value['seminar_name'].' </div>
 					<div id="dateseminar">'.$dayname.',&nbsp;'.$daynum.'&nbsp;'.$mounth.',&nbsp;'.$hours.'.'.$minute.'</div>
 					<div id="locseminar">'.$value['seminar_city'].'</div>
 				</div>
+				</a>
 			</div>';
 				 }
 				 echo $output;

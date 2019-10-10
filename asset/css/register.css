@@ -17,12 +17,22 @@ body{
     height: 100%;
 }
 
-#top{
+#topr{
     top: 0;
     position: relative;
     z-index: 1;
-    border-bottom: 1px solid #E8E8E8;
+    background-color: #0F63C0;
+    height: 61px;
+}
+
+#top{
+    width: 100%;
+    top: 0;
+    position: fixed;
+    z-index: 15;
     display: flex;
+    background-color: #0F63C0;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
 
     #navbar_kiri{
@@ -31,29 +41,40 @@ body{
         justify-content: flex-start;
         z-index: 10;
         width: 50%;
-        flex-grow: 8;
+        flex-grow: 7;
     }
 
         #navbar_kiri a{
-            margin: 20px;
+            display: block;
+            padding: 20px 40px;
             text-decoration: none;
-            color: #ff8000;
+            color: #063A74;
+            background-color: #5890CF;
         }
 
     #navbar_kanan {
         display: inline-flex;
         justify-content: flex-end;
-        background-color: white;
+        background-color: #0F63C0;
         position: relative;
         z-index: 11;
         flex-grow: 1;
     }
 
-        #navbar_kanan a{
-            margin: 20px;
+        #navbar_kanan #a{
+            display: block;
+            text-align: center;
+            padding: 20px 20px;
             text-decoration: none;
-            color: black;
+            color: rgb(145, 195, 253);
         }
+
+        #navbar_kanan #a:hover{
+            color: white;
+            background-color: #5890CF;
+            transition: 0.5s;
+        }
+
 
 #body {
     float: center;
@@ -117,18 +138,20 @@ body{
         }
 
         #register input[type=submit] {
-            background-color: #ff8000;
+            background-color: #5890CF;
             width: 100%;
-            color: white;
+            color: #063A74;
             padding: 12px 20px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
+            float: right;
             margin-top: 20px;
         }
           
         #register input[type=submit]:hover {
-            background-color: #ff4000;
+            background-color: #063A74;
+            color: #ffffff;
         }
           
         #register #rights {
@@ -156,7 +179,7 @@ body{
     height: 50px;
     bottom: 0;
     color: white;
-    background-color: orangered;
+    background-color: #063A74;
     text-align: center;
     padding: 5px;
 }

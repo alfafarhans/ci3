@@ -292,6 +292,11 @@ document.addEventListener("click", closeAllSelect);
     <div id="body">
     <div id="postinduk">
     </div>
+
+    <div id="postinduk2">
+        <a id="a2" href="#"> Left page </a>
+        <a id="a1" href="#"> Next page </a> 
+    </div>  
     <!-- bagian footer  -->
 
     <div id="infofooter">

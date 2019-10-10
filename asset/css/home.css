@@ -335,9 +335,11 @@ body{
     }
     #postinduk #post:hover {
         --colpos:yellow;
+        --colfont: #063A74;
     }
     :root{
         --colpos: rgba(0, 0, 0, 0.8);
+        --colfont: #ffffff;
     }
 
         #postinduk #post img {
@@ -354,7 +356,7 @@ body{
             right: 0px;
             bottom: 0px;
             background-color:var(--colpos);
-            color: white;
+            color: var(--colfont);
             padding-left: 20px;
             padding-right: 20px;
             width: 40%;
@@ -376,6 +378,42 @@ body{
                 text-align: left;
             } 
 
+#postinduk2{
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    flex-wrap: wrap;
+}
+
+    #postinduk2 #a1{
+        background-color: #5890CF;
+        color: #063A74;
+        padding: 12px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        text-decoration: none;
+        margin-bottom: 25px;
+        margin-right: 168px;
+    }
+
+    #postinduk2 #a2{
+        background-color: #5890CF;
+        color: #063A74;
+        padding: 12px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        text-decoration: none;
+        margin-bottom: 25px;
+        margin-right: 25px;
+    }
+
+    #postinduk2 a:hover{
+        background-color: #063A74;
+        color: #ffffff;
+    }
+
 #infofooter{
     position: relative;
     width: 100%;
@@ -396,8 +434,6 @@ body{
     text-align: center;
     padding: 5px;
 }
-
-
 
 @media screen and (max-width: 600px) {
 
