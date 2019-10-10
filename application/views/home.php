@@ -192,7 +192,7 @@ document.addEventListener("click", closeAllSelect);
                 <div id="jcdrop" class="dropdown-content">
                     <a href="'.base_url().'profile/"> Profile </a> 
                     <a href="'.base_url().'my_event/"> My Event </a> 
-                    <a href="#"> Settings </a> 
+                    <a href="'.base_url().'settings/"> Settings </a> 
                     <a href="'.base_url().'logout"> Sign Out </a>
                 </div>
             </div>

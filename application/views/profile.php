@@ -158,7 +158,7 @@ document.addEventListener("click", closeAllSelect);
                 <div id="jcdrop" class="dropdown-content">
                     <a href="'.base_url().'profile/"> Profile </a> 
                     <a href="'.base_url().'my_event/"> My Event </a> 
-                    <a href="#"> Settings </a> 
+                    <a href="'.base_url().'settings/"> Settings </a> 
                     <a href="'.base_url().'logout"> Sign Out </a>
                 </div>
             </div>
@@ -177,7 +177,7 @@ document.addEventListener("click", closeAllSelect);
                     <a href="<?php echo base_url();?>index.php/my_event"> My Events </a>
                 </div>
                 <div id="objleft">
-                    <a href="#"> Settings </a>
+                    <a href="<?php echo base_url();?>index.php/settings"> Settings </a>
                 </div>
             </div>
 

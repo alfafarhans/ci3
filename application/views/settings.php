@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/my_event.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>/asset/css/settings.css">
     <script type="text/javascript" src="<?php echo base_url();?>asset/js/jquery-3.4.1.min.js"></script>
     <script type="text/javascript">
     
@@ -169,70 +169,64 @@ document.addEventListener("click", closeAllSelect);
     <!-- bagian isi  -->
     <div id="body">
         <div id="bodyartikel2">
-
+            
             <div id="rightbody">
                 <div id="objright">
-                    <h3> My Event </h3> 
-                    Berikut list seminar yang saya ikuti.
+                    <h3> Settings </h3> 
+                    Konfigurasikan akun anda, lakukan pergantian password rentang waktu tertentu.
                 </div>
             </div>
 
             <div id="rightbody2">
                 <div id="objright2">
-                    <img src="<?php echo base_url();?>asset/pict/banner/Indonesia_Ves_2019_2019_2019-09_12.png">
-                </div>
-                <div id="objright3">
-                    <div id="namaseminar">
-                        Indonesia Ves
-                    </div>  
-                    <div id="dateseminar">
-                        13 Oktober 2019
-                    </div> 
-                    <div id="locseminar">
-                        Jl. Pintu Satu Senayan, RT.1/RW.3, Gelora, Tanahabang, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 10270
-                    </div>  
-                    <div id="bota">
-                        <a href="#"> Cek kode registrasi</a>
-                    </div>
-                </div>
-            </div>
+                <?php
+                foreach ($userdata->result_array() as $value) {
+                 $firstnamefill = str_replace(" ","&nbsp;",$value['first_name']);
+                 $name = ucwords($firstnamefill."&nbsp;".$value['last_name']);
+        echo '
 
-            <div id="rightbody2">
-                <div id="objright2">
-                    <img src="<?php echo base_url();?>asset/pict/banner/Machine_Learning_dan_IoT_2019_09_30.png">
-                </div>
-                <div id="objright3">
-                    <div id="namaseminar">
-                        Machine Learning dan IoT
-                    </div>  
-                    <div id="dateseminar">
-                        11 Oktober 2019
-                    </div> 
-                    <div id="locseminar">
-                        Jl. Meruya Selatan No.1, RT.4/RW.1
-                    </div>  
-                    <div id="bota">
-                        <a href="#"> Selesaikan pembayaran</a>
-                    </div>
-                </div>
-            </div>
+    <div id="row">
+        <div id="col-25"> 
+            Email
+        </div>
+        <div id="col-75"> 
+            <input type="text" id="email" name="email" value="alfafarhansyarief@yahoo.co.id">
+        </div>
+    </div>
 
-            <div id="rightbody2">
-                <div id="objright2">
-                    <img src="<?php echo base_url();?>asset/pict/banner/test1.png">
+    <div id="row">
+        <div id="col-25"> 
+            Password lama
+        </div>
+        <div id="col-75"> 
+            <input type="text" id="passwordl" name="passwordl">
+        </div>
+    </div>
+
+    <div id="row">
+        <div id="col-25"> 
+            Password baru
+        </div>
+        <div id="col-75"> 
+            <input type="text" id="passwordb" name="passwordb">
+        </div>
+    </div>
+
+';
+                }
+                
+                ?>
+                    
                 </div>
-                <div id="objright3">
-                    <div id="namaseminar">
-                        Menjadi Engineer Cerdas Digital 
-                    </div>  
-                    <div id="dateseminar">
-                        2 Mei 2019
-                    </div> 
-                    <div id="locseminar">
-                        Jl. Meruya Selatan No.1, RT.4/RW.1
-                    </div>  
-                    <div id="bota">
-                        <a href="#"> Lihat sertifikat </a>
+            
+
+                <div id="objright2">
+                    <div id="row">
+                        <div id="col-25"> 
+                        </div>  
+                        <div id="col-75"> 
+                            <input type="submit" id="submit" name="submit" value="Save">
+                        </div>  
                     </div>
                 </div>
             </div>

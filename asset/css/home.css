@@ -344,7 +344,7 @@ body{
 	        min-width: 100px;
             margin:0;
             margin-bottom: -5px;
-            max-width: 290px;
+            max-height: 290px;
         }
 
         #postinduk #post #descbox {
