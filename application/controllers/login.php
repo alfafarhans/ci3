@@ -44,12 +44,16 @@ class login extends CI_Controller {
 				$password = $this->input->post('password');
 				$enpass = md5($password);
                 //model function   
-                if($this->login_reg->can_login($email, $enpass))  
-				{  	
+				$res = $this->login_reg->get_user_detail($email, $enpass);
+				if($res->num_rows()>0)
+				{ 	
 					//setsession *here
-					$this->session->set_userdata('user_id', $email);
+					foreach($res->result_array() as $value){
+						$this->session->set_userdata('user_id', $value['user_id']);
+						$this->session->set_userdata('user_name', $value['last_name']);
+					}
 					redirect('home');
-                }  
+				}
                 else  
                 {  
                    $this->session->set_flashdata('gagal', 'Invalid Username and Password');  

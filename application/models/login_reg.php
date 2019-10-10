@@ -24,21 +24,15 @@ class login_reg extends CI_Model{
     }
     //validation function
     
-    function can_login($email, $password)  
+    function get_user_detail($email, $password)  
       {  
            $this->db->where('email', $email);  
            $this->db->where('password', $password);  
-           $query = $this->db->get('user');  
+           return $this->db->get('user');  
            //SELECT * FROM users WHERE username = '$username' AND password = '$password'  
-           if($query->num_rows() > 0)  
-           {  
-                return true;  
-           }  
-           else  
-           {  
-                return false;       
-           }  
-      }  
+      }
+      
+
       //edit function
        function edit($nis){
           $data = array(

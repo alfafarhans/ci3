@@ -23,11 +23,13 @@ class home extends CI_Controller {
 	{	//http://localhost:8080/ci3/index.php/home
 		$this->load->model('seminar_data');
 		$userid = $this->session->userdata('user_id');
+		$username = $this->session->userdata('user_name');
 		if(empty($userid)){//if not signing
 			$this->load->view('home');
 		}
 		else{	//setting user if already login
 			$data['user_id'] = $userid;
+			$data['username'] = $username;
 			$this->load->view('home',$data);
 		}
 		

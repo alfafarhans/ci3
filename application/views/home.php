@@ -188,8 +188,8 @@ document.addEventListener("click", closeAllSelect);
                 <a id="a" href="'.base_url().'ads">Advertising </a>
 
                 <div id="jdrop" class="dropdown">
-                    <div id="jdrop" class="p"> Welcome Alfa ! </div>
-                    <img id="jdrop" class="imgdrop" src="./asset/pict/profile/fajarbarokah98@yahoo.co.id.png">
+                    <div id="jdrop" class="p"> Welcome '.$username.' ! </div>
+                    <img id="jdrop" class="imgdrop" src="./asset/pict/profile/'.$user_id.'.png">
                  </div>
                 <div id="jcdrop" class="dropdown-content">
                     <a href="'.base_url().'profile/"> Profile </a> 
