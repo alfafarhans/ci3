@@ -23,14 +23,14 @@ class profile extends CI_Controller {
 	{	//http://localhost:8080/ci3/index.php/home
 		$this->load->model('profile_data');
 		$userid = $this->session->userdata('user_id');
-		//$username = $this->session->userdata('user_name');
-		if(!empty($userid)){//if not signing
+		$username = $this->session->userdata('user_name');
+		if(!empty($userid)){//if signing
 			$data['user_id'] = $userid;
-			//$data['username'] = $username;
+			$data['username'] = $username;
 			$data['userdata'] = $this->profile_data->get_userdata($userid);
 			$this->load->view('profile',$data);
 		}
-		else{	//setting user if already login
+		else{	//setting user if not signing
 			redirect('home');
 		}
 	}

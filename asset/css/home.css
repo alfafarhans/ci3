@@ -33,6 +33,7 @@ body{
     z-index: 15;
     display: flex;
     background-color: #0F63C0;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
 
     #navbar_kiri{
@@ -143,14 +144,17 @@ body{
             cursor: pointer;
             color: rgb(145, 195, 253);
         }
+
         .dropdown:hover {
             background-color: #5890CF;
             color: white;
             transition: 0.5s;
         }
+
         .dropdown #p{
             position: relative;
         }
+        
         .imgdrop{
             border-radius: 50%;
             border: 2px solid #0F63C0;
