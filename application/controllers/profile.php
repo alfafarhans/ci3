@@ -2,6 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class profile extends CI_Controller {
+	
 
 	/**
 	 * Index Page for this controller.
@@ -20,7 +21,18 @@ class profile extends CI_Controller {
 	 */
 	public function index()//this should use ID parameter
 	{	//http://localhost:8080/ci3/index.php/home
-		$this->load->view('profile');
+		$this->load->model('profile_data');
+		$userid = $this->session->userdata('user_id');
+		$username = $this->session->userdata('user_name');
+		if(!empty($userid)){//if signing
+			$data['user_id'] = $userid;
+			$data['username'] = $username;
+			$data['userdata'] = $this->profile_data->get_userdata($userid);
+			$this->load->view('profile',$data);
+		}
+		else{	//setting user if not signing
+			redirect('home');
+		}
 	}
 
 }

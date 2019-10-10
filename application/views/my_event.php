@@ -1,26 +1,12 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/home.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/my_event.css">
     <script type="text/javascript" src="<?php echo base_url();?>asset/js/jquery-3.4.1.min.js"></script>
     <script type="text/javascript">
-    /* Icon User Click Close
-    window.onclick = function(event) {
-        if (!event.target.matches('.dropbtn')) {
-            var dropdowns = document.getElementsByClassName("dropdown-content");
-            var i;
-            for (i = 0; i < dropdowns.length; i++) {
-                var openDropdown = dropdowns[i];
-                if (openDropdown.classList.contains('show')) {
-                    openDropdown.classList.remove('show');
-                }
-            }
-        }
-    }*/
+    
     window.onclick = function(event) {
         if ( (!event.target.matches('.dropdown')) &&(!event.target.matches('.imgdrop')) && (!event.target.matches('.result_sem')) && (!event.target.matches('.result_loc')) && (!event.target.matches('.p')) ){
             $('#jcdrop').slideUp();
@@ -125,24 +111,7 @@ document.addEventListener("click", closeAllSelect);
            
         }
             }
-        function filcat(cat,price,date) {
-
-            $.ajax({
-            url:"<?php echo base_url(); ?>home/filcat",
-            method:"POST",
-            data:{cat1:cat,price1:price,date1:date},
-            success:function(data){
-            $('#postinduk').html(data);
-                }
-            });
-        }
-        function ceklunch() {
-            var price =  $("#price").val();
-            var category =  $("#category").val();
-            var date =  $("#date").val();
-            filcat(category,price,date);
-        }
-
+        
         //ALL TRIGEER
         
         $('#jdrop').on('click', function() {
@@ -160,9 +129,9 @@ document.addEventListener("click", closeAllSelect);
         });
     $(document).ready(function() {ceklunch();});
     });
-
-
+    
     </script>
+	
 </head>
 <body>
     <div id="wrapper">
@@ -171,23 +140,20 @@ document.addEventListener("click", closeAllSelect);
     </div>
 
     <!-- bagian navbar  -->
-    <?php if(isset($user_id))
-    {
+    <?php 
+    
       
         echo '
         <div id="top">
             <div id="navbar_kiri">
                 <a href="'.base_url().'home"> Seminar Go </a>
-                <input type="text" id="seminar" name="seminar" class = "result_sem" placeholder="Cari seminar">
             </div>
             
-            <div id = "result_sem" ></div>
             <div id="navbar_kanan">
-                <a id="a" href="'.base_url().'ads">Advertising </a>
 
                 <div id="jdrop" class="dropdown">
                     <div id="jdrop" class="p"> Welcome '.$username.' ! </div>
-                    <img id="jdrop" class="imgdrop" src="./asset/pict/profile/'.$user_id.'.png">
+                    <img id="jdrop" class="imgdrop" src="'.base_url().'/asset/pict/profile/'.$user_id.'.png">
                  </div>
                 <div id="jcdrop" class="dropdown-content">
                     <a href="'.base_url().'profile/"> Profile </a> 
@@ -198,113 +164,89 @@ document.addEventListener("click", closeAllSelect);
             </div>
         </div> ';
         
-    }
-    else{
-        echo '
-        <div id="top">
-            <div id="navbar_kiri">
-                <a href="'.base_url().'home"> Seminar Go </a>
-                <input type="text" id="seminar" name="seminar" class = "result_sem" placeholder="Cari seminar">
-            </div>
-            
-            <div id = "result_sem" ></div>
-            
-            <div id="navbar_kanan">
-            <a id="a" href="'.base_url().'ads">Advertising </a> 
-            <a id="a" href="'.base_url().'login/">Sign in</a>
-            </div>
-        </div> ';
-    }
-    
-    ?>  
+    ?>
 
-    <!-- bagian header  -->
-    <div id="header">
-        <img src="<?php echo base_url();?>asset/pict/header2.png">
-    </div>
-
-    <!-- bagian pencarian  -->
-    <div id="smart">
-
-        <div id="item">
-            <label for="location" id="label"> Location </label>
-            <input type="text" id="location" name="location" placeholder="Any location" class = "result_loc">
-            <div id = "result_loc"></div>
-        </div>
-
-        <div id="item">
-            <label for="date" id="label"> Date </label>
-            <br>
-            <div class="custom-select">
-                <select id="date">
-                    <option value="anydate" selected> Any Date </option>
-                    <option value="today"> Today </option>
-                    <option value="tomorrow"> Tomorrow</option>
-                    <option value="thisweekend"> This Weekend</option>
-                    <option value="thisweek"> This Week</option>
-                    <option value="nextweek"> Next Week</option>
-                    <option value="thismonth"> This Month</option>
-                    <option value="nextmonth"> Next Month</option>
-                <select>
-            </div>
-        </div>
-        <div id="item">
-            <label for="category" id="label"> Category </label>
-            <br>
-            <div class="custom-select">
-                <select id="category" >
-                    <option value="" selected> Any Category </option>
-                    <option value="otomotif"> Auto, Boat & air</option>
-                    <option value="business"> Business</option>
-                    <option value="charity"> Charity & Causes</option>
-                    <option value="family"> Family & Education</option>
-                    <option value="fashion"> Fashion</option>
-                    <option value="film"> Film & Media</option>
-                    <option value="fooddrink"> Food & Drink</option>
-                    <option value="goverment"> Govevrment </option>
-                    <option value="health"> Health</option>
-                    <option value="hobbies"> Hobbies</option>
-                    <option value="holiday"> Holiday</option>
-                    <option value="homelifefstyle"> Home & Lifefstyle</option>
-                    <option value="schoolactivies"> School Activies</option>
-                    <option value="sciencetech"> Science & Tech</option>
-                    <option value="spiritually"> Spiritually</option>
-                    <option value="sportitness"> Sport & Fitness</option>
-                    <option value="traveloutdoor"> Travel & Outdoor</option>
-                <select>
-            </div>
-        </div>
-
-        <div id="item">
-            <label for="category" id="label"> Price </label>
-            <br>
-            <div class="custom-select">
-                <select id="price">
-                    <option value="" selected> Any Price </option>
-                    <option value="free"> Free </option>
-                    <option value="paid"> Paid </option>
-                <select>
-            </div>
-        </div>
-    </div>   
-    
     <!-- bagian isi  -->
     <div id="body">
-    <div id="postinduk">
-    </div>
-    <!-- bagian footer  -->
+        <div id="bodyartikel2">
 
-    <div id="infofooter">
+            <div id="rightbody">
+                <div id="objright">
+                    <h3> My Event </h3> 
+                    Berikut list seminar yang saya ikuti.
+                </div>
+            </div>
+
+            <div id="rightbody2">
+                <div id="objright2">
+                    <img src="<?php echo base_url();?>asset/pict/banner/Indonesia_Ves_2019_2019_2019-09_12.png">
+                </div>
+                <div id="objright3">
+                    <div id="namaseminar">
+                        Indonesia Ves
+                    </div>  
+                    <div id="dateseminar">
+                        13 Oktober 2019
+                    </div> 
+                    <div id="locseminar">
+                        Jl. Pintu Satu Senayan, RT.1/RW.3, Gelora, Tanahabang, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 10270
+                    </div>  
+                    <div id="bota">
+                        <a href="#"> Cek kode registrasi</a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="rightbody2">
+                <div id="objright2">
+                    <img src="<?php echo base_url();?>asset/pict/banner/Machine_Learning_dan_IoT_2019_09_30.png">
+                </div>
+                <div id="objright3">
+                    <div id="namaseminar">
+                        Machine Learning dan IoT
+                    </div>  
+                    <div id="dateseminar">
+                        11 Oktober 2019
+                    </div> 
+                    <div id="locseminar">
+                        Jl. Meruya Selatan No.1, RT.4/RW.1
+                    </div>  
+                    <div id="bota">
+                        <a href="#"> Selesaikan pembayaran</a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="rightbody2">
+                <div id="objright2">
+                    <img src="<?php echo base_url();?>asset/pict/banner/test1.png">
+                </div>
+                <div id="objright3">
+                    <div id="namaseminar">
+                        Menjadi Engineer Cerdas Digital 
+                    </div>  
+                    <div id="dateseminar">
+                        2 Mei 2019
+                    </div> 
+                    <div id="locseminar">
+                        Jl. Meruya Selatan No.1, RT.4/RW.1
+                    </div>  
+                    <div id="bota">
+                        <a href="#"> Lihat sertifikat </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    
+
+<!-- bagian footer  -->
+
+    <div id="infofooter600">
+    </div>
+
     <div id="footer">
         <p>Copyright © 2019 </p>
     </div>
     </div>
-
-    <script>
-   
-</script>
-
 </body>
 </html>

@@ -11,13 +11,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </head>
 <body>
     <div id="wrapper">
+
+    <div id="topr">
+    </div>
+
     <!-- bagian navbar  -->
     <div id="top">
         <div id="navbar_kiri">
             <a href="<?php echo base_url();?>home"> Seminar Go </a>
         </div>
         <div id="navbar_kanan">
-            <a href="<?php echo base_url();?>ads">Advertising </a> 
+            <a id="a" href="<?php echo base_url();?>ads">Advertising </a> 
         </div>
     </div>   
 

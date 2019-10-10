@@ -4,7 +4,31 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/event_detail.css">
-	
+    <script type="text/javascript" src="<?php echo base_url();?>asset/js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript">
+   function send(eventid,userid) {
+                $.ajax({
+					type: "POST",
+					url: "<?php echo base_url();?>event_detail/applyevent/"+eventid+"/"+userid,
+					cache: false,
+					success: function(data){
+                    //console.log(data);
+                    //  console.log(responParse.msg);
+                    // console.log(responParse.status);
+                        var responParse = JSON.parse(data);
+                        if( responParse.msg == "Yeay!"  ){
+                            alert(responParse.msg);
+                            alert('Your Account Succesfully Created');
+                            window.location.replace("<?php echo base_url();?>home");
+                        }
+                        else{
+                            alert(responParse.msg);
+                        }
+					}
+
+				});
+        }
+    </script>
 </head>
 <body>
     <div id="wrapper">
@@ -53,9 +77,11 @@
             <?php
             $userid = $this->session->userdata('user_id');
 			if(isset($userid)){
+                foreach ($seminar as $value) {
                     echo 
-                '<a href="#"/> Daftar </a>';
-                	}
+                '<a href="#" onClick="send('.$value['seminar_id'].','.$userid.')"> Daftar </a>';
+                    }
+                }
 				else{
 				echo
                 '<a href='. base_url().'login/> Daftar </a>';

@@ -17,74 +17,100 @@ body{
     height: 100%;
 }
 
-#top{
+#topr{
     top: 0;
     position: relative;
     z-index: 1;
-    border-bottom: 1px solid #E8E8E8;
-    display: flex;
-
+    background-color: #0F63C0;
+    height: 61px;
 }
+
+#top{
+    width: 100%;
+    top: 0;
+    position: fixed;
+    z-index: 15;
+    display: flex;
+    background-color: #0F63C0;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
     #navbar_kiri{
         position: relative;
         display: flex;
         justify-content: flex-start;
         z-index: 10;
         width: 50%;
-        flex-grow: 8;
+        flex-grow: 7;
     }
 
         #navbar_kiri a{
-            margin: 20px;
+            display: block;
+            padding: 20px 40px;
             text-decoration: none;
-            color: #ff8000;
+            color: #063A74;
+            background-color: #5890CF;
         }
 
     #navbar_kanan {
         display: inline-flex;
         justify-content: flex-end;
-        background-color: white;
+        background-color: #0F63C0;
         position: relative;
         z-index: 11;
         flex-grow: 1;
     }
 
-        #navbar_kanan #dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-            #navbar_kanan #dropdown img{
-                border-radius: 50%;
-                margin: 12px 20px 7px 0;
-                max-width: 40px;
-            }
-
-        #navbar_kanan #dropdown-content {
+        .dropdown-content {
             display: none;
             position: absolute;
             right: 0px;
-            background-color: #f9f9f9;
-            min-width: 160px;
+            top: 61px;
+            background-color: #ffffff;
+            min-width: 100px;
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
             z-index: 25;
         }
 
-        #dropdown:hover #dropdown-content {
+        .dropdown-content a{
             display: block;
-        }
-
-        #navbar_kanan #dropdown #dropdown-content a{
-            display: block;
-            width: 100%;
-            padding: 20px 20px;
+            width: 130px;
+            padding: 10px 40px;
             text-decoration: none;
             color: black;
         }
 
-        #navbar_kanan #dropdown #dropdown-content a:hover{
+        .dropdown-content a:hover{
             background-color: #dedede;
-            color: orangered;
+            color: #063A74;
+        }
+
+        /*new*/
+        .dropdown {
+            width: auto;
+            display: flex;
+            align-items: center;
+            padding: 0px 10px 0px 20px;
+            cursor: pointer;
+            color: rgb(145, 195, 253);
+        }
+
+        .dropdown:hover {
+            background-color: #5890CF;
+            color: white;
+            transition: 0.5s;
+        }
+
+        .dropdown #p{
+            position: relative;
+        }
+        
+        .imgdrop{
+            border-radius: 50%;
+            border: 2px solid #0F63C0;
+            max-width: 38px;
+            padding: 3px;
+            margin-left: 5px;
         }
 
 #body {
@@ -99,35 +125,34 @@ body{
 
         #body #bodyartikel2 #leftbody {
             width: 250px;
-            border: 1px solid #B8B8B8;
-            border-bottom: none;
             position: absolute;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
         }
 
 #objleft{
-    border-bottom: 1px solid #B8B8B8;
     padding-left: 10px;
+    background-color: #FFF55F;
 }
 
     #objleft a{
         display: block;
         text-decoration: none;
         width: 100%;
-        padding-top: 7px;
-        padding-bottom: 10px;
-        color: black;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        padding-left: 15px;
+        color: #063A74;
         cursor: pointer;
         font-size: 15px;
     }
 
-    #objleft a:hover{
-        color: #ff4000;
+    #objleft:hover{
+        background-color: #E5D600;
     }
 
 #active{
-    border-bottom: 1px solid #B8B8B8;
     padding-left: 10px;
-    background-color: #E8E8E8;
+    background-color: #E5D600;
 }
 
     #active a{
@@ -136,31 +161,32 @@ body{
         width: 100%;
         cursor: pointer;
         font-size: 15px;
-        color: #ff4000;
-        padding-top: 7px;
-        padding-bottom: 10px;
+        color: #063A74;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        padding-left: 15px;
     }
 
         #body #bodyartikel2 #rightbody {
             width: 75%;
-            border: 1px solid #B8B8B8;
             margin-left: 270px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
         }
 
         #body #bodyartikel2 #rightbody2 {
             width: 75%;
-            border: 1px solid #B8B8B8;
-            border-top: none;
             margin-left: 270px;
+            margin-top: 20px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
         }
 
 #objright{
-    padding: 15px 20px 20px 20px;   
-    border-bottom: 1px solid #B8B8B8;
+    padding: 35px 40px 40px 40px;   
+    background-color: #5890CF;
 }
 
 #objright2{
-    padding: 10px 20px 10px 20px; 
+    padding: 10px 40px 10px 40px; 
 }
 
     #objright2 *{
@@ -182,7 +208,7 @@ body{
 
     #objright2 #upload{
         float: left;
-        padding: 10px 0 10px; 
+        padding: 10px 20px 10px; 
         width: 60%;
     }
 
@@ -205,13 +231,18 @@ body{
     }
 
     #objright2 input[type=submit] {
-        background-color: #ff8000;
-        width: 30%;
-        color: white;
-        padding: 12px 20px;
+        background-color: #5890CF;
         border: none;
+        width: 30%;
+        color: #063A74;
+        padding: 12px 20px;
         border-radius: 4px;
         cursor: pointer;
+    }
+
+    #objright2 input[type=submit]:hover {
+        background-color: #063A74;
+        color: #ffffff;
     }
 
 #row:after {
@@ -224,6 +255,7 @@ body{
     position: relative;
     width: 100%;
     height: 50px;
+    margin-top: 50px;
 }   
 
 #footer {
@@ -232,7 +264,7 @@ body{
     height: 50px;
     bottom: 0;
     color: white;
-    background-color: orangered;
+    background-color: #063A74;
     text-align: center;
     padding: 5px;
 }
