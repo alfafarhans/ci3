@@ -129,12 +129,12 @@ body{
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
         }
 
-#objleft{
+.objleft{
     padding-left: 10px;
     background-color: #FFF55F;
 }
 
-    #objleft a{
+    .objleft a{
         display: block;
         text-decoration: none;
         width: 100%;
@@ -146,16 +146,16 @@ body{
         font-size: 15px;
     }
 
-    #objleft:hover{
+    .objleft:hover{
         background-color: #E5D600;
     }
 
-#active{
+.active{
     padding-left: 10px;
     background-color: #E5D600;
 }
 
-    #active a{
+    .active a{
         display: block;
         text-decoration: none;
         width: 100%;

@@ -40,14 +40,23 @@
             $('#jcdrop').slideDown( "fast" );
         });
     $('#profile').on('click', function() {
+        $("div#leftbody > div.objleft" ).removeClass("active");
+        $(this).parent().addClass("active");
         let urli = "<?php echo base_url(); ?>profile/changepage/profile";
         navToContent(urli);
         });
     $('#myevent').on('click', function() {
+        
+        $("div#leftbody > div.objleft" ).removeClass("active");
+        $(this).parent().addClass("active");
         let urli = "<?php echo base_url(); ?>profile/changepage/myevent";
+        $("#btn1").attr("id", "btn2");
         navToContent(urli);
     });
     $('#setting').on('click', function() {
+        
+        $("div#leftbody > div.objleft" ).removeClass("active");
+        $(this).parent().addClass("active");
         let urli = "<?php echo base_url(); ?>profile/changepage/setting";
         navToContent(urli);
     });
@@ -63,6 +72,7 @@
             $('#setting').click();
         }
      });
+     
         
     });
     
@@ -92,27 +102,27 @@
                     <img id="jdrop" class="imgdrop" src="'.base_url().'/asset/pict/profile/'.$user_id.'.png">
                  </div>
                 <div id="jcdrop" class="dropdown-content">
-                    <a href="'.base_url().'profile/"> Profile </a> 
-                    <a href="'.base_url().'my_event/"> My Event </a> 
-                    <a href="'.base_url().'settings/"> Settings </a> 
-                    <a href="'.base_url().'logout"> Sign Out </a>
+                <a href="'.base_url().'profile/myprofile/1"> Profile </a> 
+                <a href="'.base_url().'profile/myprofile/2"> My Event </a> 
+                <a href="'.base_url().'profile/myprofile/3"> Settings </a> 
+                <a href="'.base_url().'logout"> Sign Out </a>
                 </div>
             </div>
         </div> ';
-        
+//$("a:visited").parent("li").addClass("is_visited");        
     ?>
 
     <!-- bagian isi  -->
     <div id="body">
         <div id="bodyartikel2">
             <div id="leftbody">
-                <div id="active">
+                <div class="objleft">
                     <a href="#" id ="profile"> Profile </a>
                 </div>
-                <div id="objleft">
+                <div class="objleft">
                     <a href="#" id ="myevent"> My Events </a>
                 </div>
-                <div id="objleft">
+                <div class="objleft">
                     <a href="#" id ="setting"> Settings </a>
                 </div>
             </div>
