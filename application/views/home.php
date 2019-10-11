@@ -221,7 +221,12 @@ document.addEventListener("click", closeAllSelect);
     <!-- bagian header  -->
     <div id="header">
         <img src="<?php echo base_url();?>asset/pict/header2.png">
+
+        <div id="h1">
+            <h1> Solution Your Seminar Gateway </h1>
+        </div>
     </div>
+
 
     <!-- bagian pencarian  -->
     <div id="smart">
@@ -290,12 +295,13 @@ document.addEventListener("click", closeAllSelect);
     
     <!-- bagian isi  -->
     <div id="body">
-    <div id="postinduk">
-    </div>
+        <div id="postinduk">
+        </div>
 
-    <div id="postinduk2">
-        <a id="a2" href="#"> Left page </a>
-        <a id="a1" href="#"> Next page </a> 
+        <div id="postinduk2">
+            <a id="a2" href="#"> Left page </a>
+            <a id="a1" href="#"> Next page </a> 
+        </div>  
     </div>  
     <!-- bagian footer  -->
 
