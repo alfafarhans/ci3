@@ -19,20 +19,136 @@ class profile extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index()//this should use ID parameter
+	public function myprofile($direct = 1)//this should use ID parameter
 	{	//http://localhost:8080/ci3/index.php/home
-		$this->load->model('profile_data');
 		$userid = $this->session->userdata('user_id');
 		$username = $this->session->userdata('user_name');
 		if(!empty($userid)){//if signing
 			$data['user_id'] = $userid;
 			$data['username'] = $username;
-			$data['userdata'] = $this->profile_data->get_userdata($userid);
+			$data['state'] = $direct;
 			$this->load->view('profile',$data);
 		}
 		else{	//setting user if not signing
 			redirect('home');
 		}
 	}
+	function changepage ($par){
+		$userid = $this->session->userdata('user_id');
+		$this->load->model('profile_data');
+		if($par == "profile"){
+			$userdata = $this->profile_data->get_userdata($userid);
+			foreach ($userdata->result_array() as $value) {
+				$firstnamefill = str_replace(" ","&nbsp;",$value['first_name']);
+				$name = ucwords($firstnamefill."&nbsp;".$value['last_name']);
+	   echo '
+	   <div id="objright2">
+	   <div id="row">
+	   <div id="col-25"> 
+		   Profile Picture
+	   </div>
+	   <div id="avatar"> 
+		   <img src="'.base_url().'asset/pict/profile/'.$userid.'.png"> 
+	   </div>
+	   <div id="upload"> 
+		   <input type="file" name="profilepic">
+	   </div>
+   </div>
 
-}
+   <div id="row">
+	   <div id="col-25"> 
+		   Nama 
+	   </div>
+	   <div id="col-75"> 
+		   <input type="text" id="firstname" name="firstname" value='.$name.'>
+	   </div>
+   </div>
+
+   <div id="row">
+	   <div id="col-25"> 
+		   Tanggal Lahir
+	   </div>
+	   <div id="col-75"> 
+		   <input type="date" id="email" name="tanggallahir">
+	   </div>
+   </div>
+
+   <div id="row">
+	   <div id="col-25"> 
+		   Jenis Kelamin
+	   </div>
+	   <div id="col-75"> 
+		   <select name="sex">
+			   <option value="pria" selected> Laki-Laki </option>
+			   <option value="wanita"> Perempuan </option>
+		   </select>
+	   </div>
+   </div>
+
+   <div id="row">
+	   <div id="col-25"> 
+		   Alamat
+	   </div>
+	   <div id="col-75"> 
+		   <textarea name="alamat" style="height: 200px;" value="Jl KH Noer Ali No.1 Jakasampurna Bekasi Barat"></textarea>
+	   </div>
+   </div>
+   </div>
+';
+			   }
+		}//first if
+elseif ($par == "myevent") {
+	echo ' <div id="objright2">
+	<img src="'.base_url().'asset/pict/banner/Indonesia_Ves_2019_2019_2019-09_12.png">
+</div>
+<div id="objright3">
+	<div id="namaseminar">
+		Indonesia Ves
+	</div>  
+	<div id="dateseminar">
+		13 Oktober 2019
+	</div> 
+	<div id="locseminar">
+		Jl. Pintu Satu Senayan, RT.1/RW.3, Gelora, Tanahabang, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 10270
+	</div>  
+	<div id="bota">
+		<a href="#"> Cek kode registrasi</a>
+	</div>
+</div>';
+}//second if
+
+elseif ($par == "setting") {
+	echo '<div id="row">
+	<div id="col-25"> 
+		Email
+	</div>
+	<div id="col-75"> 
+		<input type="text" id="email" name="email" value="alfafarhansyarief@yahoo.co.id">
+	</div>
+</div>
+
+<div id="row">
+	<div id="col-25"> 
+		Password lama
+	</div>
+	<div id="col-75"> 
+		<input type="text" id="passwordl" name="passwordl">
+	</div>
+</div>
+
+<div id="row">
+	<div id="col-25"> 
+		Password baru
+	</div>
+	<div id="col-75"> 
+		<input type="text" id="passwordb" name="passwordb">
+	</div>
+</div>';
+}//third if
+
+
+	}//end functionchange
+
+
+
+}//endpoint

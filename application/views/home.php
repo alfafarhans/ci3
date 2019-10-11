@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     }*/
     window.onclick = function(event) {
         if ( (!event.target.matches('.dropdown')) &&(!event.target.matches('.imgdrop')) && (!event.target.matches('.result_sem')) && (!event.target.matches('.result_loc')) && (!event.target.matches('.p')) ){
-            $('#jcdrop').slideUp();
+            $('#jcdrop').slideUp("fast");
             $("#result_sem").html("");
             $("#result_loc").html("");
             $('#seminar').val("");
@@ -146,7 +146,7 @@ document.addEventListener("click", closeAllSelect);
         //ALL TRIGEER
         
         $('#jdrop').on('click', function() {
-            $('#jcdrop').slideDown( "slow" );
+            $('#jcdrop').slideDown( "fast" );
         });
         $('#seminar').on('keyup', function() {
             var res = '#result_sem';
@@ -190,9 +190,9 @@ document.addEventListener("click", closeAllSelect);
                     <img id="jdrop" class="imgdrop" src="./asset/pict/profile/'.$user_id.'.png">
                  </div>
                 <div id="jcdrop" class="dropdown-content">
-                    <a href="'.base_url().'profile/"> Profile </a> 
-                    <a href="'.base_url().'my_event/"> My Event </a> 
-                    <a href="'.base_url().'settings/"> Settings </a> 
+                    <a href="'.base_url().'profile/myprofile/1"> Profile </a> 
+                    <a href="'.base_url().'profile/myprofile/2"> My Event </a> 
+                    <a href="'.base_url().'profile/myprofile/3"> Settings </a> 
                     <a href="'.base_url().'logout"> Sign Out </a>
                 </div>
             </div>

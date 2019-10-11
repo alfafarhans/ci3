@@ -23,8 +23,12 @@ class event_detail extends CI_Controller {
 	 */
 	public function detail($s_id=null)//this should use ID parameter
 	{	//http://localhost:8080/ci3/index.php/home
-		$seminar['seminar']= $this->seminar_data->get_seminar_detail($s_id);
-		$this->load->view('event_detail',$seminar);
+		$data['seminar']= $this->seminar_data->get_seminar_detail($s_id);
+		$userid = $this->session->userdata('user_id');
+		$username = $this->session->userdata('user_name');
+		$data['user_id'] = $userid;
+		$data['username'] = $username;
+		$this->load->view('event_detail',$data);
 	}
 	function applyevent($eventid = null,$userid = null){
 		$this->load->helper('string');
