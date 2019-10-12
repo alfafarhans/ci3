@@ -4,8 +4,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/profile.css">
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/my_event.css">
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>/asset/css/settings.css">
     <script type="text/javascript" src="<?php echo base_url();?>asset/js/jquery-3.4.1.min.js"></script>
     <script type="text/javascript">
     
@@ -26,10 +24,10 @@
 			url: url,
 			cache: false,
 			beforeSend: function(data){
-				$("#rightbody2").html("");
+				$("#mainright").html("");
 			},
 			success: function(data){
-				$("#rightbody2").html(data);
+				$("#mainright").html(data);
 			}
 		});
 		return false;
@@ -127,24 +125,10 @@
                 </div>
             </div>
 
-            <div id="rightbody">
-                <div id="objright">
-                    <h3> Profile </h3> 
-                    Silahkan lengkapi data diri anda. Data diri anda di perlukan untuk keperluan administrasi aktifitas seminar yang anda ikuti. 
-                </div>
-            </div>
+            <div id="mainright">
+                
 
-            <div id="rightbody2">
-            
-                <div id="objright2">
-                    <div id="row">
-                        <div id="col-25"> 
-                        </div>  
-                        <div id="col-75"> 
-                            <input type="submit" id="submit" name="submit" value="Save">
-                        </div>  
-                    </div>
-                </div>
+              
             </div>
         </div>
     </div>

@@ -60,19 +60,20 @@
     <div id="body">
         <div id="bodyartikel2">
             
-            <div id="rightbody">
-                <div id="objright">
-                    <h3> Settings </h3> 
-                    Konfigurasikan akun anda, lakukan pergantian password rentang waktu tertentu.
+            <div id="mainright">
+                <div id="rightbody">
+                    <div id="objright">
+                        <h3> Settings </h3> 
+                        Konfigurasikan akun anda, lakukan pergantian password rentang waktu tertentu.
+                    </div>
                 </div>
-            </div>
 
-            <div id="rightbody2">
-                <div id="objright2">
-                <?php
-                foreach ($userdata->result_array() as $value) {
-                 $firstnamefill = str_replace(" ","&nbsp;",$value['first_name']);
-                 $name = ucwords($firstnamefill."&nbsp;".$value['last_name']);
+                <div id="rightbody2">
+                    <div id="objright2">
+                    <?php
+                    foreach ($userdata->result_array() as $value) {
+                    $firstnamefill = str_replace(" ","&nbsp;",$value['first_name']);
+                    $name = ucwords($firstnamefill."&nbsp;".$value['last_name']);
         echo '
 
     <div id="row">
@@ -107,16 +108,17 @@
                 
                 ?>
                     
-                </div>
-            
+                    </div>
+                
 
-                <div id="objright2">
-                    <div id="row">
-                        <div id="col-25"> 
-                        </div>  
-                        <div id="col-75"> 
-                            <input type="submit" id="submit" name="submit" value="Save">
-                        </div>  
+                    <div id="objright2">
+                        <div id="row">
+                            <div id="col-25"> 
+                            </div>  
+                            <div id="col-75"> 
+                                <input type="submit" id="submit" name="submit" value="Save">
+                            </div>  
+                        </div>
                     </div>
                 </div>
             </div>

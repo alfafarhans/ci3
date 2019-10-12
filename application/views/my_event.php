@@ -60,17 +60,18 @@
     <div id="body">
         <div id="bodyartikel2">
 
-            <div id="rightbody">
-                <div id="objright">
-                    <h3> My Event </h3> 
-                    Berikut list seminar yang saya ikuti.
+            <div id="mainright">
+                <div id="rightbody">
+                    <div id="objright">
+                        <h3> My Event </h3> 
+                        Berikut list seminar yang saya ikuti.
+                    </div>
+                </div>
+
+                <div id="rightbody2">
+                
                 </div>
             </div>
-
-            <div id="rightbody2">
-               
-            </div>
-
         </div>
     </div>
 
