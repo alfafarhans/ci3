@@ -42,6 +42,14 @@ class seminar_data extends CI_Model{
     $query = $this->db->get('seminar');
     return $query->result_array();
   }
+  function get_seminar_price($id = null){
+    $this->db->SELECT("seminar_price");
+    $this->db->from('seminar');
+    $this->db->where('seminar_id',$id);
+    $query = $this->db->get();
+    return $query->row();
+  }
+
 
   function get_filtercat($cat=null,$price=null,$datestart="anydate",$datemax=null)
   {
