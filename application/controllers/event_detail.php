@@ -32,6 +32,9 @@ class event_detail extends CI_Controller {
 		$this->load->view('event_detail',$data);
 	}
 	function applyevent($eventid = null,$userid = null){
+		
+	$cekuser = $this->seminar_data->cekseminar_user($eventid,$userid);
+	if($cekuser){
 		$data_price = $this->seminar_data->get_seminar_price($eventid);
 		$this->load->helper('string');
 	do {
@@ -63,8 +66,12 @@ class event_detail extends CI_Controller {
 				//redirect('home');
 		}	
 		else{
-			echo "eror";
-		}	
+			echo "EROR INSERT";
+		}
+	}
+	else{
+		$msg = "you already registered";
+	}	
 		echo json_encode(
 			array(
 				'msg' => $msg

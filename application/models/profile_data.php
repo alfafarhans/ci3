@@ -5,6 +5,7 @@ class profile_data extends CI_Model{
              $this->db->where('user_id', $id);
              return $this->db->get('user');
     }
+  
 
       }//endclass
 ?>

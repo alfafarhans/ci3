@@ -13,6 +13,18 @@ class seminar_data extends CI_Model{
                }
       }
     */
+    function cekseminar_user($eventid,$userid){
+      $this->db->where('user_id', $userid);
+      $this->db->where('seminar_id', $eventid);
+      $query =  $this->db->get('user_trx');
+      if($query->num_rows()>0){
+        return false;
+      }
+      else{
+        return true;
+      }
+}
+
     function input_data($data,$table){
     
       $this->db->insert($table,$data);

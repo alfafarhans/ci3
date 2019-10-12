@@ -2,6 +2,10 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class home extends CI_Controller {
+	function __construct(){
+		parent::__construct();
+		$this->load->model('seminar_data');
+	}
 	
 
 	/**
@@ -21,7 +25,7 @@ class home extends CI_Controller {
 	 */
 	public function index()
 	{	//http://localhost:8080/ci3/index.php/home
-		$this->load->model('seminar_data');
+		
 		$userid = $this->session->userdata('user_id');
 		$username = $this->session->userdata('user_name');
 		if(empty($userid)){//if not signing
@@ -94,7 +98,7 @@ class home extends CI_Controller {
 				}
 		$category = $this->input->post('cat1');
 		$pricer = $this->input->post('price1');
-		$this->load->model('seminar_data');
+		
 		$data = $this->seminar_data->get_filtercat($category,$pricer,$newdate1,$newdate2);
 		}
 		
@@ -141,7 +145,6 @@ class home extends CI_Controller {
 		$type = $this->input->post('type');
 		//var_dump($datasearch);
 	//	var_dump($type);
-		$this->load->model('seminar_data');
 		$result = $this->seminar_data->search_seminar($datasearch,$type);
 
 		if($type === "#result_sem"){

@@ -2,7 +2,10 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class profile extends CI_Controller {
-	
+	function __construct(){
+		parent::__construct();
+		$this->load->model('profile_data');
+	}
 
 	/**
 	 * Index Page for this controller.
@@ -35,18 +38,21 @@ class profile extends CI_Controller {
 	}
 	function changepage ($par){
 		$userid = $this->session->userdata('user_id');
-		$this->load->model('profile_data');
+		
 		if($par == "profile"){
 			$userdata = $this->profile_data->get_userdata($userid);
 			foreach ($userdata->result_array() as $value) {
 				$firstnamefill = str_replace(" ","&nbsp;",$value['first_name']);
 				$name = ucwords($firstnamefill."&nbsp;".$value['last_name']);
 				
-				if($value['user_gender']){
+				if($value['user_gender'] == 1 ){
 					$gender = "Laki - Laki" ;
 				}
-				else{
+				elseif ($value['user_gender'] == 0){
 					$gender = "Perempuan";
+				}
+				else{
+					$gender = "Not Selected";
 				}
 	   echo '
 	<div id="rightbody">
@@ -93,8 +99,9 @@ class profile extends CI_Controller {
 			</div>
 			<div id="col-75"> 
 				<select name="sex" >
-					<option value="pria" selected>'.$gender.' </option>
-					<option value="wanita"> Perempuan </option>
+					<option value="" selected>'.$gender.'</option>
+					<option value="1">Laki - Laki</option>
+					<option value="0">Perempuan</option>
 				</select>
 			</div>
 		</div>
@@ -104,7 +111,7 @@ class profile extends CI_Controller {
 				Alamat
 			</div>
 			<div id="col-75"> 
-				<textarea name="alamat" style="height: 200px;" value="Jl KH Noer Ali No.1 Jakasampurna Bekasi Barat"></textarea>
+				<textarea name="alamat" style="height: 200px;" >'.$value['user_address'].'</textarea>
 			</div>
 		</div>
 	</div>
@@ -124,6 +131,8 @@ class profile extends CI_Controller {
 			   }
 		}//first if
 elseif ($par == "myevent") {
+	$userdata = $this->profile_data->get_seminar_history($eventid,$userid);
+			foreach ($userdata as $value) {
 	echo ' 
 	<div id="rightbody">
         <div id="objright">
@@ -133,7 +142,7 @@ elseif ($par == "myevent") {
 	</div>
 	<div id="rightbody3">
 		<div id="objright3">
-			<img src="'.base_url().'asset/pict/banner/Indonesia_Ves_2019_2019_2019-09_12.png">
+			<img src="'.base_url().'asset/pict/banner/'.$value['seminar_banner'].'.png">
 		</div>
 		<div id="objright4">
 			<div id="namaseminar">
@@ -150,6 +159,7 @@ elseif ($par == "myevent") {
 			</div>
 		</div>
 	</div>';
+			}
 }//second if
 
 elseif ($par == "setting") {
