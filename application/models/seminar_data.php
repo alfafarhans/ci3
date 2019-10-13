@@ -63,7 +63,7 @@ class seminar_data extends CI_Model{
   }
 
 
-  function get_filtercat($cat=null,$price=null,$datestart="anydate",$datemax=null)
+  function get_filtercat($cat=null,$price=null,$datestart="anydate",$datemax=null ,$loca = null )
   {
     $curdate = date('Y-m-d');
    // var_dump($cat);
@@ -73,7 +73,7 @@ class seminar_data extends CI_Model{
 
    $this->db->select("*");
     $this->db->from("seminar");
-
+   
     if (!empty($datemax)) {
       $this->db->where('seminar_date >= ',$datestart);
       $this->db->where('seminar_date <=',$datemax);
@@ -96,6 +96,9 @@ class seminar_data extends CI_Model{
     if(!empty($cat)){
       $this->db->like('seminar_tag', $cat);
       }
+    if(!empty($loca)){
+        $this->db->where('seminar_city', $loca);
+        }
       $this->db->order_by('seminar_date', 'ASC');
   return $this->db->get();
   }
@@ -106,11 +109,12 @@ class seminar_data extends CI_Model{
     $this->db->from("seminar");
     $this->db->where('seminar_date >=', $curdate);
     if($type === "#result_sem"){
-      $this->db->like('seminar_name', $key);}
+      $this->db->like('seminar_name', $key);
+      $this->db->order_by('seminar_name', 'ASC');}
     elseif ($type === "#result_loc") {
       $this->db->like('seminar_city', $key);
+      $this->db->order_by('seminar_city', 'ASC');
     }
-    $this->db->order_by('seminar_date', 'ASC');
     return $this->db->get();
   }
 

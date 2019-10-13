@@ -45,8 +45,8 @@ class home extends CI_Controller {
 		$cat = $this->input->post('cat1');
 		$price = $this->input->post('price1');
 		$date = $this->input->post('date1');
-		if( (!empty($cat)) || (!empty($price)) ||(!empty($date)) )
-			  {	
+		$location = $this->input->post('loc1');
+		if( (!empty($cat)) || (!empty($price)) ||(!empty($date)) || (!empty($location)) ){	
 				 $curdate = date('Y-m-d'); 
 				if($date == "today"){
 					$newdate1 = $curdate;
@@ -96,10 +96,10 @@ class home extends CI_Controller {
 				else{
 					$newdate1 = "anydate";
 				}
-		$category = $this->input->post('cat1');
-		$pricer = $this->input->post('price1');
-		
-		$data = $this->seminar_data->get_filtercat($category,$pricer,$newdate1,$newdate2);
+			$category = $this->input->post('cat1');
+			$pricer = $this->input->post('price1');
+			$locationer = $this->input->post('loc1');
+			$data = $this->seminar_data->get_filtercat($category,$pricer,$newdate1,$newdate2,$locationer);
 		}
 		
   		if($data->num_rows() > 0)
@@ -111,17 +111,9 @@ class home extends CI_Controller {
             $mounth = date('F', strtotime($value['seminar_date']));
             $hours =  date('H', strtotime($value['seminar_date']));
             $minute =  date('i', strtotime($value['seminar_date']));
-			//$userid = $this->session->userdata('user_id');
-			//if(isset($userid)){
 				$output .= 
 			'<div id="post">
 				<a href="'. base_url().'event_detail/'. $value['seminar_id'].'"> ';
-				/*	}
-				else{
-				$output .= 
-				'<div id="post">
-					<a href="'. base_url().'login/"> ';
-				}*/
 				$output .='
 						<img src="'.base_url().'asset/pict/banner/'. $value['seminar_banner'].'">
 				<div id="descbox"> 
@@ -157,14 +149,18 @@ class home extends CI_Controller {
 		}
 	}
 	elseif($type === "#result_loc"){
-		if($result->num_rows() > 0)
-		{
+		$param = "";
+		if($result->num_rows() > 0){
 		  foreach ($result->result_array() as $value) {
-		  $output .='<a href="'. base_url().'event_detail/'. $value['seminar_id'].'" >'.$value['seminar_city'].' </a>';
-	  }
+			if($param != $value['seminar_city']){
+				$param = $value['seminar_city'];
+				$output .='<a href="javascript:void(0);" id ="'.$value['seminar_city'].'" onClick = "changevalloc(this)">'.$value['seminar_city'].'</a>';//'. base_url().'home/getloc/'. $value['seminar_city'].'
+			}
+		}
   		}
 	}
 	echo $output;
 		}
+		
 	
 }//end
