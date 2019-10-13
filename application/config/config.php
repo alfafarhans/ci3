@@ -23,6 +23,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
+// Ganti jadi IP di hari H
+
 $config['base_url'] = 'http://localhost/ci3/';
 
 /*
