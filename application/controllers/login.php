@@ -63,7 +63,7 @@ class login extends CI_Controller {
            else  
            {  
                 //false  
-                $this->index();  
+				redirect('login/'); 
 		   }  
 		}
 		

@@ -129,12 +129,12 @@ body{
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
         }
 
-#objleft{
+.objleft{
     padding-left: 10px;
     background-color: #FFF55F;
 }
 
-    #objleft a{
+    .objleft a{
         display: block;
         text-decoration: none;
         width: 100%;
@@ -146,16 +146,16 @@ body{
         font-size: 15px;
     }
 
-    #objleft:hover{
+    .objleft:hover{
         background-color: #E5D600;
     }
 
-#active{
+.active{
     padding-left: 10px;
     background-color: #E5D600;
 }
 
-    #active a{
+    .active a{
         display: block;
         text-decoration: none;
         width: 100%;
@@ -165,19 +165,26 @@ body{
         padding-top: 20px;
         padding-bottom: 20px;
         padding-left: 15px;
+    }   
+
+    #body #bodyartikel2 #mainright{
+        width: 75%;
+        margin-left: 270px;
     }
 
-        #body #bodyartikel2 #rightbody {
-            width: 75%;
-            margin-left: 270px;
+        #body #bodyartikel2 #mainright #rightbody {
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
         }
 
-        #body #bodyartikel2 #rightbody2 {
-            width: 75%;
-            margin-left: 270px;
+        #body #bodyartikel2 #mainright #rightbody2 {
             margin-top: 20px;
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        }
+
+        #body #bodyartikel2 #mainright #rightbody3 {
+            margin-top: 20px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            display: flex;
         }
 
 #objright{
@@ -250,6 +257,57 @@ body{
     display: table;
     clear: both;
 }
+
+#objright3{
+    width: 40%;
+    flex-grow: 1;
+}
+
+    #objright3 img{
+        width: 100%;
+        margin-bottom: -4px;
+    }
+
+#objright4{
+    width: 60%;
+    height: 100%;
+    padding: 30px 50px 20px 30px;
+}
+
+    #objright4 #namaseminar{
+        font-size: 25px;
+        font-weight: bold;
+        text-align: left;
+        padding-bottom: 10px;
+    }
+
+    #objright4 #dateseminar {
+        text-align: left;
+    } 
+
+    #objright4 #locseminar {
+        text-align: left;
+    } 
+
+    #objright4 #bota{
+        padding-top: 20px;
+    }
+
+    #objright4 #bota a{
+        background-color: #5890CF;
+        color: #063A74;
+        padding: 12px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        text-decoration: none;
+    } 
+
+        #objright4 #bota a:hover {
+            background-color: #063A74;
+            color: #ffffff;
+        }
+
 
 #infofooter600{
     position: relative;

@@ -23,10 +23,19 @@ class event_detail extends CI_Controller {
 	 */
 	public function detail($s_id=null)//this should use ID parameter
 	{	//http://localhost:8080/ci3/index.php/home
-		$seminar['seminar']= $this->seminar_data->get_seminar_detail($s_id);
-		$this->load->view('event_detail',$seminar);
+	
+		$data['seminar']= $this->seminar_data->get_seminar_detail($s_id);
+		$userid = $this->session->userdata('user_id');
+		$username = $this->session->userdata('user_name');
+		$data['user_id'] = $userid;
+		$data['username'] = $username;
+		$this->load->view('event_detail',$data);
 	}
 	function applyevent($eventid = null,$userid = null){
+		
+	$cekuser = $this->seminar_data->cekseminar_user($eventid,$userid);
+	if($cekuser){
+		$data_price = $this->seminar_data->get_seminar_price($eventid);
 		$this->load->helper('string');
 	do {
 		$bookid =  random_string('nozero', 6);
@@ -38,19 +47,31 @@ class event_detail extends CI_Controller {
 
 
 		if($resbook){
-			$data = array(
-				'booking_id' => $reservedid,
-				'user_id' => $userid,
-				'seminar_id' => $eventid,
-				'payment_id' => $reservedid.$userid,
-				'atten_status' => 'Waiting for payment' );
-				$this->seminar_data->input_data($data,'user_trx');
+			$curdate = date('Y-m-d'); 
+			
+			$data1 = array(
+					'payment_id' => $reservedid.$userid,
+					'seminar_price' => $data_price->seminar_price,
+					'payment_created' =>  $curdate);
+			$data2 = array(
+						'booking_id' => $reservedid,
+						'user_id' => $userid,
+						'seminar_id' => $eventid,
+						'payment_id' => $reservedid.$userid,
+						'atten_status' => 'Waiting for payment' );
+
+				$this->seminar_data->input_data($data1,'payment');
+				$this->seminar_data->input_data($data2,'user_trx');
 				$msg = "Yeay!";
 				//redirect('home');
 		}	
 		else{
-			echo "eror";
-		}	
+			echo "EROR INSERT";
+		}
+	}
+	else{
+		$msg = "you already registered";
+	}	
 		echo json_encode(
 			array(
 				'msg' => $msg
