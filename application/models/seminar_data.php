@@ -63,44 +63,42 @@ class seminar_data extends CI_Model{
   }
 
 
-  function get_filtercat($cat=null,$price=null,$datestart="anydate",$datemax=null ,$loca = null )
-  {
-    $curdate = date('Y-m-d');
-   // var_dump($cat);
-  //  var_dump($price);
-   // var_dump($datestart);
-    //var_dump($datemax);
-
-   $this->db->select("*");
-    $this->db->from("seminar");
-   
-    if (!empty($datemax)) {
-      $this->db->where('seminar_date >= ',$datestart);
-      $this->db->where('seminar_date <=',$datemax);
-    }
-    elseif($datestart == "anydate"){
-      $this->db->where('seminar_date >=', $curdate);
-    }
-    elseif(!empty($datestart)){
-      $this->db->where('DATE(seminar_date)',$datestart);
-    }
-    if (!empty($price)) {
-      if($price == "free"){
-        $this->db->where('seminar_price', 0);
-      }
-      else{
-        $this->db->where('seminar_price >', 0);
-      }
-    }
-    
-    if(!empty($cat)){
-      $this->db->like('seminar_tag', $cat);
-      }
-    if(!empty($loca)){
-        $this->db->where('seminar_city', $loca);
-        }
-      $this->db->order_by('seminar_date', 'ASC');
-  return $this->db->get();
+  function get_filtercat($cat=null,$price=null,$datestart="anydate",$datemax=null ,$loca = null ){
+            $curdate = date('Y-m-d');
+          // var_dump($cat);
+          //  var_dump($price);
+          // var_dump($datestart);
+            //var_dump($datemax);
+          $this->db->select("*");
+            $this->db->from("seminar");
+          
+            if (!empty($datemax)) {
+              $this->db->where('seminar_date >= ',$datestart);
+              $this->db->where('seminar_date <=',$datemax);
+            }
+            elseif($datestart == "anydate"){
+              $this->db->where('seminar_date >=', $curdate);
+            }
+            elseif(!empty($datestart)){
+              $this->db->where('DATE(seminar_date)',$datestart);
+            }
+            if (!empty($price)) {
+              if($price == "free"){
+                $this->db->where('seminar_price', 0);
+              }
+              else{
+                $this->db->where('seminar_price >', 0);
+              }
+            }
+            
+            if(!empty($cat)){
+              $this->db->like('seminar_tag', $cat);
+              }
+            if(!empty($loca)){
+                $this->db->where('seminar_city', $loca);
+                }
+              $this->db->order_by('seminar_date', 'ASC');
+          return $this->db->get();
   }
 
   function search_seminar($key = nulld, $type = null){

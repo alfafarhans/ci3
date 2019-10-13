@@ -122,7 +122,7 @@ class profile extends CI_Controller {
 				<div id="col-25"> 
 				</div>  
 				<div id="col-75"> 
-					<input type="submit" id="submit" name="submit" value="Save">
+					<input type="submit" id="chprofile" name="submit" value="Save">
 				</div>  
 			</div>
 		</div>
@@ -131,29 +131,28 @@ class profile extends CI_Controller {
 			   }
 		}//first if
 elseif ($par == "myevent") {
-	$userdata = $this->profile_data->get_seminar_history($eventid,$userid);
-			foreach ($userdata as $value) {
-	echo ' 
-	<div id="rightbody">
-        <div id="objright">
-            <h3> My Event </h3> 
-            Berikut list seminar yang saya ikuti.
-        </div>
+	$userdata = $this->profile_data->get_seminar_history($userid);
+	echo'	<div id="rightbody">
+	<div id="objright">
+		<h3> My Event </h3> 
+		Berikut list seminar yang saya ikuti.
 	</div>
+</div>';
+			foreach ($userdata->result_array() as $value) {
+	echo '
 	<div id="rightbody3">
 		<div id="objright3">
-			<img src="'.base_url().'asset/pict/banner/'.$value['seminar_banner'].'.png">
+			<img src="'.base_url().'asset/pict/banner/'.$value['seminar_banner'].'">
 		</div>
 		<div id="objright4">
 			<div id="namaseminar">
-				Indonesia Ves
+			'.$value['seminar_name'].'
 			</div>  
 			<div id="dateseminar">
-				13 Oktober 2019
+			'.$value['seminar_date'].'
 			</div> 
 			<div id="locseminar">
-				Jl. Pintu Satu Senayan, RT.1/RW.3, Gelora, Tanahabang, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 10270
-			</div>  
+			'.$value['seminar_held'].'</div>  
 			<div id="bota">
 				<a href="#"> Cek kode registrasi</a>
 			</div>
@@ -163,14 +162,17 @@ elseif ($par == "myevent") {
 }//second if
 
 elseif ($par == "setting") {
+	
+	$userdata = $this->profile_data->get_userdata($userid);
+	foreach ($userdata->result_array() as $value) {
 	echo '
 	<div id="rightbody">
         <div id="objright">
-            <h3> My Event </h3> 
-            Berikut list seminar yang saya ikuti.
+		<h3> Settings </h3> 
+		Konfigurasikan akun anda,
+		lakukan pergantian password rentang waktu tertentu.
         </div>
 	</div>
-
 	<div id="rightbody2">
 		<div id="objright2">
 			<div id="row">
@@ -178,29 +180,38 @@ elseif ($par == "setting") {
 					Email
 				</div>
 				<div id="col-75"> 
-					<input type="text" id="email" name="email" value="alfafarhansyarief@yahoo.co.id">
+					<input type="text" id="email" name="email" value="'.$value['email'].'">
 				</div>
 			</div>
 
 			<div id="row">
 				<div id="col-25"> 
-					Password lama
+					Old Password
 				</div>
 				<div id="col-75"> 
-					<input type="text" id="passwordl" name="passwordl">
+					<input type="text" placeholder="Fill old your cute secret code" id="passwordl" name="passwordl">
 				</div>
 			</div>
 
 			<div id="row">
 				<div id="col-25"> 
-					Password baru
+					New Password
 				</div>
 				<div id="col-75"> 
-					<input type="text" id="passwordb" name="passwordb">
+					<input type="text" placeholder="Change with the cute one" id="passwordb" name="passwordb">
 				</div>
+			</div>
+		
+			<div id="row">
+				<div id="col-25"> 
+				</div>  
+				<div id="col-75"> 
+					<input type="submit" id="chpass" name="submit" value="Save">
+				</div>  
 			</div>
 		</div>
 	</div>';
+	}
 }//third if
 
 
