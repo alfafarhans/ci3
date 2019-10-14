@@ -229,13 +229,13 @@ body{
         max-width: 100px;
     }
 
-    #objright2 input[type=text], input[type=date], select, textarea {
-        width: 100%;
-        padding: 12px;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        resize: vertical;
-    }
+        #objright2 input[type=text], input[type=date], select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
 
     #objright2 input[type=submit] {
         background-color: #5890CF;

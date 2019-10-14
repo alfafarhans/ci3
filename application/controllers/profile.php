@@ -52,8 +52,10 @@ class profile extends CI_Controller {
 					$gender = "Perempuan";
 				}
 				else{
-					$gender = "Not Selected";
+					$gender = " ";
 				}
+
+				
 	   echo '
 	<div id="rightbody">
 		<div id="objright">
@@ -103,6 +105,15 @@ class profile extends CI_Controller {
 					<option value="1">Laki - Laki</option>
 					<option value="0">Perempuan</option>
 				</select>
+			</div>
+		</div>
+
+		<div id="row">
+			<div id="col-25"> 
+				No Handphone 
+			</div>
+			<div id="col-75"> 
+				<input type="text" id="nohp" name="nohp">
 			</div>
 		</div>
 
