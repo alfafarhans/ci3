@@ -108,6 +108,15 @@ class profile extends CI_Controller {
 
 		<div id="row">
 			<div id="col-25"> 
+				No Handphone
+			</div>
+			<div id="col-75"> 
+				<input type="text" id="nohp" name="nohp">
+			</div>
+		</div>
+
+		<div id="row">
+			<div id="col-25"> 
 				Alamat
 			</div>
 			<div id="col-75"> 
