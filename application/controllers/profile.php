@@ -44,16 +44,6 @@ class profile extends CI_Controller {
 			foreach ($userdata->result_array() as $value) {
 				$firstnamefill = str_replace(" ","&nbsp;",$value['first_name']);
 				$name = ucwords($firstnamefill."&nbsp;".$value['last_name']);
-				
-				if($value['user_gender'] == 1 ){
-					$gender = "Laki - Laki" ;
-				}
-				elseif ($value['user_gender'] == 0){
-					$gender = "Perempuan";
-				}
-				else{
-					$gender = "Not Selected";
-				}
 	   echo '
 	<div id="rightbody">
 		<div id="objright">
@@ -61,6 +51,7 @@ class profile extends CI_Controller {
 			Silahkan lengkapi data diri anda. Data diri anda di perlukan untuk keperluan administrasi aktifitas seminar yang anda ikuti. 
 		</div>
 	</div>
+	<form method="post" action="" enctype="multipart/form-data" id="myform">
 	<div id="rightbody2">
 		<div id="objright2">
 			<div id="row">
@@ -91,27 +82,45 @@ class profile extends CI_Controller {
 			<div id="col-75"> 
 				<input type="date" id="email" name="tanggallahir" value ='.$value['date_born'].'>
 			</div>
-		</div>
+		</div>';
 
-		<div id="row">
+		if($value['user_gender'] == "Pria"  || $value['user_gender'] == "Wanita"){
+			echo'
+			<div id="row">
+			<div id="col-25"> 
+				Jenis Kelamin
+			</div>
+			<div id="col-75"> 
+				<input type="text" disabled value="'.$value['user_gender'].'">
+				</select>
+			</div>
+		</div>';
+		}
+		else{
+			echo'
+			<div id="row">
 			<div id="col-25"> 
 				Jenis Kelamin
 			</div>
 			<div id="col-75"> 
 				<select name="sex" >
-					<option value="" selected>'.$gender.'</option>
-					<option value="1">Laki - Laki</option>
-					<option value="0">Perempuan</option>
+					<option value="" selected>Not Selected</option>
+					<option value="1">Pria</option>
+					<option value="0">Wanita</option>
 				</select>
 			</div>
-		</div>
+		</div>';
+		}
 
+
+
+		echo'
 		<div id="row">
 			<div id="col-25"> 
 				No Handphone
 			</div>
 			<div id="col-75"> 
-				<input type="text" id="nohp" name="nohp">
+				<input type="text" id="nohp" name="nohp" value="'.$value['user_phone'].'">
 			</div>
 		</div>
 
@@ -136,6 +145,7 @@ class profile extends CI_Controller {
 			</div>
 		</div>
 	</div>
+	</form>
 	';
 			   }
 		}//first if
@@ -148,6 +158,11 @@ elseif ($par == "myevent") {
 	</div>
 </div>';
 			foreach ($userdata->result_array() as $value) {
+			$dayname = date('D', strtotime($value['seminar_date']));
+            $daynum = date('d', strtotime($value['seminar_date']));
+            $mounth = date('F', strtotime($value['seminar_date']));
+            $year =  date('Y', strtotime($value['seminar_date']));
+            //$minute =  date('i', strtotime($value['seminar_date']));
 	echo '
 	<div id="rightbody3">
 		<div id="objright3">
@@ -158,7 +173,7 @@ elseif ($par == "myevent") {
 			'.$value['seminar_name'].'
 			</div>  
 			<div id="dateseminar">
-			'.$value['seminar_date'].'
+			'.$daynum.'&nbsp;'.$mounth.'&nbsp;'.$year.'
 			</div> 
 			<div id="locseminar">
 			'.$value['seminar_held'].'</div>  
