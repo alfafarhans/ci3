@@ -18,6 +18,7 @@
     }
 
     $(function() {
+        
         function navToContent(url){
 		$.ajax({
 			type: "GET",
@@ -97,7 +98,7 @@
 
                 <div id="jdrop" class="dropdown">
                     <div id="jdrop" class="p"> Welcome '.$username.' ! </div>
-                    <img id="jdrop" class="imgdrop" src="'.base_url().'/asset/pict/profile/'.$user_id.'.png">
+                    <img id="jdrop" class="imgdrop" src="'.base_url().'/asset/pict/profile/'.$user_id.'.jpg">
                  </div>
                 <div id="jcdrop" class="dropdown-content">
                 <a href="'.base_url().'profile/myprofile/1"> Profile </a> 

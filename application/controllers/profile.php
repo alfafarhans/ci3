@@ -36,6 +36,50 @@ class profile extends CI_Controller {
 			redirect('home');
 		}
 	}
+	function up_profile(){
+		$userid = $this->session->userdata('user_id');
+		if(!empty($userid)){
+			if($this->up_pict()) {
+			$firstname = $this->input->post('firstname');
+			$lastname = $this->input->post('lastname');
+			$tanggallahir = $this->input->post('tanggallahir');
+			$nohp = $this->input->post('nohp');
+			$sex = $this->input->post('sex');
+			$alamat = $this->input->post('alamat');
+			$data = array(
+				'first_name' => $firstname,
+				'last_name' => $lastname,
+				'date_born' => $tanggallahir,
+				'user_phone' => $nohp,
+				'user_gender' => $sex,
+				'user_address' => $alamat);
+				$this->profile_data->update_data($data,'user','user_id' ,$userid);
+			redirect('home');
+			}
+		}
+		
+	}
+
+	private function up_pict() {
+			$userid = $this->session->userdata('user_id');
+			$config['upload_path']          = './asset/pict/profile/';
+			$config['allowed_types']        = 'jpg';
+			$config['file_name']            = $userid;
+			$config['overwrite']			= true;
+			$config['max_size']             = 2048; // 1MB
+			// $config['max_width']            = 1024;
+			// $config['max_height']           = 768;
+			$this->load->library('upload', $config);
+			
+			if ($this->upload->do_upload('profilepic')) {
+				return true;
+			}
+			else{
+				$error = $this->upload->display_errors();
+
+				return false;
+			}
+	}
 	function changepage ($par){
 		$userid = $this->session->userdata('user_id');
 		
@@ -52,7 +96,7 @@ class profile extends CI_Controller {
 			Silahkan lengkapi data diri anda. Data diri anda di perlukan untuk keperluan administrasi aktifitas seminar yang anda ikuti. 
 		</div>
 	</div>
-	<form method="post" action="" enctype="multipart/form-data" id="myform">
+	<form method="post" action="'.base_url().'profile/up_profile" enctype="multipart/form-data" id="myform">
 	<div id="rightbody2">
 		<div id="objright2">
 			<div id="row">
@@ -60,28 +104,36 @@ class profile extends CI_Controller {
 					Profile Picture
 				</div>
 				<div id="avatar"> 
-					<img id="icon" src="'.base_url().'asset/pict/profile/'.$userid.'.png"> 
+					<img id="icon" src="'.base_url().'/asset/pict/profile/'.$userid.'.jpg"> 
 				</div>
 				<div id="upload"> 
-					<input type="file" name="profilepic">
+					<input type="file" name="profilepic" id = "file">
 				</div>
 			</div>
 
 			<div id="row">
 				<div id="col-25"> 
-					Nama 
+					Firstname 
 				</div>
 				<div id="col-75"> 
-					<input type="text" id="firstname" name="firstname" value='.$name.'>
+					<input type="text" id="firstname" name="firstname" value='.ucwords($firstnamefill).'>
 				</div>
 			</div>
+			<div id="row">
+			<div id="col-25"> 
+				Lastname 
+			</div>
+			<div id="col-75"> 
+				<input type="text" id="lastname" name="lastname" value='.ucwords($value['last_name']).'>
+			</div>
+		</div>
 
 			<div id="row">
 				<div id="col-25"> 
 				Tanggal Lahir
 				</div>
 				<div id="col-75"> 
-					<input type="date" id="email" name="tanggallahir" value ='.$value['date_born'].'>
+					<input type="date" id="tanggallahir" name="tanggallahir" value ='.$value['date_born'].'>
 				</div>
 			</div>';
 
@@ -106,15 +158,12 @@ class profile extends CI_Controller {
 				<div id="col-75"> 
 					<select name="sex" >
 						<option value="" selected>Not Selected</option>
-						<option value="1">Pria</option>
-						<option value="0">Wanita</option>
+						<option value="Pria">Pria</option>
+						<option value="Wanita">Wanita</option>
 					</select>
 				</div>
 			</div>';
 			}
-
-
-
 			echo'
 			<div id="row">
 				<div id="col-25"> 
@@ -130,7 +179,7 @@ class profile extends CI_Controller {
 					Alamat
 				</div>
 				<div id="col-75"> 
-					<textarea name="alamat" style="height: 200px;" >'.$value['user_address'].'</textarea>
+					<textarea name="alamat" id="alamat" style="height: 200px;" >'.$value['user_address'].'</textarea>
 				</div>
 			</div>
 		
@@ -174,9 +223,9 @@ elseif ($par == "myevent") {
 			'.$daynum.'&nbsp;'.$mounth.'&nbsp;'.$year.'
 			</div> 
 			<div id="locseminar">
-			'.$value['seminar_held'].'</div>  
+			'.ucwords($value['seminar_city']).'</div>  
 			<div id="bota">
-				<a href="#"> Cek kode registrasi</a>
+				<a href="#">'.$value['atten_status'].'</a>
 			</div>
 		</div>
 	</div>';

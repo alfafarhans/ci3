@@ -14,6 +14,12 @@ class profile_data extends CI_Model{
     $this->db->order_by('seminar_date', 'ASC');
     return $this->db->get();
    }
+   function update_data($data,$table,$colomn,$key){
+    $this->db->where($colomn,$key);
+		$this->db->update($table,$data);
+    }
+
+
 
       }//endclass
 ?>

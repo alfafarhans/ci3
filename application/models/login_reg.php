@@ -34,17 +34,7 @@ class login_reg extends CI_Model{
       
 
       //edit function
-       function edit($nis){
-          $data = array(
-            "nama" => $this->input->post('input_nama'),
-            "jenis_kelamin" => $this->input->post('input_jeniskelamin'),
-            "telp" => $this->input->post('input_telp'),
-            "alamat" => $this->input->post('input_alamat')
-          );
-          
-          $this->db->where('nis', $nis);
-          $this->db->update('siswa', $data); 
-        }
+       
         
        //delete function
      function delete($nis){
