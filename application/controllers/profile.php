@@ -59,84 +59,81 @@ class profile extends CI_Controller {
 				<div id="col-25"> 
 					Profile Picture
 				</div>
-			<div id="avatar"> 
-				<img id="icon" src="'.base_url().'asset/pict/profile/'.$userid.'.png"> 
+				<div id="avatar"> 
+					<img id="icon" src="'.base_url().'asset/pict/profile/'.$userid.'.png"> 
+				</div>
+				<div id="upload"> 
+					<input type="file" name="profilepic">
+				</div>
 			</div>
-			<div id="upload"> 
-				<input type="file" name="profilepic">
-			</div>
-		</div>
 
-		<div id="row">
-			<div id="col-25"> 
-				Nama 
+			<div id="row">
+				<div id="col-25"> 
+					Nama 
+				</div>
+				<div id="col-75"> 
+					<input type="text" id="firstname" name="firstname" value='.$name.'>
+				</div>
 			</div>
-			<div id="col-75"> 
-				<input type="text" id="firstname" name="firstname" value='.$name.'>
-			</div>
-		</div>
 
-		<div id="row">
-			<div id="col-25"> 
-			Tanggal Lahir
-			</div>
-			<div id="col-75"> 
-				<input type="date" id="email" name="tanggallahir" value ='.$value['date_born'].'>
-			</div>
-		</div>';
+			<div id="row">
+				<div id="col-25"> 
+				Tanggal Lahir
+				</div>
+				<div id="col-75"> 
+					<input type="date" id="email" name="tanggallahir" value ='.$value['date_born'].'>
+				</div>
+			</div>';
 
-		if($value['user_gender'] == "Pria"  || $value['user_gender'] == "Wanita"){
+			if($value['user_gender'] == "Pria"  || $value['user_gender'] == "Wanita"){
+				echo'
+				<div id="row">
+				<div id="col-25"> 
+					Jenis Kelamin
+				</div>
+				<div id="col-75"> 
+					<input type="text" disabled value="'.$value['user_gender'].'">
+					</select>
+				</div>
+			</div>';
+			}
+			else{
+				echo'
+				<div id="row">
+				<div id="col-25"> 
+					Jenis Kelamin
+				</div>
+				<div id="col-75"> 
+					<select name="sex" >
+						<option value="" selected>Not Selected</option>
+						<option value="1">Pria</option>
+						<option value="0">Wanita</option>
+					</select>
+				</div>
+			</div>';
+			}
+
+
+
 			echo'
 			<div id="row">
-			<div id="col-25"> 
-				Jenis Kelamin
+				<div id="col-25"> 
+					No Handphone
+				</div>
+				<div id="col-75"> 
+					<input type="text" id="nohp" name="nohp" value="'.$value['user_phone'].'">
+				</div>
 			</div>
-			<div id="col-75"> 
-				<input type="text" disabled value="'.$value['user_gender'].'">
-				</select>
-			</div>
-		</div>';
-		}
-		else{
-			echo'
+
 			<div id="row">
-			<div id="col-25"> 
-				Jenis Kelamin
+				<div id="col-25"> 
+					Alamat
+				</div>
+				<div id="col-75"> 
+					<textarea name="alamat" style="height: 200px;" >'.$value['user_address'].'</textarea>
+				</div>
 			</div>
-			<div id="col-75"> 
-				<select name="sex" >
-					<option value="" selected>Not Selected</option>
-					<option value="1">Pria</option>
-					<option value="0">Wanita</option>
-				</select>
-			</div>
-		</div>';
-		}
-
-
-
-		echo'
-		<div id="row">
-			<div id="col-25"> 
-				No Handphone
-			</div>
-			<div id="col-75"> 
-				<input type="text" id="nohp" name="nohp" value="'.$value['user_phone'].'">
-			</div>
-		</div>
-
-		<div id="row">
-			<div id="col-25"> 
-				Alamat
-			</div>
-			<div id="col-75"> 
-				<textarea name="alamat" style="height: 200px;" >'.$value['user_address'].'</textarea>
-			</div>
-		</div>
-	</div>
-	
-	<div id="rightbody2">               
-		<div id="objright2">
+		
 			<div id="row">
 				<div id="col-25"> 
 				</div>  
