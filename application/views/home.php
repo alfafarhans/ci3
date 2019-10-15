@@ -154,7 +154,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
         //ALL TRIGEER
-
+        $('#location').keyup(function(e){
+            if(e.keyCode == 8 && $(this).val().length < 1) {
+                ceklunch();
+            }
+        });
         $('#jdrop').on('click', function() {
             $('#jcdrop').slideDown( "fast" );
         });
@@ -168,6 +172,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             //console.log($(this).val());
             search_seminar($(this).val(),res);
         });
+        
     $(document).ready(function() {ceklunch();});
     });
     

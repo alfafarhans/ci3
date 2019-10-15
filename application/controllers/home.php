@@ -109,8 +109,9 @@ class home extends CI_Controller {
 			$dayname = date('D', strtotime($value['seminar_date']));
             $daynum = date('d', strtotime($value['seminar_date']));
             $mounth = date('F', strtotime($value['seminar_date']));
-            $hours =  date('H', strtotime($value['seminar_date']));
-            $minute =  date('i', strtotime($value['seminar_date']));
+           // $hours =  date('H', strtotime($value['seminar_date']));
+			//$minute =  date('i', strtotime($value['seminar_date']));
+			
 				$output .= 
 			'<div id="post">
 				<a href="'. base_url().'event_detail/'. $value['seminar_id'].'"> ';
@@ -118,8 +119,8 @@ class home extends CI_Controller {
 						<img src="'.base_url().'asset/pict/banner/'. $value['seminar_banner'].'">
 				<div id="descbox"> 
 					<div id="namaseminar">'.$value['seminar_name'].' </div>
-					<div id="dateseminar">'.$dayname.',&nbsp;'.$daynum.'&nbsp;'.$mounth.',&nbsp;'.$hours.'.'.$minute.'</div>
-					<div id="locseminar">'.$value['seminar_city'].'</div>
+					<div id="dateseminar">'.$dayname.',&nbsp;'.$daynum.'&nbsp;'.$mounth.'</div>
+					<div id="locseminar">'.ucwords($value['seminar_city']).'</div>
 				</div>
 				</a>
 			</div>';
@@ -154,7 +155,7 @@ class home extends CI_Controller {
 		  foreach ($result->result_array() as $value) {
 			if($param != $value['seminar_city']){
 				$param = $value['seminar_city'];
-				$output .='<a href="javascript:void(0);" id ="'.$value['seminar_city'].'" onClick = "changevalloc(this)">'.$value['seminar_city'].'</a>';//'. base_url().'home/getloc/'. $value['seminar_city'].'
+				$output .='<a href="javascript:void(0);" id ="'.$value['seminar_city'].'" onClick = "changevalloc(this)">'.ucwords($value['seminar_city']).'</a>';//'. base_url().'home/getloc/'. $value['seminar_city'].'
 			}
 		}
   		}
