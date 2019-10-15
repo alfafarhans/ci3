@@ -45,16 +45,6 @@ class profile extends CI_Controller {
 				$firstnamefill = str_replace(" ","&nbsp;",$value['first_name']);
 				$name = ucwords($firstnamefill."&nbsp;".$value['last_name']);
 				
-				if($value['user_gender'] == 1 ){
-					$gender = "Laki - Laki" ;
-				}
-				elseif ($value['user_gender'] == 0){
-					$gender = "Perempuan";
-				}
-				else{
-					$gender = " ";
-				}
-
 	   echo '
 	<div id="rightbody">
 		<div id="objright">
