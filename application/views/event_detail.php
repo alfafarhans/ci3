@@ -151,7 +151,7 @@
                 if(isset($userid)){
                     foreach ($seminar as $value) {
                         echo 
-                    '<a href="#" onClick="send('.$value['seminar_id'].','.$userid.')"> Daftar </a>';
+                    '<a href="'. base_url().'payment/" onClick="send('.$value['seminar_id'].','.$userid.')"> Daftar </a>';
                         }
                     }
                     else{

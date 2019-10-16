@@ -202,6 +202,7 @@ body{
         #body #bodyartikel2 #rightposttop{
             flex-grow: 13;
             background-color: #5890CF;
+            color: rgb(0, 22, 49);
         }
 
         #body #bodyartikel2 #leftpost{
