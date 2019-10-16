@@ -18,6 +18,32 @@
     }
 
     $(function() {
+        window.chpassed = function(){
+            let passwordold = $('#passwordold').val();
+            let passwordnew = $('#passwordnew').val();
+            let email = $('#email').val();
+              $.ajax({
+            url:"<?php echo base_url(); ?>profile/chpasswr",
+            method:"POST",
+            data:{passwordold1:passwordold,passwordnew1:passwordnew,email1:email},
+            
+            success:function(data){
+                var responParse = JSON.parse(data);
+                        if( responParse.msg == "Yeay!"  ){
+                            alert(responParse.msg);
+                            alert('Well Played !');
+                            window.location.replace("<?php echo base_url();?>profile/myprofile/3");
+                        }
+                        else{
+                            alert(responParse.msg);
+                        }
+                   
+					}
+            });
+
+
+            
+        }
         
         function navToContent(url){
 		$.ajax({
@@ -72,9 +98,11 @@
         }
      });
      
-        
-    });
-    
+    });//endJS
+
+    function chpass(){
+        chpassed();
+    }
     </script>
 	
 </head>

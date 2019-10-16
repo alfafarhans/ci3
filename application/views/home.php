@@ -134,9 +134,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             url:"<?php echo base_url(); ?>home/filcat",
             method:"POST",
             data:{cat1:cat,price1:price,date1:date,loc1:loc},
-            beforeSend: function(data){
-				$("#postinduk").html("");
-			},
             success:function(data){
             $('#postinduk').html(data);
                 }

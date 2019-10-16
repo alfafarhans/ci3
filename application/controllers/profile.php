@@ -56,8 +56,37 @@ class profile extends CI_Controller {
 				$this->profile_data->update_data($data,'user','user_id' ,$userid);
 			redirect('home');
 			}
+			else{
+			$data['failupload'] = "Failed Upload";
+			$this->load->view('profile',$data);
+			}
 		}
-		
+	}
+	function chpasswr(){
+		$passold = $this->input->post('passwordold1');
+		$passnew = $this->input->post('passwordnew1');
+		$email = $this->input->post('email1');
+		$enpassold = md5($passold);
+		$enpassnew = md5($passnew);
+		$data = array(
+			'password' => $enpassnew,
+			);
+			$cek = $this->profile_data->update_password($data,'user',$email ,$enpassold);
+		if($cek){
+			$status = true;
+			$msg = "Successfully Update"; 
+		}
+		else{
+			$status = true;
+				$msg = "There is something wrong on you";
+		}
+
+			echo json_encode(
+				array(
+					'status' => $status,
+					'msg' => $msg
+				   )
+				);
 	}
 
 	private function up_pict() {
@@ -190,6 +219,11 @@ class profile extends CI_Controller {
 					<input type="submit" id="chprofile" name="submit" value="Save">
 				</div>  
 			</div>
+			';
+			if(!empty($failupload)){
+				echo $failupload;
+			}
+			echo '
 		</div>
 	</div>
 	</form>
@@ -251,7 +285,7 @@ elseif ($par == "setting") {
 					Email
 				</div>
 				<div id="col-75"> 
-					<input type="text" id="email" name="email" value="'.$value['email'].'">
+					<input type="text" id="email" name="email" value="'.$value['email'].'" required>
 				</div>
 			</div>
 
@@ -260,7 +294,7 @@ elseif ($par == "setting") {
 					Old Password
 				</div>
 				<div id="col-75"> 
-					<input type="text" placeholder="Fill old your cute secret code" id="passwordl" name="passwordl">
+					<input type="password" placeholder="Fill old your cute secret code" id="passwordold" name="passwordl" required>
 				</div>
 			</div>
 
@@ -269,7 +303,7 @@ elseif ($par == "setting") {
 					New Password
 				</div>
 				<div id="col-75"> 
-					<input type="text" placeholder="Change with the cute one" id="passwordb" name="passwordb">
+					<input type="password" placeholder="Change with the cute one" id="passwordnew" name="passwordb" required>
 				</div>
 			</div>
 		
@@ -277,7 +311,7 @@ elseif ($par == "setting") {
 				<div id="col-25"> 
 				</div>  
 				<div id="col-75"> 
-					<input type="submit" id="chpass" name="submit" value="Save">
+					<input type="submit" id="chpass" onClick= "chpass()" name="submit" value="Save">
 				</div>  
 			</div>
 		</div>
