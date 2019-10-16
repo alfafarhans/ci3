@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/event_detail.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/payment.css">
     <script type="text/javascript" src="<?php echo base_url();?>asset/js/jquery-3.4.1.min.js"></script>
     <script type="text/javascript">
    function send(eventid,userid) {
@@ -79,7 +79,6 @@
             </div>
             
             <div id="navbar_kanan">
-                <a id="a" href="'.base_url().'ads">Advertising </a>
 
                 <div id="jdrop" class="dropdown">
                     <div id="jdrop" class="p"> Welcome '.$username.' ! </div>
@@ -103,7 +102,6 @@
             </div>
             
             <div id="navbar_kanan">
-            <a id="a" href="'.base_url().'ads">Advertising </a> 
             <a id="a" href="'.base_url().'login/">Sign in</a>
             </div>
         </div> ';
@@ -113,8 +111,111 @@
 
     <!-- bagian isi  -->
   
-    
-
+    <div id="body">
+        <div id="bodyartikel2">
+            <div id="rightbody">
+                <div id="content">
+                    <div id="judul">
+                        Ringkasan Tagihan
+                    </div>
+                    <div id="judul">
+                        Rp 35.000
+                    </div>
+                    <div id="isi">
+                        Silahkan lakukan transfer ke rekening berikut.
+                        <div id="box">
+                            <div id="flex">
+                                <img src="../asset/pict/bank/BCA.png">
+                                <div id="slot2">
+                                    BCA Account
+                                </div>
+                            </div>
+                            <div id="flex2">
+                                <div id="namaacc">
+                                    Alfa Farhan
+                                </div>
+                                <div id="noacc">
+                                    41517320004 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="leftbody">
+                <div id="judul">
+                    Pembayaran
+                </div>
+                <div id="namaseminar">
+                    National Youth Summit 
+                </div>
+                <div id="dateseminar">
+                    Fri, 18 October 2019, 05.14
+                </div>
+                <div id="locseminar">
+                    Ballroom Puri Agung, Hotel Grand Sahid Jakarta. Jl. Jend. Sudirman No.Kav. 86, RT.10/RW.11, Karet Tengsin, Jakarta Pusat, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10220
+                </div>
+                <div id="judul2">
+                    Mohon lengkapi data pembayaran anda
+                </div>
+                <div id="postpembayaran">
+                    Pastikan kesesuaian data rekening pengirim dengan rekening yang anda kirimkan. Data yang di input masih dapat anda ubah di event yang anda ikuti. Jika ada ketidaksesuaian data, 
+                    kami akan langsung informasikan dari notifikasi. 
+                </div>
+                <div id="row">
+                    <div id="col-25">
+                        Nama rekening pengirim
+                    </div>
+                    <div id="col-75">
+                        <input type="text" id="namakirim" name="namakirim">
+                    </div>
+                </div>
+                <div id="row">
+                    <div id="col-25">
+                        Nama bank pengirim
+                    </div>
+                    <div id="col-75">
+                        <select name="bank" id="bank">
+                            <option value="" selected>Not Selected</option>
+                            <option value="Mandiri">Bank Mandiri</option>
+                            <option value="BNI">Bank Negara Indonesia (BNI)</option>
+                            <option value="BRI">Bank Rakyat Indonesia (BRI)</option>
+                            <option value="BTN">Bank Tabungan Negara (BTN)</option>
+                            <option value="BCA">Bank Central Asia (BCA)</option>
+                            <option value="Permata">Bank Permata</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="row">
+                    <div id="col-25">
+                        Nama bank pengirim lainnya
+                    </div>
+                    <div id="col-75">
+                        <input type="text" id="bank2" name="bank2" placeholder="kosongkan jika nama bank terdapat dalam list">
+                    </div>
+                </div>
+                <div id="row">
+                    <div id="col-25">
+                        No rekening pengirim
+                    </div>
+                    <div id="col-75">
+                        <input type="text" id="norek" name="norek">
+                    </div>
+                </div>
+                <div id="row">
+                    <div id="col-25">
+                        Bukti pembayaran
+                    </div>
+                    <div id="col-75">
+                        <input type="file" id="buktipem" name="buktipem">
+                    </div>
+                </div>
+                <div id="row">
+                    <input type="submit" id="submit" value="Submit">
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- bagian footer  -->
 

@@ -172,98 +172,166 @@ body{
         width: 1000px;
         margin: 25px auto;
         top: 0;
-        align-content: center;
     }
 
-    #shadow{
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-        margin-bottom: 15px;
-    }
-
-    #flexbod{
-        display: flex;
-    }
-
-    #padding{
-        padding: 15px;
-    }
-
-    #price{
-        padding: 15px;
-        position: relative;
-        top: 50%;
-    }
-
-        #body #bodyartikel2 #leftposttop{
-            flex-grow: 1;
-            background-color: #5890CF;
+        #body #bodyartikel2 #leftbody {
+            width: 570px;
         }
 
-        #body #bodyartikel2 #rightposttop{
-            flex-grow: 13;
-            background-color: #5890CF;
+            #body #bodyartikel2 #leftbody #judul{
+                font-size: 20px;
+                font-weight: bold;
+                color: #484848;
+                margin-top: 35px;
+                padding-bottom: 10px;
+                border-bottom: 1px solid #D8D8D8;
+            }
+
+            #body #bodyartikel2 #leftbody #judul2{
+                font-size: 18px;
+                font-weight: bold;
+                color: #484848;
+                margin-top: 15px;
+            }
+
+            #body #bodyartikel2 #leftbody #postpembayaran{
+                font-size: 15px;
+                color: #ff0000;
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }
+
+            #body #bodyartikel2 #leftbody #namaseminar{
+                font-size: 18px;
+                font-weight: bold;
+                margin-top: 15px;
+                color: #484848;
+            }
+
+            #body #bodyartikel2 #leftbody #dateseminar{
+                font-size: 15px;
+                margin-top: 10px;
+            }
+
+            #body #bodyartikel2 #leftbody #locseminar{
+                font-size: 15px;
+                margin-top: 10px;
+                padding-bottom: 15px;
+                border-bottom: 1px solid #D8D8D8;
+            }
+
+            #body #bodyartikel2 #leftbody #row:after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+
+                #leftbody *{
+                    box-sizing: border-box;
+                }
+
+                #leftbody #col-25{
+                    float: left;
+                    padding: 10px 0 15px; 
+                    width: 40%;
+                    margin-top: 6px;
+                    font-size: 15px;
+                }
+
+                #leftbody #col-75{
+                    float: left;
+                    padding: 5px 0 5px; 
+                    width: 60%;
+                }
+
+                #leftbody input[type=text], #leftbody select{
+                    width: 100%;
+                    padding: 12px;
+                    border: 1px solid #ccc;
+                    border-radius: 4px;
+                    resize: vertical;
+                }
+
+                #leftbody input[type=file]{
+                    width: 100%;
+                    padding: 12px;
+                    border: 1px solid #ccc;
+                    border-radius: 4px;
+                    resize: vertical;
+                }
+
+                #leftbody input[type=submit] {
+                    margin-top: 15px;
+                    background-color: #5890CF;
+                    border: none;
+                    width: 100%;
+                    color: #063A74;
+                    padding: 12px 20px;
+                    border-radius: 4px;
+                    cursor: pointer;
+                }
+            
+                #leftbody input[type=submit]:hover {
+                    background-color: #063A74;
+                    color: #ffffff;
+                }
+
+        #body #bodyartikel2 #rightbody {
+            width: 400px;
+            margin-left: 600px;
+            position: fixed;
+            box-shadow: 0 1px 8px 0 rgba(0,0,0,.12);
         }
 
-        #body #bodyartikel2 #leftpost{
-            flex-basis: 140px;
-            flex-grow: 5;
-            padding: 10px 0;
-        }
+            #body #bodyartikel2 #rightbody #content {
+                padding: 0 15px;
+            }
 
-        #body #bodyartikel2 #rightpost{
-            flex-basis: 100px;
-            flex-grow: 13;
-            padding: 10px 0;
-        }
+                #content #judul{
+                    font-size: 18px;
+                    font-weight: bold;
+                    color: #484848;
+                    padding: 12px 0;
+                    border-bottom: 1px solid #D8D8D8;
+                }
 
-#obj-post{
-padding: 30px 0 0 50px;
-padding-right: 50px;
-}
+                #content #isi{
+                    font-size: 15px;
+                    padding: 12px 0;
+                }
 
-    #obj-post a{
-        background-color: #ffffff;
-        border-radius: 30px;
-        cursor: pointer;
-        text-decoration: none;
-        border: 1px solid #F10034;
-        padding: 2px 10px;
-        align-content: center;
-        color: #F10034;
-        margin-right: 7px;
-    }
+                    #content #isi #box{
+                        margin-top: 10px;
+                        box-shadow: rgba(49, 53, 59, 0.12) 0px 1px 6px 0px;
+                    }
 
-    #obj-post a:hover{
-        border: 1px solid #063A74;
-        color: #063A74;
-    }
+                        #content #isi #flex{
+                            display: flex;
+                            border-bottom: 1px solid #D8D8D8;
+                            padding: 15px;
+                        }
 
-#obj-judul{
-font-size: 20px;
-font-weight: bold;
-}
+                            #content #isi #flex img{
+                                max-width: 70px;
+                            }
 
-        #body #bodyartikel2 img{
-            max-width: 340px;
-            margin-bottom: -3px;
-        }
+                            #content #isi #flex #slot2{
+                                margin-left: 15px;
+                            }
 
-        #body #bodyartikel2 #padding a{
-            background-color: #FFEF00;
-            width: 100%;
-            color: #063A74;
-            padding: 12px 132px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            margin-top: 20px;
-            text-decoration: none;
-        }   
+                        #content #isi #flex2{
+                            padding: 15px;
+                        }
 
-        #body #bodyartikel2 #padding a:hover {
-            background-color: #E5D600;
-            color: #063A74; 
-        }
+                            #content #isi #flex2 #namaacc{
+                                font-size: 17px;
+                                font-weight: bold;
+                                color: #0F63C0;
+                            }
+
+                            #content #isi #flex2 #noacc{
+                                font-size: 15px;
+                            }
 
 #infofooter600{
     position: relative;

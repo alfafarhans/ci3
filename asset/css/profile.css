@@ -190,8 +190,9 @@ body{
         }
 
 #objright{
-    padding: 35px 40px 40px 40px;   
+    padding: 20px 40px 40px 40px;   
     background-color: #5890CF;
+    color: rgb(0, 22, 49);
 }
 
 #objright2{
@@ -261,30 +262,35 @@ body{
 }
 
 #objright3{
-    width: 40%;
+    width: 30%;
     flex-grow: 1;
+    max-height: 250px;
 }
 
     #objright3 img{
-        width: 100%;
+        width: 230px;
+        height: 230px;
+        object-fit: cover;
         margin-bottom: -4px;
     }
 
 #objright4{
-    width: 60%;
-    height: 100%;
-    padding: 30px 50px 20px 30px;
+    width: 70%;
+    max-height: 180px;
+    padding: 30px 30px 20px 30px;
 }
 
     #objright4 #namaseminar{
-        font-size: 25px;
+        font-size: 18px;
         font-weight: bold;
         text-align: left;
+        color: #484848;
         padding-bottom: 10px;
     }
 
     #objright4 #dateseminar {
         text-align: left;
+        font-size: 15px;
     } 
 
     #objright4 #locseminar {
@@ -292,11 +298,13 @@ body{
     } 
 
     #objright4 #bota{
-        padding-top: 20px;
+        position: absolute;
+        margin-top: 77px;
     }
 
     #objright4 #bota a{
         background-color: #5890CF;
+        margin-left: -10px;
         color: #063A74;
         padding: 12px 15px;
         border: none;
