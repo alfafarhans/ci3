@@ -6,8 +6,6 @@ class home extends CI_Controller {
 		parent::__construct();
 		$this->load->model('seminar_data');
 	}
-	
-
 	/**
 	 * Index Page for this controller.
 	 *
@@ -25,7 +23,6 @@ class home extends CI_Controller {
 	 */
 	public function index()
 	{	//http://localhost:8080/ci3/index.php/home
-		
 		$userid = $this->session->userdata('user_id');
 		$username = $this->session->userdata('user_name');
 		if(empty($userid)){//if not signing
