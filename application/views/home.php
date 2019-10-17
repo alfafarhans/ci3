@@ -30,7 +30,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             //$('#location').val("");
         }
     }
-
+     //for page
+    let pager = 0;
+    let state = true;
+    function page(adder) {
+        if(state){
+        pager += adder;
+        }
+        else{
+            alert("Please Go back !");
+        }
+       // alert("wew");
+        console.log(pager);
+        ceklunch();
+    }
+    
+   
     $(function() {
         //select tag
                 var x, i, j, selElmnt, a, b, c;
@@ -128,29 +143,34 @@ defined('BASEPATH') OR exit('No direct script access allowed');
            
         }
             }
-        function filcat(cat,price,date,loc) {
 
+        function filcat(cat,price,date,loc, nextpage) {
             $.ajax({
-            url:"<?php echo base_url(); ?>home/filcat",
+            url:"<?php echo base_url(); ?>home/filcat/"+ nextpage,
             method:"POST",
             data:{cat1:cat,price1:price,date1:date,loc1:loc},
             success:function(data){
             $('#postinduk').html(data);
+            let cev = document.getElementById('cekval').value;
+            if(pager>= cev){ state = false;}
                 }
             });
         }
+
         window.ceklunch = function() { 
             var price =  $("#price").val();
             var category =  $("#category").val();
             var date =  $("#date").val();
             var loc =  $("#location").val();
-            console.log(loc);
-            filcat(category,price,date,loc);
+            //console.log(loc);
+            filcat(category,price,date,loc,pager);
+
         }
 
 
 
         //ALL TRIGEER
+
         $('#location').keyup(function(e){
             if(e.keyCode == 8 && $(this).val().length < 1) {
                 ceklunch();
@@ -318,8 +338,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
 
         <div id="postinduk2">
-            <a id="a2" href="#"> Left page </a>
-            <a id="a1" href="#"> Next page </a> 
+            <a id="a2" onClick = "page(-6);" href="javascript:void(0);" >&laquo; Back </a>
+            <a id="a1" onClick = "page(6);" href="javascript:void(0);" > Next &raquo; </a> 
         </div>  
     </div>  
     <!-- bagian footer  -->

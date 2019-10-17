@@ -5,6 +5,8 @@ class home extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		$this->load->model('seminar_data');
+		
+		$this->load->library('pagination');
 	}
 	/**
 	 * Index Page for this controller.
@@ -35,7 +37,7 @@ class home extends CI_Controller {
 		}
 		
 	}
-	function filcat(){
+	function filcat($from = 0){
 		$newdate1= "";
 		$newdate2= "";
 		$output = "";
@@ -97,11 +99,25 @@ class home extends CI_Controller {
 			$pricer = $this->input->post('price1');
 			$locationer = $this->input->post('loc1');
 			$data = $this->seminar_data->get_filtercat($category,$pricer,$newdate1,$newdate2,$locationer);
+			
+			//$config['base_url'] = base_url().'/home/index/';
+			//
+			$config['total_rows'] = $data->num_rows();
+			$config['per_page'] = 6;
+			$this->pagination->initialize($config);	
+			if($from < $config['total_rows'] ){
+				$start = $from;
+			}
+			else{
+				$start = $config['total_rows'];
+			}	
+			$datanew = $this->seminar_data->get_filtercat($category,$pricer,$newdate1,$newdate2,$locationer,$config['per_page'],$start);
 		}
 		
-  		if($data->num_rows() > 0)
+		$output .= '<input type="hidden" id="cekval" value = "'.$config['total_rows'].'">';
+  		if($datanew->num_rows() > 0)
  		 {
- 		  foreach($data->result_array() as $value)
+ 		  foreach($datanew->result_array() as $value)
  		  {
 			$dayname = date('D', strtotime($value['seminar_date']));
             $daynum = date('d', strtotime($value['seminar_date']));
@@ -125,7 +141,7 @@ class home extends CI_Controller {
 				 echo $output;
 		  }
 		  else {
-			  $output .= '<div id="namaseminar">You are not lucky &#128532; , keep following us!</div>';
+			  $output .= '<div id="fail" value = "wrf">You are not lucky &#128532; , keep following us!</div>';
 			  echo $output;
 		  }
 		}

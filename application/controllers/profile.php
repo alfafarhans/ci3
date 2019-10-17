@@ -136,7 +136,7 @@ class profile extends CI_Controller {
 					<img id="icon" src="'.base_url().'/asset/pict/profile/'.$userid.'.jpg"> 
 				</div>
 				<div id="upload"> 
-					<input type="file" name="profilepic" id = "file">
+					<input type="file" name="profilepic" accept="image/*" id = "file">
 				</div>
 			</div>
 
