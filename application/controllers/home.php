@@ -137,13 +137,19 @@ class home extends CI_Controller {
 				</div>
 				</a>
 			</div>';
+			$status = true;
 				 }
-				 echo $output;
 		  }
 		  else {
-			  $output .= '<div id="fail" value = "wrf">You are not lucky &#128532; , keep following us!</div>';
-			  echo $output;
+			  $output .= '<div>You are not lucky &#128532; , keep following us!</div>';
+			$status = false;
 		  }
+		  echo json_encode(
+			array(
+				'output' => $output,
+				'status' => $status
+			   )
+			);
 		}
 	function search (){
 		$output="";

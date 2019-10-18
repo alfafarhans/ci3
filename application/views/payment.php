@@ -55,7 +55,11 @@
     $(function() {
 
         //ALL TRIGEER
-        $('#jdrop').on('click', function() {
+        $('#jdrop').on('click', function() {  //.dropdown-content
+            let wit = $('#jdrop').width();
+            wit += 29.8;
+            console.log(wit);
+            $("#jcdrop").css("width", wit);
             $('#jcdrop').slideDown( "fast" );
         });
     });
@@ -79,10 +83,11 @@
             </div>
             
             <div id="navbar_kanan">
+                <a id="a" href="'.base_url().'ads">Advertising </a>
 
                 <div id="jdrop" class="dropdown">
                     <div id="jdrop" class="p"> Welcome '.$username.' ! </div>
-                    <img id="jdrop" class="imgdrop" src="../asset/pict/profile/'.$user_id.'.png">
+                    <img id="jdrop" class="imgdrop" src="../asset/pict/profile/'.$user_id.'.jpg">
                  </div>
                 <div id="jcdrop" class="dropdown-content">
                 <a href="'.base_url().'profile/myprofile/1"> Profile </a> 
@@ -102,6 +107,7 @@
             </div>
             
             <div id="navbar_kanan">
+            <a id="a" href="'.base_url().'ads">Advertising </a> 
             <a id="a" href="'.base_url().'login/">Sign in</a>
             </div>
         </div> ';

@@ -62,7 +62,7 @@ class event_detail extends CI_Controller {
 
 				$this->seminar_data->input_data($data1,'payment');
 				$this->seminar_data->input_data($data2,'user_trx');
-				$msg = "Yeay!";
+				$msg = "THANK YOU !!!";
 				//redirect('home');
 		}	
 		else{
@@ -70,7 +70,7 @@ class event_detail extends CI_Controller {
 		}
 	}
 	else{
-		$msg = "you already registered";
+		$msg = "You already registered";
 	}	
 		echo json_encode(
 			array(

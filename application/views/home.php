@@ -31,22 +31,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         }
     }
      //for page
-    let pager = 0;
-    let state = true;
-    function page(adder) {
-        if(state){
-        pager += adder;
-        }
-        else{
-            alert("Please Go back !");
-        }
-       // alert("wew");
-        console.log(pager);
-        ceklunch();
-    }
-    
-   
     $(function() {
+        let pager = 0;
+        let status = true;
         //select tag
                 var x, i, j, selElmnt, a, b, c;
         /*look for any elements with the class "custom-select":*/
@@ -150,10 +137,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             method:"POST",
             data:{cat1:cat,price1:price,date1:date,loc1:loc},
             success:function(data){
-            $('#postinduk').html(data);
-            let cev = document.getElementById('cekval').value;
-            if(pager>= cev){ state = false;}
-                }
+            var responParse = JSON.parse(data);
+            console.log(responParse.status);
+            if(responParse.status){
+            $('#postinduk').html(responParse.output);
+            }
+            else{
+            $('#postinduk').html(responParse.output);
+            status =  responParse.status; 
+            alert("Don't go more than this !");
+
+            }
+            
+            
+            }
             });
         }
 
@@ -170,13 +167,44 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
         //ALL TRIGEER
+        //next
+        $('#a1').click (function () {   
+            if(status){
+            pager += 6;
+            ceklunch();
+            }
+            else{
+                return false;
+            }
+
+
+                });
+        //prev
+        $('#a2').click (function () {   
+            if(!status){
+                status = true;
+            }
+            if(pager !== 0){
+                pager -= 6;
+                ceklunch();
+            }
+            else{
+                alert("Don't go more than this !");
+                return false;
+            }
+            
+                });
 
         $('#location').keyup(function(e){
             if(e.keyCode == 8 && $(this).val().length < 1) {
                 ceklunch();
             }
         });
-        $('#jdrop').on('click', function() {
+        $('#jdrop').on('click', function() {  //.dropdown-content
+            let wit = $('#jdrop').width();
+            wit += 29.8;
+            console.log(wit);
+            $("#jcdrop").css("width", wit);
             $('#jcdrop').slideDown( "fast" );
         });
         $('#seminar').on('keyup', function() {
@@ -338,8 +366,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
 
         <div id="postinduk2">
-            <a id="a2" onClick = "page(-6);" href="javascript:void(0);" >&laquo; Back </a>
-            <a id="a1" onClick = "page(6);" href="javascript:void(0);" > Next &raquo; </a> 
+            <a id="a2"  href="javascript:void(0);" >&laquo; Back </a>
+            <a id="a1"  href="javascript:void(0);" > Next &raquo; </a> 
         </div>  
     </div>  
     <!-- bagian footer  -->

@@ -4,7 +4,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class payment extends CI_Controller {
 	function __construct(){
 		parent::__construct();		
-		$this->load->model('login_reg');
 	}
 	/**
 	 * Index Page for this controller.
@@ -21,9 +20,21 @@ class payment extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index(){
-		http://localhost:8080/ci3/index.php/dashbord/register
-		$this->load->view('payment');
+	public function confirmation(){
+		$userid = $this->session->userdata('user_id');
+		if(!empty($userid)){
+		$username = $this->session->userdata('user_name');
+		$data['user_id'] = $userid;
+		$data['username'] = $username;
+		$this->load->view('payment',$data);
+		}
+		else{
+			redirect('home');
+		}
+		
+
+
+
     }
 }
 ?>

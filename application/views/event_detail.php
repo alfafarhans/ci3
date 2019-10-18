@@ -12,14 +12,10 @@
 					url: "<?php echo base_url();?>event_detail/applyevent/"+eventid+"/"+userid,
 					cache: false,
 					success: function(data){
-                    //console.log(data);
-                    //  console.log(responParse.msg);
-                    // console.log(responParse.status);
                         var responParse = JSON.parse(data);
-                        if( responParse.msg == "Yeay!"  ){
+                        if(responParse.msg.length > 0 ){
                             alert(responParse.msg);
-                            alert('Your Account Succesfully Created');
-                            window.location.replace("<?php echo base_url();?>home");
+                            window.location.replace("<?php echo base_url();?>payment/confirmation");
                         }
                         else{
                             alert(responParse.msg);
@@ -55,7 +51,11 @@
     $(function() {
 
         //ALL TRIGEER
-        $('#jdrop').on('click', function() {
+        $('#jdrop').on('click', function() {  //.dropdown-content
+            let wit = $('#jdrop').width();
+            wit += 29.8;
+            console.log(wit);
+            $("#jcdrop").css("width", wit);
             $('#jcdrop').slideDown( "fast" );
         });
     });
@@ -151,7 +151,7 @@
                 if(isset($userid)){
                     foreach ($seminar as $value) {
                         echo 
-                    '<a href="'. base_url().'payment/"> Daftar </a>';
+                    '<a href="#" onClick="send('.$value['seminar_id'].','.$userid.');"> Daftar </a>';
                         }
                     }
                     else{

@@ -61,7 +61,11 @@
     }
     
     //all trigerstate
-    $('#jdrop').on('click', function() {
+    $('#jdrop').on('click', function() {  //.dropdown-content
+            let wit = $('#jdrop').width();
+            wit += 29.8;
+            console.log(wit);
+            $("#jcdrop").css("width", wit);
             $('#jcdrop').slideDown( "fast" );
         });
     $('#profile').on('click', function() {
@@ -113,9 +117,7 @@
     </div>
 
     <!-- bagian navbar  -->
-    <?php 
-    
-      
+    <?php   
         echo '
         <div id="top">
             <div id="navbar_kiri">
