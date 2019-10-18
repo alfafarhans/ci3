@@ -127,13 +127,15 @@ body{
 
         #body #bodyartikel2 #leftbody {
             width: 250px;
-            position: fixed;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            position: absolute;
+            margin-top: 168px;
         }
 
 .objleft{
     padding-left: 10px;
-    background-color: #FFF55F;
+    border: 1px solid #D8D8D8;
+    border-radius: 10px;
+    margin-bottom: 20px;
 }
 
     .objleft a{
@@ -143,18 +145,22 @@ body{
         padding-top: 20px;
         padding-bottom: 20px;
         padding-left: 15px;
-        color: #063A74;
+        color: #000000;
         cursor: pointer;
-        font-size: 15px;
+        font-size: 18px;
     }
 
     .objleft:hover{
-        background-color: #E5D600;
+        border: 1px solid #063A74;
+    }
+
+    .objleft a:hover{
+        color: #063A74;
     }
 
 .active{
     padding-left: 10px;
-    background-color: #E5D600;
+    border: 1px solid #063A74;
 }
 
     .active a{
@@ -162,7 +168,7 @@ body{
         text-decoration: none;
         width: 100%;
         cursor: pointer;
-        font-size: 15px;
+        font-size: 18px;
         color: #063A74;
         padding-top: 20px;
         padding-bottom: 20px;
@@ -170,28 +176,30 @@ body{
     }   
 
     #body #bodyartikel2 #mainright{
-        width: 75%;
-        margin-left: 270px;
+        width: 73%;
+        margin-left: 290px;
     }
 
         #body #bodyartikel2 #mainright #rightbody {
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            margin-top: -30px;
+            margin-left: -320px;
         }
 
         #body #bodyartikel2 #mainright #rightbody2 {
             margin-top: 20px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            border: 1px solid #D8D8D8;
+            border-radius: 10px;
         }
 
         #body #bodyartikel2 #mainright #rightbody3 {
             margin-top: 20px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            border: 1px solid #D8D8D8;
+            border-radius: 10px;
             display: flex;
         }
 
 #objright{
-    padding: 20px 40px 40px 40px;   
-    background-color: #5890CF;
+    padding: 20px 40px 20px 40px;   
     color: rgb(0, 22, 49);
 }
 
@@ -232,7 +240,7 @@ body{
         max-width: 100px;
     }
 
-        #objright2 input[type=text], input[type=date], select, textarea {
+        #objright2 input[type=text], input[type=date], select, textarea, input[type=password] {
             width: 100%;
             padding: 12px;
             border: 1px solid #ccc;
@@ -262,49 +270,55 @@ body{
 }
 
 #objright3{
-    width: 30%;
+    width: 40%;
     flex-grow: 1;
     max-height: 250px;
 }
 
     #objright3 img{
-        width: 230px;
-        height: 230px;
+        width: 250px;
+        height: 250px;
         object-fit: cover;
+        border-radius: 10px 0 0 10px ;
         margin-bottom: -4px;
     }
 
 #objright4{
-    width: 70%;
-    max-height: 180px;
-    padding: 30px 30px 20px 30px;
+    width: 100%;
+    position: relative;
+    padding: 25px 30px 20px 30px;
 }
 
-    #objright4 #namaseminar{
-        font-size: 18px;
-        font-weight: bold;
-        text-align: left;
-        color: #484848;
-        padding-bottom: 10px;
+    #objright4 #desc{
+        position: absolute;
+        padding-right: 30px;
     }
 
-    #objright4 #dateseminar {
-        text-align: left;
-        font-size: 15px;
-    } 
+        #objright4 #desc #namaseminar{
+            font-size: 18px;
+            font-weight: bold;
+            text-align: left;
+            color: #484848;
+            padding-bottom: 10px;
+        }
 
-    #objright4 #locseminar {
-        text-align: left;
-    } 
+        #objright4 #desc #dateseminar {
+            text-align: left;
+            font-size: 15px;
+        } 
+
+        #objright4 #desc #locseminar {
+            text-align: left;
+        } 
 
     #objright4 #bota{
         position: absolute;
         margin-top: 77px;
+        bottom: 30px;
     }
 
     #objright4 #bota a{
         background-color: #5890CF;
-        margin-left: -10px;
         color: #063A74;
         padding: 12px 15px;
         border: none;

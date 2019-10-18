@@ -121,8 +121,10 @@ class profile extends CI_Controller {
 	   echo '
 	<div id="rightbody">
 		<div id="objright">
-			<h3> Profile </h3> 
+			<center>
+			<h1> Profile </h1> 
 			Silahkan lengkapi data diri anda. Data diri anda di perlukan untuk keperluan administrasi aktifitas seminar yang anda ikuti. 
+			</center>
 		</div>
 	</div>
 	<form method="post" action="'.base_url().'profile/up_profile" enctype="multipart/form-data" id="myform">
@@ -234,8 +236,10 @@ elseif ($par == "myevent") {
 	$userdata = $this->profile_data->get_seminar_history($userid);
 	echo'	<div id="rightbody">
 	<div id="objright">
-		<h3> My Event </h3> 
+		<center>
+		<h1> My Event </h1> 
 		Berikut list seminar yang saya ikuti.
+		</center>
 	</div>
 </div>';
 			foreach ($userdata->result_array() as $value) {
@@ -250,18 +254,21 @@ elseif ($par == "myevent") {
 			<img src="'.base_url().'asset/pict/banner/'.$value['seminar_banner'].'">
 		</div>
 		<div id="objright4">
-			<div id="namaseminar">
-			'.$value['seminar_name'].'
-			</div>  
-			<div id="dateseminar">
-			'.$daynum.'&nbsp;'.$mounth.'&nbsp;'.$year.'
-			</div> 
-			<div id="locseminar">
-			'.ucwords($value['seminar_city']).'</div>  
+			<div id="desc">
+				<div id="namaseminar">
+				'.$value['seminar_name'].'
+				</div>  
+				<div id="dateseminar">
+				'.$daynum.'&nbsp;'.$mounth.'&nbsp;'.$year.'
+				</div> 
+				<div id="locseminar">
+				'.ucwords($value['seminar_held']).'</div>  
+			</div>
 			<div id="bota">
 				<a href="#">'.$value['atten_status'].'</a>
 			</div>
 		</div>
+
 	</div>';
 			}
 }//second if
@@ -272,10 +279,11 @@ elseif ($par == "setting") {
 	foreach ($userdata->result_array() as $value) {
 	echo '
 	<div id="rightbody">
-        <div id="objright">
-		<h3> Settings </h3> 
-		Konfigurasikan akun anda,
-		lakukan pergantian password rentang waktu tertentu.
+		<div id="objright">
+			<center>
+				<h1> Settings </h1> 
+				Konfigurasikan akun anda, lakukan pergantian password rentang waktu tertentu.
+			</center>
         </div>
 	</div>
 	<div id="rightbody2">
