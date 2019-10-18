@@ -131,14 +131,15 @@
 			            <div id="desc">
 				            <div id="namatx">
                                 Pembayaran National Youth Summit (35000)
-				            </div>  
+                            </div>  
 				            <div id="kettx">
-                                BCA | Alfa Farhan | 41517320004 | <a href="<?php echo base_url();?>asset/pict/bukti-tf/1.png" target="_blank"> bukti_tf.png </a>
+                                18/10/2019 | BCA | Alfa Farhan | 41517320004 | <a href="<?php echo base_url();?>asset/pict/bukti-tf/1.png" target="_blank"> bukti_tf.png </a>
 				            </div> 
 			            </div>
                     </div>
                     <div id="bota">
                         <input type="submit" id="app-pay" name="app-pay" value="Approve">
+                        <input type="submit" id="den-pay" name="den-pay" value="Denied">
                     </div>
                 </div>
                 
@@ -147,14 +148,15 @@
 			            <div id="desc">
 				            <div id="namatx">
                                 Pembayaran Kecerdasan Buatan (25000)
-				            </div>  
+                            </div>  
 				            <div id="kettx">
-                                Mandiri | Irfan Nazmi | 41517320006 | <a href="<?php echo base_url();?>asset/pict/bukti-tf/1.png" target="_blank"> bukti_tf.png </a>
+                                18/10/2019 | Mandiri | Irfan Nazmi | 41517320006 | <a href="<?php echo base_url();?>asset/pict/bukti-tf/1.png" target="_blank"> bukti_tf.png </a>
 				            </div> 
 			            </div>
                     </div>
                     <div id="bota">
                         <input type="submit" id="app-pay" name="app-pay" value="Approve">
+                        <input type="submit" id="den-pay" name="den-pay" value="Denied">
                     </div>
                 </div>
                 
@@ -163,14 +165,15 @@
 			            <div id="desc">
 				            <div id="namatx">
                                 Pembayaran National Youth Summit (35000)
-				            </div>  
+                            </div>  
 				            <div id="kettx">
-                                BNI | Yanualdi | 41517320009 | <a href="<?php echo base_url();?>asset/pict/bukti-tf/1.png" target="_blank"> bukti_tf.png </a>
+                                18/10/2019 | BNI | Yanualdi | 41517320009 | <a href="<?php echo base_url();?>asset/pict/bukti-tf/1.png" target="_blank"> bukti_tf.png </a>
 				            </div> 
 			            </div>
                     </div>
                     <div id="bota">
                         <input type="submit" id="app-pay" name="app-pay" value="Approve">
+                        <input type="submit" id="den-pay" name="den-pay" value="Denied">
                     </div>
 	            </div>
             </div>
