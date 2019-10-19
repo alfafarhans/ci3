@@ -41,7 +41,7 @@ class profile extends CI_Controller {
 		if(!empty($userid)){
 			$file = $_FILES['profilepic']['name'];
 			if(!empty($file)){
-			$this->up_pict();}
+			$this->up_pict($userid);}
 			$firstname = $this->input->post('firstname');
 			$lastname = $this->input->post('lastname');
 			$tanggallahir = $this->input->post('tanggallahir');
@@ -89,11 +89,10 @@ class profile extends CI_Controller {
 				);
 	}
 
-	private function up_pict() {
-			$userid = $this->session->userdata('user_id');
+	private function up_pict($filename) {
 			$config['upload_path']          = './asset/pict/profile/';
-			$config['allowed_types']        = 'jpg';
-			$config['file_name']            = $userid;
+			$config['allowed_types']        = 'jpg|png|jpeg';
+			$config['file_name']            = $filename.'.jpg';
 			$config['overwrite']			= true;
 			$config['max_size']             = 2048; // 1MB
 			// $config['max_width']            = 1024;

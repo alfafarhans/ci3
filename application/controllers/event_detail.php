@@ -25,17 +25,22 @@ class event_detail extends CI_Controller {
 	{	//http://localhost:8080/ci3/index.php/home
 	
 		$data['seminar']= $this->seminar_data->get_seminar_detail($s_id);
-		$userid = $this->session->userdata('user_id');
-		$username = $this->session->userdata('user_name');
+		$checkuser = $this->seminar_data->userinftrx($s_id);
+		$userid = $this->session->userdata('user_id');//session user
+		$username = $this->session->userdata('user_name');//lastname
+		$checkuser = $this->seminar_data->userinftrx($s_id,$userid);
 		$data['user_id'] = $userid;
 		$data['username'] = $username;
+		$data['registered'] = $checkuser;
+
 		$this->load->view('event_detail',$data);
 	}
+
 	function applyevent($eventid = null,$userid = null){
 		
 	$cekuser = $this->seminar_data->cekseminar_user($eventid,$userid);
 	if($cekuser){
-		$data_price = $this->seminar_data->get_seminar_price($eventid);
+		//$data_price = $this->seminar_data->get_seminar_price($eventid);
 		$this->load->helper('string');
 	do {
 		$bookid =  random_string('nozero', 6);
@@ -51,7 +56,7 @@ class event_detail extends CI_Controller {
 			
 			$data1 = array(
 					'payment_id' => $reservedid.$userid,
-					'seminar_price' => $data_price->seminar_price,
+					//'seminar_price' => $data_price->seminar_price,
 					'payment_created' =>  $curdate);
 			$data2 = array(
 						'booking_id' => $reservedid,

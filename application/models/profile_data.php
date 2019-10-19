@@ -17,7 +17,8 @@ class profile_data extends CI_Model{
 
    function update_data($data,$table,$colomn,$key){
     $this->db->where($colomn,$key);
-		$this->db->update($table,$data);
+    $this->db->update($table,$data);
+    return true ;
     }
 
     function update_password($data,$table,$email,$olddata){

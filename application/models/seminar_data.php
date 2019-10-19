@@ -1,5 +1,6 @@
 <?php 
 class seminar_data extends CI_Model{
+  
     /*cekdata
   function cekemail($value){
     $this->db->query("SELECT email FROM user");
@@ -13,6 +14,7 @@ class seminar_data extends CI_Model{
                }
       }
     */
+
     function cekseminar_user($eventid,$userid){
       $this->db->where('user_id', $userid);
       $this->db->where('seminar_id', $eventid);
@@ -54,13 +56,14 @@ class seminar_data extends CI_Model{
     $query = $this->db->get('seminar');
     return $query->result_array();
   }
+  /*
   function get_seminar_price($id = null){
     $this->db->SELECT("seminar_price");
     $this->db->from('seminar');
     $this->db->where('seminar_id',$id);
     $query = $this->db->get();
     return $query->row();
-  }
+  }*/
 
 
   function get_filtercat($cat=null,$price=null,$datestart="anydate",$datemax=null ,$loca = null, $limit = null, $offset = null ){
@@ -114,7 +117,27 @@ class seminar_data extends CI_Model{
     }
     return $this->db->get();
   }
-
+  function userinftrx($seminar_id = null,$user_id = null ){
+    $this->db->where('seminar_id ',$seminar_id);
+    $this->db->where('user_id ',$user_id);
+    $query =  $this->db->get('user_trx');
+    if($query->num_rows()>0){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
+  function payment_detail ($seminarid=null,$userid=null){
+      $this->db->select('seminar_name,seminar_date,seminar_held,seminar_price,payment_id');
+      $this->db->from('user_trx');
+      $this->db->where('user_trx.user_id', $userid);
+      $this->db->where('user_trx.seminar_id', $seminarid);
+      $this->db->join('seminar','seminar.seminar_id = user_trx.seminar_id');
+      //$this->db->join('city','city.user_id = users.u_id')
+      return $this->db->get()->result_array();
+     
+  }
 
 
   }//endclass

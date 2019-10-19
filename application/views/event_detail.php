@@ -15,7 +15,7 @@
                         var responParse = JSON.parse(data);
                         if(responParse.msg.length > 0 ){
                             alert(responParse.msg);
-                            window.location.replace("<?php echo base_url();?>payment/confirmation");
+                            window.location.replace("<?php echo base_url();?>payment/confirmation/"+eventid+"/"+userid);
                         }
                         else{
                             alert(responParse.msg);
@@ -148,16 +148,22 @@
                         <div id="padding">
                 <?php
                 $userid = $this->session->userdata('user_id');
-                if(isset($userid)){
+                if( (isset($userid)) && ($registered) ){
+                    foreach ($seminar as $value) {
+                        echo 
+                    '<a href="'.base_url().'payment/confirmation/'.$value['seminar_id'].'/'.$userid.'" >Confirm&nbsp;Your&nbsp;Payment</a>';
+                        }
+                }
+                else if(isset($userid)){
                     foreach ($seminar as $value) {
                         echo 
                     '<a href="#" onClick="send('.$value['seminar_id'].','.$userid.');"> Daftar </a>';
                         }
-                    }
-                    else{
+                }
+                else{
                     echo
                     '<a href='. base_url().'login/> Daftar </a>';
-                    }
+                 }
             
                     ?>
                         

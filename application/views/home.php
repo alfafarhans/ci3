@@ -143,7 +143,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $('#postinduk').html(responParse.output);
             }
             else{
-            $('#postinduk').html(responParse.output);
             status =  responParse.status; 
             alert("Don't go more than this !");
 
@@ -189,7 +188,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 ceklunch();
             }
             else{
-                alert("Don't go more than this !");
+                alert("WTF");
                 return false;
             }
             
@@ -214,6 +213,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         });
         $('#location').on('keyup', function() {
             var res = '#result_loc';
+            pager = 0;
+            status = true;
             //console.log($(this).val());
             search_seminar($(this).val(),res);
         });
@@ -225,6 +226,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         let link = ele.innerHTML;
         //setinputval
         let ta = document.getElementById("location").value = link;
+      
         ceklunch();
     }
   
