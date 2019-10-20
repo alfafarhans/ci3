@@ -66,7 +66,7 @@ class payment extends CI_Controller {
 	private function up_pict($pay_id) {
 				$config['upload_path']          = './asset/pict/payment/';
 				$config['allowed_types']        = 'jpg|png|jpeg';
-				$config['file_name']            = $pay_id.'png';
+				$config['file_name']            = $pay_id.'.png';
 				$config['overwrite']			= true;
 				$config['max_size']             = 2048; // 1MB
 				// $config['max_width']            = 1024;
