@@ -23,7 +23,7 @@ class payment extends CI_Controller {
 	 */
 	public function confirmation($seminar_id=null,$user_id=null){ //confirmpage
 		$userid = $this->session->userdata('user_id');
-		if(!empty($userid)){
+		if( (!empty($userid))  &&  ($user_id == $userid)  ){
 		$username = $this->session->userdata('user_name');
 		$data['user_id'] = $userid;
 		$data['username'] = $username;

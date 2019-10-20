@@ -253,7 +253,13 @@ elseif ($par == "myevent") {
             $daynum = date('d', strtotime($value['seminar_date']));
             $mounth = date('F', strtotime($value['seminar_date']));
             $year =  date('Y', strtotime($value['seminar_date']));
-            //$minute =  date('i', strtotime($value['seminar_date']));
+			//$minute =  date('i', strtotime($value['seminar_date']));
+			if($value['atten_status'] == "Waiting Payment"){
+				$path =  base_url().'payment/confirmation/'.$value['seminar_id'].'/'.$userid.'';
+			}
+			else{
+				$path =  base_url().'event_detail/'.$value['seminar_id'].'';
+			}
 	echo '
 	<div id="rightbody3">
 		<div id="objright3">
@@ -271,7 +277,7 @@ elseif ($par == "myevent") {
 				'.ucwords($value['seminar_held']).'</div>  
 			</div>
 			<div id="bota">
-				<a href="#">'.$value['atten_status'].'</a>
+				<a href="'.$path.'">'.$value['atten_status'].'</a>
 			</div>
 		</div>
 

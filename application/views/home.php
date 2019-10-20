@@ -144,7 +144,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             }
             else{
             status =  responParse.status; 
-            alert("Don't go more than this !");
+            alert("Stop this is your limit");
 
             }
             
@@ -188,7 +188,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 ceklunch();
             }
             else{
-                alert("WTF");
+                alert("Wrong way, turn your steer back");
                 return false;
             }
             
