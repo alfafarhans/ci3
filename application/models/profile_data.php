@@ -27,6 +27,27 @@ class profile_data extends CI_Model{
       $this->db->update($table,$data);
       return true;
       }
+
+      function get_alltrx(){
+        $this->db->select('seminar_name, seminar_price, payment_created, bill_bank_name, bill_name, first_name, last_name, bill_number, p.payment_id');
+        $this->db->from('user_trx t'); 
+        $this->db->join('seminar s', 's.seminar_id= t.seminar_id');
+        $this->db->join('user u', 'u.user_id= t.user_id');
+        $this->db->join('payment p', 'p.payment_id= t.payment_id');
+        $this->db->where('t.atten_status','Waiting Confirmation');
+        $this->db->order_by('p.payment_created','asc');         
+        $query = $this->db->get(); 
+        if($query->num_rows() > 0)
+        {
+            return $query;
+        }
+        else
+        {
+            return false;
+        }
+
+
+      }
     
 
 

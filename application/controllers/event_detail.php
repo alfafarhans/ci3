@@ -25,14 +25,18 @@ class event_detail extends CI_Controller {
 	{	//http://localhost:8080/ci3/index.php/home
 	
 		$data['seminar']= $this->seminar_data->get_seminar_detail($s_id);
-		$checkuser = $this->seminar_data->userinftrx($s_id);
+	//	$checkuser = $this->seminar_data->userinftrx($s_id);
 		$userid = $this->session->userdata('user_id');//session user
 		$username = $this->session->userdata('user_name');//lastname
-		$checkuser = $this->seminar_data->userinftrx($s_id,$userid);
+		$userstatus = $this->seminar_data->userinftrx($s_id,$userid);
 		$data['user_id'] = $userid;
 		$data['username'] = $username;
-		$data['registered'] = $checkuser;
-
+		if(empty($userstatus->atten_status)){
+			$data['registered'] = "";
+		}
+		else{	
+			$data['registered'] = $userstatus->atten_status;
+		}
 		$this->load->view('event_detail',$data);
 	}
 
@@ -63,7 +67,7 @@ class event_detail extends CI_Controller {
 						'user_id' => $userid,
 						'seminar_id' => $eventid,
 						'payment_id' => $reservedid.$userid,
-						'atten_status' => 'Waiting for payment' );
+						'atten_status' => 'Waiting Payment' );
 
 				$this->seminar_data->input_data($data1,'payment');
 				$this->seminar_data->input_data($data2,'user_trx');

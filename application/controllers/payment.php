@@ -27,6 +27,7 @@ class payment extends CI_Controller {
 		$username = $this->session->userdata('user_name');
 		$data['user_id'] = $userid;
 		$data['username'] = $username;
+		$data['s_id'] = $seminar_id;
 		$data['seminar']= $this->seminar_data->payment_detail($seminar_id,$user_id);
 		$this->load->view('payment',$data);
 		}
@@ -35,13 +36,12 @@ class payment extends CI_Controller {
 		}
 
 	}
-	function updata($payment_id){
+	function updata($payment_id,$s_id){
 		$userid = $this->session->userdata('user_id');
 		if(!empty($userid)){
 		$billname = $this->input->post('billname');  
 		$billbank = $this->input->post('billbank');	//err
 		$norek = $this->input->post('norek');	
-		
 		$data = array(
 			'bill_name' => $billname,
 			'bill_bank_name' => $billbank,
@@ -51,8 +51,10 @@ class payment extends CI_Controller {
 			$this -> up_pict($payment_id);
 			if($updating){
 				$data1 = array('atten_status' => "Waiting Confirmation");
-				$this->profile_data->update_data($data1,'user_trx','payment_id' ,$payment_id);
-				
+				$updater = $this->profile_data->update_data($data1,'user_trx','payment_id' ,$payment_id);
+				if($updater){
+					redirect('event_detail/'.$s_id.'');
+				}
 
 			}
 
@@ -64,7 +66,7 @@ class payment extends CI_Controller {
 	private function up_pict($pay_id) {
 				$config['upload_path']          = './asset/pict/payment/';
 				$config['allowed_types']        = 'jpg|png|jpeg';
-				$config['file_name']            = $pay_id.'jpg';
+				$config['file_name']            = $pay_id.'png';
 				$config['overwrite']			= true;
 				$config['max_size']             = 2048; // 1MB
 				// $config['max_width']            = 1024;

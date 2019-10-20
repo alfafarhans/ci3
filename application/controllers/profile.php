@@ -92,7 +92,7 @@ class profile extends CI_Controller {
 	private function up_pict($filename) {
 			$config['upload_path']          = './asset/pict/profile/';
 			$config['allowed_types']        = 'jpg|png|jpeg';
-			$config['file_name']            = $filename.'.jpg';
+			$config['file_name']            = $filename.'.png';
 			$config['overwrite']			= true;
 			$config['max_size']             = 2048; // 1MB
 			// $config['max_width']            = 1024;
@@ -133,9 +133,16 @@ class profile extends CI_Controller {
 				<div id="col-25"> 
 					Profile Picture
 				</div>
-				<div id="avatar"> 
-					<img id="icon" src="'.base_url().'/asset/pict/profile/'.$userid.'.jpg"> 
-				</div>
+				<div id="avatar">'; 
+				$path = './asset/pict/profile/'.$userid.'.png';
+        if(file_exists($path)){
+					echo'<img id="icon" src="'.base_url().'asset/pict/profile/'.$userid.'.png"> ';}
+				 else{
+					 echo'<img id="icon" src="'.base_url().'asset/pict/profile/default.png"> ';
+				 }
+				
+				
+					echo '</div>
 				<div id="upload"> 
 					<input type="file" name="profilepic" accept="image/*" id = "file">
 				</div>

@@ -69,7 +69,7 @@
     </div>
 
     <!-- bagian navbar  -->
-    <?php if(isset($user_id))
+    <?php if(!empty($user_id))
     {
       
         echo '
@@ -79,20 +79,37 @@
             </div>
             
             <div id="navbar_kanan">
-                <a id="a" href="'.base_url().'ads">Advertising </a>
 
                 <div id="jdrop" class="dropdown">
                     <div id="jdrop" class="p"> Welcome '.$username.' ! </div>
-                    <img id="jdrop" class="imgdrop" src="../asset/pict/profile/'.$user_id.'.jpg">
+                    ';
+        $path = './asset/pict/profile/33.png';
+        if(file_exists($path)){
+                   echo' <img id="jdrop" class="imgdrop" src="'.base_url().'asset/pict/profile/'.$user_id.'.png">
+                ';}
+                else{
+                    echo' <img id="jdrop" class="imgdrop" src="'.base_url().'asset/pict/profile/default.png">
+                ';
+                }
+                if( (!empty($user_id)) && ($user_id == 7320006)  ){
+                    echo'
                  </div>
                 <div id="jcdrop" class="dropdown-content">
-                <a href="'.base_url().'profile/myprofile/1"> Profile </a> 
-                <a href="'.base_url().'profile/myprofile/2"> My Event </a> 
-                <a href="'.base_url().'profile/myprofile/3"> Settings </a> 
-                <a href="'.base_url().'logout"> Sign Out </a>
+                <a href="'.base_url().'profile_admin/"> Profile </a> 
+                <a href="'.base_url().'logout"> Sign Out </a></div>
                 </div>
-            </div>
-        </div> ';
+            </div> ';
+                    }
+             else{
+                echo'</div>
+                       <div id="jcdrop" class="dropdown-content">
+                       <a href="'.base_url().'profile/myprofile/1"> Profile </a> 
+                       <a href="'.base_url().'profile/myprofile/2"> My Event </a> 
+                       <a href="'.base_url().'profile/myprofile/3"> Settings </a> 
+                       <a href="'.base_url().'logout"> Sign Out </a></div>
+                       </div>
+                   </div> ';
+                    }
         
     }
     else{
@@ -148,10 +165,11 @@
                         <div id="padding">
                 <?php
                 $userid = $this->session->userdata('user_id');
-                if( (isset($userid)) && ($registered) ){
+                if( (!empty($userid)) && (!empty($registered)) ){
+				$register_fill = str_replace(" ","&nbsp;",$registered);
                     foreach ($seminar as $value) {
                         echo 
-                    '<a href="'.base_url().'payment/confirmation/'.$value['seminar_id'].'/'.$userid.'" >Confirm&nbsp;Your&nbsp;Payment</a>';
+                    '<a href="'.base_url().'payment/confirmation/'.$value['seminar_id'].'/'.$userid.'" >'.$register_fill.'</a>';
                         }
                 }
                 else if(isset($userid)){

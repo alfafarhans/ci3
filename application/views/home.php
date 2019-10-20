@@ -240,32 +240,49 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
 
     <!-- bagian navbar  -->
-    <?php if(isset($user_id))
+    <?php if(!empty($user_id))
     {
       
         echo '
         <div id="top">
             <div id="navbar_kiri">
                 <a href="'.base_url().'home"> Seminar Go </a>
-                <input type="text" id="seminar" name="seminar" class = "result_sem" placeholder="Cari seminar">
             </div>
             
-            <div id = "result_sem" ></div>
             <div id="navbar_kanan">
                 <a id="a" href="'.base_url().'ads">Advertising </a>
 
                 <div id="jdrop" class="dropdown">
                     <div id="jdrop" class="p"> Welcome '.$username.' ! </div>
-                    <img id="jdrop" class="imgdrop" src="./asset/pict/profile/'.$user_id.'.jpg">
+                    ';
+                    $path = './asset/pict/profile/'.$user_id.'.png';
+        if(file_exists($path)){
+                   echo' <img id="jdrop" class="imgdrop" src="'.base_url().'asset/pict/profile/'.$user_id.'.png">
+                ';}
+                else{
+                    echo' <img id="jdrop" class="imgdrop" src="'.base_url().'asset/pict/profile/default.png">
+                ';
+                }
+
+        if( (!empty($user_id)) && ($user_id == 7320006)  ){
+                    echo'
                  </div>
                 <div id="jcdrop" class="dropdown-content">
-                    <a href="'.base_url().'profile/myprofile/1"> Profile </a> 
-                    <a href="'.base_url().'profile/myprofile/2"> My Event </a> 
-                    <a href="'.base_url().'profile/myprofile/3"> Settings </a> 
-                    <a href="'.base_url().'logout"> Sign Out </a>
+                <a href="'.base_url().'profile_admin/Admin"> Profile </a> 
+                <a href="'.base_url().'logout"> Sign Out </a></div>
                 </div>
-            </div>
-        </div> ';
+            </div> ';
+                    }
+             else{
+                echo'</div>
+                       <div id="jcdrop" class="dropdown-content">
+                       <a href="'.base_url().'profile/myprofile/1"> Profile </a> 
+                       <a href="'.base_url().'profile/myprofile/2"> My Event </a> 
+                       <a href="'.base_url().'profile/myprofile/3"> Settings </a> 
+                       <a href="'.base_url().'logout"> Sign Out </a></div>
+                       </div>
+                   </div> ';
+                    }
         
     }
     else{

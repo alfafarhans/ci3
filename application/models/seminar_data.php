@@ -118,14 +118,12 @@ class seminar_data extends CI_Model{
     return $this->db->get();
   }
   function userinftrx($seminar_id = null,$user_id = null ){
+    $this->db->select("atten_status");
     $this->db->where('seminar_id ',$seminar_id);
     $this->db->where('user_id ',$user_id);
     $query =  $this->db->get('user_trx');
     if($query->num_rows()>0){
-      return true;
-    }
-    else{
-      return false;
+      return $query->row();
     }
   }
   function payment_detail ($seminarid=null,$userid=null){
