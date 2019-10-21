@@ -31,22 +31,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         }
     }
      //for page
-    let pager = 0;
-    let state = true;
-    function page(adder) {
-        if(state){
-        pager += adder;
-        }
-        else{
-            alert("Please Go back !");
-        }
-       // alert("wew");
-        console.log(pager);
-        ceklunch();
-    }
-    
-   
     $(function() {
+        let pager = 0;
+        let status = true;
         //select tag
                 var x, i, j, selElmnt, a, b, c;
         /*look for any elements with the class "custom-select":*/
@@ -150,10 +137,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             method:"POST",
             data:{cat1:cat,price1:price,date1:date,loc1:loc},
             success:function(data){
-            $('#postinduk').html(data);
-            let cev = document.getElementById('cekval').value;
-            if(pager>= cev){ state = false;}
-                }
+            var responParse = JSON.parse(data);
+            console.log(responParse.status);
+            if(responParse.status){
+            $('#postinduk').html(responParse.output);
+            }
+            else{
+            status =  responParse.status; 
+            alert("Stop this is your limit");
+
+            }
+            
+            
+            }
             });
         }
 
@@ -170,13 +166,44 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
         //ALL TRIGEER
+        //next
+        $('#a1').click (function () {   
+            if(status){
+            pager += 6;
+            ceklunch();
+            }
+            else{
+                return false;
+            }
+
+
+                });
+        //prev
+        $('#a2').click (function () {   
+            if(!status){
+                status = true;
+            }
+            if(pager !== 0){
+                pager -= 6;
+                ceklunch();
+            }
+            else{
+                alert("Wrong way, turn your steer back");
+                return false;
+            }
+            
+                });
 
         $('#location').keyup(function(e){
             if(e.keyCode == 8 && $(this).val().length < 1) {
                 ceklunch();
             }
         });
-        $('#jdrop').on('click', function() {
+        $('#jdrop').on('click', function() {  //.dropdown-content
+            let wit = $('#jdrop').width();
+            wit += 29.8;
+            console.log(wit);
+            $("#jcdrop").css("width", wit);
             $('#jcdrop').slideDown( "fast" );
         });
         $('#seminar').on('keyup', function() {
@@ -186,6 +213,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         });
         $('#location').on('keyup', function() {
             var res = '#result_loc';
+            pager = 0;
+            status = true;
             //console.log($(this).val());
             search_seminar($(this).val(),res);
         });
@@ -197,6 +226,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         let link = ele.innerHTML;
         //setinputval
         let ta = document.getElementById("location").value = link;
+      
         ceklunch();
     }
   
@@ -210,32 +240,49 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
 
     <!-- bagian navbar  -->
-    <?php if(isset($user_id))
+    <?php if(!empty($user_id))
     {
       
         echo '
         <div id="top">
             <div id="navbar_kiri">
                 <a href="'.base_url().'home"> Seminar Go </a>
-                <input type="text" id="seminar" name="seminar" class = "result_sem" placeholder="Cari seminar">
             </div>
             
-            <div id = "result_sem" ></div>
             <div id="navbar_kanan">
                 <a id="a" href="'.base_url().'ads">Advertising </a>
 
                 <div id="jdrop" class="dropdown">
                     <div id="jdrop" class="p"> Welcome '.$username.' ! </div>
-                    <img id="jdrop" class="imgdrop" src="./asset/pict/profile/'.$user_id.'.jpg">
+                    ';
+                    $path = './asset/pict/profile/'.$user_id.'.png';
+        if(file_exists($path)){
+                   echo' <img id="jdrop" class="imgdrop" src="'.base_url().'asset/pict/profile/'.$user_id.'.png">
+                ';}
+                else{
+                    echo' <img id="jdrop" class="imgdrop" src="'.base_url().'asset/pict/profile/default.png">
+                ';
+                }
+
+        if( (!empty($user_id)) && ($user_id == 7320006)  ){
+                    echo'
                  </div>
                 <div id="jcdrop" class="dropdown-content">
-                    <a href="'.base_url().'profile/myprofile/1"> Profile </a> 
-                    <a href="'.base_url().'profile/myprofile/2"> My Event </a> 
-                    <a href="'.base_url().'profile/myprofile/3"> Settings </a> 
-                    <a href="'.base_url().'logout"> Sign Out </a>
+                <a href="'.base_url().'profile_admin/Admin"> Profile </a> 
+                <a href="'.base_url().'logout"> Sign Out </a></div>
                 </div>
-            </div>
-        </div> ';
+            </div> ';
+                    }
+             else{
+                echo'</div>
+                       <div id="jcdrop" class="dropdown-content">
+                       <a href="'.base_url().'profile/myprofile/1"> Profile </a> 
+                       <a href="'.base_url().'profile/myprofile/2"> My Event </a> 
+                       <a href="'.base_url().'profile/myprofile/3"> Settings </a> 
+                       <a href="'.base_url().'logout"> Sign Out </a></div>
+                       </div>
+                   </div> ';
+                    }
         
     }
     else{
@@ -338,8 +385,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
 
         <div id="postinduk2">
-            <a id="a2" onClick = "page(-6);" href="javascript:void(0);" >&laquo; Back </a>
-            <a id="a1" onClick = "page(6);" href="javascript:void(0);" > Next &raquo; </a> 
+            <a id="a2"  href="javascript:void(0);" >&laquo; Back </a>
+            <a id="a1"  href="javascript:void(0);" > Next &raquo; </a> 
         </div>  
     </div>  
     <!-- bagian footer  -->

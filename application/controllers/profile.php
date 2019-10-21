@@ -41,7 +41,7 @@ class profile extends CI_Controller {
 		if(!empty($userid)){
 			$file = $_FILES['profilepic']['name'];
 			if(!empty($file)){
-			$this->up_pict();}
+			$this->up_pict($userid);}
 			$firstname = $this->input->post('firstname');
 			$lastname = $this->input->post('lastname');
 			$tanggallahir = $this->input->post('tanggallahir');
@@ -89,11 +89,10 @@ class profile extends CI_Controller {
 				);
 	}
 
-	private function up_pict() {
-			$userid = $this->session->userdata('user_id');
+	private function up_pict($filename) {
 			$config['upload_path']          = './asset/pict/profile/';
-			$config['allowed_types']        = 'jpg';
-			$config['file_name']            = $userid;
+			$config['allowed_types']        = 'jpg|png|jpeg';
+			$config['file_name']            = $filename.'.png';
 			$config['overwrite']			= true;
 			$config['max_size']             = 2048; // 1MB
 			// $config['max_width']            = 1024;
@@ -134,9 +133,16 @@ class profile extends CI_Controller {
 				<div id="col-25"> 
 					Profile Picture
 				</div>
-				<div id="avatar"> 
-					<img id="icon" src="'.base_url().'/asset/pict/profile/'.$userid.'.jpg"> 
-				</div>
+				<div id="avatar">'; 
+				$path = './asset/pict/profile/'.$userid.'.png';
+        if(file_exists($path)){
+					echo'<img id="icon" src="'.base_url().'asset/pict/profile/'.$userid.'.png"> ';}
+				 else{
+					 echo'<img id="icon" src="'.base_url().'asset/pict/profile/default.png"> ';
+				 }
+				
+				
+					echo '</div>
 				<div id="upload"> 
 					<input type="file" name="profilepic" accept="image/*" id = "file">
 				</div>
@@ -247,7 +253,13 @@ elseif ($par == "myevent") {
             $daynum = date('d', strtotime($value['seminar_date']));
             $mounth = date('F', strtotime($value['seminar_date']));
             $year =  date('Y', strtotime($value['seminar_date']));
-            //$minute =  date('i', strtotime($value['seminar_date']));
+			//$minute =  date('i', strtotime($value['seminar_date']));
+			if($value['atten_status'] == "Waiting Payment"){
+				$path =  base_url().'payment/confirmation/'.$value['seminar_id'].'/'.$userid.'';
+			}
+			else{
+				$path =  base_url().'event_detail/'.$value['seminar_id'].'';
+			}
 	echo '
 	<div id="rightbody3">
 		<div id="objright3">
@@ -265,7 +277,7 @@ elseif ($par == "myevent") {
 				'.ucwords($value['seminar_held']).'</div>  
 			</div>
 			<div id="bota">
-				<a href="#">'.$value['atten_status'].'</a>
+				<a href="'.$path.'">'.$value['atten_status'].'</a>
 			</div>
 		</div>
 

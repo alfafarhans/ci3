@@ -21,21 +21,48 @@ class event_detail extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+	 function renderqr($s_id,$userid){
+		$this->load->library('Ciqrcode');
+		$rev_qrcode = $this->seminar_data->getqrcode($s_id,$userid);
+		
+		if ( ($rev_qrcode->atten_status == "Booked") && (!empty($rev_qrcode->booking_id)) ){
+			QRcode::png(
+				$rev_qrcode->booking_id,
+				$outfile = false,
+				$level = QR_ECLEVEL_H,
+				$size = 5,
+				$margin = 1
+			);
+		}
+		else{
+			return false;
+		}
+	}
 	public function detail($s_id=null)//this should use ID parameter
 	{	//http://localhost:8080/ci3/index.php/home
 	
 		$data['seminar']= $this->seminar_data->get_seminar_detail($s_id);
-		$userid = $this->session->userdata('user_id');
-		$username = $this->session->userdata('user_name');
+	//	$checkuser = $this->seminar_data->userinftrx($s_id);
+		$userid = $this->session->userdata('user_id');//session user
+		$username = $this->session->userdata('user_name');//lastname
+		$userstatus = $this->seminar_data->userinftrx($s_id,$userid);
 		$data['user_id'] = $userid;
 		$data['username'] = $username;
+		if(empty($userstatus->atten_status)){
+			$data['registered'] = "";
+		}
+		else{	
+			$data['registered'] = $userstatus->atten_status;
+		}
+		
 		$this->load->view('event_detail',$data);
 	}
+
 	function applyevent($eventid = null,$userid = null){
 		
 	$cekuser = $this->seminar_data->cekseminar_user($eventid,$userid);
 	if($cekuser){
-		$data_price = $this->seminar_data->get_seminar_price($eventid);
+		//$data_price = $this->seminar_data->get_seminar_price($eventid);
 		$this->load->helper('string');
 	do {
 		$bookid =  random_string('nozero', 6);
@@ -51,18 +78,18 @@ class event_detail extends CI_Controller {
 			
 			$data1 = array(
 					'payment_id' => $reservedid.$userid,
-					'seminar_price' => $data_price->seminar_price,
+					//'seminar_price' => $data_price->seminar_price,
 					'payment_created' =>  $curdate);
 			$data2 = array(
 						'booking_id' => $reservedid,
 						'user_id' => $userid,
 						'seminar_id' => $eventid,
 						'payment_id' => $reservedid.$userid,
-						'atten_status' => 'Waiting for payment' );
+						'atten_status' => 'Waiting Payment' );
 
 				$this->seminar_data->input_data($data1,'payment');
 				$this->seminar_data->input_data($data2,'user_trx');
-				$msg = "Yeay!";
+				$msg = "THANK YOU !!!";
 				//redirect('home');
 		}	
 		else{
@@ -70,7 +97,7 @@ class event_detail extends CI_Controller {
 		}
 	}
 	else{
-		$msg = "you already registered";
+		$msg = "You already registered";
 	}	
 		echo json_encode(
 			array(

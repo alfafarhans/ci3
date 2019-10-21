@@ -33,8 +33,7 @@ class login extends CI_Controller {
 	}
 	 function login_val(){
 		if(isset($_POST['submit'])){
-		//http://localhost:8080/ci3/index.php/login/login_val
-			$this->load->library('form_validation');  
+		   $this->load->library('form_validation');  
            $this->form_validation->set_rules('email', 'Email', 'required');  
            $this->form_validation->set_rules('password', 'Password', 'required');  
            if($this->form_validation->run())  

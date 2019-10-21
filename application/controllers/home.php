@@ -5,7 +5,6 @@ class home extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		$this->load->model('seminar_data');
-		
 		$this->load->library('pagination');
 	}
 	/**
@@ -137,13 +136,18 @@ class home extends CI_Controller {
 				</div>
 				</a>
 			</div>';
+			$status = true;
 				 }
-				 echo $output;
 		  }
 		  else {
-			  $output .= '<div id="fail" value = "wrf">You are not lucky &#128532; , keep following us!</div>';
-			  echo $output;
+			$status = false;
 		  }
+		  echo json_encode(
+			array(
+				'output' => $output,
+				'status' => $status
+			   )
+			);
 		}
 	function search (){
 		$output="";
@@ -171,6 +175,7 @@ class home extends CI_Controller {
 				$output .='<a href="javascript:void(0);" id ="'.$value['seminar_city'].'" onClick = "changevalloc(this)">'.ucwords($value['seminar_city']).'</a>';//'. base_url().'home/getloc/'. $value['seminar_city'].'
 			}
 		}
+
   		}
 	}
 	echo $output;
