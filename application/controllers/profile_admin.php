@@ -41,6 +41,7 @@ class profile_admin extends CI_Controller {
 		
 		if($par == "app-pay"){
 			$userdata = $this->profile_data->get_alltrx($userid);
+			if($userdata){
 			foreach ($userdata->result_array() as $value) {
 				$daynum = date('d', strtotime($value['payment_created']));
 				$mounth = date('m', strtotime($value['payment_created']));
@@ -60,12 +61,16 @@ class profile_admin extends CI_Controller {
 					</div>
 				</div>
 				<div id="bota">
-					<Button id="app-pay"  value="'.$value['payment_id'].'">Approve</Button>
-					<Button id="den-pay" value="'.$value['payment_id'].'">Denied</Button>
+					<a id="app-pay"  href="'.base_url().'profile_admin/appv/'.$value['payment_id'].'">Approve</a>
+					<a id="den-pay" href="'.base_url().'profile_admin/dnnd/'.$value['payment_id'].'">Denied</a>
 				</div>
 			</div>';
 
 			   }
+			}
+			else{
+				echo 'NO ONE REGISTER';
+			}
 			}//first if
 		elseif ($par == "app-sem") {
 			
@@ -74,4 +79,13 @@ class profile_admin extends CI_Controller {
 		}//second if
 
 	}
-}
+		function appv($p_id=null){
+			$userupdate = $this->profile_data->approved($p_id);
+			if($userupdate){
+				redirect('/profile_admin/Admin');
+			}
+		}
+		function dnnd($p_id=null){
+			
+		}
+}//end class

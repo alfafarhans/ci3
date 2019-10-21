@@ -14,6 +14,14 @@ class seminar_data extends CI_Model{
                }
       }
     */
+    function getqrcode($eventid,$userid){
+      
+      $this->db->select('booking_id','atten_status');
+      $this->db->where('user_id', $userid);
+      $this->db->where('seminar_id', $eventid);
+      $query =  $this->db->get('user_trx');
+      $query->row();
+    }
 
     function cekseminar_user($eventid,$userid){
       $this->db->where('user_id', $userid);
@@ -135,7 +143,7 @@ class seminar_data extends CI_Model{
       //$this->db->join('city','city.user_id = users.u_id')
       return $this->db->get()->result_array();
      
-  }
+    }
 
 
   }//endclass

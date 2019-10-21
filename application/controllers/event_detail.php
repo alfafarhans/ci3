@@ -21,6 +21,23 @@ class event_detail extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+	 function renderqr($s_id,$userid){
+		$this->load->library('Ciqrcode');
+		$rev_qrcode = $this->seminar_data->getqrcode($s_id,$userid);
+		
+		if ( ($rev_qrcode->atten_status == "Booked") && (!empty($rev_qrcode->booking_id)) ){
+			QRcode::png(
+				$rev_qrcode->booking_id,
+				$outfile = false,
+				$level = QR_ECLEVEL_H,
+				$size = 5,
+				$margin = 1
+			);
+		}
+		else{
+			return false;
+		}
+	}
 	public function detail($s_id=null)//this should use ID parameter
 	{	//http://localhost:8080/ci3/index.php/home
 	
@@ -37,6 +54,7 @@ class event_detail extends CI_Controller {
 		else{	
 			$data['registered'] = $userstatus->atten_status;
 		}
+		
 		$this->load->view('event_detail',$data);
 	}
 
