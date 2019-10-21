@@ -151,6 +151,7 @@
                         <div id="padding">
                             <h2> '.$value['seminar_name'].' </h2> 
                             <p> Rp&nbsp;'.$price.' </p>
+                            <img id="qrcode" src="'.base_url('event_detail/renderqr/1/39').'" alt="ere">
                         </div>
                     </div>';
                     }
@@ -168,11 +169,13 @@
                 if( (!empty($userid)) && (!empty($registered)) ){
 				$register_fill = str_replace(" ","&nbsp;",$registered);
                     foreach ($seminar as $value) {
+                        $sid = $value['seminar_id'];
+                        $uid = $userid;
                         echo 
                     '<a href="'.base_url().'payment/confirmation/'.$value['seminar_id'].'/'.$userid.'" >'.$register_fill.'</a>';
                         }
                 }
-                else if(isset($userid)){
+                else if(!empty($userid)){
                     foreach ($seminar as $value) {
                         echo 
                     '<a href="#" onClick="send('.$value['seminar_id'].','.$userid.');"> Daftar </a>';

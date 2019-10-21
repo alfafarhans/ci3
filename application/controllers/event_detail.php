@@ -21,11 +21,11 @@ class event_detail extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	 function renderqr($s_id,$userid){
+	 function renderqr($s_id=null,$userid=null){
 		$this->load->library('Ciqrcode');
 		$rev_qrcode = $this->seminar_data->getqrcode($s_id,$userid);
-		
-		if ( ($rev_qrcode->atten_status == "Booked") && (!empty($rev_qrcode->booking_id)) ){
+		//var_dump($rev_qrcode);
+		if ( !empty($rev_qrcode->booking_id) ){
 			QRcode::png(
 				$rev_qrcode->booking_id,
 				$outfile = false,

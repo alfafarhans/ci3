@@ -15,12 +15,12 @@ class seminar_data extends CI_Model{
       }
     */
     function getqrcode($eventid,$userid){
-      
-      $this->db->select('booking_id','atten_status');
+      $this->db->select('booking_id');
       $this->db->where('user_id', $userid);
+      $this->db->where('atten_status', 'Booked');
       $this->db->where('seminar_id', $eventid);
       $query =  $this->db->get('user_trx');
-      $query->row();
+      return $query->row();
     }
 
     function cekseminar_user($eventid,$userid){
