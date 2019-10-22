@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 20, 2019 at 06:17 AM
+-- Generation Time: Oct 22, 2019 at 04:56 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.1
 
@@ -43,8 +43,9 @@ CREATE TABLE `payment` (
 --
 
 INSERT INTO `payment` (`payment_id`, `bill_name`, `bill_bank_name`, `bill_number`, `user_paid`, `payment_created`, `paid_date`) VALUES
-(45863739, 'Muhammad Irfan Nazmi', 'Mandiri', '41414141414', '0.000', '2019-10-20', '2019-10-20'),
-(49718639, 'alfa WTF', 'BCA', '44444666666', '0.000', '2019-10-20', '2019-10-20');
+(48932739, 'Muhammad Irfan Nazmi', 'Y', 'H', '0.000', '2019-10-22', '2019-10-22'),
+(71528639, 'Muhammad Irfan Nazmi', 'aa', '123', '35.000', '2019-10-22', '2019-10-22'),
+(91743639, 'Muhammad Irfan Nazmi', 'asd', 'ss', '35.000', '2019-10-22', '2019-10-22');
 
 -- --------------------------------------------------------
 
@@ -111,7 +112,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `password`, `email`, `first_name`, `last_name`, `date_born`, `user_gender`, `user_phone`, `user_address`) VALUES
-(39, 'e77989ed21758e78331b20e477fc5582', 'alfafarhansyarief@yahoo.co.id', 'Alfa Farhan', 'Syarief', '1999-10-22', '', '123', 'JL.H Nawawi Rt04/02 No 92 kel.cirimekar kec.cibinong kab.bogor'),
+(39, 'e77989ed21758e78331b20e477fc5582', 'alfafarhansyarief@yahoo.co.id', 'Alfa Farhan', 'Syarief', '1999-10-22', 'Pria', '123', 'JL.H Nawawi Rt04/02 No 92 kel.cirimekar kec.cibinong kab.bogor'),
 (7320006, 'e77989ed21758e78331b20e477fc5582', 'mynameisnazmi41@gmail.com', 'Muhammad irfan', 'Nazmi', '1999-06-27', '', '41517320006', 'JL.H Nawawi Rt04/02 No 92 kel.cirimekar kec.cibinong kab.bogor');
 
 -- --------------------------------------------------------
@@ -133,8 +134,9 @@ CREATE TABLE `user_trx` (
 --
 
 INSERT INTO `user_trx` (`booking_id`, `user_id`, `seminar_id`, `payment_id`, `atten_status`) VALUES
-(458637, 39, 1, 45863739, 'Waiting Confirmation'),
-(497186, 39, 4, 49718639, 'Waiting Confirmation');
+(489327, 39, 6, 48932739, 'Waiting Confirmation'),
+(715286, 39, 1, 71528639, 'Booked'),
+(917436, 39, 2, 91743639, 'Booked');
 
 --
 -- Indexes for dumped tables
@@ -181,7 +183,7 @@ ALTER TABLE `seminar`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7320007;
 
 --
 -- Constraints for dumped tables
