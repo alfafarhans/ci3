@@ -151,7 +151,7 @@
                         <div id="padding">
                             <h2> '.$value['seminar_name'].' </h2> 
                             <p> Rp&nbsp;'.$price.' </p>
-                            <img id="qrcode" src="'.base_url('event_detail/renderqr/1/39').'" alt="ere">
+                            <img id="qrcode" src="'.base_url('event_detail/renderqr/2/39').'" alt="ere">
                         </div>
                     </div>';
                     }
