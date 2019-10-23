@@ -149,8 +149,11 @@
             
                     <div id="rightposttop">
                         <div id="padding">
-                            <h2> '.$value['seminar_name'].' </h2> 
-                            <p> Rp&nbsp;'.$price.' </p>
+                            <div id="desc">
+                                <h2> '.$value['seminar_name'].' </h2> 
+                                <p> Rp&nbsp;'.$price.' </p>
+                            </div>
+
                             <img id="qrcode" src="'.base_url('event_detail/renderqr/2/39').'" alt="ere">
                         </div>
                     </div>';
@@ -172,18 +175,18 @@
                         $sid = $value['seminar_id'];
                         $uid = $userid;
                         echo 
-                    '<a href="'.base_url().'payment/confirmation/'.$value['seminar_id'].'/'.$userid.'" >'.$register_fill.'</a>';
+                    '<a id="a1" href="'.base_url().'payment/confirmation/'.$value['seminar_id'].'/'.$userid.'" >'.$register_fill.'</a>';
                         }
                 }
                 else if(!empty($userid)){
                     foreach ($seminar as $value) {
                         echo 
-                    '<a href="#" onClick="send('.$value['seminar_id'].','.$userid.');"> Daftar </a>';
+                    '<a id="a1" href="#" onClick="send('.$value['seminar_id'].','.$userid.');"> Daftar </a>';
                         }
                 }
                 else{
                     echo
-                    '<a href='. base_url().'login/> Daftar </a>';
+                    '<a id="a1" href='. base_url().'login/> Daftar </a>';
                  }
             
                     ?>
@@ -193,7 +196,7 @@
             
                     <div id="rightpost">
                         <div id="padding">
-                            
+                            <a id="a2" href="'<?base_url()?>'login/"> Cancel </a>
                         </div>
                     </div>
                 </div>

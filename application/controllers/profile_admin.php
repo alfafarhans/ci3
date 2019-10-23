@@ -53,7 +53,7 @@ class profile_admin extends CI_Controller {
 				<div id="objright4">
 					<div id="desc">
 						<div id="namatx">
-						'.$value['seminar_name'].'('.$value['seminar_price'].')
+						'.$value['seminar_name'].' ('.$value['seminar_price'].')
 						</div>  
 						<div id="kettx">
 							'.$daynum.'/'.$mounth.'/'.$year.' | '.$value['bill_bank_name'].' | '.$value['bill_name']/*$firstfill.'&nbsp;'.$value['last_name']*/.' | '.$value['bill_number'].' | <a href="'.base_url().'asset/pict/payment/'.$value['payment_id'].'.png" target="_blank"> bukti_tf.png </a>
@@ -61,8 +61,12 @@ class profile_admin extends CI_Controller {
 					</div>
 				</div>
 				<div id="bota">
-					<a id="app-pay"  href="'.base_url().'profile_admin/appv/'.$value['payment_id'].'">Approve</a>
-					<a id="den-pay" href="'.base_url().'profile_admin/dnnd/'.$value['payment_id'].'">Denied</a>
+					<div id="items">
+						<a id="app-pay"  href="'.base_url().'profile_admin/appv/'.$value['payment_id'].'">Approve</a>
+					</div>
+					<div id="items">
+						<a id="den-pay" href="'.base_url().'profile_admin/dnnd/'.$value['payment_id'].'">Denied</a>
+					</div>
 				</div>
 			</div>';
 

@@ -169,39 +169,22 @@
                     Pastikan kesesuaian data rekening pengirim dengan rekening yang anda kirimkan. Data yang di input masih dapat anda ubah di event yang anda ikuti. Jika ada ketidaksesuaian data, 
                     kami akan langsung informasikan dari notifikasi. 
                 </div>
-                <div id="row">
-                    <div id="col-25">
-                        Nama rekening pengirim
-                    </div>
-                    <div id="col-75">
-                        <input type="text" id="namakirim" name="billname">
-                    </div>
-                </div>
+               
                 <div id="row">
                     <div id="col-25">
                         Nama bank pengirim
                     </div>
                     <div id="col-75">
                     <!--errr-->
-                        <select name="billbank" id="bank1">
-                            <option value="" selected>Not Selected</option>
-                            <option value="Mandiri">Bank Mandiri</option>
-                            <option value="BNI">Bank Negara Indonesia (BNI)</option>
-                            <option value="BRI">Bank Rakyat Indonesia (BRI)</option>
-                            <option value="BTN">Bank Tabungan Negara (BTN)</option>
-                            <option value="BCA">Bank Central Asia (BCA)</option>
-                            <option value="Permata">Bank Permata</option>
-                        </select>
+                        <input type="text" id="bank2" name="billbank">
                     </div>
                 </div>
-               
                 <div id="row">
                     <div id="col-25">
-                        Nama bank pengirim lainnya
+                        Nama rekening pengirim
                     </div>
                     <div id="col-75">
-                    <!--errr-->
-                        <input type="text" id="bank2" name="billbank" placeholder="kosongkan jika nama bank terdapat dalam list">
+                        <input type="text" id="namakirim" name="billname">
                     </div>
                 </div>
                 <div id="row">
