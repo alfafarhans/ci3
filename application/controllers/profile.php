@@ -252,6 +252,7 @@ class profile extends CI_Controller {
 			   }
 		}//first if
 elseif ($par == "myevent") {
+	$out ="";
 	$userdata = $this->profile_data->get_seminar_history($userid);
 	echo'	<div id="rightbody">
 	<div id="objright">
@@ -267,11 +268,27 @@ elseif ($par == "myevent") {
             $mounth = date('F', strtotime($value['seminar_date']));
             $year =  date('Y', strtotime($value['seminar_date']));
 			//$minute =  date('i', strtotime($value['seminar_date']));
-			if($value['atten_status'] == "Waiting Payment"){
-				$path =  base_url().'payment/confirmation/'.$value['seminar_id'].'/'.$userid.'';
+			
+			if($value['atten_status'] == "Booked"){
+				$out = '	<div id="bota">
+				<a id="bota1" href="'.base_url().'event_detail/'.$value['seminar_id'].'">'.$value['atten_status'].'</a>
+						</div>';
+				}
+			else if($value['atten_status'] == "Waiting Payment"){
+			$out = '	<div id="bota">
+					<a id="bota1" href="'.base_url().'payment/confirmation/'.$value['seminar_id'].'/'.$userid.'">' .$value['atten_status'].'</a>
+					</div>
+					<div id="bota2">
+						<a href="#"> Cancel </a>
+						</div>';
 			}
 			else{
-				$path =  base_url().'event_detail/'.$value['seminar_id'].'';
+			$out = '<div id="bota">
+					<a id="bota1" href="'.base_url().'event_detail/'.$value['seminar_id'].'">'.$value['atten_status'].'</a>
+					</div>
+					<div id="bota2">
+						<a href="#"> ReUpload </a>
+						</div>';
 			}
 	echo '
 	<div id="rightbody3">
@@ -289,13 +306,7 @@ elseif ($par == "myevent") {
 				<div id="locseminar">
 				'.ucwords($value['seminar_held']).'</div>  
 			</div>
-			<div id="bota">
-				<a href="'.$path.'">'.$value['atten_status'].'</a>
-			</div>
-
-			<div id="bota2">
-				<a href="#"> Cancel </a>
-			</div>
+				'.$out.'
 		</div>
 
 	</div>';

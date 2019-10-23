@@ -47,9 +47,25 @@
             $('#location').val("");
         }
     }
+   
 
     $(function() {
-
+        let a1 = $('#a1').html();
+        if(a1 == "Booked"){
+            $('#a1').attr("href","javascript:void(0);");
+            $('#a1').attr("href","javascript:void(0);");
+            $('#a2' ).remove();
+            $('#a1').click (function () {  alert("UNIQUE SQUARE AVAILABLE NOW !");  });  
+        }
+        else if(a1 == "Waiting&nbsp;Confirmation"){
+            console.log(a1);
+            $('#a2').css("width", 80);
+            $('#a2').html("Reupload");
+        }
+        
+        else if(a1 == "Waiting&nbsp;Payment"){
+           
+        }
         //ALL TRIGEER
         $('#jdrop').on('click', function() {  //.dropdown-content
             let wit = $('#jdrop').width();
@@ -135,6 +151,7 @@
             <div id="shadow">
                 <div id="flexbod">
                 <?php
+                
                     foreach ($seminar as $value) {
                         if($value['seminar_price'] == 0){
                             $price = "FREE";
@@ -154,7 +171,7 @@
                                 <p> Rp&nbsp;'.$price.' </p>
                             </div>
 
-                            <img id="qrcode" src="'.base_url('event_detail/renderqr/2/39').'" alt="ere">
+                            <img id="qrcode" src="'.base_url('event_detail/renderqr/'.$value['seminar_id'].'/'.$user_id.'').'" alt="">
                         </div>
                     </div>';
                     }
@@ -190,10 +207,8 @@
                  }
             
                     ?>
-                        
                         </div>
                     </div>
-            
                     <div id="rightpost">
                         <div id="padding">
                             <a id="a2" href="'<?base_url()?>'login/"> Cancel </a>
