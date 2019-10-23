@@ -95,7 +95,7 @@
                     echo'
                  </div>
                 <div id="jcdrop" class="dropdown-content">
-                <a href="'.base_url().'profile_admin/"> Profile </a> 
+                <a href="'.base_url().'profile_admin/Admin"> Profile </a> 
                 <a href="'.base_url().'logout"> Sign Out </a></div>
                 </div>
             </div> ';
