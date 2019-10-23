@@ -245,9 +245,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       
         echo '
         <div id="top">
-            <div id="navbar_kiri">
-                <a href="'.base_url().'home"> Seminar Go </a>
-            </div>
+        <div id="navbar_kiri">
+        <a href="'.base_url().'home"> Seminar Go </a>
+        <input type="text" id="seminar" name="seminar" class = "result_sem" placeholder="Cari seminar">
+    </div>
+    
+    <div id = "result_sem" ></div>
             
             <div id="navbar_kanan">
                 <a id="a" href="'.base_url().'ads">Advertising </a>

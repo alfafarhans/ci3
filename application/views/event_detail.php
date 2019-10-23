@@ -83,7 +83,7 @@
                 <div id="jdrop" class="dropdown">
                     <div id="jdrop" class="p"> Welcome '.$username.' ! </div>
                     ';
-        $path = './asset/pict/profile/33.png';
+        $path = './asset/pict/profile/'.$user_id.'.png';
         if(file_exists($path)){
                    echo' <img id="jdrop" class="imgdrop" src="'.base_url().'asset/pict/profile/'.$user_id.'.png">
                 ';}

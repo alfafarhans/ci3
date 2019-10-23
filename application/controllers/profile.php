@@ -90,17 +90,30 @@ class profile extends CI_Controller {
 	}
 
 	private function up_pict($filename) {
-			$config['upload_path']          = './asset/pict/profile/';
+			$config['upload_path']          = './asset/pict/temporary/';
 			$config['allowed_types']        = 'jpg|png|jpeg';
 			$config['file_name']            = $filename.'.png';
 			$config['overwrite']			= true;
-			$config['max_size']             = 2048; // 1MB
+			$config['max_size']             = 0; // 1MB
 			// $config['max_width']            = 1024;
 			// $config['max_height']           = 768;
 			$this->load->library('upload', $config);
 			
 			if ($this->upload->do_upload('profilepic')) {
-				return true;
+				$gbr = $this->upload->data();
+				$config['image_library']='gd2';
+                $config['source_image']='./asset/pict/temporary/'.$gbr['file_name'];
+                $config['create_thumb']= FALSE;
+                $config['maintain_ratio']= FALSE;
+                $config['quality']= '60%';
+                $config['new_image']= './asset/pict/profile/'.$gbr['file_name'];
+                $this->load->library('image_lib', $config);
+				$resizex =$this->image_lib->resize();	
+				if($resizex){
+						unlink('./asset/pict/temporary/'.$gbr['file_name']);
+						return true;
+				}
+				
 			}
 			else{
 				$error = $this->upload->display_errors();
