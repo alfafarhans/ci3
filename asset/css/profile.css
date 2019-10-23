@@ -314,25 +314,52 @@ body{
     #objright4 #bota{
         position: absolute;
         margin-top: 77px;
-        bottom: 30px;
+        bottom: 15px;
     }
 
-    #objright4 #bota a{
-        background-color: #5890CF;
-        color: #063A74;
-        padding: 12px 15px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        text-decoration: none;
-    } 
+        #objright4 #bota a{
+            background-color: #5890CF;
+            display: block;
+            width: 170px;
+            text-align: center;
+            color: #063A74;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+        } 
 
-        #objright4 #bota a:hover {
-            background-color: #063A74;
-            color: #ffffff;
-        }
+            #objright4 #bota a:hover {
+                background-color: #063A74;
+                color: #ffffff;
+            }
 
+    #objright4 #bota2{
+        position: absolute;
+        margin-top: 77px;
+        bottom: 15px;
+        left: 240px;
+    }
 
+        #objright4 #bota2 a{
+            background-color: #F55B7C;
+            display: block;
+            width: 50px;
+            text-align: center;
+            color: #A50023;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+        } 
+
+            #objright4 #bota2 a:hover {
+                background-color: #A50023;
+                color: #ffffff; 
+            }
+        
 #infofooter600{
     position: relative;
     width: 100%;

@@ -202,6 +202,7 @@ body{
             border: 1px solid #D8D8D8;
             border-radius: 10px;
             display: flex;
+            position: relative;
         }
 
 #objright4{
@@ -228,21 +229,28 @@ body{
 
     #bota{
         width: 15%;
-        margin: 7px 20px 0;
+        right: 0;
+        top: 5px;
+        position: absolute;
     }
 
-        #bota input[type=submit] {
-            background-color: #5890CF;
-            width: 100px;
+        #bota #items{
             margin-bottom: 5px;
-            border: none;
+        }
+
+        #bota #items a{
+            background-color: #5890CF;
+            display: block;
+            width: 50px;
+            text-decoration: none;
             color: #063A74;
             padding: 12px 20px;
             border-radius: 4px;
             cursor: pointer;
+            font-size: 13px;
         }
 
-        #bota input[type=submit]:hover {
+        #bota #items a:hover {
             background-color: #063A74;
             color: #ffffff;
         }

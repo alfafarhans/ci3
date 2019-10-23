@@ -279,6 +279,10 @@ elseif ($par == "myevent") {
 			<div id="bota">
 				<a href="'.$path.'">'.$value['atten_status'].'</a>
 			</div>
+
+			<div id="bota2">
+				<a href="#"> Cancel </a>
+			</div>
 		</div>
 
 	</div>';
