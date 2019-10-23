@@ -78,7 +78,35 @@ class profile_admin extends CI_Controller {
 			}//first if
 		elseif ($par == "app-sem") {
 			
-			echo "NO PAGE";
+			echo '<div id="rightbody3">
+				<div id="objright3">
+					<img src="'.base_url().'asset/pict/banner/Indonesia_Ves_2019_2019_2019-09_12.png">
+				</div>
+				<div id="objright4">
+					<div id="desc">
+						<div id="namatx">
+							Indonesia Ves 2019 
+						</div>  
+						<div id="datetx">
+							30 October 2019
+						</div> 
+						<div id="kettx">
+							Jl. Pintu Satu Senayan, RT.1/RW.3, Gelora, Tanahabang, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 10270 
+						</div> 
+					</div>
+
+					<div id="bota2">
+						<a id="cekdetail-sem"  href="#">Cek</a>
+					</div>
+					<div id="bota3">
+						<a id="app-sem"  href="#">Approve</a>
+					</div>
+					<div id="bota4">
+						<a id="dec-sem"  href="#">Decline</a>
+					</div>
+				</div>
+				
+			';
 			
 		}//second if
 
