@@ -18,6 +18,7 @@
     }
 
     $(function() {
+        
         window.chpassed = function(){
             let passwordold = $('#passwordold').val();
             let passwordnew = $('#passwordnew').val();

@@ -287,7 +287,7 @@ elseif ($par == "myevent") {
 					<a id="bota1" href="'.base_url().'event_detail/'.$value['seminar_id'].'">'.$value['atten_status'].'</a>
 					</div>
 					<div id="bota2">
-						<a href="#"> ReUpload </a>
+						<a style="width:80px" href="#"> ReUpload </a>
 						</div>';
 			}
 	echo '
