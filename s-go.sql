@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 22, 2019 at 04:56 PM
+-- Generation Time: Oct 24, 2019 at 02:37 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.1
 
@@ -43,9 +43,16 @@ CREATE TABLE `payment` (
 --
 
 INSERT INTO `payment` (`payment_id`, `bill_name`, `bill_bank_name`, `bill_number`, `user_paid`, `payment_created`, `paid_date`) VALUES
-(48932739, 'Muhammad Irfan Nazmi', 'Y', 'H', '0.000', '2019-10-22', '2019-10-22'),
+(39816739, '', '', '', '0.000', '2019-10-23', '0000-00-00'),
+(46379539, '', '', '', '0.000', '2019-10-23', '0000-00-00'),
+(48597239, 'Muhammad Irfan Nazmi', 'Mandiri', '89809', '25.000', '2019-10-23', '2019-10-23'),
+(48932739, 'Muhammad Irfan Nazmi', 'Y', 'H', '25.000', '2019-10-22', '2019-10-22'),
+(59246339, 'Muhammad Irfan Nazmi', 'Mandiri', '44444666666', '0.000', '2019-10-23', '2019-10-23'),
+(69273139, '', '', '', '0.000', '2019-10-23', '0000-00-00'),
 (71528639, 'Muhammad Irfan Nazmi', 'aa', '123', '35.000', '2019-10-22', '2019-10-22'),
-(91743639, 'Muhammad Irfan Nazmi', 'asd', 'ss', '35.000', '2019-10-22', '2019-10-22');
+(81453939, 'Muhammad Irfan Nazmi', 'Mandiri', '111112', '0.000', '2019-10-23', '2019-10-23'),
+(91743639, 'Muhammad Irfan Nazmi', 'asd', 'ss', '35.000', '2019-10-22', '2019-10-22'),
+(93687439, '', '', '', '0.000', '2019-10-24', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -112,7 +119,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `password`, `email`, `first_name`, `last_name`, `date_born`, `user_gender`, `user_phone`, `user_address`) VALUES
-(39, 'e77989ed21758e78331b20e477fc5582', 'alfafarhansyarief@yahoo.co.id', 'Alfa Farhan', 'Syarief', '1999-10-22', 'Pria', '123', 'JL.H Nawawi Rt04/02 No 92 kel.cirimekar kec.cibinong kab.bogor'),
+(39, 'e77989ed21758e78331b20e477fc5582', 'alfafarhansyarief@yahoo.co.id', 'Alfa Farhan', 'Syarief', '1999-10-22', '', '123', 'JL.H Nawawi Rt04/02 No 92 kel.cirimekar kec.cibinong kab.bogor'),
 (7320006, 'e77989ed21758e78331b20e477fc5582', 'mynameisnazmi41@gmail.com', 'Muhammad irfan', 'Nazmi', '1999-06-27', '', '41517320006', 'JL.H Nawawi Rt04/02 No 92 kel.cirimekar kec.cibinong kab.bogor');
 
 -- --------------------------------------------------------
@@ -134,9 +141,16 @@ CREATE TABLE `user_trx` (
 --
 
 INSERT INTO `user_trx` (`booking_id`, `user_id`, `seminar_id`, `payment_id`, `atten_status`) VALUES
-(489327, 39, 6, 48932739, 'Waiting Confirmation'),
+(398167, 39, 5, 39816739, 'Waiting Payment'),
+(463795, 39, 15, 46379539, 'Waiting Payment'),
+(485972, 39, 4, 48597239, 'Booked'),
+(489327, 39, 6, 48932739, 'Booked'),
+(592463, 39, 13, 59246339, 'Waiting Confirmation'),
+(692731, 39, 10, 69273139, 'Waiting Payment'),
 (715286, 39, 1, 71528639, 'Booked'),
-(917436, 39, 2, 91743639, 'Booked');
+(814539, 39, 9, 81453939, 'Waiting Confirmation'),
+(917436, 39, 2, 91743639, 'Booked'),
+(936874, 39, 8, 93687439, 'Waiting Payment');
 
 --
 -- Indexes for dumped tables
