@@ -201,6 +201,12 @@ body{
             display: flex;
         }
 
+        #body #bodyartikel2 #mainright #rightbody3 {
+            margin-top: 20px;
+            border-radius: 10px;
+            display: flex;
+        }
+
 #objright{
     padding: 20px 40px 20px 40px;   
     color: rgb(0, 22, 49);
@@ -335,8 +341,8 @@ body{
         } 
 
             #objright4 #bota a:hover {
-                background-color: #063A74;
-                color: #ffffff;
+                background-color: #B2A700;
+                color: #063A74;
                 transition: 0.5s;
             }
 
@@ -365,6 +371,27 @@ body{
                 color: #ffffff; 
                 transition: 0.5s;
             }
+
+#objright5{
+    width: 100%;
+    position: relative;
+    display: flex;
+}
+
+    #objright5 #img{
+        background-color: #ffffff;
+        padding: 7px;
+        width: 21px;
+        margin: 10px 0 10px 15px;
+    }
+
+    #objright5 input[type=text]{
+        margin-left: 15px;
+        width: 700px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        padding: 12px;
+    }
         
 #infofooter600{
     position: relative;
