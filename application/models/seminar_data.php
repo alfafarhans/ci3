@@ -14,6 +14,24 @@ class seminar_data extends CI_Model{
                }
       }
     */
+    function deletetrx($eventid,$userid){
+      $this->db->select('payment_id');
+      $this->db->where('seminar_id', $eventid);
+      $this->db->where('user_id', $userid);
+      $query = $this->db->get('user_trx');
+      $getval = $query->row();
+      $val = $getval->payment_id;
+      if($query->num_rows() == 1){
+        $this->db->where('user_id', $userid);
+        $this->db->where('seminar_id', $eventid);
+        $query2 = $this->db->delete('user_trx');
+        if($query2){
+          $this->db->where('payment_id', $val);
+          $query2 = $this->db->delete('payment');
+          return true;
+        }
+      }
+    }
     function getqrcode($eventid,$userid){
       $this->db->select('booking_id');
       $this->db->where('user_id', $userid);

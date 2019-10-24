@@ -279,7 +279,7 @@ elseif ($par == "myevent") {
 					<a id="bota1" href="'.base_url().'payment/confirmation/'.$value['seminar_id'].'/'.$userid.'">' .$value['atten_status'].'</a>
 					</div>
 					<div id="bota2">
-						<a href="#"> Cancel </a>
+						<a href="'.base_url().'/event_detail/cancle/'.$value['seminar_id'].'/'.$userid.'/1"> Cancel </a>
 						</div>';
 			}
 			else{
@@ -287,7 +287,7 @@ elseif ($par == "myevent") {
 					<a id="bota1" href="'.base_url().'event_detail/'.$value['seminar_id'].'">'.$value['atten_status'].'</a>
 					</div>
 					<div id="bota2">
-						<a style="width:80px" href="#"> ReUpload </a>
+						<a style="width:80px" href="'.base_url().'payment/confirmation/'.$value['seminar_id'].'/'.$userid.'"> ReUpload </a>
 						</div>';
 			}
 	echo '

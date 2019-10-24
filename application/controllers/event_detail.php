@@ -21,6 +21,15 @@ class event_detail extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+	 function cancle($s_id=null,$userid=null,$page=0){
+		$delete = $this->seminar_data->deletetrx($s_id,$userid);
+		if(($delete) && ($page == 0)){
+			redirect('event_detail/'.$s_id);
+		}
+		else if(($delete) && ($page == 1)){
+			redirect('profile/myprofile/2');
+		}
+	 }
 	 function renderqr($s_id=null,$userid=null){
 		$this->load->library('Ciqrcode');
 		$rev_qrcode = $this->seminar_data->getqrcode($s_id,$userid);

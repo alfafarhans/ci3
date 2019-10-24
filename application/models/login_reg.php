@@ -32,16 +32,6 @@ class login_reg extends CI_Model{
            //SELECT * FROM users WHERE username = '$username' AND password = '$password'  
       }
       
-
-      //edit function
-       
-        
-       //delete function
-     function delete($nis){
-          $this->db->where('nis', $nis);
-          $this->db->delete('siswa');
-        }
-      
 }
 
 

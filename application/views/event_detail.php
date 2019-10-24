@@ -91,14 +91,15 @@ function getAverageRGB(imgEl) {
         let a1 = $('#a1').html();
         if(a1 == "Booked"){
             $('#a1').attr("href","javascript:void(0);");
-            $('#a1').attr("href","javascript:void(0);");
             $('#a2' ).remove();
             $('#a1').click (function () {  alert("UNIQUE SQUARE AVAILABLE NOW !");  });  
         }
-        else if(a1 == "Waiting&nbsp;Confirmation"){
-            console.log(a1);
+        else if(a1 == "Waiting&nbsp;Confirmation"){ 
+            $('#a1').attr("href","javascript:void(0);");
             $('#a2').css("width", 80);
-            $('#a2').html("Reupload");
+            $('#a2').html("Reupload"); 
+            $('#a2').attr("href","<?php $userid = $this->session->userdata('user_id'); foreach ($seminar as $value) { echo base_url().'payment/confirmation/'.$value['seminar_id'].'/'.$userid ;  }?>"); 
+            $('#a1').click (function () {  alert("WE WANT TO SEE YOUR INTEND, SOON AS SPEED OF LIGHT");  });  
         }
         
         else if(a1 == "Waiting&nbsp;Payment"){
@@ -223,12 +224,11 @@ function getAverageRGB(imgEl) {
                     <div id="leftpost">
                         <div id="padding">
                 <?php
+
                 $userid = $this->session->userdata('user_id');
                 if( (!empty($userid)) && (!empty($registered)) ){
 				$register_fill = str_replace(" ","&nbsp;",$registered);
                     foreach ($seminar as $value) {
-                        $sid = $value['seminar_id'];
-                        $uid = $userid;
                         echo 
                     '<a id="a1" href="'.base_url().'payment/confirmation/'.$value['seminar_id'].'/'.$userid.'" >'.$register_fill.'</a>';
                         }
@@ -248,8 +248,14 @@ function getAverageRGB(imgEl) {
                         </div>
                     </div>
                     <div id="rightpost">
-                        <div id="padding">
-                            <a id="a2" href="'<?base_url()?>'login/"> Cancel </a>
+                        <div id="padding"> <?php
+                         $userid = $this->session->userdata('user_id');
+                         if( (!empty($userid)) && (!empty($registered)) ){
+                        foreach ($seminar as $value) {
+                          echo  '<a id="a2" href="./cancle/'.$value['seminar_id'].'/'.$userid.'/0"> Cancel </a>';
+                        }
+                    }
+                            ?>
                         </div>
                     </div>
                 </div>
