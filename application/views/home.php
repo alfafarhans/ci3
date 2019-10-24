@@ -64,7 +64,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 if (s.options[i].innerHTML == this.innerHTML) {
                     s.selectedIndex = i;
                     h.innerHTML = this.innerHTML;
-
+                    status = true;
                     ceklunch(); // call funtion
 
                     y = this.parentNode.getElementsByClassName("same-as-selected");
