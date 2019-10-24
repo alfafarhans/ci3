@@ -208,6 +208,7 @@ body{
         }
 
             #desc{
+                color: white;
                 position: absolute;
                 left: -10px;
             }
