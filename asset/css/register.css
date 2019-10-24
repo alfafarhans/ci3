@@ -152,6 +152,7 @@ body{
         #register input[type=submit]:hover {
             background-color: #063A74;
             color: #ffffff;
+            transition: 0.5s;
         }
           
         #register #rights {

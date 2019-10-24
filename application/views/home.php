@@ -247,6 +247,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div id="top">
         <div id="navbar_kiri">
         <a href="'.base_url().'home"> Seminar Go </a>
+
+        <img id="img" src="'.base_url().'asset/pict/icon/search-icon.png">
+        
         <input type="text" id="seminar" name="seminar" class = "result_sem" placeholder="Cari seminar">
     </div>
     
@@ -392,13 +395,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>  
     </div>  
     <!-- bagian footer  -->
-
-    <div id="infofooter">
-    </div>
     
+    <div id="infofooter2">
+    </div>
+
     <div id="footer">
         <p>Copyright © 2019 </p>
     </div>
+    
     </div>
 
     <script>

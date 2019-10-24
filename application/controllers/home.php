@@ -128,7 +128,9 @@ class home extends CI_Controller {
 			'<div id="post">
 				<a href="'. base_url().'event_detail/'. $value['seminar_id'].'"> ';
 				$output .='
+					<div id="img">
 						<img src="'.base_url().'asset/pict/banner/'. $value['seminar_banner'].'">
+					</div>
 				<div id="descbox"> 
 					<div id="namaseminar">'.$value['seminar_name'].' </div>
 					<div id="dateseminar">'.$dayname.',&nbsp;'.$daynum.'&nbsp;'.$mounth.'</div>

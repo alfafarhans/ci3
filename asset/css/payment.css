@@ -52,39 +52,6 @@ body{
             background-color: #5890CF;
         }
 
-        #navbar_kiri input[type=text] {
-            display: block;
-            width: 25vw;
-            padding: 5px 5px;
-            margin: 10px 15px;
-            box-sizing: border-box;
-            border: none;
-            font-size: 17px;
-            background-color: #ffffff;
-        }
-
-        #result_sem {
-            margin-top: 61px;
-            margin-left: 177px;
-            position: absolute;
-            background-color: #f9f9f9;
-            z-index: 25;
-            width: 500px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-        }   
-
-            #result_sem a{
-                display: block;
-                text-decoration: none;
-                color: black;
-                padding: 15px 30px 15px 20px;
-            }      
-
-            #result_sem a:hover{
-                color: #063A74;
-                background-color: #dedede;
-            }  
-
     #navbar_kanan {
         display: inline-flex;
         justify-content: flex-end;
@@ -92,7 +59,6 @@ body{
         position: relative;
         z-index: 11;
         flex-grow: 1;
-        
     }
 
         #navbar_kanan #a{
@@ -131,6 +97,7 @@ body{
         .dropdown-content a:hover{
             background-color: #dedede;
             color: #063A74;
+            transition: 0.5s;
         }
 
 
@@ -274,6 +241,7 @@ body{
                 #leftbody input[type=submit]:hover {
                     background-color: #063A74;
                     color: #ffffff;
+                    transition: 0.5s;
                 }
 
         #body #bodyartikel2 #rightbody {

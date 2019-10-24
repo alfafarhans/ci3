@@ -53,11 +53,18 @@ body{
             background-color: #5890CF;
         }
 
+        #navbar_kiri #img{
+            background-color: #ffffff;
+            padding: 13px;
+            width: 15px;
+            margin: 10px 0 10px 15px;
+        }
+
         #navbar_kiri input[type=text] {
             display: block;
-            width: 25vw;
+            width: 24vw;
             padding: 5px 5px;
-            margin: 10px 15px;
+            margin: 10px 0;
             box-sizing: border-box;
             border: none;
             font-size: 17px;
@@ -70,7 +77,7 @@ body{
             position: absolute;
             background-color: #f9f9f9;
             z-index: 25;
-            width: 500px;
+            width: 503px;
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
         }   
 
@@ -84,6 +91,7 @@ body{
             #result_sem a:hover{
                 color: #063A74;
                 background-color: #dedede;
+                transition: 0.5s;
             }  
 
     #navbar_kanan {
@@ -116,7 +124,6 @@ body{
             right: 0px;
             top: 61px;
             background-color: #ffffff;
-           
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
             z-index: 25;
         }
@@ -132,6 +139,7 @@ body{
         .dropdown-content a:hover{
             background-color: #dedede;
             color: #063A74;
+            transition: 0.5s;
         }
 
 
@@ -164,26 +172,6 @@ body{
             padding: 3px;
             margin-left: 5px;
         }
-        
-        /* CSS Icon User Click
-        
-        .dropbtn {
-            background-color: #3498DB;
-            color: white;
-            padding: 16px;
-            font-size: 16px;
-            border: none;
-            cursor: pointer;
-            z-index: 30;
-          }
-          
-        .dropbtn:hover, .dropbtn:focus {
-            background-color: #2980B9;
-        }
-
-        .show {
-            display: block;
-        }*/
 
 #header {
     position: relative;
@@ -246,6 +234,7 @@ body{
             #result_loc a:hover{
                 color: #063A74;
                 background-color: #dedede;
+                transition: 0.5s;
             }  
     
         #smart #label{
@@ -327,6 +316,7 @@ body{
         .select-items div:hover, .same-as-selected {
             background-color: rgba(0, 0, 0, 0.1);
             color: #ffffff;
+            transition: 0.5s;
         }
 
 #body {
@@ -352,19 +342,26 @@ body{
     #postinduk #post:hover {
         --colpos:yellow;
         --colfont: #063A74;
+        --colimg: scale(1.2);
     }
     :root{
         --colpos: rgba(0, 0, 0, 0.8);
         --colfont: #ffffff;
     }
 
-        #postinduk #post img {
+        #img{
+            overflow: hidden; 
+        }
+
+        #postinduk #post #img img {
 	        min-width: 100px;
             margin:0;
             margin-bottom: -4px;
             height: 290px;
             width: 290px;
             object-fit: cover;
+            transition: 0.5s ease;
+            transform: var(--colimg);
         }
 
         #postinduk #post #descbox {
@@ -377,6 +374,7 @@ body{
             color: var(--colfont);
             padding-left: 20px;
             padding-right: 20px;
+            transition: 0.5s;
             width: 40%;
         }
 
@@ -417,6 +415,7 @@ body{
         #postinduk2 #a1:hover {
             background-color: #063A74;
             color: #ffffff;
+            transition: 0.5s;
         }
 
     #postinduk2 #a2{
@@ -434,6 +433,7 @@ body{
         #postinduk2 #a2:hover {
             background-color: #063A74;
             color: #ffffff;
+            transition: 0.5s;
         }   
 
     #postinduk2 a:hover{
@@ -441,15 +441,14 @@ body{
         color: #ffffff;
     }
 
-#infofooter{
+#infofooter2{
     position: relative;
     width: 100%;
-    height: 100px;
+    height: 50px;
     bottom: 0;
-    background-color: rgba(230, 179, 11, 0.787);
-    text-align: center;
+    background-color: #063A74;
     padding: 5px;
-}   
+}  
 
 #footer {
     position: absolute;
@@ -457,7 +456,7 @@ body{
     height: 50px;
     bottom: 0;
     color: white;
-    background-color: rgba(47, 47, 47, 0.815);
+    background-color: rgba(6, 57, 116, 0.795);
     text-align: center;
     padding: 5px;
 }

@@ -131,6 +131,7 @@ body{
         .dropdown-content a:hover{
             background-color: #dedede;
             color: #063A74;
+            transition: 0.5s;
         }
 
 
@@ -249,6 +250,7 @@ padding-right: 50px;
     #obj-post a:hover{
         border: 1px solid #063A74;
         color: #063A74;
+        transition: 0.5s;
     }
 
 #obj-judul{
@@ -277,6 +279,7 @@ font-weight: bold;
             #body #bodyartikel2 #padding #a1:hover {
                 background-color: #E5D600;
                 color: #063A74; 
+                transition: 0.5s;                
             }
 
         #body #bodyartikel2 #padding #a2{
@@ -295,6 +298,7 @@ font-weight: bold;
             #body #bodyartikel2 #padding #a2:hover {
                 background-color: #A50023;
                 color: #ffffff; 
+                transition: 0.5s;
             }
 
 #infofooter600{

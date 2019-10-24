@@ -83,6 +83,7 @@ body{
         .dropdown-content a:hover{
             background-color: #dedede;
             color: #063A74;
+            transition: 0.5s;
         }
 
         /*new*/
@@ -152,10 +153,12 @@ body{
 
     .objleft:hover{
         border: 1px solid #063A74;
+        transition: 0.5s;
     }
 
     .objleft a:hover{
         color: #063A74;
+        transition: 0.5s;
     }
 
 .active{
@@ -261,6 +264,7 @@ body{
     #objright2 input[type=submit]:hover {
         background-color: #063A74;
         color: #ffffff;
+        transition: 0.5s;
     }
 
 #row:after {
@@ -333,6 +337,7 @@ body{
             #objright4 #bota a:hover {
                 background-color: #063A74;
                 color: #ffffff;
+                transition: 0.5s;
             }
 
     #objright4 #bota2{
@@ -358,6 +363,7 @@ body{
             #objright4 #bota2 a:hover {
                 background-color: #A50023;
                 color: #ffffff; 
+                transition: 0.5s;
             }
         
 #infofooter600{
