@@ -45,13 +45,13 @@
 
             
         }
-        
     function navToContent(url){
 		$.ajax({
 			type: "GET",
 			url: url,
 			cache: false,
 			beforeSend: function(data){
+                
 				$("#mainright").html("");
 			},
 			success: function(data){
@@ -60,6 +60,7 @@
 		});
 		return false;
     }
+    
     
     //all trigerstate
     $('#jdrop').on('click', function() {  //.dropdown-content

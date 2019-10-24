@@ -3,6 +3,9 @@ html{
     margin: 0;
     padding: 0;
 }
+.pulse {
+    transition: 1s ease-in;
+  }
 
 #wrapper{
     min-height: 100%;
