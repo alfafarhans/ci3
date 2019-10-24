@@ -261,7 +261,15 @@ elseif ($par == "myevent") {
 		Berikut list seminar yang saya ikuti.
 		</center>
 	</div>
-</div>';
+</div>
+
+<div id="rightbody4">
+	<div id="objright5">
+		<img id="img" src="'.base_url().'asset/pict/icon/search-icon.png">
+		<input type="text" id="history" name="history">
+	</div>
+</div>
+';
 			foreach ($userdata->result_array() as $value) {
 			$dayname = date('D', strtotime($value['seminar_date']));
             $daynum = date('d', strtotime($value['seminar_date']));
@@ -291,6 +299,7 @@ elseif ($par == "myevent") {
 						</div>';
 			}
 	echo '
+
 	<div id="rightbody3">
 		<div id="objright3">
 			<img src="'.base_url().'asset/pict/banner/'.$value['seminar_banner'].'">
