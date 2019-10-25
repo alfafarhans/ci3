@@ -56,7 +56,7 @@ class event_detail extends CI_Controller {
 				base_url().'event_detail/scan/'.$rev_qrcode->booking_id.$userid,
 				$outfile = false,
 				$level = QR_ECLEVEL_H,
-				$size = 5,
+				$size = 3,
 				$margin = 1
 			);
 		}
