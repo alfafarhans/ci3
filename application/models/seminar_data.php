@@ -14,6 +14,13 @@ class seminar_data extends CI_Model{
                }
       }
     */
+    function scan_update($payid){
+      $this->db->where('payment_id',$payid);
+      $this->db->set('atten_status','Attend On Stage');
+      $query = $this->db->update('user_trx');
+      if($query){return true;}
+      else{return false;}
+    }
     function deletetrx($eventid,$userid){
       $this->db->select('payment_id');
       $this->db->where('seminar_id', $eventid);

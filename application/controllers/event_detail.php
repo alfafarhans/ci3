@@ -21,6 +21,23 @@ class event_detail extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+	 function scan($p_id=null){
+		 $userid = $this->session->userdata('user_id');
+		if( (!empty($userid)) && ($userid == 7320006) ){
+			$query = $this->seminar_data->scan_update($p_id);
+			if($query){
+				echo 'SUKSES';
+			}
+			else {
+				echo 'gagal';
+			}
+		}
+		else {
+			redirect('login');
+		}
+	 }
+
+	 
 	 function cancle($s_id=null,$userid=null,$page=0){
 		$delete = $this->seminar_data->deletetrx($s_id,$userid);
 		if(($delete) && ($page == 0)){
@@ -36,7 +53,7 @@ class event_detail extends CI_Controller {
 		//var_dump($rev_qrcode);
 		if ( !empty($rev_qrcode->booking_id) ){
 			QRcode::png(
-				$rev_qrcode->booking_id,
+				base_url().'event_detail/scan/'.$rev_qrcode->booking_id.$userid,
 				$outfile = false,
 				$level = QR_ECLEVEL_H,
 				$size = 5,
