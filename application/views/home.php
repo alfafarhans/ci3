@@ -64,6 +64,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 if (s.options[i].innerHTML == this.innerHTML) {
                     s.selectedIndex = i;
                     h.innerHTML = this.innerHTML;
+                    pager = 0;
                     status = true;
                     ceklunch(); // call funtion
 
