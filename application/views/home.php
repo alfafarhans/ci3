@@ -67,7 +67,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     pager = 0;
                     status = true;
                     ceklunch(); // call funtion
-
                     y = this.parentNode.getElementsByClassName("same-as-selected");
                     for (k = 0; k < y.length; k++) {
                     y[k].removeAttribute("class");
