@@ -53,12 +53,10 @@ class payment extends CI_Controller {
 				$data1 = array('atten_status' => "Waiting Confirmation");
 				$updater = $this->profile_data->update_data($data1,'user_trx','payment_id' ,$payment_id);
 				if($updater){
-					redirect('event_detail/'.$s_id.'');
+					redirect(base_url().'event_detail/'.$s_id.'','refresh');
 				}
 
-			}
-
-			
+			}			
 		}
 		
 	}

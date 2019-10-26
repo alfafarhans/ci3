@@ -104,6 +104,7 @@ function getAverageRGB(imgEl) {
         
         else if(a1 == "Attend&nbsp;On&nbsp;Stage"){
             $( ".cancle" ).remove();
+            $('#a2').html("Reupload");  
         }
         //ALL TRIGEER
         $('#jdrop').on('click', function() {  //.dropdown-content
