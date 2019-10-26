@@ -102,8 +102,8 @@ function getAverageRGB(imgEl) {
             $('#a1').click (function () {  alert("WE WANT TO SEE YOUR INTEND, SOON AS SPEED OF LIGHT");  });  
         }
         
-        else if(a1 == "Waiting&nbsp;Payment"){
-           
+        else if(a1 == "Attend&nbsp;On&nbsp;Stage"){
+            $( ".cancle" ).remove();
         }
         //ALL TRIGEER
         $('#jdrop').on('click', function() {  //.dropdown-content
@@ -252,7 +252,7 @@ function getAverageRGB(imgEl) {
                          $userid = $this->session->userdata('user_id');
                          if( (!empty($userid)) && (!empty($registered)) ){
                         foreach ($seminar as $value) {
-                          echo  '<a id="a2" href="./cancle/'.$value['seminar_id'].'/'.$userid.'/0"> Cancel </a>';
+                          echo  '<a class="cancle" id="a2" href="./cancle/'.$value['seminar_id'].'/'.$userid.'/0"> Cancel </a>';
                         }
                     }
                             ?>
