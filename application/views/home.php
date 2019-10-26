@@ -359,7 +359,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <option value="fashion"> Fashion</option>
                     <option value="film"> Film & Media</option>
                     <option value="fooddrink"> Food & Drink</option>
-                    <option value="goverment"> Govevrment </option>
+                    <option value="goverment"> Goverment </option>
                     <option value="health"> Health</option>
                     <option value="hobbies"> Hobbies</option>
                     <option value="holiday"> Holiday</option>
@@ -367,7 +367,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <option value="schoolactivies"> School Activies</option>
                     <option value="sciencetech"> Science & Tech</option>
                     <option value="spiritually"> Spiritually</option>
-                    <option value="sportitness"> Sport & Fitness</option>
+                    <option value="sportfitness"> Sport & Fitness</option>
                     <option value="traveloutdoor"> Travel & Outdoor</option>
                 <select>
             </div>
