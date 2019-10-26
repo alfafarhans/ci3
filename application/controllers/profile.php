@@ -291,7 +291,7 @@ elseif ($par == "myevent") {
 						<a href="'.base_url().'/event_detail/cancle/'.$value['seminar_id'].'/'.$userid.'/1"> Cancel </a>
 						</div>';
 			}
-			else{
+			else if($value['atten_status'] == "Waiting Confirmation"){
 			$out = '<div id="bota">
 					<a id="bota1" href="'.base_url().'event_detail/'.$value['seminar_id'].'">'.$value['atten_status'].'</a>
 					</div>
@@ -299,6 +299,11 @@ elseif ($par == "myevent") {
 						<a style="width:80px" href="'.base_url().'payment/confirmation/'.$value['seminar_id'].'/'.$userid.'"> ReUpload </a>
 						</div>';
 			}
+			else{
+				$out = '<div id="bota">
+						<a id="bota1" href="'.base_url().'event_detail/'.$value['seminar_id'].'">'.$value['atten_status'].'</a>
+						</div>';
+				}
 	echo '
 
 	<div id="rightbody3">

@@ -118,6 +118,9 @@ class profile_admin extends CI_Controller {
 			}
 		}
 		function dnnd($p_id=null){
-			
+			$userupdate = $this->profile_data->denied($p_id);
+			if($userupdate){
+				redirect('/profile_admin/Admin');
+			}
 		}
 }//end class

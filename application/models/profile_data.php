@@ -77,6 +77,20 @@ class profile_data extends CI_Model{
             return false;
         }
       }
+
+      function denied($p_id){
+        $this->db->set('atten_status','Reupload');
+        $this->db->where('payment_id',$p_id);
+        $updater = $this->db->update('user_trx');
+
+        if($updater){
+          return true;
+        }
+        else {
+          return false;
+        }
+        
+      }
     
 
 
