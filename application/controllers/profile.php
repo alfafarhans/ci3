@@ -194,8 +194,9 @@ class profile extends CI_Controller {
 					Jenis Kelamin
 				</div>
 				<div id="col-75"> 
-					<input type="text" disabled value="'.$value['user_gender'].'">
-					</select>
+				<select name="sex" disabled >
+					<option value="'.$value['user_gender'].'" selected>'.$value['user_gender'].'</option>
+				</select>
 				</div>
 			</div>';
 			}
