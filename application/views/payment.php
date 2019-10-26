@@ -192,7 +192,7 @@
                         No rekening pengirim
                     </div>
                     <div id="col-75">
-                        <input type="text" id="norek" name="norek">
+                        <input type="number" id="norek" name="norek">
                     </div>
                 </div>
                 <div id="row">

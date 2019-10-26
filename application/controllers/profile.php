@@ -220,7 +220,7 @@ class profile extends CI_Controller {
 					No Handphone
 				</div>
 				<div id="col-75"> 
-					<input type="text" id="nohp" name="nohp" value="'.$value['user_phone'].'">
+					<input type="number" id="nohp" name="nohp" value="'.$value['user_phone'].'">
 				</div>
 			</div>
 
@@ -342,7 +342,7 @@ elseif ($par == "setting") {
 					Email
 				</div>
 				<div id="col-75"> 
-					<input type="text" id="email" name="email" value="'.$value['email'].'" required>
+					<input type="email" id="email" name="email" value="'.$value['email'].'" required>
 				</div>
 			</div>
 
