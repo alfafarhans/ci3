@@ -136,7 +136,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
 
-            //filterquery
+        //filterquery
         function fillter_query(price,date,nextpage) {
             var categoryfill = [];  
             var cityfill = []; 
