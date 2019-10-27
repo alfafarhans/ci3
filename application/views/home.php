@@ -66,7 +66,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     h.innerHTML = this.innerHTML;
                     pager = 0;
                     status = true;
-                    ceklunch(); // call funtion
+                    eval_allval(); // call funtion
                     y = this.parentNode.getElementsByClassName("same-as-selected");
                     for (k = 0; k < y.length; k++) {
                     y[k].removeAttribute("class");
@@ -112,6 +112,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         then close all select boxes:*/
         document.addEventListener("click", closeAllSelect);
 
+
+
+            //search typing
         function search_seminar(search) {
            // console.log(search);
         if(search.length<=0){
@@ -131,14 +134,33 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         }
             }
 
-        function filcat(/*cat,*/price,date,/*loc,*/nextpage) {
+
+
+            //filterquery
+        function fillter_query(price,date,nextpage) {
+            var categoryfill = [];  
+            var cityfill = []; 
+           $('.get_cat').each(function(){  
+                if($(this).is(":checked"))  
+                {  
+                     categoryfill.push($(this).val());  
+                }  
+           });  
+           $('.val_city').each(function(){  
+                if($(this).is(":checked"))  
+                {  
+                     cityfill.push($(this).val());  
+                }  
+           });
+           categoryfill = categoryfill.toString();  
+           cityfill = cityfill.toString();
             $.ajax({
-            url:"<?php echo base_url(); ?>home/filcat/"+ nextpage,
+            url:"<?php echo base_url(); ?>home/fillter_query/"+ nextpage,
             method:"POST",
-            data:{/*cat1:cat,*/price1:price,date1:date,/*loc1:loc*/},
+            data:{price1:price,date1:date,varcat:categoryfill,varcity:cityfill},
             success:function(data){
             var responParse = JSON.parse(data);
-            console.log(responParse.status);
+            //console.log(responParse.status);
             if(responParse.status){
             $('#postinduk').html(responParse.output);
             }
@@ -153,24 +175,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             });
         }
 
-        window.ceklunch = function() { 
+        window.eval_allval = function() { 
             var price =  $("#price").val();
-            //var category =  $("#category").val();
             var date =  $("#date").val();
-            //var loc =  $("#location").val();
-            //console.log(loc);
-            filcat(/*category,*/price,date,/*loc,*/pager);
+            fillter_query(price,date,pager);
 
         }
 
 
 
         //ALL TRIGEER
+        //checkboxcat
+        $('input[name="triger"]').click(function () {
+            eval_allval();
+        });
         //next
         $('#a1').click (function () {   
             if(status){
             pager += 6;
-            ceklunch();
+            eval_allval();
             }
             else{
                 return false;
@@ -185,20 +208,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             }
             if(pager !== 0){
                 pager -= 6;
-                ceklunch();
+                eval_allval();
             }
             else{
                 alert("Wrong way, turn your steer back");
                 return false;
             }
-            
                 });
 
-        /*$('#location').keyup(function(e){
-            if(e.keyCode == 8 && $(this).val().length < 1) {
-                ceklunch();
-            }
-        });*/
         $('#jdrop').on('click', function() {  //.dropdown-content
             let wit = $('#jdrop').width();
             wit += 29.8;
@@ -206,29 +223,32 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $("#jcdrop").css("width", wit);
             $('#jcdrop').slideDown( "fast" );
         });
+        //seminar seacrh
         $('#seminar').on('keyup', function() {
-            //var res = '#result_sem';
-            //console.log($(this).val());
             search_seminar($(this).val());
         });
-        /*$('#location').on('keyup', function() {
-            var res = '#result_loc';
-            pager = 0;
-            status = true;
-            //console.log($(this).val());
-            search_seminar($(this).val(),res);
-        });*/
+      
         
-    $(document).ready(function() {ceklunch();});
-    });
+    $(document).ready(function() {eval_allval();});}); //autoload
     
     /*function changevalloc(ele) {
         let link = ele.innerHTML;
         //setinputval
         let ta = document.getElementById("location").value = link;
-      
-        ceklunch();
-    }*/
+        eval_allval();
+    }
+      $('#location').on('keyup', function() {
+            var res = '#result_loc';
+            pager = 0;
+            status = true;
+            //console.log($(this).val());
+            search_seminar($(this).val(),res);
+        });
+           /*$('#location').keyup(function(e){
+            if(e.keyCode == 8 && $(this).val().length < 1) {
+                eval_allval();
+            }
+        });*/
   
 
     </script>

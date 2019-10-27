@@ -10,17 +10,25 @@
         $(document).ready(function(){ 
         $('input[name="triger"]').click(function () {
             var categoryfill = [];  
+            var cityfill = []; 
            $('.get_val').each(function(){  
                 if($(this).is(":checked"))  
                 {  
                      categoryfill.push($(this).val());  
                 }  
            });  
+           $('.val_city').each(function(){  
+                if($(this).is(":checked"))  
+                {  
+                     cityfill.push($(this).val());  
+                }  
+           });
            categoryfill = categoryfill.toString();  
+           cityfill = cityfill.toString(); 
            $.ajax({  
                 url:"<?php echo base_url();?>test_c/trial",  
                 method:"POST",  
-                data:{varcat:categoryfill},  
+                data:{varcat:categoryfill,varcity:cityfill},  
                 success:function(data){  
                     //console.log(data);
                      $('#result').html(data);  
@@ -58,6 +66,27 @@
                     <input type="checkbox" name="triger" class = "get_val" value="traveloutdoor"> Travel & Outdoor <br />                      
                 </div>         
                 <div id="result"></div>  
+           </div>  
+           <br />  
+           <div class="container" style="width:500px;">  
+                <h3 class="text-center">TEST ANOTHER</h3>  
+                
+                <div class="checkbox">  
+                <?php  
+                 $param = "";
+                foreach($seminar->result_array() as $value){  
+                if($param != $value['seminar_city']){
+                    $param = $value['seminar_city'];
+                    $strfil1 =  str_replace(" ","-",$value['seminar_city']);
+                    $strfil2 = strtolower($strfil1);
+               echo '<input type="checkbox" name="triger" class = "val_city" value="'.$strfil2.'" />'.$value['seminar_city'].'<br />                    
+               ';
+               }
+             }
+             
+             
+             ?>  
+                     </div>
            </div>  
       </body>  
  </html>  

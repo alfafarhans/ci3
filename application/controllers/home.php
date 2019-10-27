@@ -36,15 +36,14 @@ class home extends CI_Controller {
 		}
 		
 	}
-	function filcat($from = 0){
+	function fillter_query($from = 0){
 		$newdate1= "";
 		$newdate2= "";
 		$output = "";
-		$cat = $this->input->post('cat1');
 		$price = $this->input->post('price1');
 		$date = $this->input->post('date1');
 		//$location = $this->input->post('loc1');
-		if( (!empty($cat)) || (!empty($price)) ||(!empty($date))  ){	
+		if( (!empty($price)) ||(!empty($date))  ){	
 				 $curdate = date('Y-m-d'); 
 				if($date == "today"){
 					$newdate1 = $curdate;
@@ -94,25 +93,23 @@ class home extends CI_Controller {
 				else{
 					$newdate1 = "anydate";
 				}
-			$pricer = $this->input->post('price1');
-			//$locationer = $this->input->post('loc1');
-			$data = $this->seminar_data->get_filtercat($pricer,$newdate1,$newdate2);
-			
-			//$config['base_url'] = base_url().'/home/index/';
-			//
-			$config['total_rows'] = $data->num_rows();
-			$config['per_page'] = 6;
-			$this->pagination->initialize($config);	
-			if($from < $config['total_rows'] ){
-				$start = $from;
-			}
-			else{
-				$start = $config['total_rows'];
-			}	
-			$datanew = $this->seminar_data->get_filtercat($pricer,$newdate1,$newdate2,$config['per_page'],$start);
+					$varcat = $this->input->post('varcat');
+					$varcity = $this->input->post('varcity');
+					$strfil1 =  str_replace("-"," ",$varcity);
+					$strfil2 = ucwords($strfil1);
+					$pricer = $this->input->post('price1');
+					$data = $this->seminar_data->filter($pricer,$newdate1,$newdate2,$varcat,$strfil2);
+					$config['total_rows'] = $data->num_rows();
+					$config['per_page'] = 6;
+					$this->pagination->initialize($config);	
+							if($from < $config['total_rows'] ){
+								$start = $from;
+							}
+							else{
+								$start = $config['total_rows'];
+							}	
+					$datanew = $this->seminar_data->filter($pricer,$newdate1,$newdate2,$config['per_page'],$start,$varcat,$strfil2);
 		}
-		
-		$output .= '<input type="hidden" id="cekval" value = "'.$config['total_rows'].'">';
   		if($datanew->num_rows() > 0)
  		 {
  		  foreach($datanew->result_array() as $value)

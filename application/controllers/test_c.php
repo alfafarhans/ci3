@@ -24,12 +24,22 @@ class test_c extends CI_Controller {
 	 */
 	public function index(){
 		http://localhost:8080/ci3/index.php/dashbord/register
-		$this->load->view('test_v');
+		$rowcek = $this->seminar_data->getcityfilter();
+		if($rowcek->num_rows() > 0){	
+		$result['seminar'] = $this->seminar_data->getcityfilter();
+		}
+		else{
+			$result['seminar'] = 'NO EVENT';
+		}
+		$this->load->view('test_v',$result);
 	}
     function trial(){
-            $varcat = $this->input->post('varcat');
+			$varcat = $this->input->post('varcat');
+			$varcity = $this->input->post('varcity');
+			$strfil1 =  str_replace("-"," ",$varcity);
+			$strfil2 = ucwords($strfil1);
 			//echo $varcat;
-            $result = $this->seminar_data->testfil($varcat);
+            $result = $this->seminar_data->testfil($varcat,$strfil2);
             if($result->num_rows() > 0){
 				$i=1;
                 foreach ($result->result_array() as $value) {
@@ -40,5 +50,6 @@ class test_c extends CI_Controller {
             else {
                 echo "EROR CODE : 666";
             }
-    }
+	}
+
 }//end CTRL
