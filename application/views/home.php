@@ -138,6 +138,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         //filterquery
         function fillter_query(price,date,nextpage) {
+            
             var categoryfill = [];  
             var cityfill = []; 
            $('.get_cat').each(function(){  
@@ -187,6 +188,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         //ALL TRIGEER
         //checkboxcat
         $('input[name="triger"]').click(function () {
+            pager = 0;
+            status = true;
             eval_allval();
         });
         //next
@@ -339,8 +342,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <h1> Solution Your Seminar Gateway </h1>
         </div>
     </div>
-
-
     <!-- bagian pencarian  -->
     <div id="smart">
         <!--

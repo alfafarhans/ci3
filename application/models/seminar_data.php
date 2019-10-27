@@ -23,7 +23,7 @@ class seminar_data extends CI_Model{
     }
 
 
-    function filter($price=null,$datestart="anydate",$datemax=null, $limit = null, $offset = null,$category=null,$city=null ){
+    function filter($category=null,$city=null, $price=null,$datestart="anydate",$datemax=null, $limit = null, $offset = null ){
       $curdate = date('Y-m-d');
       $this->db->select("*");
       if (!empty($datemax)) {

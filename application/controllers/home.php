@@ -98,7 +98,7 @@ class home extends CI_Controller {
 					$strfil1 =  str_replace("-"," ",$varcity);
 					$strfil2 = ucwords($strfil1);
 					$pricer = $this->input->post('price1');
-					$data = $this->seminar_data->filter($pricer,$newdate1,$newdate2,$varcat,$strfil2);
+					$data = $this->seminar_data->filter($varcat,$strfil2,$pricer,$newdate1,$newdate2);
 					$config['total_rows'] = $data->num_rows();
 					$config['per_page'] = 6;
 					$this->pagination->initialize($config);	
@@ -108,7 +108,7 @@ class home extends CI_Controller {
 							else{
 								$start = $config['total_rows'];
 							}	
-					$datanew = $this->seminar_data->filter($pricer,$newdate1,$newdate2,$config['per_page'],$start,$varcat,$strfil2);
+					$datanew = $this->seminar_data->filter($varcat,$strfil2,$pricer,$newdate1,$newdate2,$config['per_page'],$start);
 		}
   		if($datanew->num_rows() > 0)
  		 {
