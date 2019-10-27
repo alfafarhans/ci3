@@ -66,28 +66,26 @@ class home extends CI_Controller {
 					$calcdate = 6 - $loopd;
 					$newdate1 = date('Y-m-d', strtotime('+'.$calcdate.' day'));//this
 					$calcdate ++;
-					$newdate2 = date('Y-m-d', strtotime('+'.$calcdate.' day'));//and this	
+					$newdate2 = date('Y-m-d', strtotime('+'.$calcdate.' day'));//and this
 					}
+
 				}
 				elseif($date == "thisweek"){
-					$loopd = date("N");
 					$newdate1 = $curdate;//min 
-					$calcdate = 7 - $loopd;
-					$newdate2 = date('Y-m-d', strtotime('+'.$calcdate.' day'));//<= (max) 
+					$newdate2 = date('Y-m-d',strtotime ( '+1 week' , strtotime ( $newdate1 ) ) );//max<=
 				}
 				elseif($date == "nextweek"){
-					$loopd = date("N");
-					$calcdate = 7 - $loopd;
+					$loopd = date("N"); //1-7 mon = 1 sun =7
+					$calcdate = 8 - $loopd;
 					$newdate1 = date('Y-m-d', strtotime('+'.$calcdate.' day'));//> (min) 
-					$newdate2 = date('Y-m-d',strtotime ( '+1 week' , strtotime ( $newdate1 ) ) );//max<=
-					
+					$newdate2 = date('Y-m-d',strtotime ( '+1 week' , strtotime ( $newdate1 ) ) );//max<=	
 				}
 				elseif($date == "thismonth"){
 					$newdate1 = $curdate; // min
-					$newdate2 = date('Y-m-d', strtotime ('last day of this month') ) ; //<= max
+					$newdate2 = date('Y-m-d', strtotime ('first day of next month') ) ; //<= max
 				}
 				elseif($date == "nextmonth"){
-					$newdate1 = date('Y-m-d', strtotime ('last day of this month') ) ; //> min
+					$newdate1 = date('Y-m-d', strtotime ('first day of next month') ) ; //> min
 					$newdate2 = date('Y-m-d', strtotime ('last day of next month') ) ;//<= max
 				}
 				else{

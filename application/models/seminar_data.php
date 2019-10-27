@@ -36,6 +36,8 @@ class seminar_data extends CI_Model{
       elseif(!empty($datestart)){
         $this->db->where('DATE(seminar_date)',$datestart);
       }
+
+      
       if (!empty($price)) {
         if($price == "free"){
           $this->db->where('seminar_price', 0);
