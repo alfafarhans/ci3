@@ -112,18 +112,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         then close all select boxes:*/
         document.addEventListener("click", closeAllSelect);
 
-        function search_seminar(search,result) {
+        function search_seminar(search) {
            // console.log(search);
         if(search.length<=0){
-            $(result).html("");
+            $('#result_sem').html("");
         }
         else{
             $.ajax({
         url:"<?php echo base_url(); ?>home/search/",
         method:"POST",
-        data:{datasearch:search,type:result},
+        data:{datasearch:search/*,type:result*/},
         success:function(data){
-        $(result).html(data);
+        $('#result_sem').html(data);
         //console.log(data);
                  }
               });
@@ -131,11 +131,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         }
             }
 
-        function filcat(cat,price,date,loc, nextpage) {
+        function filcat(/*cat,*/price,date,/*loc,*/nextpage) {
             $.ajax({
             url:"<?php echo base_url(); ?>home/filcat/"+ nextpage,
             method:"POST",
-            data:{cat1:cat,price1:price,date1:date,loc1:loc},
+            data:{/*cat1:cat,*/price1:price,date1:date,/*loc1:loc*/},
             success:function(data){
             var responParse = JSON.parse(data);
             console.log(responParse.status);
@@ -155,11 +155,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         window.ceklunch = function() { 
             var price =  $("#price").val();
-            var category =  $("#category").val();
+            //var category =  $("#category").val();
             var date =  $("#date").val();
-            var loc =  $("#location").val();
+            //var loc =  $("#location").val();
             //console.log(loc);
-            filcat(category,price,date,loc,pager);
+            filcat(/*category,*/price,date,/*loc,*/pager);
 
         }
 
@@ -194,11 +194,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             
                 });
 
-        $('#location').keyup(function(e){
+        /*$('#location').keyup(function(e){
             if(e.keyCode == 8 && $(this).val().length < 1) {
                 ceklunch();
             }
-        });
+        });*/
         $('#jdrop').on('click', function() {  //.dropdown-content
             let wit = $('#jdrop').width();
             wit += 29.8;
@@ -207,28 +207,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $('#jcdrop').slideDown( "fast" );
         });
         $('#seminar').on('keyup', function() {
-            var res = '#result_sem';
+            //var res = '#result_sem';
             //console.log($(this).val());
-            search_seminar($(this).val(),res);
+            search_seminar($(this).val());
         });
-        $('#location').on('keyup', function() {
+        /*$('#location').on('keyup', function() {
             var res = '#result_loc';
             pager = 0;
             status = true;
             //console.log($(this).val());
             search_seminar($(this).val(),res);
-        });
+        });*/
         
     $(document).ready(function() {ceklunch();});
     });
     
-    function changevalloc(ele) {
+    /*function changevalloc(ele) {
         let link = ele.innerHTML;
         //setinputval
         let ta = document.getElementById("location").value = link;
       
         ceklunch();
-    }
+    }*/
   
 
     </script>
@@ -323,13 +323,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <!-- bagian pencarian  -->
     <div id="smart">
-
+        <!--
         <div id="item">
             <label for="location" id="label"> Location </label>
             <input type="text" id="location" name="location" placeholder="Any location" class = "result_loc">
             <div id = "result_loc"></div>
         </div>
-
+        -->
         <div id="item">
             <label for="date" id="label"> Date </label>
             <br>
@@ -346,6 +346,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <select>
             </div>
         </div>
+        <!--
         <div id="item">
             <label for="category" id="label"> Category </label>
             <br>
@@ -372,7 +373,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <select>
             </div>
         </div>
-
+        -->
         <div id="item">
             <label for="category" id="label"> Price </label>
             <br>

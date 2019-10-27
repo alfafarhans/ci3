@@ -43,8 +43,8 @@ class home extends CI_Controller {
 		$cat = $this->input->post('cat1');
 		$price = $this->input->post('price1');
 		$date = $this->input->post('date1');
-		$location = $this->input->post('loc1');
-		if( (!empty($cat)) || (!empty($price)) ||(!empty($date)) || (!empty($location)) ){	
+		//$location = $this->input->post('loc1');
+		if( (!empty($cat)) || (!empty($price)) ||(!empty($date))  ){	
 				 $curdate = date('Y-m-d'); 
 				if($date == "today"){
 					$newdate1 = $curdate;
@@ -94,10 +94,9 @@ class home extends CI_Controller {
 				else{
 					$newdate1 = "anydate";
 				}
-			$category = $this->input->post('cat1');
 			$pricer = $this->input->post('price1');
-			$locationer = $this->input->post('loc1');
-			$data = $this->seminar_data->get_filtercat($category,$pricer,$newdate1,$newdate2,$locationer);
+			//$locationer = $this->input->post('loc1');
+			$data = $this->seminar_data->get_filtercat($pricer,$newdate1,$newdate2);
 			
 			//$config['base_url'] = base_url().'/home/index/';
 			//
@@ -110,7 +109,7 @@ class home extends CI_Controller {
 			else{
 				$start = $config['total_rows'];
 			}	
-			$datanew = $this->seminar_data->get_filtercat($category,$pricer,$newdate1,$newdate2,$locationer,$config['per_page'],$start);
+			$datanew = $this->seminar_data->get_filtercat($pricer,$newdate1,$newdate2,$config['per_page'],$start);
 		}
 		
 		$output .= '<input type="hidden" id="cekval" value = "'.$config['total_rows'].'">';
@@ -154,12 +153,11 @@ class home extends CI_Controller {
 	function search (){
 		$output="";
 		$datasearch = $this->input->post('datasearch');
-		$type = $this->input->post('type');
+		//$type = $this->input->post('type');
 		//var_dump($datasearch);
-	//	var_dump($type);
-		$result = $this->seminar_data->search_seminar($datasearch,$type);
-
-		if($type === "#result_sem"){
+		//	var_dump($type);
+	$result = $this->seminar_data->search_seminar($datasearch /*,$type*/);
+		//if($type === "#result_sem"){
 			if($result->num_rows() > 0)
  		 	{
 				foreach ($result->result_array() as $value) {
@@ -167,8 +165,8 @@ class home extends CI_Controller {
 				
 			}
 		}
-	}
-	elseif($type === "#result_loc"){
+	//}
+	/*elseif($type === "#result_loc"){
 		$param = "";
 		if($result->num_rows() > 0){
 		  foreach ($result->result_array() as $value) {
@@ -179,7 +177,7 @@ class home extends CI_Controller {
 		}
 
   		}
-	}
+	}*/
 	echo $output;
 		}
 		

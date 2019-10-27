@@ -14,6 +14,23 @@ class seminar_data extends CI_Model{
                }
       }
     */
+    function testfil ($category=null){
+      $this->db->select('*');
+      if($category != null){
+          $toarr = explode(',',$category);
+          $arrlength = count($toarr);//arr length start 1
+          if($arrlength === 1){
+            $this->db->like('seminar_tag',$toarr[0]);
+          }
+          else if($arrlength > 1){
+            for ($i=1; $i<$arrlength; $i++) { 
+               $this->db->or_like('seminar_tag',$toarr[$i]);
+            }
+          }
+      }
+      $query = $this->db->get('seminar');
+      return $query;
+    }
     function scan_update($payid){
       $this->db->where('payment_id',$payid);
       $this->db->set('atten_status','Attend On Stage');
@@ -99,7 +116,7 @@ class seminar_data extends CI_Model{
   }*/
 
 
-  function get_filtercat($cat=null,$price=null,$datestart="anydate",$datemax=null ,$loca = null, $limit = null, $offset = null ){
+  function get_filtercat($price=null,$datestart="anydate",$datemax=null, $limit = null, $offset = null ){
             $curdate = date('Y-m-d');
           // var_dump($cat);
           //  var_dump($price);
@@ -125,29 +142,23 @@ class seminar_data extends CI_Model{
                 $this->db->where('seminar_price >', 0);
               }
             }
-            
-            if(!empty($cat)){
-              $this->db->like('seminar_tag', $cat);
-              }
-            if(!empty($loca)){
-                $this->db->where('seminar_city', $loca);
-                }
-              $this->db->order_by('seminar_date', 'ASC');
+         $this->db->order_by('seminar_date', 'ASC');
           return $this->db->get('seminar',$limit,$offset);
   }
 
-  function search_seminar($key = nulld, $type = null){
+  function search_seminar($key = null/*,$type = null*/){
     $curdate = date('Y-m-d');
     $this->db->select("seminar_id,seminar_name,seminar_city");
     $this->db->from("seminar");
     $this->db->where('seminar_date >=', $curdate);
-    if($type === "#result_sem"){
-      $this->db->like('seminar_name', $key);
-      $this->db->order_by('seminar_name', 'ASC');}
-    elseif ($type === "#result_loc") {
+    //if($type === "#result_sem"){
+    $this->db->like('seminar_name', $key);
+    $this->db->order_by('seminar_name', 'ASC');
+    //}
+    /*elseif ($type === "#result_loc") {
       $this->db->like('seminar_city', $key);
       $this->db->order_by('seminar_city', 'ASC');
-    }
+    }*/
     return $this->db->get();
   }
   function userinftrx($seminar_id = null,$user_id = null ){
