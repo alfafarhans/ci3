@@ -26,8 +26,15 @@ class home extends CI_Controller {
 	{	//http://localhost:8080/ci3/index.php/home
 		$userid = $this->session->userdata('user_id');
 		$username = $this->session->userdata('user_name');
+		$rowcek = $this->seminar_data->getcityfilter();
+				if($rowcek->num_rows() > 0){	
+				$data['seminar'] = $this->seminar_data->getcityfilter();
+				}
+				else{
+					$data['seminar'] = 'NO EVENT';
+				}
 		if(empty($userid)){//if not signing
-			$this->load->view('home');
+			$this->load->view('home',$data);
 		}
 		else{	//setting user if already login
 			$data['user_id'] = $userid;

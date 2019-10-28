@@ -167,7 +167,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             }
             else{
             status =  responParse.status; 
-            alert("Stop this is your limit");
+            alert("Event Not Available For Now !");
 
             }
             
@@ -423,56 +423,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div id="checkboxbox">
         <div id="checkboxcon">
             <div id="checkjudul">
-                Choose Now Available Location You Want Search
+                Where You Want ?
             </div>
             <div id="row">
-                <div id="col-25">
-                    <label id="container">Jakarta Selatan
-                        <input type="checkbox" id="location" name="triger" class="val_city" value="jakartaselatan">
-                        <span id="checkmark"></span>
-                    </label>
-                </div>
-                <div id="col-25">
-                    <label id="container">Jakarta Barat
-                        <input type="checkbox" id="location" name="triger" class="val_city" value="jakartabarat">
-                        <span id="checkmark"></span>
-                    </label>
-                </div>
-                <div id="col-25">
-                    <label id="container">Bekasi
-                        <input type="checkbox" id="location" name="triger" class="val_city" value="bekasi">
-                        <span id="checkmark"></span>
-                    </label>
-                </div>
-                <div id="col-25">
-                    <label id="container">Bogor
-                        <input type="checkbox" id="location" name="triger" class="val_city" value="bogor">
-                        <span id="checkmark"></span>
-                    </label>
-                </div>
-                <div id="col-25">
-                    <label id="container">Yogyakarta
-                        <input type="checkbox" id="location" name="triger" class="val_city" value="yogyakarta">
-                        <span id="checkmark"></span>
-                    </label>
-                </div>
-                <div id="col-25">
-                    <label id="container">Bandung
-                        <input type="checkbox" id="location" name="triger" class="val_city" value="bandung">
-                        <span id="checkmark"></span>
-                    </label>
-                </div>
-                <div id="col-25">
-                    <label id="container">Depok
-                        <input type="checkbox" id="location" name="triger" class="val_city" value="depok">
-                        <span id="checkmark"></span>
-                    </label>
-                </div>
+
+            <?php  
+                 $param = "";
+                foreach($seminar->result_array() as $value){  
+                if($param != $value['seminar_city']){
+                    $param = $value['seminar_city'];
+                    $strfil1 =  str_replace(" ","-",$value['seminar_city']);
+                    $strfil2 = strtolower($strfil1);
+                echo '<div id="col-25">
+                <label id="container">'.$value['seminar_city'].'
+                    <input type="checkbox" id="location" name="triger" class="val_city" value="'.$strfil2.'">
+                    <span id="checkmark"></span>
+                </label>
+            </div>';
+               }
+             }
+             ?>  
             </div>
         </div>
    
         <div id="checkjudul">
-            Choose Category You Want
+            What Category You Like ?
         </div>
         <div id="row">
             <div id="col-25">
