@@ -488,13 +488,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </label>
             </div>
             <div id="col-25">
-                <label id="container">Charity & Causes
+                <label id="container">Charity&nbsp;&&nbsp;Causes
                     <input type="checkbox" id="category" name="triger" class="get_cat" value="charity">
                     <span id="checkmark"></span>
                 </label>
             </div>
             <div id="col-25">
-                <label id="container">Family & Education
+                <label id="container">Family&nbsp;&&nbsp;Education
                     <input type="checkbox" id="category" name="triger" class="get_cat" value="family">
                     <span id="checkmark"></span>
                 </label>
@@ -506,13 +506,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </label>
             </div>
             <div id="col-25">
-                <label id="container">Film & Media
+                <label id="container">Film&nbsp;&&nbsp;Media
                     <input type="checkbox" id="category" name="triger" class="get_cat" value="film">
                     <span id="checkmark"></span>
                 </label>
             </div>
             <div id="col-25">
-                <label id="container">Food & Drink
+                <label id="container">Food&nbsp;&&nbsp;Drink
                     <input type="checkbox" id="category" name="triger" class="get_cat" value="fooddrink">
                     <span id="checkmark"></span>
                 </label>
@@ -542,19 +542,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </label>
             </div>
             <div id="col-25">
-                <label id="container">Home & Lifefstyle
+                <label id="container">Home&nbsp;&&nbsp;Lifefstyle
                     <input type="checkbox" id="category" name="triger" class="get_cat" value="homelifefstyle">
                     <span id="checkmark"></span>
                 </label>
             </div>
             <div id="col-25">
-                <label id="container">School Activies
+                <label id="container">School&nbsp;Activies
                     <input type="checkbox" id="category" name="triger" class="get_cat" value="schoolactivies">
                     <span id="checkmark"></span>
                 </label>
             </div>
             <div id="col-25">
-                <label id="container">Science & Tech
+                <label id="container">Science&nbsp;&&nbsp;Tech
                     <input type="checkbox" id="category" name="triger" class="get_cat" value="sciencetech">
                     <span id="checkmark"></span>
                 </label>
@@ -566,13 +566,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </label>
             </div>
             <div id="col-25">
-                <label id="container">Sport & Fitness
+                <label id="container">Sport&nbsp;&&nbsp;Fitness
                     <input type="checkbox" id="category" name="triger" class="get_cat" value="sportfitness">
                     <span id="checkmark"></span>
                 </label>
             </div>
             <div id="col-25">
-                <label id="container">Travel & Outdoor
+                <label id="container">Travel&nbsp;&&nbsp;Outdoor
                     <input type="checkbox" id="category" name="triger" class="get_cat" value="traveloutdoor">
                     <span id="checkmark"></span>
                 </label>
