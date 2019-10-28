@@ -241,6 +241,21 @@ body{
             color: rgb(145, 195, 253);
         }
 
+        #smart a{
+            display: block;
+            width: 15vw;
+            height: 40px;
+            margin-top: 2px;
+            padding: 5px 15px;
+            box-sizing: border-box;
+            text-decoration: none;
+            border: none;
+            font-size: 20px;
+            border-bottom: 2px solid #ffffff;
+            background-color: #063A74;
+            color: rgb(145, 195, 253);
+        }
+
         #smart input[type=text] {
             display: block;
             width: 15vw;
@@ -320,6 +335,106 @@ body{
             color: #ffffff;
             transition: 0.5s;
         }
+        
+    #checkboxbox{
+        padding: 10px 20px 20px;
+        border: 1px solid #D8D8D8;
+        border-radius: 5px;
+        z-index: 11;
+        margin: -30px 400px 20px 400px;
+    }
+
+        #checkboxcon{
+            border-bottom: 1px solid #D8D8D8;
+            padding-bottom: 15px;
+        }
+
+            #checkjudul{
+                font-size: 18px;
+                font-weight: bold;
+                text-align: left;
+                color: #484848;
+                padding: 20px 0 15px;
+            }
+
+            #row:after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+
+                #col-25{
+                    float: left;
+                    width: 20%;
+                    margin-top: 6px;
+                }
+
+                #col-25 #container {
+                    display: flex;
+                    position: relative;
+                    padding-left: 25px;
+                    margin-bottom: 12px;
+                    cursor: pointer;
+                    font-size: 15px;
+                    -webkit-user-select: none;
+                    -moz-user-select: none;
+                    -ms-user-select: none;
+                    user-select: none;
+                }
+                  
+                /* Hide the browser's default checkbox */
+                #col-25 #container input {
+                    position: absolute;
+                    opacity: 0;
+                    cursor: pointer;
+                    height: 0;
+                    width: 0;
+                }
+                  
+                /* Create a custom checkbox */
+                #col-25 #checkmark {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    height: 20px;
+                    width: 20px;
+                    background-color: #eee;
+                }
+                  
+                /* On mouse-over, add a grey background color */
+                #col-25 #container:hover input ~ #checkmark {
+                    background-color: #ccc;
+                }
+                  
+                /* When the checkbox is checked, add a blue background */
+                #col-25 #container input:checked ~ #checkmark {
+                    background-color: #2196F3;
+                }
+                  
+                /* Create the checkmark/indicator (hidden when not checked) */
+                #col-25 #checkmark:after {
+                    content: "";
+                    position: absolute;
+                    display: none;
+                }
+                  
+                /* Show the checkmark when checked */
+                #col-25 #container input:checked ~ #checkmark:after {
+                    display: block;
+                }
+                  
+                /* Style the checkmark/indicator */
+                #col-25 #container #checkmark:after {
+                    left: 6px;
+                    top: 2px;
+                    width: 5px;
+                    height: 10px;
+                    border: solid white;
+                    border-width: 0 3px 3px 0;
+                    -webkit-transform: rotate(45deg);
+                    -ms-transform: rotate(45deg);
+                    transform: rotate(45deg);
+                }
 
 #body {
     float: center;
