@@ -198,7 +198,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 auxloc = true;
                 $(".icon").css({"border-color": "rgba(255, 255, 255, 0.5) transparent transparent transparent", "top": "14px"});
             }
+            
             $("#checkboxloc").slideToggle(250);
+            $('html, body').animate({
+                      scrollTop: $("#checkboxloc").offset().top - 200
+                }, 250);
         });
 
 
@@ -212,6 +216,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 $(".iconcat").css({"border-color": "rgba(255, 255, 255, 0.5) transparent transparent transparent", "top": "14px"});
             }
             $("#checkboxcat").slideToggle(250);
+            $('html, body').animate({
+                      scrollTop: $("#checkboxcat").offset().top - 200
+                }, 250);
         });
 
         $('input[name="triger"]').click(function () {
