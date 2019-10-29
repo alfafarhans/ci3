@@ -360,11 +360,11 @@ body{
     }
 
         #checkboxloc{
-            display: block;
+            display: none;
         }
 
         #checkboxcat{
-            display: block;
+            display: none;
         }
 
         #checkboxcon{

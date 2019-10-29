@@ -187,6 +187,33 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         //ALL TRIGEER
         //checkboxcat
+        let auxloc = true;
+        let auxcat = true;
+        $('#locact').click(function () {
+            if(auxloc){
+                auxloc = false;
+                $(".icon").css({"border-color": "transparent transparent rgba(255, 255, 255, 0.5) transparent", "top": "7px"});
+            }
+            else{
+                auxloc = true;
+                $(".icon").css({"border-color": "rgba(255, 255, 255, 0.5) transparent transparent transparent", "top": "14px"});
+            }
+            $("#checkboxloc").slideToggle(250);
+        });
+
+
+        $('#catact').click(function () {
+            if(auxcat){
+                auxcat = false;
+                $(".iconcat").css({"border-color": "transparent transparent rgba(255, 255, 255, 0.5) transparent", "top": "7px"});
+            }
+            else{
+                auxcat = true;
+                $(".iconcat").css({"border-color": "rgba(255, 255, 255, 0.5) transparent transparent transparent", "top": "14px"});
+            }
+            $("#checkboxcat").slideToggle(250);
+        });
+
         $('input[name="triger"]').click(function () {
             pager = 0;
             status = true;
@@ -347,8 +374,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div id="item">
             <label for="location" id="label"> Location </label>
             <br>
-            <a href="#"> Choose Location
-                <div id="i">
+            <a id="locact" href="javascript:void(0);"> Choose Location
+                <div id="i" class="icon">
                 </div>
             </a>
             
@@ -381,8 +408,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div id="item">
             <label for="date" id="label"> Category </label>
             <br>
-            <a href="#"> Choose Category 
-                <div id="i">
+            <a id="catact" href="javascript:void(0);"> Choose Category 
+                <div id="i" class="iconcat">
                 </div>
             </a>
         </div>
