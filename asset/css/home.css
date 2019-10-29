@@ -242,6 +242,7 @@ body{
         }
 
         #smart a{
+            position: relative;
             display: block;
             width: 15vw;
             height: 40px;
@@ -255,6 +256,17 @@ body{
             background-color: #063A74;
             color: rgb(145, 195, 253);
         }
+
+            #i {
+                position: absolute;
+                content: "";
+                top: 14px;
+                right: 10px;
+                width: 0;
+                height: 0;
+                border: 6px solid transparent;
+                border-color: rgba(255, 255, 255, 0.5) transparent transparent transparent;
+            }
 
         #smart input[type=text] {
             display: block;
@@ -346,6 +358,14 @@ body{
         margin: 25px auto;
         margin-top: -40px;
     }
+
+        #checkboxloc{
+            display: block;
+        }
+
+        #checkboxcat{
+            display: block;
+        }
 
         #checkboxcon{
             border-bottom: 1px solid #D8D8D8;

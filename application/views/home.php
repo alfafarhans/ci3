@@ -253,7 +253,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             }
         });*/
   
-
     </script>
 </head>
 <body>
@@ -346,10 +345,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <div id="smart">
         <div id="item">
-            <label for="date" id="label"> Location </label>
+            <label for="location" id="label"> Location </label>
             <br>
-            <a href="#"> Choose Location </a>
+            <a href="#"> Choose Location
+                <div id="i">
+                </div>
+            </a>
+            
         </div>
+
         <!--
         <div id="item">
             <label for="location" id="label"> Location </label>
@@ -377,7 +381,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div id="item">
             <label for="date" id="label"> Category </label>
             <br>
-            <a href="#"> Choose Category </a>
+            <a href="#"> Choose Category 
+                <div id="i">
+                </div>
+            </a>
         </div>
         <!--
         <div id="item">
@@ -421,136 +428,140 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>   
 
     <div id="checkboxbox">
-        <div id="checkboxcon">
-            <div id="checkjudul">
-                Where You Want ?
-            </div>
-            <div id="row">
+        <div id="checkboxloc">
+            <div id="checkboxcon">
+                <div id="checkjudul">
+                    Where You Want ?
+                </div>
+                <div id="row">
 
-            <?php  
-                 $param = "";
-                foreach($seminar->result_array() as $value){  
-                if($param != $value['seminar_city']){
-                    $param = $value['seminar_city'];
-                    $strfil1 =  str_replace(" ","-",$value['seminar_city']);
-                    $strfil2 = strtolower($strfil1);
-                echo '<div id="col-25">
-                <label id="container">'.$value['seminar_city'].'
-                    <input type="checkbox" id="location" name="triger" class="val_city" value="'.$strfil2.'">
-                    <span id="checkmark"></span>
-                </label>
-            </div>';
-               }
-             }
-             ?>  
+                <?php  
+                    $param = "";
+                    foreach($seminar->result_array() as $value){  
+                    if($param != $value['seminar_city']){
+                        $param = $value['seminar_city'];
+                        $strfil1 =  str_replace(" ","-",$value['seminar_city']);
+                        $strfil2 = strtolower($strfil1);
+                    echo '<div id="col-25">
+                    <label id="container">'.$value['seminar_city'].'
+                        <input type="checkbox" id="location" name="triger" class="val_city" value="'.$strfil2.'">
+                        <span id="checkmark"></span>
+                    </label>
+                </div>';
+                }
+                }
+                ?>  
+                </div>
             </div>
         </div>
    
-        <div id="checkjudul">
-            What Category You Like ?
-        </div>
-        <div id="row">
-            <div id="col-25">
-                <label id="container">Otomotif
-                    <input type="checkbox" id="category" name="triger" class="get_cat" value="otomotif">
-                    <span id="checkmark"></span>
-                </label>
+        <div id="checkboxcat">
+            <div id="checkjudul">
+                What Category You Like ?
             </div>
-            <div id="col-25">
-                <label id="container">Business
-                    <input type="checkbox" id="category" name="triger" class="get_cat" value="business">
-                    <span id="checkmark"></span>
-                </label>
-            </div>
-            <div id="col-25">
-                <label id="container">Charity&nbsp;&&nbsp;Causes
-                    <input type="checkbox" id="category" name="triger" class="get_cat" value="charity">
-                    <span id="checkmark"></span>
-                </label>
-            </div>
-            <div id="col-25">
-                <label id="container">Family&nbsp;&&nbsp;Education
-                    <input type="checkbox" id="category" name="triger" class="get_cat" value="family">
-                    <span id="checkmark"></span>
-                </label>
-            </div>
-            <div id="col-25">
-                <label id="container">Fashion
-                    <input type="checkbox" id="category" name="triger" class="get_cat" value="fashion">
-                    <span id="checkmark"></span>
-                </label>
-            </div>
-            <div id="col-25">
-                <label id="container">Film&nbsp;&&nbsp;Media
-                    <input type="checkbox" id="category" name="triger" class="get_cat" value="film">
-                    <span id="checkmark"></span>
-                </label>
-            </div>
-            <div id="col-25">
-                <label id="container">Food&nbsp;&&nbsp;Drink
-                    <input type="checkbox" id="category" name="triger" class="get_cat" value="fooddrink">
-                    <span id="checkmark"></span>
-                </label>
-            </div>
-            <div id="col-25">
-                <label id="container">Goverment
-                    <input type="checkbox" id="category" name="triger" class="get_cat" value="goverment">
-                    <span id="checkmark"></span>
-                </label>
-            </div>
-            <div id="col-25">
-                <label id="container">Health
-                    <input type="checkbox" id="category" name="triger" class="get_cat" value="health">
-                    <span id="checkmark"></span>
-                </label>
-            </div>
-            <div id="col-25">
-                <label id="container">Hobbies
-                    <input type="checkbox" id="category" name="triger" class="get_cat" value="hobbies">
-                    <span id="checkmark"></span>
-                </label>
-            </div>
-            <div id="col-25">
-                <label id="container">Holiday
-                    <input type="checkbox" id="category" name="triger" class="get_cat" value="holiday">
-                    <span id="checkmark"></span>
-                </label>
-            </div>
-            <div id="col-25">
-                <label id="container">Home&nbsp;&&nbsp;Lifefstyle
-                    <input type="checkbox" id="category" name="triger" class="get_cat" value="homelifefstyle">
-                    <span id="checkmark"></span>
-                </label>
-            </div>
-            <div id="col-25">
-                <label id="container">School&nbsp;Activies
-                    <input type="checkbox" id="category" name="triger" class="get_cat" value="schoolactivies">
-                    <span id="checkmark"></span>
-                </label>
-            </div>
-            <div id="col-25">
-                <label id="container">Science&nbsp;&&nbsp;Tech
-                    <input type="checkbox" id="category" name="triger" class="get_cat" value="sciencetech">
-                    <span id="checkmark"></span>
-                </label>
-            </div>
-            <div id="col-25">
-                <label id="container">Spiritually
-                    <input type="checkbox" id="category" name="triger" class="get_cat" value="spiritually">
-                    <span id="checkmark"></span>
-                </label>
-            </div>
-            <div id="col-25">
-                <label id="container">Sport&nbsp;&&nbsp;Fitness
-                    <input type="checkbox" id="category" name="triger" class="get_cat" value="sportfitness">
-                    <span id="checkmark"></span>
-                </label>
-            </div>
-            <div id="col-25">
-                <label id="container">Travel&nbsp;&&nbsp;Outdoor
-                    <input type="checkbox" id="category" name="triger" class="get_cat" value="traveloutdoor">
-                    <span id="checkmark"></span>
-                </label>
+            <div id="row">
+                <div id="col-25">
+                    <label id="container">Otomotif
+                        <input type="checkbox" id="category" name="triger" class="get_cat" value="otomotif">
+                        <span id="checkmark"></span>
+                    </label>
+                </div>
+                <div id="col-25">
+                    <label id="container">Business
+                        <input type="checkbox" id="category" name="triger" class="get_cat" value="business">
+                        <span id="checkmark"></span>
+                    </label>
+                </div>
+                <div id="col-25">
+                    <label id="container">Charity&nbsp;&&nbsp;Causes
+                        <input type="checkbox" id="category" name="triger" class="get_cat" value="charity">
+                        <span id="checkmark"></span>
+                    </label>
+                </div>
+                <div id="col-25">
+                    <label id="container">Family&nbsp;&&nbsp;Education
+                        <input type="checkbox" id="category" name="triger" class="get_cat" value="family">
+                        <span id="checkmark"></span>
+                    </label>
+                </div>
+                <div id="col-25">
+                    <label id="container">Fashion
+                        <input type="checkbox" id="category" name="triger" class="get_cat" value="fashion">
+                        <span id="checkmark"></span>
+                    </label>
+                </div>
+                <div id="col-25">
+                    <label id="container">Film&nbsp;&&nbsp;Media
+                        <input type="checkbox" id="category" name="triger" class="get_cat" value="film">
+                        <span id="checkmark"></span>
+                    </label>
+                </div>
+                <div id="col-25">
+                    <label id="container">Food&nbsp;&&nbsp;Drink
+                        <input type="checkbox" id="category" name="triger" class="get_cat" value="fooddrink">
+                        <span id="checkmark"></span>
+                    </label>
+                </div>
+                <div id="col-25">
+                    <label id="container">Goverment
+                        <input type="checkbox" id="category" name="triger" class="get_cat" value="goverment">
+                        <span id="checkmark"></span>
+                    </label>
+                </div>
+                <div id="col-25">
+                    <label id="container">Health
+                        <input type="checkbox" id="category" name="triger" class="get_cat" value="health">
+                        <span id="checkmark"></span>
+                    </label>
+                </div>
+                <div id="col-25">
+                    <label id="container">Hobbies
+                        <input type="checkbox" id="category" name="triger" class="get_cat" value="hobbies">
+                        <span id="checkmark"></span>
+                    </label>
+                </div>
+                <div id="col-25">
+                    <label id="container">Holiday
+                        <input type="checkbox" id="category" name="triger" class="get_cat" value="holiday">
+                        <span id="checkmark"></span>
+                    </label>
+                </div>
+                <div id="col-25">
+                    <label id="container">Home&nbsp;&&nbsp;Lifefstyle
+                        <input type="checkbox" id="category" name="triger" class="get_cat" value="homelifefstyle">
+                        <span id="checkmark"></span>
+                    </label>
+                </div>
+                <div id="col-25">
+                    <label id="container">School&nbsp;Activies
+                        <input type="checkbox" id="category" name="triger" class="get_cat" value="schoolactivies">
+                        <span id="checkmark"></span>
+                    </label>
+                </div>
+                <div id="col-25">
+                    <label id="container">Science&nbsp;&&nbsp;Tech
+                        <input type="checkbox" id="category" name="triger" class="get_cat" value="sciencetech">
+                        <span id="checkmark"></span>
+                    </label>
+                </div>
+                <div id="col-25">
+                    <label id="container">Spiritually
+                        <input type="checkbox" id="category" name="triger" class="get_cat" value="spiritually">
+                        <span id="checkmark"></span>
+                    </label>
+                </div>
+                <div id="col-25">
+                    <label id="container">Sport&nbsp;&&nbsp;Fitness
+                        <input type="checkbox" id="category" name="triger" class="get_cat" value="sportfitness">
+                        <span id="checkmark"></span>
+                    </label>
+                </div>
+                <div id="col-25">
+                    <label id="container">Travel&nbsp;&&nbsp;Outdoor
+                        <input type="checkbox" id="category" name="triger" class="get_cat" value="traveloutdoor">
+                        <span id="checkmark"></span>
+                    </label>
+                </div>
             </div>
         </div>
     </div>
