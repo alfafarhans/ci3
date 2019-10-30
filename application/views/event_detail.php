@@ -233,12 +233,16 @@ function getAverageRGB(imgEl) {
                         echo 
                     '<a id="a1" href="'.base_url().'payment/confirmation/'.$value['seminar_id'].'/'.$userid.'" >'.$register_fill.'</a>';
                         }
+                        
+					$this->session->unset_userdata('seminar_id');
                 }
                 else if(!empty($userid)){
                     foreach ($seminar as $value) {
                         echo 
                     '<a id="a1" href="#" onClick="send('.$value['seminar_id'].','.$userid.');"> Daftar </a>';
                         }
+                        
+					$this->session->unset_userdata('seminar_id');
                 }
                 else{
                     echo

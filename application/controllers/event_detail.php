@@ -64,11 +64,13 @@ class event_detail extends CI_Controller {
 			return false;
 		}
 	}
+	
 	public function detail($s_id=null)//this should use ID parameter
 	{	//http://localhost:8080/ci3/index.php/home
-	
+
 		$data['seminar']= $this->seminar_data->get_seminar_detail($s_id);
 	//	$checkuser = $this->seminar_data->userinftrx($s_id);
+		$this->session->set_userdata('seminar_id', $s_id);
 		$userid = $this->session->userdata('user_id');//session user
 		$username = $this->session->userdata('user_name');//lastname
 		$userstatus = $this->seminar_data->userinftrx($s_id,$userid);

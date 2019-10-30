@@ -38,6 +38,8 @@ class login extends CI_Controller {
            $this->form_validation->set_rules('password', 'Password', 'required');  
            if($this->form_validation->run())  
            {  
+				$semid = $this->session->userdata('seminar_id');
+				
                 //true  
                 $email = $this->input->post('email');  
 				$password = $this->input->post('password');
@@ -51,7 +53,14 @@ class login extends CI_Controller {
 						$this->session->set_userdata('user_id', $value['user_id']);
 						$this->session->set_userdata('user_name', $value['last_name']);
 					}
-					redirect('home');
+					if(!empty($semid)){
+					redirect('event_detail/'.$semid.'');
+					}
+					else{
+					redirect('home'); 
+					}
+					$this->session->unset_userdata('seminar_id');
+
 				}
                 else  
                 {  
