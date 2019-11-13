@@ -186,41 +186,82 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
         //ALL TRIGEER
+
         //checkboxcat
         let auxloc = true;
         let auxcat = true;
+        let auxstsbar = false;
+        //act show cat loc
         $('#locact').click(function () {
-            if(auxloc){
-                auxloc = false;
-                $(".icon").css({"border-color": "transparent transparent rgba(255, 255, 255, 0.5) transparent", "top": "7px"});
-            }
-            else{
-                auxloc = true;
-                $(".icon").css({"border-color": "rgba(255, 255, 255, 0.5) transparent transparent transparent", "top": "14px"});
-            }
             
+            if(auxloc){
+                    auxloc = false;
+                    $(".icon").css({"border-color": "transparent transparent rgba(255, 255, 255, 0.5) transparent", "top": "7px"});
+                
+                }   
+                else{
+                    if(!auxloc && !auxcat) {
+                auxstsbar = cbsmarts(false);
+            }
+                    auxloc = true;
+                    $(".icon").css({"border-color": "rgba(255, 255, 255, 0.5) transparent transparent transparent", "top": "14px"});
+                }
             $("#checkboxloc").slideToggle(250);
-            $('html, body').animate({
-                      scrollTop: $("#checkboxloc").offset().top - 200
-                }, 250);
+
+            if( !auxloc && !auxcat ){
+                auxstsbar = true;
+                if(auxstsbar){
+                auxstsbar = cbsmarts(true);
+                    }
+                }
+            else if(auxloc && auxcat) {
+                auxstsbar = cbsmarts(false);
+            }
         });
-
-
+        //act show cat
         $('#catact').click(function () {
             if(auxcat){
-                auxcat = false;
-                $(".iconcat").css({"border-color": "transparent transparent rgba(255, 255, 255, 0.5) transparent", "top": "7px"});
+                    auxcat = false;
+                    $(".iconcat").css({"border-color": "transparent transparent rgba(255, 255, 255, 0.5) transparent", "top": "7px"});
+                   
+                }
+                else {
+                    if(!auxloc && !auxcat) {
+                auxstsbar = cbsmarts(false);
             }
-            else{
-                auxcat = true;
-                $(".iconcat").css({"border-color": "rgba(255, 255, 255, 0.5) transparent transparent transparent", "top": "14px"});
-            }
+                    auxcat = true;
+                    $(".iconcat").css({"border-color": "rgba(255, 255, 255, 0.5) transparent transparent transparent", "top": "14px"});
+                }
             $("#checkboxcat").slideToggle(250);
-            $('html, body').animate({
-                      scrollTop: $("#checkboxcat").offset().top - 200
-                }, 250);
+            
+            if( !auxloc && !auxcat ){
+                auxstsbar = true;
+                if(auxstsbar){
+                auxstsbar = cbsmarts(true);
+                    }
+                }
+            else if(auxloc && auxcat) {
+                auxstsbar = cbsmarts(false);
+            }
         });
-
+        
+        function cbsmarts(para){
+        if(para === true){
+            let elementdiv = document.createElement("div"); 
+            elementdiv.setAttribute("id", "checkboxcon");
+            document.getElementById("checkboxloc").appendChild(elementdiv);
+            return false;
+            }
+        if(para === false){
+            let cek =  document.getElementById("checkboxloc").contains(document.getElementById("checkboxcon"));
+            if(cek){
+            document.getElementById("checkboxcon").remove(); 
+            }  
+            return true;
+         }
+        }
+        
+////
         $('input[name="triger"]').click(function () {
             pager = 0;
             status = true;
@@ -463,8 +504,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <div id="checkboxbox">
         <div id="checkboxloc">
-            <div id="checkboxcon">
-                <div id="checkjudul">
+            <div id="checkjudul">
                     Where You Want ?
                 </div>
                 <div id="row">
@@ -485,7 +525,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 }
                 }
                 ?>  
-                </div>
             </div>
         </div>
    
