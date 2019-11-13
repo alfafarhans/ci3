@@ -32,6 +32,77 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     }
      //for page
     $(function() {
+        let arrcattext = [
+                    "Otomotif",
+                    "Business",
+                    "Charity&nbsp;&&nbsp;Causes",
+                    "Family&nbsp;&&nbsp;Education",
+                    "Fashion",
+                    "Film&nbsp;&&nbsp;Media",
+                    "Food&nbsp;&&nbsp;Drink",
+                    "Goverment",
+                    "Health",
+                    "Hobbies",
+                    "Holiday",
+                    "Home&nbsp;&&nbsp;Lifefstyle",
+                    "School&nbsp;Activies",
+                    "Science&nbsp;&&nbsp;Tech",
+                    "Spiritually",
+                    "Sport&nbsp;&&nbsp;Fitness",
+                    "Travel&nbsp;&&nbsp;Outdoor"
+                    ];
+        let arrcatval = [
+                        "otomotif",
+                        "business",
+                        "charity",
+                        "family",
+                        "fashion",
+                        "film",
+                        "fooddrink",
+                        "goverment",
+                        "health",
+                        "hobbies",
+                        "holiday",
+                        "homelifefstyle",
+                        "schoolactivies",
+                        "sciencetech",
+                        "spiritually",
+                        "sportfitness",
+                        "traveloutdoor"
+              ];
+              arrcattext.sort();
+              arrcatval.sort();
+              //console.log(arrcattext);
+              arrlength = arrcattext.length - 1;
+    for(let i = 0; i<= arrlength; i++){
+    let fragment = document.createDocumentFragment();
+
+    let elementdiv = document.createElement("DIV");  
+    elementdiv.setAttribute("id", "col-25");
+    elementdiv.classList.add('catnodecol');
+    document.getElementsByClassName("catnoderow")[0].appendChild(elementdiv);
+    
+    let elementlabel = document.createElement("LABEL");   
+    elementlabel.setAttribute("id", "container"); 
+    elementlabel.classList.add('catnodecon'); 
+    elementlabel.innerHTML = arrcattext[i];
+    document.getElementsByClassName("catnodecol")[i].appendChild(elementlabel);
+
+    let elementinput = document.createElement("INPUT");   
+    elementinput.setAttribute("type", "checkbox");     
+    elementinput.setAttribute("name", "triger");  
+    elementinput.setAttribute("value", arrcatval[i]);  
+    elementinput.setAttribute("id", "category");  
+    elementinput.classList.add("get_cat");
+    
+    let elementspan = document.createElement("SPAN");
+    elementspan.setAttribute("id", "checkmark"); 
+    
+    fragment.appendChild(elementinput);
+    fragment.appendChild(elementspan); 
+
+    document.getElementsByClassName("catnodecon")[i].appendChild(fragment);
+    }
         let pager = 0;
         let status = true;
         //select tag
@@ -196,7 +267,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             
             if(auxloc){
                     auxloc = false;
-                    $(".icon").css({"border-color": "transparent transparent rgba(255, 255, 255, 0.5) transparent", "top": "7px"});
+                    $(".icon").css({"border-color": "transparent transparent rgba(0, 0, 0, 0.5)  transparent", "top": "7px"});
                 
                 }   
                 else{
@@ -204,7 +275,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 auxstsbar = cbsmarts(false);
             }
                     auxloc = true;
-                    $(".icon").css({"border-color": "rgba(255, 255, 255, 0.5) transparent transparent transparent", "top": "14px"});
+                    $(".icon").css({"border-color": "rgba(0, 0, 0, 0.5)  transparent transparent transparent", "top": "14px"});
                 }
             $("#checkboxloc").slideToggle(250);
 
@@ -222,7 +293,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         $('#catact').click(function () {
             if(auxcat){
                     auxcat = false;
-                    $(".iconcat").css({"border-color": "transparent transparent rgba(255, 255, 255, 0.5) transparent", "top": "7px"});
+                    $(".iconcat").css({"border-color": "transparent transparent rgba(0, 0, 0, 0.5)  transparent", "top": "7px"});
                    
                 }
                 else {
@@ -230,7 +301,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 auxstsbar = cbsmarts(false);
             }
                     auxcat = true;
-                    $(".iconcat").css({"border-color": "rgba(255, 255, 255, 0.5) transparent transparent transparent", "top": "14px"});
+                    $(".iconcat").css({"border-color": "rgba(0, 0, 0, 0.5) transparent transparent transparent", "top": "14px"});
                 }
             $("#checkboxcat").slideToggle(250);
             
@@ -530,109 +601,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div id="checkjudul">
                 What Category You Like ?
             </div>
-            <div id="row">
-                <div id="col-25">
-                    <label id="container">Otomotif
-                        <input type="checkbox" id="category" name="triger" class="get_cat" value="otomotif">
-                        <span id="checkmark"></span>
-                    </label>
-                </div>
-                <div id="col-25">
-                    <label id="container">Business
-                        <input type="checkbox" id="category" name="triger" class="get_cat" value="business">
-                        <span id="checkmark"></span>
-                    </label>
-                </div>
-                <div id="col-25">
-                    <label id="container">Charity&nbsp;&&nbsp;Causes
-                        <input type="checkbox" id="category" name="triger" class="get_cat" value="charity">
-                        <span id="checkmark"></span>
-                    </label>
-                </div>
-                <div id="col-25">
-                    <label id="container">Family&nbsp;&&nbsp;Education
-                        <input type="checkbox" id="category" name="triger" class="get_cat" value="family">
-                        <span id="checkmark"></span>
-                    </label>
-                </div>
-                <div id="col-25">
-                    <label id="container">Fashion
-                        <input type="checkbox" id="category" name="triger" class="get_cat" value="fashion">
-                        <span id="checkmark"></span>
-                    </label>
-                </div>
-                <div id="col-25">
-                    <label id="container">Film&nbsp;&&nbsp;Media
-                        <input type="checkbox" id="category" name="triger" class="get_cat" value="film">
-                        <span id="checkmark"></span>
-                    </label>
-                </div>
-                <div id="col-25">
-                    <label id="container">Food&nbsp;&&nbsp;Drink
-                        <input type="checkbox" id="category" name="triger" class="get_cat" value="fooddrink">
-                        <span id="checkmark"></span>
-                    </label>
-                </div>
-                <div id="col-25">
-                    <label id="container">Goverment
-                        <input type="checkbox" id="category" name="triger" class="get_cat" value="goverment">
-                        <span id="checkmark"></span>
-                    </label>
-                </div>
-                <div id="col-25">
-                    <label id="container">Health
-                        <input type="checkbox" id="category" name="triger" class="get_cat" value="health">
-                        <span id="checkmark"></span>
-                    </label>
-                </div>
-                <div id="col-25">
-                    <label id="container">Hobbies
-                        <input type="checkbox" id="category" name="triger" class="get_cat" value="hobbies">
-                        <span id="checkmark"></span>
-                    </label>
-                </div>
-                <div id="col-25">
-                    <label id="container">Holiday
-                        <input type="checkbox" id="category" name="triger" class="get_cat" value="holiday">
-                        <span id="checkmark"></span>
-                    </label>
-                </div>
-                <div id="col-25">
-                    <label id="container">Home&nbsp;&&nbsp;Lifefstyle
-                        <input type="checkbox" id="category" name="triger" class="get_cat" value="homelifefstyle">
-                        <span id="checkmark"></span>
-                    </label>
-                </div>
-                <div id="col-25">
-                    <label id="container">School&nbsp;Activies
-                        <input type="checkbox" id="category" name="triger" class="get_cat" value="schoolactivies">
-                        <span id="checkmark"></span>
-                    </label>
-                </div>
-                <div id="col-25">
-                    <label id="container">Science&nbsp;&&nbsp;Tech
-                        <input type="checkbox" id="category" name="triger" class="get_cat" value="sciencetech">
-                        <span id="checkmark"></span>
-                    </label>
-                </div>
-                <div id="col-25">
-                    <label id="container">Spiritually
-                        <input type="checkbox" id="category" name="triger" class="get_cat" value="spiritually">
-                        <span id="checkmark"></span>
-                    </label>
-                </div>
-                <div id="col-25">
-                    <label id="container">Sport&nbsp;&&nbsp;Fitness
-                        <input type="checkbox" id="category" name="triger" class="get_cat" value="sportfitness">
-                        <span id="checkmark"></span>
-                    </label>
-                </div>
-                <div id="col-25">
-                    <label id="container">Travel&nbsp;&&nbsp;Outdoor
-                        <input type="checkbox" id="category" name="triger" class="get_cat" value="traveloutdoor">
-                        <span id="checkmark"></span>
-                    </label>
-                </div>
+            <div id="row" class = "catnoderow">
+               
             </div>
         </div>
     </div>
