@@ -186,41 +186,82 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
         //ALL TRIGEER
+
         //checkboxcat
         let auxloc = true;
         let auxcat = true;
+        let auxstsbar = false;
+        //act show cat loc
         $('#locact').click(function () {
-            if(auxloc){
-                auxloc = false;
-                $(".icon").css({"border-color": "transparent transparent rgba(255, 255, 255, 0.5) transparent", "top": "7px"});
-            }
-            else{
-                auxloc = true;
-                $(".icon").css({"border-color": "rgba(255, 255, 255, 0.5) transparent transparent transparent", "top": "14px"});
-            }
             
+            if(auxloc){
+                    auxloc = false;
+                    $(".icon").css({"border-color": "transparent transparent rgba(255, 255, 255, 0.5) transparent", "top": "7px"});
+                
+                }   
+                else{
+                    if(!auxloc && !auxcat) {
+                auxstsbar = cbsmarts(false);
+            }
+                    auxloc = true;
+                    $(".icon").css({"border-color": "rgba(255, 255, 255, 0.5) transparent transparent transparent", "top": "14px"});
+                }
             $("#checkboxloc").slideToggle(250);
-            $('html, body').animate({
-                      scrollTop: $("#checkboxloc").offset().top - 200
-                }, 250);
+
+            if( !auxloc && !auxcat ){
+                auxstsbar = true;
+                if(auxstsbar){
+                auxstsbar = cbsmarts(true);
+                    }
+                }
+            else if(auxloc && auxcat) {
+                auxstsbar = cbsmarts(false);
+            }
         });
-
-
+        //act show cat
         $('#catact').click(function () {
             if(auxcat){
-                auxcat = false;
-                $(".iconcat").css({"border-color": "transparent transparent rgba(255, 255, 255, 0.5) transparent", "top": "7px"});
+                    auxcat = false;
+                    $(".iconcat").css({"border-color": "transparent transparent rgba(255, 255, 255, 0.5) transparent", "top": "7px"});
+                   
+                }
+                else {
+                    if(!auxloc && !auxcat) {
+                auxstsbar = cbsmarts(false);
             }
-            else{
-                auxcat = true;
-                $(".iconcat").css({"border-color": "rgba(255, 255, 255, 0.5) transparent transparent transparent", "top": "14px"});
-            }
+                    auxcat = true;
+                    $(".iconcat").css({"border-color": "rgba(255, 255, 255, 0.5) transparent transparent transparent", "top": "14px"});
+                }
             $("#checkboxcat").slideToggle(250);
-            $('html, body').animate({
-                      scrollTop: $("#checkboxcat").offset().top - 200
-                }, 250);
+            
+            if( !auxloc && !auxcat ){
+                auxstsbar = true;
+                if(auxstsbar){
+                auxstsbar = cbsmarts(true);
+                    }
+                }
+            else if(auxloc && auxcat) {
+                auxstsbar = cbsmarts(false);
+            }
         });
-
+        
+        function cbsmarts(para){
+        if(para === true){
+            let elementdiv = document.createElement("div"); 
+            elementdiv.setAttribute("id", "checkboxcon");
+            document.getElementById("checkboxloc").appendChild(elementdiv);
+            return false;
+            }
+        if(para === false){
+            let cek =  document.getElementById("checkboxloc").contains(document.getElementById("checkboxcon"));
+            if(cek){
+            document.getElementById("checkboxcon").remove(); 
+            }  
+            return true;
+         }
+        }
+        
+////
         $('input[name="triger"]').click(function () {
             pager = 0;
             status = true;
@@ -369,17 +410,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <!-- bagian header  -->
     <div id="header">
-        <img src="<?php echo base_url();?>asset/pict/header2.png">
-
-        <div id="h1">
-            <h1> Solution Your Seminar Gateway </h1>
+        <div id="headerimg">
+            <div id="container">
+                <div id="h1">
+                    <h1> Solution Your Seminar Gateway </h1>
+                </div>
+            </div>   
         </div>
     </div>
+            
+        
     <!-- bagian pencarian  -->
 
     <div id="smart">
         <div id="item">
-            <a id="locact" href="javascript:void(0);"> Choose Location
+            <a id="locact" href="javascript:void(0);"> Any Location
                 <div id="i" class="icon">
                 </div>
             </a>
@@ -393,6 +438,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div id = "result_loc"></div>
         </div>
         -->
+
+        <div id="item">
+            <a id="catact" href="javascript:void(0);"> Any Category 
+                <div id="i" class="iconcat">
+                </div>
+            </a>
+        </div>
+
         <div id="item">
             <div class="custom-select">
                 <select id="date">
@@ -408,12 +461,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
         </div>
 
-        <div id="item">
-            <a id="catact" href="javascript:void(0);"> Choose Category 
-                <div id="i" class="iconcat">
-                </div>
-            </a>
-        </div>
         <!--
         <div id="item">
             <label for="category" id="label"> Category </label>
@@ -451,33 +498,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <select>
             </div>
         </div>
-    </div>   
+    </div>
 
     <div id="checkboxbox">
         <div id="checkboxloc">
             <div id="checkjudul">
-                Where You Want ?
-            </div>
-            <div id="row">
+                    Where You Want ?
+                </div>
+                <div id="row">
 
-            <?php  
-                $param = "";
-                foreach($seminar->result_array() as $value){  
-                if($param != $value['seminar_city']){
-                    $param = $value['seminar_city'];
-                    $strfil1 =  str_replace(" ","-",$value['seminar_city']);
-                    $strfil2 = strtolower($strfil1);
-                echo '<div id="col-25">
-                <label id="container">'.$value['seminar_city'].'
-                    <input type="checkbox" id="location" name="triger" class="val_city" value="'.$strfil2.'">
-                    <span id="checkmark"></span>
-                </label>
-            </div>';
-            }
-            }
-            ?>  
-            </div>
-            <div id="checkboxcon">
+                <?php  
+                    $param = "";
+                    foreach($seminar->result_array() as $value){  
+                    if($param != $value['seminar_city']){
+                        $param = $value['seminar_city'];
+                        $strfil1 =  str_replace(" ","-",$value['seminar_city']);
+                        $strfil2 = strtolower($strfil1);
+                    echo '<div id="col-25">
+                    <label id="container">'.$value['seminar_city'].'
+                        <input type="checkbox" id="location" name="triger" class="val_city" value="'.$strfil2.'">
+                        <span id="checkmark"></span>
+                    </label>
+                </div>';
+                }
+                }
+                ?>  
             </div>
         </div>
    
