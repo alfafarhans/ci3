@@ -47,10 +47,12 @@ body{
 
         #navbar_kiri a{
             display: block;
-            padding: 20px 40px;
+            padding: 15px 30px;
             text-decoration: none;
             color: #063A74;
             background-color: #5890CF;
+            font-size: 1.25rem;
+            line-height: inherit;
         }
 
         #navbar_kiri #img{
@@ -58,6 +60,7 @@ body{
             padding: 13px;
             width: 15px;
             margin: 10px 0 10px 15px;
+            border-radius: 5px 0 0 5px ;
         }
 
         #navbar_kiri input[type=text] {
@@ -69,6 +72,7 @@ body{
             border: none;
             font-size: 17px;
             background-color: #ffffff;
+            border-radius: 0 5px 5px 0;
         }
 
         #result_sem {
@@ -76,7 +80,7 @@ body{
             margin-left: 177px;
             position: absolute;
             background-color: #f9f9f9;
-            z-index: 25;
+            z-index: 1;
             width: 503px;
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
         }   

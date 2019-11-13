@@ -379,8 +379,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <div id="smart">
         <div id="item">
-            <label for="location" id="label"> Location </label>
-            <br>
             <a id="locact" href="javascript:void(0);"> Choose Location
                 <div id="i" class="icon">
                 </div>
@@ -396,8 +394,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
         -->
         <div id="item">
-            <label for="date" id="label"> Date </label>
-            <br>
             <div class="custom-select">
                 <select id="date">
                     <option value="anydate" selected> Any Date </option>
@@ -413,8 +409,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
 
         <div id="item">
-            <label for="date" id="label"> Category </label>
-            <br>
             <a id="catact" href="javascript:void(0);"> Choose Category 
                 <div id="i" class="iconcat">
                 </div>
@@ -449,8 +443,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
         -->
         <div id="item">
-            <label for="category" id="label"> Price </label>
-            <br>
             <div class="custom-select">
                 <select id="price">
                     <option value="" selected> Any Price </option>
@@ -463,29 +455,29 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <div id="checkboxbox">
         <div id="checkboxloc">
-            <div id="checkboxcon">
-                <div id="checkjudul">
-                    Where You Want ?
-                </div>
-                <div id="row">
+            <div id="checkjudul">
+                Where You Want ?
+            </div>
+            <div id="row">
 
-                <?php  
-                    $param = "";
-                    foreach($seminar->result_array() as $value){  
-                    if($param != $value['seminar_city']){
-                        $param = $value['seminar_city'];
-                        $strfil1 =  str_replace(" ","-",$value['seminar_city']);
-                        $strfil2 = strtolower($strfil1);
-                    echo '<div id="col-25">
-                    <label id="container">'.$value['seminar_city'].'
-                        <input type="checkbox" id="location" name="triger" class="val_city" value="'.$strfil2.'">
-                        <span id="checkmark"></span>
-                    </label>
-                </div>';
-                }
-                }
-                ?>  
-                </div>
+            <?php  
+                $param = "";
+                foreach($seminar->result_array() as $value){  
+                if($param != $value['seminar_city']){
+                    $param = $value['seminar_city'];
+                    $strfil1 =  str_replace(" ","-",$value['seminar_city']);
+                    $strfil2 = strtolower($strfil1);
+                echo '<div id="col-25">
+                <label id="container">'.$value['seminar_city'].'
+                    <input type="checkbox" id="location" name="triger" class="val_city" value="'.$strfil2.'">
+                    <span id="checkmark"></span>
+                </label>
+            </div>';
+            }
+            }
+            ?>  
+            </div>
+            <div id="checkboxcon">
             </div>
         </div>
    
