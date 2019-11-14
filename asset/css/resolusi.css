@@ -1,7 +1,7 @@
-@media (max-width: 576px) and (max-width: 575px){
+@media (max-width: 575px){
 
   #headerimg {
-    min-height: 440px;
+    min-height: 460px;
   }
 
   #header #container #container2{
@@ -10,7 +10,7 @@
 
   #header h1{
     padding-top: 70px;
-    font-size: 3.5rem;
+    font-size: 3rem;
   }
 
   #smart a{
@@ -19,7 +19,7 @@
   }
 
   .custom-select {
-    width: 37.3vw;
+    width: 37vw;
     margin-bottom: -10px;
   }
 
@@ -27,6 +27,15 @@
     margin-top: -15px;
     padding-bottom: 10px;
   }
+
+  #checkboxbox{
+    width: 90vw;
+  }
+
+  #col-25{
+    width: 50%;
+  }
+
 }
 
 @media (min-width: 576px) and (max-width: 767px) {
@@ -62,6 +71,15 @@
     margin-top: -15px;
     padding-bottom: 10px;
   }
+
+  #checkboxbox{
+    width: 85vw;
+  }
+
+  #col-25{
+    width: 33%;
+  }
+
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
@@ -92,6 +110,15 @@
     margin-top: -15px;
     padding-bottom: 10px;
   }
+
+  #checkboxbox{
+    width: 85vw;
+  }
+
+  #col-25{
+    width: 25%;
+  }
+
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
@@ -107,6 +134,9 @@
   .custom-select {
     width: 180px;
   }
-}
+
+  #checkboxbox{
+    width: 85vw;
+  }
 
 
