@@ -485,7 +485,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div id="headerimg">
             <div id="container">
                 <div id="container2">
-                    <h1> Solution Your Seminar <br> Gateway </h1>
+                    <h1> Solution Your Seminar Gateway </h1>
                     
                     <!-- bagian pencarian  -->
 

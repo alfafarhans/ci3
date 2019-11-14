@@ -1,15 +1,81 @@
-@media (min-width: 576px) {
-  
-}
-
-@media (min-width: 768px) {
+@media (max-width: 576px) and (max-width: 575px){
 
   #headerimg {
-    min-height: 650px;
+    min-height: 440px;
+  }
+
+  #header #container #container2{
+    max-width: 92vw;
+  }
+
+  #header h1{
+    padding-top: 70px;
+    font-size: 3.5rem;
+  }
+
+  #smart a{
+    width: 81vw;
+    margin-bottom: -10px;
+  }
+
+  .custom-select {
+    width: 37.3vw;
+    margin-bottom: -10px;
+  }
+
+  #smart{
+    margin-top: -15px;
+    padding-bottom: 10px;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+
+  #navbar_kanan #a{
+    padding: 20px 5px;
+  }
+
+  #headerimg {
+    min-height: 510px;
+  }
+
+  #header #container #container2{
+    max-width: 85vw;
+  }
+
+  #header h1{
+    padding-top: 70px;
+    font-size: 4.2rem;
+  }
+
+  #smart a{
+    width: 81vw;
+    margin-bottom: -10px;
+  }
+
+  .custom-select {
+    width: 37.3vw;
+    margin-bottom: -10px;
+  }
+
+  #smart{
+    margin-top: -15px;
+    padding-bottom: 10px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+
+  #headerimg {
+    min-height: 550px;
   }
 
   #header #container #container2{
     max-width: 650px;
+  }
+
+  #header h1{
+    font-size: 5.5rem;
   }
 
   #smart a{
@@ -26,14 +92,9 @@
     margin-top: -15px;
     padding-bottom: 10px;
   }
-  
 }
 
-@media (min-width: 992px) {
-
-  #headerimg {
-    min-height: 450px;
-  }
+@media (min-width: 992px) and (max-width: 1199px) {
 
   #header #container #container2{
     max-width: 900px;
@@ -46,25 +107,6 @@
   .custom-select {
     width: 180px;
   }
-
 }
 
-@media (min-width:1200px){
 
-  #headerimg {
-    min-height: 450px;
-  }
-
-  #header #container #container2{
-    max-width: 1140px;
-  }
-
-  #smart a{
-    width: 250px;
-  }
-
-  .custom-select {
-    width: 250px;
-  } 
-
-}

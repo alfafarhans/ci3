@@ -105,7 +105,6 @@ body{
         position: relative;
         z-index: 11;
         flex-grow: 1;
-        
     }
 
         #navbar_kanan #a{
@@ -612,15 +611,5 @@ body{
     text-align: center;
     padding: 5px;
 }
-
-
-@media screen and (max-width: 600px) {
-
-    #infofooter600{
-        position: relative;
-        width: 100%;
-        height: 50px;
-    }   
-}    
-            
+     
     
