@@ -472,8 +472,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div id = "result_sem" ></div>
             
             <div id="navbar_kanan">
-            <a id="a" href="'.base_url().'ads">Advertising </a> 
-            <a id="a" href="'.base_url().'login/">Sign in</a>
+                <a id="a" href="'.base_url().'ads">Advertising </a> 
+                <a id="a" href="'.base_url().'login/">Sign in</a>
+
+                <img id="img" src="'.base_url().'asset/pict/icon/search-icon.png">
+
+                <div id="container">
+                    <div id="bar1"></div>
+                    <div id="bar1"></div>
+                    <div id="bar1"></div>
+                </div>
             </div>
         </div> ';
     }

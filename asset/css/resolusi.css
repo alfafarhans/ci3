@@ -1,7 +1,56 @@
-@media (max-width: 575px){
+/* 320PX Iphone --------------------------------------------------------------------*/
+/* 320PX --------------------------------------------------------------------*/
+/* 320PX --------------------------------------------------------------------*/
 
+@media (min-width: 320px) and (max-width: 393px) {
+
+ 
   #headerimg {
     min-height: 460px;
+  }
+
+  #header #container #container2{
+    max-width: 92vw;
+  }
+
+  #header h1{
+    padding-top: 70px;
+    font-size: 3rem;
+  }
+
+  #smart a{
+    width: 81vw;
+    margin-bottom: -10px;
+  }
+
+  .custom-select {
+    width: 35vw;
+    margin-bottom: -10px;
+  }
+
+  #smart{
+    margin-top: -15px;
+    padding-bottom: 10px;
+  }
+
+  #checkboxbox{
+    width: 90vw;
+  }
+
+  #col-25{
+    width: 50%;
+  }
+
+}
+
+/* 394PX Very Small --------------------------------------------------------------------*/
+/* 394PX --------------------------------------------------------------------*/
+/* 394PX --------------------------------------------------------------------*/
+
+@media (min-width: 394px) and (max-width: 575px){
+
+  #headerimg {
+    min-height: 410px;
   }
 
   #header #container #container2{
@@ -38,11 +87,39 @@
 
 }
 
+/* 576PX Small --------------------------------------------------------------------*/
+/* 576PX --------------------------------------------------------------------*/
+/* 576PX --------------------------------------------------------------------*/
+
 @media (min-width: 576px) and (max-width: 767px) {
 
-  #navbar_kanan #a{
-    padding: 20px 5px;
+  #navbar_kiri #img{
+    display: none;
   }
+
+  #navbar_kiri input[type=text] {
+    display: none
+  }
+
+  #navbar_kanan #a{
+    display: none;
+  }
+
+  .dropdown {
+    display: none;
+  }
+
+  #navbar_kanan #img{
+    display: block;
+  }
+
+  #navbar_kanan #container {
+    display: inline-block;
+  }
+
+    #bar1, #bar2, #bar3 {
+      display: block;
+    }
 
   #headerimg {
     min-height: 510px;
@@ -82,6 +159,10 @@
 
 }
 
+/* 768PX Medium --------------------------------------------------------------------*/
+/* 768PX --------------------------------------------------------------------*/
+/* 768PX --------------------------------------------------------------------*/
+
 @media (min-width: 768px) and (max-width: 991px) {
 
   #headerimg {
@@ -120,6 +201,10 @@
   }
 
 }
+
+/* 992PX Large --------------------------------------------------------------------*/
+/* 992PX --------------------------------------------------------------------*/
+/* 992PX --------------------------------------------------------------------*/
 
 @media (min-width: 992px) and (max-width: 1199px) {
 

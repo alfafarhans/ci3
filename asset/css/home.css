@@ -176,6 +176,29 @@ body{
             margin-left: 5px;
         }
 
+        #navbar_kanan #img{
+            display: none;
+            padding: 10px;
+            width: 18px;
+            margin: 10px 0 10px 15px;
+            border: 1px solid #000000;
+        }
+
+        #navbar_kanan #container {
+            display: none;
+            cursor: pointer;
+            padding: 10px 15px;
+        }
+
+            #bar1, #bar2, #bar3 {
+                display: none;
+                width: 35px;
+                height: 5px;
+                background-color: #ffffff;
+                margin: 6px 0;
+                transition: 0.4s;
+            }
+
 #header {
     position: relative;
 }
