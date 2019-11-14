@@ -185,32 +185,33 @@ body{
         background-image: url('../pict/header2.png');
         background-size: cover;
         background-repeat: no-repeat;
-        min-height: 500px;
+        min-height: 450px;
         z-index: 1;
         position: relative;
     }
 
     #header #container{
-        width: 1400px;
-        position: absolute;
-        top: -20px;
-        left: 30%;
-        transform: translate(-23%);
+        float: center;
     }
 
+        #header #container #container2{
+            width: 80vw;
+            margin: auto;
+            bottom: 20px;
+        }
+
         #header #h1{
-            position: absolute;
+            margin-top: 50px;
         }
 
             #header #h1 h1{
-                font-size: 5vw;
+                font-size: 11vh;
                 color: #ffffff;
                 -webkit-text-stroke-width: 1px; 
                 -webkit-text-stroke-color: #000000; 
             }
 
 #smart {
-    margin: -150px 250px 20px 250px;
     border-radius: 5px;
     display: flex;
     justify-content: center;
@@ -218,11 +219,10 @@ body{
     background-color: #ffffff;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 12;
-    position: relative;
 }
     
     #smart #item{
-        margin: 20px;
+        margin: 15px;
     }   
 
         #result_loc{
@@ -368,9 +368,9 @@ body{
         padding: 10px 20px 20px;
         border: 1px solid #D8D8D8;
         border-radius: 5px;
-        z-index: 5;
+        z-index: 0;
         margin: 25px auto;
-        margin-top: -25px;
+        margin-top: -15px;
     }
 
         #checkboxloc{
@@ -476,7 +476,6 @@ body{
                 }
 
 #body {
-    margin-top: 50px;
     float: center;
 }
 

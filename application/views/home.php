@@ -6,6 +6,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/home.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/resolusi.css">
     <script type="text/javascript" src="<?php echo base_url();?>asset/js/jquery-3.4.1.min.js"></script>
     <script type="text/javascript">
     /* Icon User Click Close
@@ -483,19 +484,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div id="header">
         <div id="headerimg">
             <div id="container">
-                <div id="h1">
-                    <h1> Solution Your Seminar Gateway </h1>
-                </div>
-            </div>   
-        </div>
-    </div>
-            
+            <div id="container2">
+            <div id="h1">
+                <h1> Solution Your Seminar Gateway </h1>
+            </div>
         
+            
     <!-- bagian pencarian  -->
 
     <div id="smart">
         <div id="item">
-            <a id="locact" href="javascript:void(0);"> Any Location
+            <a id="locact" href="javascript:void(0);"> Location
                 <div id="i" class="icon">
                 </div>
             </a>
@@ -511,7 +510,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         -->
 
         <div id="item">
-            <a id="catact" href="javascript:void(0);"> Any Category 
+            <a id="catact" href="javascript:void(0);"> Category 
                 <div id="i" class="iconcat">
                 </div>
             </a>
@@ -569,6 +568,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <select>
             </div>
         </div>
+    </div>
+    </div>
+    </div>
+    </div>
     </div>
 
     <div id="checkboxbox">
