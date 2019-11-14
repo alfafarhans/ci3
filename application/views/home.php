@@ -484,94 +484,55 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div id="header">
         <div id="headerimg">
             <div id="container">
-            <div id="container2">
-            <div id="h1">
-                <h1> Solution Your Seminar Gateway </h1>
-            </div>
-        
-            
-    <!-- bagian pencarian  -->
+                <div id="container2">
+                    <h1> Solution Your Seminar <br> Gateway </h1>
+                    
+                    <!-- bagian pencarian  -->
 
-    <div id="smart">
-        <div id="item">
-            <a id="locact" href="javascript:void(0);"> Location
-                <div id="i" class="icon">
+                    <div id="smart">
+                        <div id="item">
+                            <a id="locact" href="javascript:void(0);"> Location
+                                <div id="i" class="icon">
+                                </div>
+                            </a>
+                            
+                        </div>
+
+                        <div id="item">
+                            <a id="catact" href="javascript:void(0);"> Category 
+                                <div id="i" class="iconcat">
+                                </div>
+                            </a>
+                        </div>
+
+                        <div id="item">
+                            <div class="custom-select">
+                                <select id="date">
+                                    <option value="anydate" selected> Any Date </option>
+                                    <option value="today"> Today </option>
+                                    <option value="tomorrow"> Tomorrow</option>
+                                    <option value="thisweekend"> This Weekend</option>
+                                    <option value="thisweek"> This Week</option>
+                                    <option value="nextweek"> Next Week</option>
+                                    <option value="thismonth"> This Month</option>
+                                    <option value="nextmonth"> Next Month</option>
+                                <select>
+                            </div>
+                        </div>
+
+                        <div id="item">
+                            <div class="custom-select">
+                                <select id="price">
+                                    <option value="" selected> Any Price </option>
+                                    <option value="free"> Free </option>
+                                    <option value="paid"> Paid </option>
+                                <select>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </a>
-            
-        </div>
-
-        <!--
-        <div id="item">
-            <label for="location" id="label"> Location </label>
-            <input type="text" id="location" name="location" placeholder="Any location" class = "result_loc">
-            <div id = "result_loc"></div>
-        </div>
-        -->
-
-        <div id="item">
-            <a id="catact" href="javascript:void(0);"> Category 
-                <div id="i" class="iconcat">
-                </div>
-            </a>
-        </div>
-
-        <div id="item">
-            <div class="custom-select">
-                <select id="date">
-                    <option value="anydate" selected> Any Date </option>
-                    <option value="today"> Today </option>
-                    <option value="tomorrow"> Tomorrow</option>
-                    <option value="thisweekend"> This Weekend</option>
-                    <option value="thisweek"> This Week</option>
-                    <option value="nextweek"> Next Week</option>
-                    <option value="thismonth"> This Month</option>
-                    <option value="nextmonth"> Next Month</option>
-                <select>
             </div>
         </div>
-
-        <!--
-        <div id="item">
-            <label for="category" id="label"> Category </label>
-            <br>
-            <div class="custom-select">
-                <select id="category" >
-                    <option value="" selected> Any Category </option>
-                    <option value="otomotif"> Auto, Boat & air</option>
-                    <option value="business"> Business</option>
-                    <option value="charity"> Charity & Causes</option>
-                    <option value="family"> Family & Education</option>
-                    <option value="fashion"> Fashion</option>
-                    <option value="film"> Film & Media</option>
-                    <option value="fooddrink"> Food & Drink</option>
-                    <option value="goverment"> Goverment </option>
-                    <option value="health"> Health</option>
-                    <option value="hobbies"> Hobbies</option>
-                    <option value="holiday"> Holiday</option>
-                    <option value="homelifefstyle"> Home & Lifefstyle</option>
-                    <option value="schoolactivies"> School Activies</option>
-                    <option value="sciencetech"> Science & Tech</option>
-                    <option value="spiritually"> Spiritually</option>
-                    <option value="sportfitness"> Sport & Fitness</option>
-                    <option value="traveloutdoor"> Travel & Outdoor</option>
-                <select>
-            </div>
-        </div>
-        -->
-        <div id="item">
-            <div class="custom-select">
-                <select id="price">
-                    <option value="" selected> Any Price </option>
-                    <option value="free"> Free </option>
-                    <option value="paid"> Paid </option>
-                <select>
-            </div>
-        </div>
-    </div>
-    </div>
-    </div>
-    </div>
     </div>
 
     <div id="checkboxbox">
