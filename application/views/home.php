@@ -9,26 +9,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/resolusi.css">
     <script type="text/javascript" src="<?php echo base_url();?>asset/js/jquery-3.4.1.min.js"></script>
     <script type="text/javascript">
-    /* Icon User Click Close
+
     window.onclick = function(event) {
-        if (!event.target.matches('.dropbtn')) {
-            var dropdowns = document.getElementsByClassName("dropdown-content");
-            var i;
-            for (i = 0; i < dropdowns.length; i++) {
-                var openDropdown = dropdowns[i];
-                if (openDropdown.classList.contains('show')) {
-                    openDropdown.classList.remove('show');
-                }
-            }
-        }
-    }*/
-    window.onclick = function(event) {
-        if ( (!event.target.matches('.dropdown')) &&(!event.target.matches('.imgdrop')) && (!event.target.matches('.result_sem')) && (!event.target.matches('.result_loc')) && (!event.target.matches('.p')) ){
+        if ( (!event.target.matches('.schico')) && (!event.target.matches('.humbermenico')) && (!event.target.matches('.dropdown')) &&(!event.target.matches('.imgdrop')) && (!event.target.matches('.result_sem')) && (!event.target.matches('.result_loc')) && (!event.target.matches('.p')) ){
             $('#jcdrop').slideUp("fast");
+            $('#dropdown-content2').slideUp("fast");
             $("#result_sem").html("");
             $("#result_loc").html("");
             $('#seminar').val("");
-            //$('#location').val("");
+            $( "#hideico" ).css({"display": "block"});
+            $( ".result_sem" ).css({"display": "none"});
+            $( ".result_semcio" ).css({"display": "none"});  
         }
     }
      //for page
@@ -263,22 +254,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         let auxloc = true;
         let auxcat = true;
         let auxstsbar = false;
+//icon act
+        $('.humbermenico').click(function () {
+            $("#dropdown-content2").slideToggle(250);
+        });
 
-        $('#submenur').click(function () {
-            
-            if(auxloc){
-                auxloc = false;
-                $(".display").css({"display": "none"});
-            }   
-
-            else{
-                if(!auxloc && !auxcat) {
-                    auxstsbar = cbsmarts(false);
-                }
-
-                auxloc = true;
-                $(".display").css({"display": "block"});
-            }
+        $('.schico').click(function () {
+            $( "#hideico" ).css({"display": "none"});
+            $( ".result_sem" ).css({"display": "block"});
+            $( ".result_semcio" ).css({"display": "block"});  
         });
         
         //act show cat loc
@@ -425,20 +409,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <div id="topr">
     </div>
-
-    <!-- bagian navbar  -->
-    <?php if(!empty($user_id))
-    {
-      
-        echo '
-        <div id="top">
+    <div id="top">
             <div id="navbar_kiri">
-                <a href="'.base_url().'home"> Seminar Go </a>
-                <img id="img" src="'.base_url().'asset/pict/icon/search-icon.png">
+                <a id="hideico" href="home"> Seminar Go </a>
+                <img id="img" class="result_semcio" src="asset/pict/icon/search-icon.png">
                 <input type="text" id="seminar" name="seminar" class = "result_sem" placeholder="Cari seminar">
             </div>
     
             <div id = "result_sem" ></div>
+    <!-- bagian navbar  -->
+    <?php if(!empty($user_id))
+    {
+        echo '
+        
             
             <div id="navbar_kanan">
                 <a id="a" href="'.base_url().'ads">Advertising </a>
@@ -481,34 +464,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     }
     else{
         echo '
-        <div id="top">
-            <div id="navbar_kiri">
-                <a href="'.base_url().'home"> Seminar Go </a>
-                <img id="img" src="'.base_url().'asset/pict/icon/search-icon.png">
         
-                <input type="text" id="seminar" name="seminar" class = "result_sem" placeholder="Cari seminar">
-            </div>
-            
-            <div id = "result_sem" ></div>
             
             <div id="navbar_kanan">
                 <a id="a" href="'.base_url().'ads">Advertising </a> 
                 <a id="a" href="'.base_url().'login/">Sign in</a>
 
-                <img id="img" src="'.base_url().'asset/pict/icon/search-icon2.png">
+                <img class="schico" id="img" src="'.base_url().'asset/pict/icon/search-icon2.png">
                 
-                <a id="submenur">
-                    <div id="container">
-                        <div id="bar1"></div>
-                        <div id="bar2"></div>
-                        <div id="bar3"></div>
+               
+                    <div class="humbermenico" id="container">
+                        <div class="humbermenico" id="bar1"></div>
+                        <div class="humbermenico" id="bar2"></div>
+                        <div class="humbermenico" id="bar3"></div>
                     </div>
-                </a>
                 
-                <div id="dropdown-content2" class="display">
+                <div id="dropdown-content2">
                     <a href="'.base_url().'ads"> Advertising </a> 
                     <a href="'.base_url().'login/"> Sign In </a> 
                 </div>
+
+
             </div>
         </div>
         

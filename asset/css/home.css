@@ -176,6 +176,7 @@ body{
         }
 
         #navbar_kanan #img{
+            cursor: pointer;
             display: none;
             height: 25px;
             object-fit: cover;
