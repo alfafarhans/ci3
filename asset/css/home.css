@@ -60,7 +60,7 @@ body{
             padding: 13px;
             width: 15px;
             margin: 10px 0 10px 15px;
-            border-radius: 5px 0 0 5px ;
+            border-radius: 1px 0 0 1px ;
         }
 
         #navbar_kiri input[type=text] {
@@ -72,7 +72,7 @@ body{
             border: none;
             font-size: 17px;
             background-color: #ffffff;
-            border-radius: 0 5px 5px 0;
+            border-radius: 0 1px 1px 0;
         }
 
         #result_sem {
@@ -233,7 +233,7 @@ body{
         }
 
 #smart {
-    border-radius: 5px;
+    border-radius: 1px;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
