@@ -9,8 +9,14 @@
   }
 
   #navbar_kiri input[type=text] {
-    display: none
+    display: none;
+    width: 0;
   }
+
+  #result_sem {
+    margin-left: 15px;
+    width: 85vw;
+  } 
 
   #navbar_kanan #a{
     display: none;
@@ -81,8 +87,14 @@
   }
 
   #navbar_kiri input[type=text] {
-    display: none
+    display: none;
+    width: 0;
   }
+
+  #result_sem {
+    margin-left: 15px;
+    width: 90vw;
+  } 
 
   #navbar_kanan #a{
     display: none;
@@ -154,7 +166,13 @@
 
   #navbar_kiri input[type=text] {
     display: none;
+    width: 0;
   }
+
+  #result_sem {
+    margin-left: 15px;
+    width: 90vw;
+  }   
 
   #navbar_kanan #a{
     display: none;
