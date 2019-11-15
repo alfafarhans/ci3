@@ -340,7 +340,12 @@ body{
             width: 0;
             height: 0;
             border: 6px solid transparent;
-            border-color: rgba(0, 0, 0, 0.5) transparent transparent transparent;
+            border-color: #135799 transparent transparent transparent;
+        }
+        .select-selected:hover{
+            background-color: #5890CF;
+            color: #ffffff;
+            transition: 0.5s;
         }
   
         /*point the arrow upwards when the select box is open (active):*/
