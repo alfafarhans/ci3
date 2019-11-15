@@ -17,7 +17,11 @@ body{
     height: 100%;
     background-color: #ffffff;
 }
-
+:root{
+    --colpos: rgba(0, 0, 0, 0.8);
+    --colfont: #ffffff;
+    --arrcolor: #135799;
+}
 #topr{
     top: 0;
     position: relative;
@@ -113,7 +117,7 @@ body{
             text-align: center;
             padding: 20px 20px;
             text-decoration: none;
-            color: #306EAA;
+            color: #135799;
         }
 
         #navbar_kanan #a:hover{
@@ -288,6 +292,7 @@ body{
             background-color: #5890CF;
             color: #ffffff;
             transition: 0.5s;
+            --arrcolor:#ffffff;
         }
 
             #i {
@@ -298,7 +303,7 @@ body{
                 width: 0;
                 height: 0;
                 border: 6px solid transparent;
-                border-color: #135799 transparent transparent transparent;
+                border-color: var(--arrcolor) transparent transparent transparent;
             }
 
         #smart input[type=text] {
@@ -340,9 +345,10 @@ body{
             width: 0;
             height: 0;
             border: 6px solid transparent;
-            border-color: #135799 transparent transparent transparent;
+            border-color: var(--arrcolor) transparent transparent transparent;
         }
         .select-selected:hover{
+            --arrcolor:#ffffff;
             background-color: #5890CF;
             color: #ffffff;
             transition: 0.5s;
@@ -365,7 +371,7 @@ body{
         /*style items (options):*/
         .select-items {
             position: absolute;
-            background-color: #0F63C0;
+            background-color: #ffffff;
             border: 1px solid #000000;
             border-color: rgba(0, 0, 0, 0.1);
             top: 100%;
@@ -382,7 +388,7 @@ body{
         }
   
         .select-items div:hover, .same-as-selected {
-            background-color: rgba(0, 0, 0, 0.1);
+            background-color: #5890CF;
             color: #ffffff;
             transition: 0.5s;
         }
@@ -523,14 +529,11 @@ body{
         position: relative;
     }
     #postinduk #post:hover {
-        --colpos:yellow;
-        --colfont: #063A74;
+        --colpos:#FFF039;
+        --colfont: #306EAA;
         --colimg: scale(1.2);
     }
-    :root{
-        --colpos: rgba(0, 0, 0, 0.8);
-        --colfont: #ffffff;
-    }
+    
 
         #img{
             overflow: hidden; 
