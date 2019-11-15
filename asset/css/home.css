@@ -37,7 +37,7 @@ body{
     z-index: 15;
     display: flex;
     background-color: #71A4D6;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.705);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 }
 
     #navbar_kiri{
