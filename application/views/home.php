@@ -263,12 +263,30 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         let auxloc = true;
         let auxcat = true;
         let auxstsbar = false;
+
+        $('#submenur').click(function () {
+            
+            if(auxloc){
+                auxloc = false;
+                $(".display").css({"display": "none"});
+            }   
+
+            else{
+                if(!auxloc && !auxcat) {
+                    auxstsbar = cbsmarts(false);
+                }
+
+                auxloc = true;
+                $(".display").css({"display": "block"});
+            }
+        });
+        
         //act show cat loc
         $('#locact').click(function () {
             
             if(auxloc){
                     auxloc = false;
-                    $(".icon").css({"border-color": "transparent transparent rgba(0, 0, 0, 0.5)  transparent", "top": "7px"});
+                    $(".icon").css({"border-color": "transparent transparent rgba(0, 0, 0, 0.5)  transparent", "top": "10px"});
                 
                 }   
                 else{
@@ -276,7 +294,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 auxstsbar = cbsmarts(false);
             }
                     auxloc = true;
-                    $(".icon").css({"border-color": "rgba(0, 0, 0, 0.5)  transparent transparent transparent", "top": "14px"});
+                    $(".icon").css({"border-color": "rgba(0, 0, 0, 0.5)  transparent transparent transparent", "top": "17px"});
                 }
             $("#checkboxloc").slideToggle(250);
 
@@ -294,7 +312,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         $('#catact').click(function () {
             if(auxcat){
                     auxcat = false;
-                    $(".iconcat").css({"border-color": "transparent transparent rgba(0, 0, 0, 0.5)  transparent", "top": "7px"});
+                    $(".iconcat").css({"border-color": "transparent transparent rgba(0, 0, 0, 0.5)  transparent", "top": "10px"});
                    
                 }
                 else {
@@ -302,7 +320,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 auxstsbar = cbsmarts(false);
             }
                     auxcat = true;
-                    $(".iconcat").css({"border-color": "rgba(0, 0, 0, 0.5) transparent transparent transparent", "top": "14px"});
+                    $(".iconcat").css({"border-color": "rgba(0, 0, 0, 0.5) transparent transparent transparent", "top": "17px"});
                 }
             $("#checkboxcat").slideToggle(250);
             
@@ -414,15 +432,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       
         echo '
         <div id="top">
-        <div id="navbar_kiri">
-        <a href="'.base_url().'home"> Seminar Go </a>
-
-        <img id="img" src="'.base_url().'asset/pict/icon/search-icon.png">
-        
-        <input type="text" id="seminar" name="seminar" class = "result_sem" placeholder="Cari seminar">
-    </div>
+            <div id="navbar_kiri">
+                <a href="'.base_url().'home"> Seminar Go </a>
+                <img id="img" src="'.base_url().'asset/pict/icon/search-icon.png">
+                <input type="text" id="seminar" name="seminar" class = "result_sem" placeholder="Cari seminar">
+            </div>
     
-    <div id = "result_sem" ></div>
+            <div id = "result_sem" ></div>
             
             <div id="navbar_kanan">
                 <a id="a" href="'.base_url().'ads">Advertising </a>
@@ -431,32 +447,36 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <div id="jdrop" class="p"> Welcome '.$username.' ! </div>
                     ';
                     $path = './asset/pict/profile/'.$user_id.'.png';
-        if(file_exists($path)){
-                   echo' <img id="jdrop" class="imgdrop" src="'.base_url().'asset/pict/profile/'.$user_id.'.png">
-                ';}
-                else{
-                    echo' <img id="jdrop" class="imgdrop" src="'.base_url().'asset/pict/profile/default.png">
-                ';
-                }
+                    if(file_exists($path)){
+                        echo' <img id="jdrop" class="imgdrop" src="'.base_url().'asset/pict/profile/'.$user_id.'.png">
+                    ';}
+                    else{
+                        echo' <img id="jdrop" class="imgdrop" src="'.base_url().'asset/pict/profile/default.png">
+                    ';
+                    }
 
-        if( (!empty($user_id)) && ($user_id == 7320006)  ){
+                if( (!empty($user_id)) && ($user_id == 7320006)  ){
                     echo'
-                 </div>
+                </div>
+
                 <div id="jcdrop" class="dropdown-content">
-                <a href="'.base_url().'profile_admin/Admin"> Profile </a> 
-                <a href="'.base_url().'logout"> Sign Out </a></div>
+                    <a href="'.base_url().'profile_admin/Admin"> Profile </a> 
+                    <a href="'.base_url().'logout"> Sign Out </a>
+                </div>
+            </div>
+        </div> ';
+                    }
+                else{
+                    echo'
+                </div>
+                    <div id="jcdrop" class="dropdown-content">
+                        <a href="'.base_url().'profile/myprofile/1"> Profile </a> 
+                        <a href="'.base_url().'profile/myprofile/2"> My Event </a> 
+                        <a href="'.base_url().'profile/myprofile/3"> Settings </a> 
+                        <a href="'.base_url().'logout"> Sign Out </a>
+                    </div>
                 </div>
             </div> ';
-                    }
-             else{
-                echo'</div>
-                       <div id="jcdrop" class="dropdown-content">
-                       <a href="'.base_url().'profile/myprofile/1"> Profile </a> 
-                       <a href="'.base_url().'profile/myprofile/2"> My Event </a> 
-                       <a href="'.base_url().'profile/myprofile/3"> Settings </a> 
-                       <a href="'.base_url().'logout"> Sign Out </a></div>
-                       </div>
-                   </div> ';
                     }
     }
     else{
@@ -476,14 +496,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <a id="a" href="'.base_url().'login/">Sign in</a>
 
                 <img id="img" src="'.base_url().'asset/pict/icon/search-icon2.png">
-
-                <div id="container">
-                    <div id="bar1"></div>
-                    <div id="bar1"></div>
-                    <div id="bar1"></div>
+                
+                <a id="submenur">
+                    <div id="container">
+                        <div id="bar1"></div>
+                        <div id="bar2"></div>
+                        <div id="bar3"></div>
+                    </div>
+                </a>
+                
+                <div id="dropdown-content2" class="display">
+                    <a href="'.base_url().'ads"> Advertising </a> 
+                    <a href="'.base_url().'login/"> Sign In </a> 
                 </div>
             </div>
-        </div> ';
+        </div>
+        
+</script>'
+        ;
     }
     
     ?>  
