@@ -220,6 +220,12 @@
 
 @media (min-width: 768px) and (max-width: 991px) {
 
+  #navbar_kiri input[type=text] {
+    display: block !important;
+  }
+  #navbar_kiri #img{
+    display: block !important;
+  }
   #headerimg {
     min-height: 550px;
   }
@@ -279,4 +285,4 @@
     width: 85vw;
   }
 
-
+}
