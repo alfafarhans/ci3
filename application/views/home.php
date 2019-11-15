@@ -475,7 +475,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <a id="a" href="'.base_url().'ads">Advertising </a> 
                 <a id="a" href="'.base_url().'login/">Sign in</a>
 
-                <img id="img" src="'.base_url().'asset/pict/icon/search-icon.png">
+                <img id="img" src="'.base_url().'asset/pict/icon/search-icon2.png">
 
                 <div id="container">
                     <div id="bar1"></div>
