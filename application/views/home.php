@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     }
      //for page
     $(function() {
-        
+ 
         let arrcattext = [
                     "Otomotif",
                     "Business",

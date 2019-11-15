@@ -55,7 +55,8 @@ body{
             line-height: inherit;
         }
 
-        #navbar_kiri #img{
+        #navbar_kiri .result_semcio{
+            display: block;
             background-color: #ffffff;
             padding: 13px;
             width: 15px;
@@ -63,7 +64,7 @@ body{
             border-radius: 1px 0 0 1px ;
         }
 
-        #navbar_kiri input[type=text] {
+        #navbar_kiri .result_sem {
             display: block;
             width: 24vw;
             padding: 5px 5px;
