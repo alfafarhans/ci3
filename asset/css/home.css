@@ -32,7 +32,7 @@ body{
     position: fixed;
     z-index: 15;
     display: flex;
-    background-color: #A0C6EA;
+    background-color: #71A4D6;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
 
@@ -50,7 +50,7 @@ body{
             padding: 15px 30px;
             text-decoration: none;
             color: #135799;
-            background-color:#71A4D6;
+            background-color:#A0C6EA;
             font-size: 1.25rem;
             line-height: inherit;
         }
@@ -102,7 +102,7 @@ body{
     #navbar_kanan {
         display: inline-flex;
         justify-content: flex-end;
-        background-color: #A0C6EA;
+        background-color: #71A4D6;
         position: relative;
         z-index: 11;
         flex-grow: 1;
@@ -228,9 +228,10 @@ body{
             font-size: 5.5rem;
             font-weight: 300;
             line-height: 1.2;
-            color: #ffffff;
+            color: rgb(170, 201, 230);
             -webkit-text-stroke-width: 1px; 
-            -webkit-text-stroke-color: #000000; 
+            -webkit-text-stroke-color: #A0C6EA; 
+            
         }
 
 #smart {
@@ -238,13 +239,13 @@ body{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    background-color: #4D88C0;
+    background-color: #A0C6EA;
     box-shadow: 0px 8px 16px 0px rgba(254, 240, 89, 0.171);
     z-index: 12;
 }
     
     #smart #item{
-        margin: 10px;
+        margin: 13px;
     }   
 
         #result_loc{
@@ -280,9 +281,8 @@ body{
             text-decoration: none;
             border: none;
             font-size: 20px;
-            border: 1px solid #000000;
             background-color: #ffffff;
-            color: #000000;
+            color: #135799;
         }
 
             #i {
@@ -314,6 +314,7 @@ body{
             position: relative;
             width: 250px;
             font-size: 18px;
+            
         }
   
         .custom-select select {
@@ -322,7 +323,7 @@ body{
   
         .select-selected {
             background-color: #ffffff;
-            border: 1px solid #000000;
+            
         }
   
         /*style the arrow inside the select element:*/
@@ -345,7 +346,7 @@ body{
   
         /*style the items (options), including the selected item:*/
         .select-items div,.select-selected {
-            color: #000000;
+            color: #135799;
             padding: 8px 16px;
             cursor: pointer;
             user-select: none;
