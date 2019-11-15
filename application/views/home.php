@@ -13,13 +13,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     window.onclick = function(event) {
         if ( (!event.target.matches('.schico')) && (!event.target.matches('.humbermenico')) && (!event.target.matches('.dropdown')) &&(!event.target.matches('.imgdrop')) && (!event.target.matches('.result_sem')) && (!event.target.matches('.result_loc')) && (!event.target.matches('.p')) ){
             $('#jcdrop').slideUp("fast");
-            $('#dropdown-content2').slideUp("fast");
             $("#result_sem").html("");
             $("#result_loc").html("");
             $('#seminar').val("");
+            $('#dropdown-content2').slideUp("fast");
             $( "#hideico" ).css({"display": "block"});
-            $( ".result_sem" ).css({"display": "none"});
-            $( ".result_semcio" ).css({"display": "none"});  
+            $(".schico").css({"display": "block"});
+            $(".result_sem").animate({width: '0%'},500);
+            $( ".result_semcio" ).css({"display": "none"});
+            $( ".result_sem" ).css({"display": "none"});  
         }
     }
      //for page
@@ -261,9 +263,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         });
 
         $('.schico').click(function () {
-            $( "#hideico" ).css({"display": "none"});
-            $( ".result_sem" ).css({"display": "block"});
-            $( ".result_semcio" ).css({"display": "block"});  
+            $( "#hideico" ).css({"display": "none"}); //logo
+            $( ".result_sem" ).css({"display": "block"});//search sem bar
+            $(this).css({"display": "none"}); //button small screen
+            $(".result_sem").animate({width: '75%'},500);//search sem bar
+            $( ".result_semcio" ).css({"display": "block"});  //buttonsearch sembar
         });
         
         //act show cat loc
