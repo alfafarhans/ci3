@@ -483,7 +483,8 @@ body{
                   
                 /* When the checkbox is checked, add a blue background */
                 #col-25 #container input:checked ~ #checkmark {
-                    background-color: #4D88C0;
+                    background-color: #FFF359
+                    ;
                 }
                   
                 /* Create the checkmark/indicator (hidden when not checked) */
