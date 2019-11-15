@@ -37,7 +37,7 @@ body{
     z-index: 15;
     display: flex;
     background-color: #71A4D6;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.705);
 }
 
     #navbar_kiri{
@@ -157,7 +157,7 @@ body{
             align-items: center;
             padding: 0px 10px 0px 20px;
             cursor: pointer;
-            color: rgb(145, 195, 253);
+            color: #135799;
         }
 
         .dropdown:hover {
@@ -172,7 +172,7 @@ body{
         
         .imgdrop{
             border-radius: 50%;
-            border: 2px solid #0F63C0;
+            border: 2px solid #135799;
             width: 38px;
             height: 38px;
             object-fit: cover;
@@ -527,6 +527,7 @@ body{
 	    background: #fff;
         border:1px solid #dedede;
         position: relative;
+        box-shadow: 0px 8px 16px 0px rgba(46, 46, 46, 0.548);
     }
     #postinduk #post:hover {
         --colpos:#FFF039;
