@@ -274,7 +274,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             
             if(auxloc){
                     auxloc = false;
-                    $(".icon").css({"border-color": "transparent transparent rgba(0, 0, 0, 0.5)  transparent", "top": "10px"});
+                    $(".icon").css({"border-color": "transparent transparent #135799  transparent", "top": "10px"});
                 
                 }   
                 else{
@@ -282,7 +282,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 auxstsbar = cbsmarts(false);
             }
                     auxloc = true;
-                    $(".icon").css({"border-color": "rgba(0, 0, 0, 0.5)  transparent transparent transparent", "top": "17px"});
+                    $(".icon").css({"border-color": "#135799  transparent transparent transparent", "top": "17px"});
                 }
             $("#checkboxloc").slideToggle(250);
 
@@ -300,7 +300,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         $('#catact').click(function () {
             if(auxcat){
                     auxcat = false;
-                    $(".iconcat").css({"border-color": "transparent transparent rgba(0, 0, 0, 0.5)  transparent", "top": "10px"});
+                    $(".iconcat").css({"border-color": "transparent transparent #135799  transparent", "top": "10px"});
                    
                 }
                 else {
@@ -308,7 +308,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 auxstsbar = cbsmarts(false);
             }
                     auxcat = true;
-                    $(".iconcat").css({"border-color": "rgba(0, 0, 0, 0.5) transparent transparent transparent", "top": "17px"});
+                    $(".iconcat").css({"border-color": "#135799 transparent transparent transparent", "top": "17px"});
                 }
             $("#checkboxcat").slideToggle(250);
             
