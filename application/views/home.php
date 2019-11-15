@@ -16,12 +16,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $("#result_sem").html("");
             $("#result_loc").html("");
             $('#seminar').val("");
-            $('#dropdown-content2').slideUp("fast");
-            $( "#hideico" ).css({"display": "block"});
-            $(".schico").css({"display": "block"});
-            $(".result_sem").animate({width: '0%'},500);
-            $( ".result_semcio" ).css({"display": "none"});
-            $( ".result_sem" ).css({"display": "none"});  
+          //  $('#dropdown-content2').slideUp("fast");
+            //$( "#hideico" ).css({"display": "block"});
+           // $(".schico").css({"display": "block"});
+           // $(".result_sem").animate({width: '0%'},500);
+           // $( ".result_semcio" ).css({"display": "none"});  
         }
     }
      //for page
