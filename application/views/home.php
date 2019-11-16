@@ -23,10 +23,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
            // $( ".result_semcio" ).css({"display": "none"});  
         }
     }
+
     function hidemdscr() {
         let rwidth = $(window).width();
-
+        if(rwidth < 767 ){}
     }
+
      //for page
     $(function() {
  
