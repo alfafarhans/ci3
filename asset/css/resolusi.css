@@ -67,13 +67,25 @@
   }
 
   #checkboxbox{
-    width: 90vw;
+    width: 88vw;
   }
 
   #col-25{
     width: 50%;
   }
 
+  #postinduk #post {
+    width: 90vw;
+    margin: 0 0 25px 0;
+  }
+
+  #postinduk #post #img img {
+    height: 250px;
+  }
+
+  #postinduk #post #descbox #namaseminar {
+    margin: 30px 0 0 0;
+  } 
 }
 
 /* 394PX Very Small --------------------------------------------------------------------*/
@@ -145,12 +157,20 @@
   }
 
   #checkboxbox{
-    width: 90vw;
+    width: 88vw;
   }
 
   #col-25{
     width: 50%;
   }
+
+  #postinduk #post {
+    width: 80vw;
+  }
+
+  #postinduk #post #descbox #namaseminar {
+    margin: 50px 0 0 0;
+  } 
 
 }
 
@@ -230,6 +250,15 @@
     width: 33%;
   }
 
+  #postinduk #post {
+    width: 80vw;
+  }
+
+  #postinduk #post #img img {
+    width: 50vw;
+    height: 50vw;
+  }
+
 }
 
 /* 768PX Medium --------------------------------------------------------------------*/
@@ -280,6 +309,14 @@
     width: 25%;
   }
 
+  #postinduk #post {
+    width: 44vw;
+  }
+
+  #postinduk #post #descbox {
+    width: 20vw;
+}
+
 }
 
 /* 992PX Large --------------------------------------------------------------------*/
@@ -310,6 +347,9 @@
     width: 85vw;
   }
 
+  #postinduk #post {
+    width: 450px;
+  }
 }
 
 @media (min-width: 1200px) {
