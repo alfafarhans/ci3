@@ -27,10 +27,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $('#dropdown-content2').slideUp("fast");//hum content
             $(".schico").css({"opacity": "1"});////icon search
             $(".result_sem").css({width: '0%',transition : '0.3s',opacity: '0'});//search barr
-            setTimeout(function() { 
+         
                 $(".result_semcio" ).css({display : 'none'});  //icon search barr
                 $( "#hideico" ).css({"display": "block"});//icon sgo
-            }, 500);
+           
                  
         }
     }
@@ -273,7 +273,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         $('.schico').click(function () {
             $( "#hideico" ).css({"display": "none"}); //logo
             $(this).css({"opacity": "0"}); //button small screen
-            
             $(".result_sem" ).css({"display": "block"});//search sem bar
             $(".result_sem").css({width: '75%',transition : '0.5s',opacity:'1'});//search sem bar
             $(".result_semcio" ).css({"display": "block"});  //buttonsearch sembar
