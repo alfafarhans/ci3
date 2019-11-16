@@ -23,11 +23,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     function hidemdscr() {
         let rwidth = $(window).width();
         if(rwidth < 768){
-            $('#dropdown-content2').slideUp("fast");//hum content
-            $( "#hideico" ).css({display: "block"});//icon sgo
-            $(".schico").css({"display": "block"});////icon search
+            
+            $(".result_sem").css({width: '0',transition : '0.3s'});//search barr
             $(".result_semcio" ).css({"display": "none"});  //icon search barr
-            $(".result_sem").css({width: '0%',transition : '0.5s'});//search barr
+            $("#hideico").css({"display": "block"});//icon sgo 
+            $("#hideico").addClass("showelant");//icon sgo
+            $(".schico").addClass("showelant");////icon search bar
+            setTimeout(
+                    function() 
+                    {  
+                        $(".result_sem").css({"display": "none"});//search barr
+                        $(".schico").css({"display": "block"});////icon search bar
+                        $("#hideico").removeClass("showelant");//icon sgo
+                        $(".schico").removeClass("showelant");////icon search bar
+                        
+                    }, 300);
+
+            $('#dropdown-content2').slideUp("fast");//hum content
+           
         }
     }
 
@@ -266,15 +279,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         $('.humbermenico').click(function () {
             $("#dropdown-content2").slideDown(250);
         });
-
         $('.schico').click(function () {
-            $( "#hideico" ).css({"display": "none"}); //logo
-            $( ".result_sem" ).css({"display": "block"});//search sem bar
+            $( "#hideico" ).addClass("hideelant");
+            setTimeout(
+                    function() 
+                    {   
+                        $("#hideico" ).css({"display": "none"}); //logo
 
+                        $(".result_sem" ).css({"display": "block"});//search sem bar
+                        $(".result_sem").css({width: '75%',transition : '0.5s'});//search sem bar
+                        $( ".result_semcio" ).css({"display": "block"});  //buttonsearch sembar
+                        $( "#hideico" ).removeClass("hideelant");
+                    }, 200);
+                    
             $(this).css({"display": "none"}); //button small screen
-            $(".result_sem").css({width: '75%',transition : '0.5s'});//search sem bar
-            $( ".result_semcio" ).css({"display": "block"});  //buttonsearch sembar
-
         });
         
         //act show cat loc

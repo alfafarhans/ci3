@@ -381,8 +381,7 @@
 
 
 .showelant{
-  animation: showel 0.3s ;
-  animation-fill-mode: forwards;
+  animation: showel 1s;
 }
 @keyframes showel {
   from {opacity: 0;}
@@ -391,7 +390,6 @@
 /**/
 .hideelant{
   animation: hideel 0.3s  ;
-  animation-fill-mode: forwards;
 }
 @keyframes hideel {
   from {opacity: 1;}
