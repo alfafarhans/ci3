@@ -16,17 +16,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $("#result_sem").html("");
             $("#result_loc").html("");
             $('#seminar').val("");
-          //  $('#dropdown-content2').slideUp("fast");
-            //$( "#hideico" ).css({"display": "block"});
-           // $(".schico").css({"display": "block"});
-           // $(".result_sem").animate({width: '0%'},500);
-           // $( ".result_semcio" ).css({"display": "none"});  
+            hidemdscr();
         }
     }
 
     function hidemdscr() {
         let rwidth = $(window).width();
-        if(rwidth < 767 ){}
+        if(rwidth < 768){
+            $('#dropdown-content2').slideUp("fast");//hum content
+            $( "#hideico" ).css({display: "block"});//icon sgo
+            $(".schico").css({"display": "block"});////icon search
+            $(".result_semcio" ).css({"display": "none"});  //icon search barr
+            $(".result_sem").css({width: '0%',transition : '0.5s'});//search barr
+        }
     }
 
      //for page
@@ -262,7 +264,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         let auxstsbar = false;
 //icon act
         $('.humbermenico').click(function () {
-            $("#dropdown-content2").slideToggle(250);
+            $("#dropdown-content2").slideDown(250);
         });
 
         $('.schico').click(function () {
@@ -270,7 +272,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $( ".result_sem" ).css({"display": "block"});//search sem bar
 
             $(this).css({"display": "none"}); //button small screen
-            $(".result_sem").css({width: '100%',transition : '0.5s ease-in-out'});//search sem bar
+            $(".result_sem").css({width: '75%',transition : '0.5s'});//search sem bar
             $( ".result_semcio" ).css({"display": "block"});  //buttonsearch sembar
 
         });

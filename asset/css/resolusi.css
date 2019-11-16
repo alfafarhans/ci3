@@ -272,6 +272,7 @@
 
   #navbar_kiri .result_sem {
     display: block !important;
+    width: 24vw !important;
   }
 
   #headerimg {
@@ -330,6 +331,7 @@
 
   #navbar_kiri .result_sem {
     display: block !important;
+    width: 24vw !important;
   }
   #header #container #container2{
     max-width: 900px;
@@ -359,5 +361,25 @@
 
   #navbar_kiri .result_sem {
     display: block !important;
+    width: 24vw !important;
   }
+}
+
+
+.showelant{
+  animation: showel 0.3s ;
+  animation-fill-mode: forwards;
+}
+@keyframes showel {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+/**/
+.hideelant{
+  animation: hideel 0.3s  ;
+  animation-fill-mode: forwards;
+}
+@keyframes hideel {
+  from {opacity: 1;}
+  to {opacity: 0;}
 }
