@@ -367,7 +367,7 @@
 
 
 .showelant{
-  animation: showel 1s;
+  animation: showel 0.3s;
 }
 @keyframes showel {
   from {opacity: 0;}
