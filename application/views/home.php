@@ -23,6 +23,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
            // $( ".result_semcio" ).css({"display": "none"});  
         }
     }
+    function hidemdscr() {
+        let rwidth = $(window).width();
+
+    }
      //for page
     $(function() {
  
@@ -248,8 +252,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         }
 
-
-
         //ALL TRIGEER
 
         //checkboxcat
@@ -264,9 +266,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         $('.schico').click(function () {
             $( "#hideico" ).css({"display": "none"}); //logo
             $( ".result_sem" ).css({"display": "block"});//search sem bar
+
             $(this).css({"display": "none"}); //button small screen
-            $(".result_sem").animate({width: '75%'},500);//search sem bar
+            $(".result_sem").css({width: '100%',transition : '0.5s ease-in-out'});//search sem bar
             $( ".result_semcio" ).css({"display": "block"});  //buttonsearch sembar
+
         });
         
         //act show cat loc
