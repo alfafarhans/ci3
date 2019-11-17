@@ -152,14 +152,11 @@ class home extends CI_Controller {
 			   )
 			);
 		}
-	function search (){
+	function search ($para = 0){
 		$output="";
 		$datasearch = $this->input->post('datasearch');
-		//$type = $this->input->post('type');
-		//var_dump($datasearch);
-		//	var_dump($type);
-	$result = $this->seminar_data->search_seminar($datasearch /*,$type*/);
-		//if($type === "#result_sem"){
+		if($para == 0){
+		$result = $this->seminar_data->search_seminar($datasearch);
 			if($result->num_rows() > 0)
  		 	{
 				foreach ($result->result_array() as $value) {
@@ -167,19 +164,16 @@ class home extends CI_Controller {
 				
 			}
 		}
-	//}
-	/*elseif($type === "#result_loc"){
-		$param = "";
+	}
+	elseif($para == 1){
+		$userid = $this->session->userdata('user_id');
+		$result = $this->seminar_data->search_user_his($datasearch,$userid);
 		if($result->num_rows() > 0){
 		  foreach ($result->result_array() as $value) {
-			if($param != $value['seminar_city']){
-				$param = $value['seminar_city'];
-				$output .='<a href="javascript:void(0);" id ="'.$value['seminar_city'].'" onClick = "changevalloc(this)">'.ucwords($value['seminar_city']).'</a>';//'. base_url().'home/getloc/'. $value['seminar_city'].'
+			$output .='<a href="'. base_url().'event_detail/'. $value['seminar_id'].'" >'.$value['seminar_name'].' </a>';
 			}
-		}
-
   		}
-	}*/
+	}
 	echo $output;
 		}
 		

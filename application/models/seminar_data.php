@@ -193,6 +193,15 @@ class seminar_data extends CI_Model{
     return $query->row();
   }*/
 
+  function search_user_his($key = null,$u_id){
+    $this->db->select("s.seminar_id,s.seminar_name");
+    $this->db->from('user_trx t');
+    $this->db->where('t.user_id', $u_id);
+    $this->db->like('s.seminar_name', $key);
+    $this->db->join('seminar s','s.seminar_id = t.seminar_id');
+    $this->db->order_by('s.seminar_name', 'ASC');
+    return $this->db->get();
+  }
   function search_seminar($key = null/*,$type = null*/){
     $curdate = date('Y-m-d');
     $this->db->select("seminar_id,seminar_name");

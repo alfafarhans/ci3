@@ -267,7 +267,9 @@ elseif ($par == "myevent") {
 <div id="rightbody4">
 	<div id="objright5">
 		<img id="img" src="'.base_url().'asset/pict/icon/search-icon.png">
-		<input type="text" id="history" name="history">
+		<input type="text" id="history" onkeyup="search_seminar(this.value)" name="history">
+
+		<div id = "result_sem" ></div>
 	</div>
 </div>
 ';
@@ -275,7 +277,9 @@ elseif ($par == "myevent") {
 			$dayname = date('D', strtotime($value['seminar_date']));
             $daynum = date('d', strtotime($value['seminar_date']));
             $mounth = date('F', strtotime($value['seminar_date']));
-            $year =  date('Y', strtotime($value['seminar_date']));
+			$year =  date('Y', strtotime($value['seminar_date']));
+			$fulldate = date(strtotime($value['seminar_date']));
+			$currdate = date('Y-m-d'); 
 			//$minute =  date('i', strtotime($value['seminar_date']));
 			
 			if($value['atten_status'] == "Booked"){
@@ -298,6 +302,15 @@ elseif ($par == "myevent") {
 					<div id="bota2">
 						<a style="width:80px" href="'.base_url().'payment/confirmation/'.$value['seminar_id'].'/'.$userid.'"> ReUpload </a>
 						</div>';
+			}
+			else if(($value['atten_status'] == "Attend On Stage") && ($currdate > $fulldate) ){
+				$out = '<div id="bota">
+						<a id="bota1" href="'.base_url().'event_detail/'.$value['seminar_id'].'">'.$value['atten_status'].'</a>
+						
+						</div>
+						
+					<div id="bota2"><a style="width:80px" href="">Certificate</a></div>';
+						
 			}
 			else{
 				$out = '<div id="bota">

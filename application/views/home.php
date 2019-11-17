@@ -199,7 +199,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         }
         else{
             $.ajax({
-        url:"<?php echo base_url(); ?>home/search/",
+        url:"<?php echo base_url(); ?>home/search/0",
         method:"POST",
         data:{datasearch:search/*,type:result*/},
         success:function(data){

@@ -5,110 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/profile.css">
     <script type="text/javascript" src="<?php echo base_url();?>asset/js/jquery-3.4.1.min.js"></script>
-    <script type="text/javascript">
     
-    window.onclick = function(event) {
-        if ( (!event.target.matches('.dropdown')) &&(!event.target.matches('.imgdrop')) && (!event.target.matches('.result_sem')) && (!event.target.matches('.result_loc')) && (!event.target.matches('.p')) ){
-            $('#jcdrop').slideUp("fast");
-            $("#result_sem").html("");
-            $("#result_loc").html("");
-            $('#seminar').val("");
-            $('#location').val("");
-        }
-    }
-
-    $(function() {
-        
-        window.chpassed = function(){
-            let passwordold = $('#passwordold').val();
-            let passwordnew = $('#passwordnew').val();
-            let email = $('#email').val();
-              $.ajax({
-            url:"<?php echo base_url(); ?>profile/chpasswr",
-            method:"POST",
-            data:{passwordold1:passwordold,passwordnew1:passwordnew,email1:email},
-            
-            success:function(data){
-                var responParse = JSON.parse(data);
-                        if( responParse.msg == "Yeay!"  ){
-                            alert(responParse.msg);
-                            alert('Well Played !');
-                            window.location.replace("<?php echo base_url();?>profile/myprofile/3");
-                        }
-                        else{
-                            alert(responParse.msg);
-                        }
-                   
-					}
-            });
-
-
-            
-        }
-    function navToContent(url){
-		$.ajax({
-			type: "GET",
-			url: url,
-			cache: false,
-			beforeSend: function(data){
-                
-				$("#mainright").html("");
-			},
-			success: function(data){
-				$("#mainright").html(data);
-			}
-		});
-		return false;
-    }
-    
-    
-    //all trigerstate
-    $('#jdrop').on('click', function() {  //.dropdown-content
-            let wit = $('#jdrop').width();
-            wit += 29.8;
-            console.log(wit);
-            $("#jcdrop").css("width", wit);
-            $('#jcdrop').slideDown( "fast" );
-        });
-    $('#profile').on('click', function() {
-        $("div#leftbody > div.objleft" ).removeClass("active");
-        $(this).parent().addClass("active");
-        let urli = "<?php echo base_url(); ?>profile/changepage/profile";
-        navToContent(urli);
-        });
-    $('#myevent').on('click', function() {
-        
-        $("div#leftbody > div.objleft" ).removeClass("active");
-        $(this).parent().addClass("active");
-        let urli = "<?php echo base_url(); ?>profile/changepage/myevent";
-        navToContent(urli);
-    });
-    $('#setting').on('click', function() {
-        
-        $("div#leftbody > div.objleft" ).removeClass("active");
-        $(this).parent().addClass("active");
-        let urli = "<?php echo base_url(); ?>profile/changepage/setting";
-        navToContent(urli);
-    });
-    $(document).ready(function() {
-        let state = <?php echo $state?>;
-        if(state == 1){
-            $('#profile').click();
-        }
-        else if (state == 2) {
-            $('#myevent').click();
-        }
-        else if (state == 3) {
-            $('#setting').click();
-        }
-     });
-     
-    });//endJS
-
-    function chpass(){
-        chpassed();
-    }
-    </script>
 	
 </head>
 <body>
@@ -191,5 +88,127 @@
         <p>Copyright © 2019 </p>
     </div>
     </div>
+    <script type="text/javascript">
+    
+                window.onclick = function(event) {
+                    if ( (!event.target.matches('.dropdown')) &&(!event.target.matches('.imgdrop')) && (!event.target.matches('.result_sem')) && (!event.target.matches('.result_loc')) && (!event.target.matches('.p')) ){
+                        $('#jcdrop').slideUp("fast");1
+                        $("#result_sem").html("");
+                        $("#result_loc").html("");
+                        $('#seminar').val("");
+                        $('#location').val("");
+                    }
+                }
+
+                $(function() {
+
+                    //seminar seacr
+
+                    window.search_seminar = function(search) {
+                    if(search.length<=0){
+                        $('#result_sem').html("");
+                    }
+                    else{
+                        $.ajax({
+                    url:"<?php echo base_url(); ?>home/search/1",
+                    method:"POST",
+                    data:{datasearch:search/*,type:result*/},
+                    success:function(data){
+                    $('#result_sem').html(data);
+                    //console.log(data);
+                            }
+                        });
+                    
+                    }
+                        }
+                    
+                    window.chpassed = function(){
+                        let passwordold = $('#passwordold').val();
+                        let passwordnew = $('#passwordnew').val();
+                        let email = $('#email').val();
+                        $.ajax({
+                        url:"<?php echo base_url(); ?>profile/chpasswr",
+                        method:"POST",
+                        data:{passwordold1:passwordold,passwordnew1:passwordnew,email1:email},
+                        
+                        success:function(data){
+                            var responParse = JSON.parse(data);
+                                    if( responParse.msg == "Yeay!"  ){
+                                        alert(responParse.msg);
+                                        alert('Well Played !');
+                                        window.location.replace("<?php echo base_url();?>profile/myprofile/3");
+                                    }
+                                    else{
+                                        alert(responParse.msg);
+                                    }
+                            
+                                }
+                        }); 
+                    }
+                function navToContent(url){
+                    $.ajax({
+                        type: "GET",
+                        url: url,
+                        cache: false,
+                        beforeSend: function(data){
+                            
+                            $("#mainright").html("");
+                        },
+                        success: function(data){
+                            $("#mainright").html(data);
+                        }
+                    });
+                    return false;
+                }
+                
+                
+                //all trigerstate
+                $('#jdrop').on('click', function() {  //.dropdown-content
+                        let wit = $('#jdrop').width();
+                        wit += 29.8;
+                        console.log(wit);
+                        $("#jcdrop").css("width", wit);
+                        $('#jcdrop').slideDown( "fast" );
+                    });
+                $('#profile').on('click', function() {
+                    $("div#leftbody > div.objleft" ).removeClass("active");
+                    $(this).parent().addClass("active");
+                    let urli = "<?php echo base_url(); ?>profile/changepage/profile";
+                    navToContent(urli);
+                    });
+                $('#myevent').on('click', function() {
+                    
+                    $("div#leftbody > div.objleft" ).removeClass("active");
+                    $(this).parent().addClass("active");
+                    let urli = "<?php echo base_url(); ?>profile/changepage/myevent";
+                    navToContent(urli);
+                });
+                $('#setting').on('click', function() {
+                    
+                    $("div#leftbody > div.objleft" ).removeClass("active");
+                    $(this).parent().addClass("active");
+                    let urli = "<?php echo base_url(); ?>profile/changepage/setting";
+                    navToContent(urli);
+                });
+                $(document).ready(function() {
+                    let state = <?php echo $state?>;
+                    if(state == 1){
+                        $('#profile').click();
+                    }
+                    else if (state == 2) {
+                        $('#myevent').click();
+                    }
+                    else if (state == 3) {
+                        $('#setting').click();
+                    }
+                });
+                
+                });//endJS
+
+                function chpass(){
+                    chpassed();
+                }
+               
+    </script>
 </body>
 </html>
