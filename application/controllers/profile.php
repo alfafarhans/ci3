@@ -284,12 +284,13 @@ elseif ($par == "myevent") {
             $daynum = date('d', strtotime($value['seminar_date']));
             $mounth = date('F', strtotime($value['seminar_date']));
 			$year =  date('Y', strtotime($value['seminar_date']));
-			$fulldate = date(strtotime($value['seminar_date']));
+			$fulldate = date('Y-m-d',strtotime($value['seminar_date']));
 			$currdate = date('Y-m-d'); 
 			//$minute =  date('i', strtotime($value['seminar_date']));
 			//updating status
-			if(($value['atten_status'] == "Booked") && ($currdate > $fulldate) ){
+			if( ($value['atten_status'] == "Booked") && ($currdate > $fulldate) ){
 				$userdata = $this->profile_data->u_not_a($userid,$value['seminar_id']);
+				
 				}
 			if($value['atten_status'] == "Booked"){
 				$out = '	<div id="bota">

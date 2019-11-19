@@ -21,7 +21,6 @@
             <div id="navbar_kiri">
                 <a href="'.base_url().'home"> Seminar Go </a>
             </div>
-            
             <div id="navbar_kanan">
                 <div id="jdrop" class="dropdown">
                     <div id="jdrop" class="p"> Welcome '.$username.' ! </div>
@@ -101,6 +100,16 @@
                 }
 
                 $(function() {
+                    if(document.URL.indexOf("#")==-1)
+                        {
+                        // Set the URL to whatever it was plus "#".
+                        url = document.URL+"#";
+                        location = "#";
+
+                        //Reload the page
+                        location.reload(true);
+
+                        }
 
                     //seminar seacr
 
