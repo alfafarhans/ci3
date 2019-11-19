@@ -1,22 +1,20 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
--- https://www.phpmyadmin.net/
+-- version 4.2.7.1
+-- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 19, 2019 at 02:02 PM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 7.3.1
+-- Generation Time: 19 Nov 2019 pada 14.57
+-- Versi Server: 5.6.20
+-- PHP Version: 5.5.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `s-go`
@@ -25,10 +23,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `payment`
+-- Struktur dari tabel `payment`
 --
 
-CREATE TABLE `payment` (
+CREATE TABLE IF NOT EXISTS `payment` (
   `payment_id` int(15) NOT NULL,
   `bill_name` varchar(25) NOT NULL,
   `bill_bank_name` varchar(15) NOT NULL,
@@ -38,14 +36,22 @@ CREATE TABLE `payment` (
   `paid_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data untuk tabel `payment`
+--
+
+INSERT INTO `payment` (`payment_id`, `bill_name`, `bill_bank_name`, `bill_number`, `user_paid`, `payment_created`, `paid_date`) VALUES
+(4958612, '', '', '', '0.000', '2019-11-19', '0000-00-00'),
+(7526382, '', '', '', '0.000', '2019-11-19', '0000-00-00');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `seminar`
+-- Struktur dari tabel `seminar`
 --
 
-CREATE TABLE `seminar` (
-  `seminar_id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `seminar` (
+`seminar_id` int(11) NOT NULL,
   `seminar_name` varchar(50) NOT NULL,
   `seminar_date` datetime NOT NULL,
   `seminar_city` varchar(20) NOT NULL,
@@ -59,10 +65,10 @@ CREATE TABLE `seminar` (
   `seminar_maps` text NOT NULL,
   `cert_coord_x` smallint(2) NOT NULL,
   `cert_coord_y` smallint(2) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=17 ;
 
 --
--- Dumping data for table `seminar`
+-- Dumping data untuk tabel `seminar`
 --
 
 INSERT INTO `seminar` (`seminar_id`, `seminar_name`, `seminar_date`, `seminar_city`, `seminar_held`, `seminar_seat`, `seminar_desc`, `seminar_tag`, `seminar_price`, `seminar_drcode`, `seminar_banner`, `seminar_maps`, `cert_coord_x`, `cert_coord_y`) VALUES
@@ -86,11 +92,11 @@ INSERT INTO `seminar` (`seminar_id`, `seminar_name`, `seminar_date`, `seminar_ci
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Struktur dari tabel `user`
 --
 
-CREATE TABLE `user` (
-  `user_id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `user` (
+`user_id` int(11) NOT NULL,
   `password` varchar(35) NOT NULL,
   `email` varchar(35) NOT NULL,
   `first_name` varchar(20) NOT NULL,
@@ -100,29 +106,37 @@ CREATE TABLE `user` (
   `user_phone` char(13) NOT NULL,
   `user_address` text NOT NULL,
   `user_jobs` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=3 ;
 
 --
--- Dumping data for table `user`
+-- Dumping data untuk tabel `user`
 --
 
 INSERT INTO `user` (`user_id`, `password`, `email`, `first_name`, `last_name`, `date_born`, `user_gender`, `user_phone`, `user_address`, `user_jobs`) VALUES
-(39, 'e77989ed21758e78331b20e477fc5582', 'alfafarhansyarief@yahoo.co.id', 'Alfa Farhan', 'Syarief', '1998-10-22', 'Pria', '081314519410', 'JL.H Nawawi Rt04/02 No 92 kel.cirimekar kec.cibinong kab.bogor', 'Pengacara'),
-(7320006, 'e77989ed21758e78331b20e477fc5582', 'mynameisnazmi41@gmail.com', 'Muhammad irfan', 'Nazmi', '1999-06-27', '', '41517320006', 'JL.H Nawawi Rt04/02 No 92 kel.cirimekar kec.cibinong kab.bogor', '');
+(1, 'dev', 'mynameisnazmi@gmail.com', 'admin', 'admin', '2019-11-01', '', '', '', ''),
+(2, 'e77989ed21758e78331b20e477fc5582', 'alfafarhansyarief@yahoo.co.id', 'Alfa', 'Farhan', '0000-00-00', '', '', '', '');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_trx`
+-- Struktur dari tabel `user_trx`
 --
 
-CREATE TABLE `user_trx` (
+CREATE TABLE IF NOT EXISTS `user_trx` (
   `booking_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `seminar_id` int(11) NOT NULL,
   `payment_id` int(15) NOT NULL,
   `atten_status` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `user_trx`
+--
+
+INSERT INTO `user_trx` (`booking_id`, `user_id`, `seminar_id`, `payment_id`, `atten_status`) VALUES
+(495861, 2, 15, 4958612, 'Waiting Payment'),
+(752638, 2, 16, 7526382, 'Waiting Payment');
 
 --
 -- Indexes for dumped tables
@@ -132,28 +146,25 @@ CREATE TABLE `user_trx` (
 -- Indexes for table `payment`
 --
 ALTER TABLE `payment`
-  ADD PRIMARY KEY (`payment_id`);
+ ADD PRIMARY KEY (`payment_id`);
 
 --
 -- Indexes for table `seminar`
 --
 ALTER TABLE `seminar`
-  ADD PRIMARY KEY (`seminar_id`);
+ ADD PRIMARY KEY (`seminar_id`);
 
 --
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`user_id`);
+ ADD PRIMARY KEY (`user_id`);
 
 --
 -- Indexes for table `user_trx`
 --
 ALTER TABLE `user_trx`
-  ADD PRIMARY KEY (`booking_id`),
-  ADD KEY `user_idfk` (`user_id`) USING BTREE,
-  ADD KEY `seminar_idfk` (`seminar_id`) USING BTREE,
-  ADD KEY `payment_idfk` (`payment_id`);
+ ADD PRIMARY KEY (`booking_id`), ADD KEY `user_idfk` (`user_id`) USING BTREE, ADD KEY `seminar_idfk` (`seminar_id`) USING BTREE, ADD KEY `payment_idfk` (`payment_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -163,24 +174,21 @@ ALTER TABLE `user_trx`
 -- AUTO_INCREMENT for table `seminar`
 --
 ALTER TABLE `seminar`
-  MODIFY `seminar_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
-
+MODIFY `seminar_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7320008;
+MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+--
 
 --
--- Constraints for dumped tables
---
-
---
--- Constraints for table `user_trx`
+-- Ketidakleluasaan untuk tabel `user_trx`
 --
 ALTER TABLE `user_trx`
-  ADD CONSTRAINT `payment_idfk` FOREIGN KEY (`payment_id`) REFERENCES `payment` (`payment_id`) ON DELETE CASCADE;
-COMMIT;
+ADD CONSTRAINT `payment_idfk` FOREIGN KEY (`payment_id`) REFERENCES `payment` (`payment_id`) ON DELETE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
