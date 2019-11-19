@@ -294,8 +294,6 @@ elseif ($par == "myevent") {
 			if(($value['atten_status'] == "Booked") && ($currdate > $fulldate) ){
 				$userdata = $this->profile_data->u_not_a($userid,$value['seminar_id']);
 				}
-
-			
 			if($value['atten_status'] == "Booked"){
 				$out = '	<div id="bota">
 				<a id="bota1" href="'.base_url().'event_detail/'.$value['seminar_id'].'">Booked</a>
