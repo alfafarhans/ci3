@@ -290,10 +290,15 @@ elseif ($par == "myevent") {
 			$fulldate = date(strtotime($value['seminar_date']));
 			$currdate = date('Y-m-d'); 
 			//$minute =  date('i', strtotime($value['seminar_date']));
+			//updating status
+			if(($value['atten_status'] == "Booked") && ($currdate > $fulldate) ){
+				$userdata = $this->profile_data->u_not_a($userid,$value['seminar_id']);
+				}
+
 			
 			if($value['atten_status'] == "Booked"){
 				$out = '	<div id="bota">
-				<a id="bota1" href="'.base_url().'event_detail/'.$value['seminar_id'].'">'.$value['atten_status'].'</a>
+				<a id="bota1" href="'.base_url().'event_detail/'.$value['seminar_id'].'">Booked</a>
 						</div>';
 				}
 			else if($value['atten_status'] == "Waiting Payment"){
@@ -311,6 +316,12 @@ elseif ($par == "myevent") {
 					<div id="bota2">
 						<a style="width:80px" href="'.base_url().'payment/confirmation/'.$value['seminar_id'].'/'.$userid.'"> ReUpload </a>
 						</div>';
+			}
+			else if(($value['atten_status'] == "Missing Attendence") ){
+				$out = '
+					<div id="bota2">
+						<a style="width:80px" href="'.base_url().'payment/confirmation/'.$value['seminar_id'].'/'.$userid.'">Missing Attendence</a>
+						</div>'	;
 			}
 			else if(($value['atten_status'] == "Attend On Stage") && ($currdate > $fulldate) ){
 				$out = '<div id="bota">

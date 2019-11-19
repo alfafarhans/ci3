@@ -10,11 +10,16 @@ class profile_data extends CI_Model{
     $this->db->from('user_trx');
     $this->db->where('user_id', $userid);
     $this->db->join('seminar','seminar.seminar_id = user_trx.seminar_id');
-    //$this->db->join('city','city.user_id = users.u_id')
     $this->db->order_by('seminar_date', 'ASC');
     return $this->db->get();
    }
-
+   function u_not_a($userid=null,$s_id=null){
+    $data = array('atten_status' => 'Missing Attendence');
+    $this->db->where('user_id',$userid);
+    $this->db->where('seminar_id',$s_id);
+    $this->db->update('user_trx',$data);
+    return true ;
+   }
    function update_data($data,$table,$colomn,$key){
     $this->db->where($colomn,$key);
     $this->db->update($table,$data);
