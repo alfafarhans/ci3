@@ -35,9 +35,13 @@
             $('#location').val("");
         }
     }
-   
+
+
 
     $(function() {
+        if (window.location.href.indexOf('reload')==-1) {
+                window.location.replace(window.location.href+'?reload');
+            }
         //avg color
 var rgb = getAverageRGB(document.getElementById('imps'));
 document.getElementById('rightposttop').style.backgroundColor = 'rgb('+rgb.r+','+rgb.g+','+rgb.b+')';
