@@ -230,7 +230,7 @@ class profile extends CI_Controller {
 					Status
 				</div>
 				<div id="col-75"> 
-					<input type="text" id="nohp" name="nohp" value="'.$value['user_jobs'].'">
+					<input type="text" id="Status" name="Status" value="'.$value['user_jobs'].'">
 				</div>
 			</div>
 
