@@ -36,6 +36,46 @@ class profile extends CI_Controller {
 			redirect('home');
 		}
 	}
+	function renderqr($bk_id){
+		$this->load->library('Ciqrcode');
+			QRcode::png(
+				$bk_id,
+				$outfile = false,
+				$level = QR_ECLEVEL_H,
+				$size = 5,
+				$margin = 1
+			);
+	}
+	function verfy_cer(){
+		$user_id = $this->input->post('user');
+		$seminar_id = $this->input->post('seminar');
+		$datanew = $this->profile_data->get_cer($seminar_id,$user_id);
+		foreach($datanew as $value)
+		   { 
+			$coordx = explode(',', $value['cert_coord_x']);
+			$coordy = explode(',', $value['cert_coord_y']);
+			$source = "".base_url()."asset/pict/sert_template/".$value['seminar_id'].".png";
+			$cnx	=	$coordx[0];//forname
+			$cny	=	$coordy[0];
+			$cqrx	=	$coordx[1];  //forQR
+			$cqry	=	$coordy[1]; 
+			$bk_id  = 	$value['booking_id'];
+			$sem_name = $value['seminar_name'];
+			$complatename = $value['first_name'].' '.$value['last_name'];
+		   }
+		echo json_encode(
+			array(
+				'source' => $source,
+				'cnx' => $cnx,
+				'cny' => $cny,
+				'cqrx' => $cqrx,
+				'cqry' => $cqry,
+				'bk_id' => $bk_id,
+				'sem_name'=> $sem_name,
+				'complatename'=> $complatename
+			   )
+			);
+	}
 	function up_profile(){
 		$userid = $this->session->userdata('user_id');
 		if(!empty($userid)){
@@ -313,19 +353,19 @@ elseif ($par == "myevent") {
 						<a style="width:80px" href="'.base_url().'payment/confirmation/'.$value['seminar_id'].'/'.$userid.'"> ReUpload </a>
 						</div>';
 			}
-			else if(($value['atten_status'] == "Missing Attendence") ){
+			else if($value['atten_status'] == "Missing Attendence" ){
 				$out = '
 					<div id="bota2">
 						<a style="width:80px" href="'.base_url().'payment/confirmation/'.$value['seminar_id'].'/'.$userid.'">Missing Attendence</a>
 						</div>'	;
 			}
-			else if(($value['atten_status'] == "Attend On Stage") && ($currdate > $fulldate) ){
+			else if( ($value['atten_status'] == "Attend On Stage") && ($currdate > $fulldate) ){
 				$out = '<div id="bota">
 						<a id="bota1" href="'.base_url().'event_detail/'.$value['seminar_id'].'">'.$value['atten_status'].'</a>
 						
 						</div>
 						
-					<div id="bota2"><a style="width:80px" href="">Certificate</a></div>';
+					<div id="bota2"><a style="width:80px" onClick= "get_cer('.$userid.','.$value['seminar_id'].')" href="#">Certificate</a></div>';
 						
 			}
 			else{
