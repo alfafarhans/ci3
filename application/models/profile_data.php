@@ -1,6 +1,18 @@
 <?php 
 class profile_data extends CI_Model{
 
+  function get_cer ($seminarid=null,$userid=null){
+    $this->db->select('u.first_name,u.last_name,t.booking_id,s.seminar_name,s.seminar_id,s.cert_coord_x,s.cert_coord_y');
+    $this->db->from('user_trx t');
+    $this->db->where('t.user_id', $userid);
+    $this->db->where('t.seminar_id', $seminarid);
+    $this->db->join('seminar s','s.seminar_id = t.seminar_id');
+    $this->db->join('user u','u.user_id = t.user_id');
+    //$this->db->join('city','city.user_id = users.u_id')
+    return $this->db->get()->result_array();
+   
+  }
+
     function get_userdata($id){
       $this->db->where('user_id', $id);
       return $this->db->get('user');

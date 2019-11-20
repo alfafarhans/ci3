@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/profile.css">
     <script type="text/javascript" src="<?php echo base_url();?>asset/js/jquery-3.4.1.min.js"></script>
-    
+    <script type="text/javascript" src="<?php echo base_url();?>asset/js/jspdf.min.js"></script>
 	
 </head>
 <body>
@@ -87,6 +87,7 @@
         <p>Copyright © 2019 </p>
     </div>
     </div>
+    <canvas style="display:none;"></canvas>
     <script type="text/javascript">
     
                 window.onclick = function(event) {
@@ -109,6 +110,73 @@
                         //Reload the page
                         location.reload(true);
 
+                        }
+                
+                        window.get_cer = function(u_id,s_id) {
+                            let private_stuff = function(sourcen,coordxn,coordyn,sourceqr,coordxqr,coordyqr,sem_name,complatename) {
+                            //console.log('oke');
+
+                                    function loadImages(source,callback) {
+                                    var images = {};
+                                    var loadedImages = 0;
+                                    var numImages = 0;
+                                    // get num of sources
+                                    for(var src in sources) {
+                                    numImages++;
+                                    }
+                                    for(var src in sources) {
+                                    images[src] = new Image();
+                                    images[src].onload = function() {
+                                        if(++loadedImages >= numImages) {
+                                        callback(images);
+                                        }
+                                    };
+                                    images[src].src = sources[src];
+                                    }
+                                }
+
+                                let canvas = document.querySelector('canvas');
+                                    canvas.width = 1122;//px
+                                    canvas.height = 793;//px
+                                    context = canvas.getContext('2d');
+
+                                var sources = {
+                                    background : sourcen,//d
+                                    qrcode : "http://localhost/ci3/profile/renderqr/"+sourceqr
+                                };
+
+                                loadImages(sources, function(images) {
+                                    context.drawImage(images.background, 0, 0,1122 ,793);
+                                    context.drawImage(images.qrcode, 1000, 660,100 ,100);
+                                    context.font = "50px Times New Roman";
+                                    context.textBaseline = "top";
+                                    context.textAlign = "center";
+                                    context.fillText(complatename,coordxn,coordyn);//dynam text, xpos, ypos
+                                });
+
+                                    setTimeout(function(){
+                                    // only jpeg is supported by jsPDF
+                                    let imgData = canvas.toDataURL("image/jpeg", 1.0);
+                                                let pdf = new jsPDF('landscape');
+
+                                    pdf.addImage(imgData, 'JPEG', 0, 0);
+                                    pdf.save(sem_name+".pdf");//dynamic 
+                                    }, 1000);	
+                             };
+
+                            $.ajax({
+                            url:"<?php echo base_url(); ?>profile/verfy_cer/",
+                            method:"POST",
+                            data:{user:u_id,seminar:s_id},
+                            success:function(data){
+                            var responParse = JSON.parse(data);
+                                //console.log(responParse.source);
+                                //console.log(responParse.msg);
+                                // console.log(responParse.status);
+                            private_stuff(responParse.source, responParse.cnx, responParse.cny,responParse.bk_id,responParse.cqrx,responParse.cqry,responParse.sem_name,responParse.complatename);
+
+                                    }
+                                });
                         }
 
                     //seminar seacr
