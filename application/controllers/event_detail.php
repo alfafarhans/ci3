@@ -23,7 +23,7 @@ class event_detail extends CI_Controller {
 	 */
 	 function scan($p_id=null){
 		 $userid = $this->session->userdata('user_id');
-		if( (!empty($userid)) && ($userid == 7320006) ){
+		if( (!empty($userid)) && ($userid == 1) ){
 			$query = $this->seminar_data->scan_update($p_id);
 			if($query){
 				echo 'SUKSES';
