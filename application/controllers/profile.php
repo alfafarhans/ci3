@@ -83,6 +83,7 @@ class profile extends CI_Controller {
 			if(!empty($file)){
 			$this->up_pict($userid);}
 			$firstname = $this->input->post('firstname');
+			$status = $this->input->post('status');
 			$lastname = $this->input->post('lastname');
 			$tanggallahir = $this->input->post('tanggallahir');
 			$nohp = $this->input->post('nohp');
@@ -94,7 +95,8 @@ class profile extends CI_Controller {
 				'date_born' => $tanggallahir,
 				'user_phone' => $nohp,
 				'user_gender' => $sex,
-				'user_address' => $alamat);
+				'user_address' => $alamat,
+				'user_jobs' => $status);
 				$this->profile_data->update_data($data,'user','user_id' ,$userid);
 			redirect('home', 'refresh');
 		}
@@ -261,17 +263,44 @@ class profile extends CI_Controller {
 					<input type="number" id="nohp" name="nohp" value="'.$value['user_phone'].'">
 				</div>
 			</div>
-
-			<div id="row">
-				<div id="col-25"> 
-					Status
+			
+				';
+			if($value['user_jobs'] == ""){
+				echo'
+				<div id="row">	
+					<div id="col-25"> 
+						Status
+					</div>
+					<div id="col-75"> 
+						<select onchange="val(this.value)" id="sts" name="sts" >
+							<option value="" selected>Not Selected</option>
+							<option value="Worker">Worker</option>
+							<option value="Student">Student</option>
+						</select>
+					</div>
 				</div>
+
+				<div id="row" class="status">	
+					<div id="col-25"> 
+						</div>
 				<div id="col-75"> 
-					<input type="text" id="Status" name="Status" value="'.$value['user_jobs'].'">
+				<input type="text" name="status" value="'.$value['user_jobs'].'">
 				</div>
-			</div>
-
-			<div id="row">
+			</div>'
+				;}
+			else{
+				echo'
+				<div id="row">	
+					<div id="col-25"> 
+					Status
+						</div>
+				<div id="col-75"> 
+				<input type="text" id="Status" name="status" value="'.$value['user_jobs'].'">
+				</div>
+			</div>';
+			}
+echo '		
+			<div id="row" >
 				<div id="col-25"> 
 					Alamat
 				</div>
