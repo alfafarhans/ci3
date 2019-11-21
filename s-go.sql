@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 19, 2019 at 06:35 PM
+-- Generation Time: Nov 21, 2019 at 03:20 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.1
 
@@ -25,11 +25,22 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `organization`
+--
+
+CREATE TABLE `organization` (
+  `org_id` int(11) NOT NULL,
+  `org_name` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `payment`
 --
 
 CREATE TABLE `payment` (
-  `payment_id` int(15) NOT NULL,
+  `payment_id` int(16) NOT NULL,
   `bill_name` varchar(25) NOT NULL,
   `bill_bank_name` varchar(15) NOT NULL,
   `bill_number` varchar(25) NOT NULL,
@@ -119,7 +130,7 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`user_id`, `password`, `email`, `first_name`, `last_name`, `date_born`, `user_gender`, `user_phone`, `user_address`, `user_jobs`) VALUES
 (1, 'e77989ed21758e78331b20e477fc5582', 'mynameisnazmi41@gmail.com', 'admin', 'admin', '2019-11-01', '', '', '', ''),
-(2, 'e77989ed21758e78331b20e477fc5582', 'alfafarhansyarief@yahoo.co.id', 'Alfa', 'Farhan', '0000-00-00', '', '', '', ''),
+(2, 'e77989ed21758e78331b20e477fc5582', 'alfafarhansyarief@yahoo.co.id', 'Muhammad Irfan', 'Nazmi', '0000-00-00', 'Pria', '089638056837', 'JL.H Nawawi Rt04/02 No 92 kel.cirimekar kec.cibinong kab.bogor', 'Pengacara'),
 (3, 'e77989ed21758e78331b20e477fc5582', 'irfannz@outlook.com', 'Muhammad Irfan', 'Nazmi', '0000-00-00', '', '', '', '');
 
 -- --------------------------------------------------------
@@ -132,7 +143,7 @@ CREATE TABLE `user_trx` (
   `booking_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `seminar_id` int(11) NOT NULL,
-  `payment_id` int(15) NOT NULL,
+  `payment_id` int(16) NOT NULL,
   `atten_status` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -146,6 +157,20 @@ INSERT INTO `user_trx` (`booking_id`, `user_id`, `seminar_id`, `payment_id`, `at
 (412738, 2, 13, 4127382, 'Attend On Stage'),
 (692738, 2, 15, 6927382, 'Booked'),
 (916835, 3, 6, 9168353, 'Attend On Stage');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_trx_ads`
+--
+
+CREATE TABLE `user_trx_ads` (
+  `ads_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `seminar_id` int(11) NOT NULL,
+  `ads_payment_id` int(16) NOT NULL,
+  `ads_trx_status` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Indexes for dumped tables
@@ -179,6 +204,15 @@ ALTER TABLE `user_trx`
   ADD KEY `payment_idfk` (`payment_id`);
 
 --
+-- Indexes for table `user_trx_ads`
+--
+ALTER TABLE `user_trx_ads`
+  ADD PRIMARY KEY (`ads_id`),
+  ADD KEY `seminar_idfk` (`seminar_id`),
+  ADD KEY `user_idfk` (`user_id`),
+  ADD KEY `ads_payment_idfk` (`ads_payment_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -203,6 +237,14 @@ ALTER TABLE `user`
 --
 ALTER TABLE `user_trx`
   ADD CONSTRAINT `payment_idfk` FOREIGN KEY (`payment_id`) REFERENCES `payment` (`payment_id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `user_trx_ads`
+--
+ALTER TABLE `user_trx_ads`
+  ADD CONSTRAINT `ads_payment_idfk` FOREIGN KEY (`ads_payment_id`) REFERENCES `payment` (`payment_id`),
+  ADD CONSTRAINT `seminar_idfk` FOREIGN KEY (`seminar_id`) REFERENCES `seminar` (`seminar_id`),
+  ADD CONSTRAINT `user_idfk` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
