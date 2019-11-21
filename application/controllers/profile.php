@@ -98,7 +98,7 @@ class profile extends CI_Controller {
 				'user_address' => $alamat,
 				'user_jobs' => $status);
 				$this->profile_data->update_data($data,'user','user_id' ,$userid);
-			redirect('home', 'refresh');
+			redirect('profile/myprofile', 'refresh');
 		}
 	}
 	function chpasswr(){
@@ -233,9 +233,8 @@ class profile extends CI_Controller {
 					Jenis Kelamin
 				</div>
 				<div id="col-75"> 
-				<select name="sex" disabled >
-					<option value="'.$value['user_gender'].'" selected>'.$value['user_gender'].'</option>
-				</select>
+					<input type="text" disabled value="'.$value['user_gender'].'">
+				
 				</div>
 			</div>';
 			}
