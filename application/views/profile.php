@@ -96,8 +96,8 @@
     
                 window.onclick = function(event) {
                     if ( (!event.target.matches('.dropdown')) &&(!event.target.matches('.imgdrop')) && (!event.target.matches('.result_sem')) && (!event.target.matches('.result_loc')) && (!event.target.matches('.p')) ){
-                        $('#jcdrop').slideUp("fast");1
-                        $("#result_sem").html("");
+                        $('#jcdrop').slideUp("fast");
+                        $('#result_sem').css("display", "block");
                         $("#result_loc").html("");
                         $('#seminar').val("");
                         $('#location').val("");
@@ -107,7 +107,7 @@
                 
 
                 $(function() {
-                    window.val = function(val_el) {
+                   /* window.val = function(val_el) {
                         let el =  document.getElementsByClassName("status")[0];
                         if ((typeof(el) != 'undefined') && (el != null) && (val_el==""))
                         {  // $('#status').css("display", "none");
@@ -116,7 +116,7 @@
                         else if((val_el=="Worker") || (val_el=="Student") && (typeof(el) == 'undefined') && (el == null)  ){
                             el.style.display="block";
                            // $('#status').css("display", "block");
-                    /*let fragment = document.createDocumentFragment();
+                    let fragment = document.createDocumentFragment();
 
                     let elementdiv = document.createElement("DIV"); 
                     elementdiv.setAttribute("id", "row");
@@ -138,19 +138,19 @@
                     input.setAttribute("type", "text");
                     input.setAttribute("name", "status");
                     input.setAttribute("id", "Status");
-                    document.getElementsByClassName("nodests75")[0].appendChild(input);*/
+                    document.getElementsByClassName("nodests75")[0].appendChild(input);
                         }
                    
                     
-                }
+                }*/
                     if(document.URL.indexOf("#")==-1)
                         {
                         // Set the URL to whatever it was plus "#".
-                        url = document.URL+"#";
-                        location = "#";
+                            url = document.URL+"#";
+                            location = "#";
 
-                        //Reload the page
-                        location.reload(true);
+                            //Reload the page
+                            location.reload(true);
 
                         }
                 
@@ -222,18 +222,27 @@
                         }
 
                     //seminar seacr
-
+                    $('#history').keyup(function(e){
+                        if(e.keyCode == 8 && $(this).val().length < 1) {
+                            $('#result_sem').css("display", "blok");
+                            $('#result_searching').css("display", "none");
+                        }
+                    });
+                        
                     window.search_seminar = function(search) {
-                    if(search.length<=0){
-                        $('#result_sem').html("");
+                       e =  document.getElementById ("history");
+                    if(e.keyCode == 8 && search.length < 1){
+                        $('#result_sem').css("display", "blok");
+                        $('#result_searching').css("display", "none");
                     }
                     else{
+                        $('#result_sem').css("display", "none");
                         $.ajax({
                     url:"<?php echo base_url(); ?>home/search/1",
                     method:"POST",
                     data:{datasearch:search/*,type:result*/},
                     success:function(data){
-                    $('#result_sem').html(data);
+                    $('#result_searching').html(data);
                     //console.log(data);
                             }
                         });

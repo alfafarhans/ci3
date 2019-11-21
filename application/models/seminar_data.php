@@ -194,7 +194,7 @@ class seminar_data extends CI_Model{
   }*/
 
   function search_user_his($key = null,$u_id){
-    $this->db->select("s.seminar_id,s.seminar_name");
+    $this->db->select("s.seminar_id, s.seminar_name, s.seminar_date, s.seminar_banner, s.seminar_held, t.atten_status" );
     $this->db->from('user_trx t');
     $this->db->where('t.user_id', $u_id);
     $this->db->like('s.seminar_name', $key);

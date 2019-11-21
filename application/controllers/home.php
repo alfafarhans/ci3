@@ -169,9 +169,82 @@ class home extends CI_Controller {
 		$userid = $this->session->userdata('user_id');
 		$result = $this->seminar_data->search_user_his($datasearch,$userid);
 		if($result->num_rows() > 0){
-		  foreach ($result->result_array() as $value) {
-			$output .='<a href="'. base_url().'event_detail/'. $value['seminar_id'].'" >'.$value['seminar_name'].' </a>';
-			}
+
+			foreach ($result->result_array() as $value) {
+				$dayname = date('D', strtotime($value['seminar_date']));
+				$daynum = date('d', strtotime($value['seminar_date']));
+				$mounth = date('F', strtotime($value['seminar_date']));
+				$year =  date('Y', strtotime($value['seminar_date']));
+				$fulldate = date('Y-m-d',strtotime($value['seminar_date']));
+				$currdate = date('Y-m-d'); 
+				//$minute =  date('i', strtotime($value['seminar_date']));
+				//updating status
+				if( ($value['atten_status'] == "Booked") && ($currdate > $fulldate) ){
+					$userdata = $this->profile_data->u_not_a($userid,$value['seminar_id']);
+					
+					}
+				if($value['atten_status'] == "Booked"){
+					$out = '	<div id="bota">
+					<a id="bota1" href="'.base_url().'event_detail/'.$value['seminar_id'].'">Booked</a>
+							</div>';
+					}
+				else if($value['atten_status'] == "Waiting Payment"){
+				$out = '	<div id="bota">
+						<a id="bota1" href="'.base_url().'payment/confirmation/'.$value['seminar_id'].'/'.$userid.'">' .$value['atten_status'].'</a>
+						</div>
+						<div id="bota2">
+							<a href="'.base_url().'/event_detail/cancle/'.$value['seminar_id'].'/'.$userid.'/1"> Cancel </a>
+							</div>';
+				}
+				else if($value['atten_status'] == "Waiting Confirmation"){
+				$out = '<div id="bota">
+						<a id="bota1" href="'.base_url().'event_detail/'.$value['seminar_id'].'">'.$value['atten_status'].'</a>
+						</div>
+						<div id="bota2">
+							<a style="width:80px" href="'.base_url().'payment/confirmation/'.$value['seminar_id'].'/'.$userid.'"> ReUpload </a>
+							</div>';
+				}
+				else if($value['atten_status'] == "Missing Attendence" ){
+					$out = '
+						<div id="bota2">
+							<a style="width:80px" href="'.base_url().'payment/confirmation/'.$value['seminar_id'].'/'.$userid.'">Missing Attendence</a>
+							</div>'	;
+				}
+				else if( ($value['atten_status'] == "Attend On Stage") && ($currdate > $fulldate) ){
+					$out = '<div id="bota">
+							<a id="bota1" href="'.base_url().'event_detail/'.$value['seminar_id'].'">'.$value['atten_status'].'</a>
+							
+							</div>
+							
+						<div id="bota2"><a style="width:80px" onClick= "get_cer('.$userid.','.$value['seminar_id'].')" href="#">Certificate</a></div>';
+							
+				}
+				else{
+					$out = '<div id="bota">
+							<a id="bota1" href="'.base_url().'event_detail/'.$value['seminar_id'].'">'.$value['atten_status'].'</a>
+							</div>';
+					}
+		$output .= '
+		<div id="rightbody3">
+			<div id="objright3">
+				<img src="'.base_url().'asset/pict/banner/'.$value['seminar_banner'].'">
+			</div>
+			<div id="objright4">
+				<div id="desc">
+					<div id="namaseminar">
+					'.$value['seminar_name'].'
+					</div>  
+					<div id="dateseminar">
+					'.$daynum.'&nbsp;'.$mounth.'&nbsp;'.$year.'
+					</div> 
+					<div id="locseminar">
+					'.ucwords($value['seminar_held']).'</div>  
+				</div>
+					'.$out.'
+			</div>
+	
+		</div>';
+				}
   		}
 	}
 	echo $output;

@@ -320,10 +320,10 @@ elseif ($par == "myevent") {
 		<img id="img" src="'.base_url().'asset/pict/icon/search-icon.png">
 		<input type="text" id="history" onkeyup="search_seminar(this.value)" name="history">
 
-		<div id = "result_sem" ></div>
 	</div>
 </div>
-';
+<div id = "result_searching" ></div>
+<div id = "result_sem" >';
 			foreach ($userdata->result_array() as $value) {
 			$dayname = date('D', strtotime($value['seminar_date']));
             $daynum = date('d', strtotime($value['seminar_date']));
@@ -379,8 +379,7 @@ elseif ($par == "myevent") {
 						</div>';
 				}
 	echo '
-
-	<div id="rightbody3">
+	<div id="rightbody3" class="rightbody3">
 		<div id="objright3">
 			<img src="'.base_url().'asset/pict/banner/'.$value['seminar_banner'].'">
 		</div>
@@ -400,6 +399,7 @@ elseif ($par == "myevent") {
 
 	</div>';
 			}
+	echo '</div>';
 }//second if
 
 elseif ($par == "setting") {

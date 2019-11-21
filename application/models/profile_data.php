@@ -18,11 +18,11 @@ class profile_data extends CI_Model{
       return $this->db->get('user');
     }
    function get_seminar_history($userid=null){
-    $this->db->select('*');
-    $this->db->from('user_trx');
-    $this->db->where('user_id', $userid);
-    $this->db->join('seminar','seminar.seminar_id = user_trx.seminar_id');
-    $this->db->order_by('seminar_date', 'ASC');
+    $this->db->select("s.seminar_id,s.seminar_name,s.seminar_date,s.seminar_banner,s.seminar_held, t.atten_status");
+    $this->db->from('user_trx t');
+    $this->db->where('t.user_id', $userid);
+    $this->db->join('seminar s','s.seminar_id = t.seminar_id');
+    $this->db->order_by('s.seminar_date', 'ASC');
     return $this->db->get();
    }
    function u_not_a($userid=null,$s_id=null){
