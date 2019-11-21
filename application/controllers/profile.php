@@ -265,41 +265,18 @@ class profile extends CI_Controller {
 			</div>
 			
 				';
-			if($value['user_jobs'] == ""){
 				echo'
 				<div id="row">	
 					<div id="col-25"> 
-						Status
+						Status Pekerjaan
 					</div>
-					<div id="col-75"> 
-						<select onchange="val(this.value)" id="sts" name="sts" >
-							<option value="" selected>Not Selected</option>
-							<option value="Worker">Worker</option>
-							<option value="Student">Student</option>
-						</select>
-					</div>
-				</div>
 
-				<div id="row" class="status">	
-					<div id="col-25"> 
-						</div>
+				
 				<div id="col-75"> 
 				<input type="text" name="status" value="'.$value['user_jobs'].'">
 				</div>
-			</div>'
-				;}
-			else{
-				echo'
-				<div id="row">	
-					<div id="col-25"> 
-					Status
-						</div>
-				<div id="col-75"> 
-				<input type="text" id="Status" name="status" value="'.$value['user_jobs'].'">
-				</div>
-			</div>';
-			}
-echo '		
+			</div>
+				
 			<div id="row" >
 				<div id="col-25"> 
 					Alamat
