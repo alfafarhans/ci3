@@ -49,7 +49,6 @@ class home extends CI_Controller {
 		$output = "";
 		$price = $this->input->post('price1');
 		$date = $this->input->post('date1');
-		//$location = $this->input->post('loc1');
 		if( (!empty($price)) ||(!empty($date))  ){	
 				 $curdate = date('Y-m-d'); 
 				if($date == "today"){

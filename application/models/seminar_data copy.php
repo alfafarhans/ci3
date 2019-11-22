@@ -26,37 +26,6 @@ class seminar_data extends CI_Model{
     function filter($category=null,$city=null, $price=null,$datestart="anydate",$datemax=null, $limit = null, $offset = null ){
       $curdate = date('Y-m-d');
       $this->db->select("*");
-      
-      if($city != null){
-        $toarr1 = explode(',',$city);
-        $arrlength1 = count($toarr1);//arr length start 1
-        $arrsubs = $arrlength1;
-        $arrsubs--;
-        if($arrlength1 === 1){
-          $this->db->where('seminar_city',$toarr1[0]);
-        }
-        else if($arrlength1 > 1){
-          $this->db->group_start();
-          for ($i=0; $i<$arrlength1; $i++) { 
-            $this->db->or_where('seminar_city',$toarr1[$i]);
-          }
-          $this->db->group_end();
-        }
-    }
-    if($category != null){
-      $toarr = explode(',',$category);
-      $arrlength = count($toarr);//arr length start 1
-      if($arrlength === 1){
-        $this->db->like('seminar_tag',$toarr[0]);
-      }
-      else if($arrlength > 1){
-        $this->db->group_start();
-        for ($i=0; $i<$arrlength; $i++) { 
-           $this->db->or_like('seminar_tag',$toarr[$i]);
-        }
-        $this->db->group_end();
-      }
-  }
       if (!empty($datemax)) {
         $this->db->where('seminar_date >= ',$datestart);
         $this->db->where('seminar_date <=',$datemax);
@@ -78,11 +47,34 @@ class seminar_data extends CI_Model{
         }
       }
 
-     
-  
+      if($category != null){
+        $toarr = explode(',',$category);
+        $arrlength = count($toarr);//arr length start 1
+        if($arrlength === 1){
+          $this->db->like('seminar_tag',$toarr[0]);
+        }
+        else if($arrlength > 1){
+          $this->db->like('seminar_tag',$toarr[0]);
+          for ($i=1; $i<$arrlength; $i++) { 
+             $this->db->or_like('seminar_tag',$toarr[$i]);
+          }
+        }
+    }
+    if($city != null){
+        $toarr1 = explode(',',$city);
+        $arrlength1 = count($toarr1);//arr length start 1
+        if($arrlength1 === 1){
+          $this->db->where('seminar_city',$toarr1[0]);
+        }
+        else if($arrlength1 > 1){
+          $this->db->where('seminar_city',$toarr1[0]);
+          for ($i=1; $i<$arrlength1; $i++) { 
+            $this->db->or_where('seminar_city',$toarr1[$i]);
+          }
+        }
+    }
     $this->db->order_by('seminar_date', 'ASC');
     return $this->db->get('seminar',$limit,$offset);
-    
     }
 
     function testfil ($category=null,$city=null){ //for test
