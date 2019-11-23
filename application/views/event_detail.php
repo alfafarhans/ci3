@@ -299,7 +299,7 @@ function getAverageRGB(imgEl) {
 
                 echo ' 
                 <div id="obj-post">
-                <div id="obj-judul"> SEAT </div>
+                <div id="obj-judul"> Available Seat </div>
                 <p>'.$seat.'/'.$value['seminar_seat'].'</p>
             </div>
                     <div id="obj-post">
