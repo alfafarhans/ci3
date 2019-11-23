@@ -62,6 +62,10 @@
     <!-- bagian isi  -->
     <div id="body">
         <div id="bodyartikel2">
+            <div id="toppost">
+               
+            </div>
+
             <div id="leftbody">
                 <div class="objleft">
                     <a href="javascript:void(0);" id ="profile"> Profile </a>
@@ -279,6 +283,26 @@
                         url: url,
                         cache: false,
                         beforeSend: function(data){
+                        $("#toppost").css("height", "100px"); 
+                        $("#mainright").css("height", "1000px");   
+                        $("#toppost").html("");
+                        $("#mainright").html("");
+                        },
+                    success:function(data){
+                            let responParse = JSON.parse(data);
+                           // console.log(responParse.head);
+                            //console.log(responParse.cnt);
+                            $("#mainright").css("height", "100%");
+                            $("#toppost").html(responParse.head);
+                            $("#mainright").html(responParse.cnt);
+                          }
+                    });
+
+                  /*  $.ajax({
+                        type: "GET",
+                        url: url,
+                        cache: false,
+                        beforeSend: function(data){
                             
                             $("#mainright").html("");
                         },
@@ -286,9 +310,11 @@
                             $("#mainright").html(data);
                         }
                     });
-                    return false;
+                    return false;*/
                 }
-                
+
+
+
                 
                 //all trigerstate
                 $('#jdrop').on('click', function() {  //.dropdown-content

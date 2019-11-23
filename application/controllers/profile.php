@@ -161,23 +161,26 @@ class profile extends CI_Controller {
 			}
 	}
 	function changepage ($par){
+		$outputcnt = "";
+		$outputhead = "";
 		$userid = $this->session->userdata('user_id');
 		
-		if($par == "profile"){
+	if($par == "profile"){
 			$userdata = $this->profile_data->get_userdata($userid);
 			foreach ($userdata->result_array() as $value) {
 				$firstnamefill = str_replace(" ","&nbsp;",$value['first_name']);
 				$name = ucwords($firstnamefill."&nbsp;".$value['last_name']);
 				
-	   echo '
-	<div id="rightbody">
-		<div id="objright">
+	 
+	$outputhead .=' 
+		<div id="objtop">
 			<center>
 			<h1> Profile </h1> 
-			Silahkan lengkapi data diri anda. Data diri anda di perlukan untuk keperluan administrasi aktifitas seminar yang anda ikuti. 
+			Please complete your data. Your personal data is needed for the administration needs of the seminar you are participating in
 			</center>
-		</div>
-	</div>
+		</div>';
+		
+	$outputcnt .='
 	<form method="post" action="'.base_url().'profile/up_profile" enctype="multipart/form-data" id="myform">
 	<div id="rightbody2">
 		<div id="objright2">
@@ -186,15 +189,16 @@ class profile extends CI_Controller {
 					Profile Picture
 				</div>
 				<div id="avatar">'; 
+
 				$path = './asset/pict/profile/'.$userid.'.png';
         if(file_exists($path)){
-					echo'<img id="icon" src="'.base_url().'asset/pict/profile/'.$userid.'.png"> ';}
+			$outputcnt .='<img id="icon" src="'.base_url().'asset/pict/profile/'.$userid.'.png"> ';}
 				 else{
-					 echo'<img id="icon" src="'.base_url().'asset/pict/profile/default.png"> ';
+					$outputcnt .='<img id="icon" src="'.base_url().'asset/pict/profile/default.png"> ';
 				 }
 				
 				
-					echo '</div>
+				 $outputcnt .= '</div>
 				<div id="upload"> 
 					<input type="file" name="profilepic" accept="image/*" id = "file">
 				</div>
@@ -205,7 +209,7 @@ class profile extends CI_Controller {
 					Firstname 
 				</div>
 				<div id="col-75"> 
-					<input type="text" id="firstname" name="firstname" value='.ucwords($firstnamefill).'>
+					<input type="text" id="firstname" name="firstname" placeholder="Firstname" value='.ucwords($firstnamefill).'>
 				</div>
 			</div>
 			<div id="row">
@@ -213,78 +217,65 @@ class profile extends CI_Controller {
 				Lastname 
 			</div>
 			<div id="col-75"> 
-				<input type="text" id="lastname" name="lastname" value='.ucwords($value['last_name']).'>
+				<input type="text" id="lastname" name="lastname" placeholder="Lastname" value='.ucwords($value['last_name']).'>
 			</div>
 		</div>
-
 			<div id="row">
 				<div id="col-25"> 
-				Tanggal Lahir
+				Day Of Birth
 				</div>
 				<div id="col-75"> 
-					<input type="date" id="tanggallahir" name="tanggallahir" value ='.$value['date_born'].'>
-				</div>
-			</div>';
-
-			if($value['user_gender'] == "Pria"  || $value['user_gender'] == "Wanita"){
-				echo'
-				<div id="row">
-				<div id="col-25"> 
-					Jenis Kelamin
-				</div>
-				<div id="col-75"> 
-					<input type="text" disabled value="'.$value['user_gender'].'">
-				
-				</div>
-			</div>';
-			}
-			else{
-				echo'
-				<div id="row">
-				<div id="col-25"> 
-					Jenis Kelamin
-				</div>
-				<div id="col-75"> 
-					<select name="sex" >
-						<option value="" selected>Not Selected</option>
-						<option value="Pria">Pria</option>
-						<option value="Wanita">Wanita</option>
-					</select>
-				</div>
-			</div>';
-			}
-			echo'
-			<div id="row">
-				<div id="col-25"> 
-					No Handphone
-				</div>
-				<div id="col-75"> 
-					<input type="number" id="nohp" name="nohp" value="'.$value['user_phone'].'">
+					<input type="date" id="tanggallahir" name="tanggallahir" placeholder="Enter your date of birth" value ='.$value['date_born'].'>
 				</div>
 			</div>
 			
+			<div id="row">
+				<div id="col-25"> 
+					Gender
+				</div>
+					<div id="col-75"> 
+					<select name="sex" >';
+
+					if($value['user_gender'] == "Pria"  || $value['user_gender'] == "Wanita"){
+						$outputcnt .= '
+						<option value="'.$value['user_gender'].'" selected>'.$value['user_gender'].'</option>
+						';
+					}else{
+						$outputcnt .= '
+						<option value="" selected>Not Selected</option>
+						<option value="Pria">Pria</option>
+						<option value="Wanita">Wanita</option>
 				';
-				echo'
+					}
+				
+					$outputcnt .='
+					</select>
+				</div>
+			</div>
+			<div id="row">
+				<div id="col-25"> 
+					Handphone
+				</div>
+				<div id="col-75"> 
+					<input type="number" id="nohp" name="nohp" placeholder="Enter your mobile number" value="'.$value['user_phone'].'">
+				</div>
+			</div>
 				<div id="row">	
 					<div id="col-25"> 
-						Status Pekerjaan
+						Job Status
 					</div>
-
-				
 				<div id="col-75"> 
-				<input type="text" name="status" value="'.$value['user_jobs'].'">
+				<input type="text" name="status" placeholder="Enter your job status" value="'.$value['user_jobs'].'">
 				</div>
 			</div>
-				
 			<div id="row" >
 				<div id="col-25"> 
-					Alamat
+					Address
 				</div>
 				<div id="col-75"> 
-					<textarea name="alamat" id="alamat" style="height: 200px;" >'.$value['user_address'].'</textarea>
+					<textarea name="alamat" id="alamat" placeholder="Your sweet home" style="height: 200px;" >'.$value['user_address'].'</textarea>
 				</div>
 			</div>
-		
 			<div id="row">
 				<div id="col-25"> 
 				</div>  
@@ -296,7 +287,7 @@ class profile extends CI_Controller {
 			if(!empty($failupload)){
 				echo $failupload;
 			}
-			echo '
+			$outputcnt .= '
 		</div>
 	</div>
 	</form>
@@ -306,24 +297,24 @@ class profile extends CI_Controller {
 elseif ($par == "myevent") {
 	$out ="";
 	$userdata = $this->profile_data->get_seminar_history($userid);
-	echo'	<div id="rightbody">
-	<div id="objright">
-		<center>
-		<h1> My Event </h1> 
-		Berikut list seminar yang saya ikuti.
-		</center>
-	</div>
-</div>
 
-<div id="rightbody4">
-	<div id="objright5">
-		<img id="img" src="'.base_url().'asset/pict/icon/search-icon.png">
-		<input type="text" id="history" onkeyup="search_seminar(this.value)" name="history">
+	$outputhead .=' 
+		<div id="objtop">
+			<center>
+			<h1> My Event </h1> 
+			History of my seminars
+			</center>
+		</div>';
 
-	</div>
-</div>
-<div id = "result_searching" ></div>
-<div id = "result_sem" >';
+	$outputcnt .='
+		<div id="rightbody4">
+			<div id="objright5">
+				<img id="img" src="'.base_url().'asset/pict/icon/search-icon.png">
+				<input type="text" id="history" onkeyup="search_seminar(this.value)" name="history">
+			</div>
+		</div>
+		<div id = "result_searching" ></div>
+		<div id = "result_sem" >';
 			foreach ($userdata->result_array() as $value) {
 			$dayname = date('D', strtotime($value['seminar_date']));
             $daynum = date('d', strtotime($value['seminar_date']));
@@ -338,7 +329,7 @@ elseif ($par == "myevent") {
 				
 				}
 			if($value['atten_status'] == "Booked"){
-				$out = '	<div id="bota">
+				$out = '	<div id="botabok">
 				<a id="bota1" href="'.base_url().'event_detail/'.$value['seminar_id'].'">Booked</a>
 						</div>';
 				}
@@ -358,14 +349,14 @@ elseif ($par == "myevent") {
 						<a style="width:80px" href="'.base_url().'payment/confirmation/'.$value['seminar_id'].'/'.$userid.'"> ReUpload </a>
 						</div>';
 			}
-			else if($value['atten_status'] == "Missing Attendence" ){
+			else if($value['atten_status'] == "Missing Attendance" ){
 				$out = '
-					<div id="bota2">
-						<a style="width:80px" href="'.base_url().'payment/confirmation/'.$value['seminar_id'].'/'.$userid.'">Missing Attendence</a>
+					<div id="botamiss">
+						<a href="'.base_url().'payment/confirmation/'.$value['seminar_id'].'/'.$userid.'">Missing Attendance</a>
 						</div>'	;
 			}
 			else if( ($value['atten_status'] == "Attend On Stage") && ($currdate > $fulldate) ){
-				$out = '<div id="bota">
+				$out = '<div id="botaatt">
 						<a id="bota1" href="'.base_url().'event_detail/'.$value['seminar_id'].'">'.$value['atten_status'].'</a>
 						
 						</div>
@@ -378,85 +369,91 @@ elseif ($par == "myevent") {
 						<a id="bota1" href="'.base_url().'event_detail/'.$value['seminar_id'].'">'.$value['atten_status'].'</a>
 						</div>';
 				}
-	echo '
-	<div id="rightbody3" class="rightbody3">
-		<div id="objright3">
-			<img src="'.base_url().'asset/pict/banner/'.$value['seminar_banner'].'">
-		</div>
-		<div id="objright4">
-			<div id="desc">
-				<div id="namaseminar">
-				'.$value['seminar_name'].'
-				</div>  
-				<div id="dateseminar">
-				'.$daynum.'&nbsp;'.$mounth.'&nbsp;'.$year.'
-				</div> 
-				<div id="locseminar">
-				'.ucwords($value['seminar_held']).'</div>  
+	$outputcnt .='
+		<div id="rightbody3" class="rightbody3">
+			<div id="objright3">
+				<img src="'.base_url().'asset/pict/banner/'.$value['seminar_banner'].'">
 			</div>
-				'.$out.'
-		</div>
+			<div id="objright4">
+				<div id="desc">
+					<div id="namaseminar">
+					'.$value['seminar_name'].'
+					</div>  
+					<div id="dateseminar">
+					'.$daynum.'&nbsp;'.$mounth.'&nbsp;'.$year.'
+					</div> 
+					<div id="locseminar">
+					'.ucwords($value['seminar_held']).'</div>  
+				</div>
+					'.$out.'
+			</div>
 
 	</div>';
 			}
-	echo '</div>';
+	$outputcnt .='</div>';
 }//second if
 
 elseif ($par == "setting") {
 	
 	$userdata = $this->profile_data->get_userdata($userid);
 	foreach ($userdata->result_array() as $value) {
-	echo '
-	<div id="rightbody">
-		<div id="objright">
+
+	$outputhead .=' 
+		<div id="objtop">
 			<center>
-				<h1> Settings </h1> 
-				Konfigurasikan akun anda, lakukan pergantian password rentang waktu tertentu.
+			<h1> Settings </h1> 
+			Configure your account, change the password for a certain time period
 			</center>
-        </div>
-	</div>
-	<div id="rightbody2">
-		<div id="objright2">
-			<div id="row">
-				<div id="col-25"> 
-					Email
-				</div>
-				<div id="col-75"> 
-					<input type="email" id="email" name="email" value="'.$value['email'].'" required>
-				</div>
-			</div>
+		</div>';
 
-			<div id="row">
-				<div id="col-25"> 
-					Old Password
+	$outputcnt .='
+		<div id="rightbody2">
+			<div id="objright2">
+				<div id="row">
+					<div id="col-25"> 
+						Email
+					</div>
+					<div id="col-75"> 
+						<input type="email" id="email" name="email" value="'.$value['email'].'" required>
+					</div>
 				</div>
-				<div id="col-75"> 
-					<input type="password" placeholder="Fill old your cute secret code" id="passwordold" name="passwordl" required>
-				</div>
-			</div>
 
-			<div id="row">
-				<div id="col-25"> 
-					New Password
+				<div id="row">
+					<div id="col-25"> 
+						Old Password
+					</div>
+					<div id="col-75"> 
+						<input type="password" placeholder="Fill old your cute secret code" id="passwordold" name="passwordl" required>
+					</div>
 				</div>
-				<div id="col-75"> 
-					<input type="password" placeholder="Change with the cute one" id="passwordnew" name="passwordb" required>
+
+				<div id="row">
+					<div id="col-25"> 
+						New Password
+					</div>
+					<div id="col-75"> 
+						<input type="password" placeholder="Change with the cute one" id="passwordnew" name="passwordb" required>
+					</div>
+				</div>
+			
+				<div id="row">
+					<div id="col-25"> 
+					</div>  
+					<div id="col-75"> 
+						<input type="submit" id="chpass" onClick= "chpass()" name="submit" value="Save">
+					</div>  
 				</div>
 			</div>
-		
-			<div id="row">
-				<div id="col-25"> 
-				</div>  
-				<div id="col-75"> 
-					<input type="submit" id="chpass" onClick= "chpass()" name="submit" value="Save">
-				</div>  
-			</div>
-		</div>
-	</div>';
+		</div>';
 	}
 }//third if
 
-
+			echo json_encode(
+				array(
+					'head' => $outputhead,
+					'cnt' => $outputcnt
+					)
+				);
 	}//end functionchange
 
 

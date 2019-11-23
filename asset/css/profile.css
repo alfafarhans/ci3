@@ -168,10 +168,20 @@ body{
         top: 0;
     }
 
+        #body #bodyartikel2 #toppost {
+            width: 100%;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+            #objtop{
+                padding: 0 40px 20px 40px;   
+                color: rgb(0, 22, 49);
+            }
+
         #body #bodyartikel2 #leftbody {
             width: 250px;
             position: absolute;
-            margin-top: 168px;
         }
 
 .objleft{
@@ -231,7 +241,6 @@ body{
         }
 
         #body #bodyartikel2 #mainright #rightbody2 {
-            margin-top: 20px;
             border: 1px solid #D8D8D8;
             border-radius: 10px;
         }
@@ -243,8 +252,7 @@ body{
             display: flex;
         }
 
-        #body #bodyartikel2 #mainright #rightbody3 {
-            margin-top: 20px;
+        #body #bodyartikel2 #mainright #rightbody4 {
             border-radius: 10px;
             display: flex;
         }
@@ -370,21 +378,22 @@ body{
     }
 
         #objright4 #bota a{
-            background-color: #FFEF00;
+            background-color: #D3C747;
             display: block;
             width: 170px;
             text-align: center;
-            color: #063A74;
+            color: #ffffff;
             padding: 12px 15px;
-            border: none;
+            border: 1px solid #D3C747;
             border-radius: 4px;
             cursor: pointer;
             text-decoration: none;
         } 
 
             #objright4 #bota a:hover {
-                background-color: #B2A700;
-                color: #063A74;
+                background-color: #8F840D;
+                border: 1px solid #8F840D;
+                color: #ffffff;
                 transition: 0.5s;
             }
 
@@ -396,21 +405,99 @@ body{
     }
 
         #objright4 #bota2 a{
-            background-color: #F55B7C;
+            background-color: #ffffff;
             display: block;
             width: 50px;
             text-align: center;
-            color: #A50023;
+            color: #D60B3E;
+            border: 1px solid #D60B3E;
             padding: 12px 20px;
-            border: none;
             border-radius: 4px;
             cursor: pointer;
             text-decoration: none;
         } 
 
             #objright4 #bota2 a:hover {
-                background-color: #A50023;
+                background-color: #D60B3E;
                 color: #ffffff; 
+                transition: 0.5s;
+            }
+
+    #objright4 #botabok{
+        position: absolute;
+        margin-top: 77px;
+        bottom: 15px;
+    }
+
+        #objright4 #botabok a{
+            background-color: #4D88C0;
+            display: block;
+            width: 170px;
+            text-align: center;
+            color: #FFFFFF;
+            padding: 12px 15px;
+            border: 1px solid #4D88C0;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+        } 
+
+            #objright4 #botabok a:hover {
+                background-color: #135799;
+                border: 1px solid #135799;
+                color: #FFFFFF;
+                transition: 0.5s;
+            }
+
+    #objright4 #botaatt{
+        position: absolute;
+        margin-top: 77px;
+        bottom: 15px;
+    }
+
+        #objright4 #botaatt a{
+            background-color: #50B03B;
+            display: block;
+            width: 170px;
+            text-align: center;
+            color: #FFFFFF;
+            padding: 12px 15px;
+            border: 1px solid #50B03B;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+        } 
+
+            #objright4 #botaatt a:hover {
+                background-color: #1D780A;
+                border: 1px solid #1D780A;
+                color: #FFFFFF;
+                transition: 0.5s;
+            }
+
+    #objright4 #botamiss{
+        position: absolute;
+        margin-top: 77px;
+        bottom: 15px;
+    }
+
+        #objright4 #botamiss a{
+            background-color: #D60B3E;
+            display: block;
+            width: 170px;
+            text-align: center;
+            color: #FFFFFF;
+            padding: 12px 15px;
+            border: 1px solid #D60B3E;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+        } 
+
+            #objright4 #botamiss a:hover {
+                background-color: rgb(151, 0, 38);
+                border: 1px solid rgb(151, 0, 38);
+                color: #FFFFFF;
                 transition: 0.5s;
             }
 

@@ -1,6 +1,15 @@
 <?php 
 class profile_data extends CI_Model{
 
+  function countseat_db($s_id=15){
+    $this->db->select('count(booking_id)');
+    $this->db->from('user_trx ');
+    $this->db->where('atten_status','Booked');
+    $this->db->where('seminar_id',$s_id);
+    $query = $this->db->get();
+    return $query->num_rows();
+  }
+
   function get_cer ($seminarid=null,$userid=null){
     $this->db->select('u.first_name,u.last_name,t.booking_id,s.seminar_name,s.seminar_id,s.cert_coord_x,s.cert_coord_y');
     $this->db->from('user_trx t');
@@ -26,7 +35,7 @@ class profile_data extends CI_Model{
     return $this->db->get();
    }
    function u_not_a($userid=null,$s_id=null){
-    $data = array('atten_status' => 'Missing Attendence');
+    $data = array('atten_status' => 'Missing Attendance');
     $this->db->where('user_id',$userid);
     $this->db->where('seminar_id',$s_id);
     $this->db->update('user_trx',$data);

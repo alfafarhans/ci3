@@ -288,7 +288,11 @@ function getAverageRGB(imgEl) {
                 $sbstr =  substr($dayname,0,3);
 
 
-                echo' 
+                echo ' 
+                <div id="obj-post">
+                <div id="obj-judul"> SEAT </div>
+                <p>0/'.$value['seminar_seat'].'</p>
+            </div>
                     <div id="obj-post">
                         <div id="obj-judul"> Date and Time </div>
                         <p>'.$sbstr.',&nbsp;'.$daynum.'&nbsp;'.$month_name.'&nbsp;'.$year.',&nbsp;'.$hours.'.'.$minute.'</p>

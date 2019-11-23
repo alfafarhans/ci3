@@ -21,6 +21,10 @@ class event_detail extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+
+	 function countseat(){
+		 return $seatnum;
+	 }
 	 function scan($p_id=null){
 		 $userid = $this->session->userdata('user_id');
 		if( (!empty($userid)) && ($userid == 1) ){
