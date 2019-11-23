@@ -232,6 +232,7 @@ function getAverageRGB(imgEl) {
 
                 $userid = $this->session->userdata('user_id');
                 if( (!empty($userid)) && (!empty($registered)) ){
+
 				$register_fill = str_replace(" ","&nbsp;",$registered);
                     foreach ($seminar as $value) {
                         echo 
@@ -240,6 +241,7 @@ function getAverageRGB(imgEl) {
                         
 					$this->session->unset_userdata('seminar_id');
                 }
+
                 else if(!empty($userid)){
                     foreach ($seminar as $value) {
                         echo 
@@ -251,6 +253,13 @@ function getAverageRGB(imgEl) {
                 else{
                     echo
                     '<a id="a1" href='. base_url().'login/> Daftar </a>';
+                 }
+                 
+                 if(!empty($verifiedpos)){
+                    foreach ($seminar as $value) {
+                        echo 
+                    '<a href='. base_url().'event_detail/pos/'.$value['seminar_id'].'> Positioning </a>';
+                        }
                  }
             
                     ?>
@@ -291,7 +300,7 @@ function getAverageRGB(imgEl) {
                 echo ' 
                 <div id="obj-post">
                 <div id="obj-judul"> SEAT </div>
-                <p>0/'.$value['seminar_seat'].'</p>
+                <p>'.$seat.'/'.$value['seminar_seat'].'</p>
             </div>
                     <div id="obj-post">
                         <div id="obj-judul"> Date and Time </div>

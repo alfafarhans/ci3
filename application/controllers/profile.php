@@ -302,7 +302,7 @@ elseif ($par == "myevent") {
 		<div id="objtop">
 			<center>
 			<h1> My Event </h1> 
-			History of my seminars
+			Your Footprint are Here
 			</center>
 		</div>';
 
@@ -310,7 +310,7 @@ elseif ($par == "myevent") {
 		<div id="rightbody4">
 			<div id="objright5">
 				<img id="img" src="'.base_url().'asset/pict/icon/search-icon.png">
-				<input type="text" id="history" onkeyup="search_seminar(this.value)" name="history">
+				<input type="text" id="history" placeholder="Search Your History" onkeyup="search_seminar(this.value)" name="history">
 			</div>
 		</div>
 		<div id = "result_searching" ></div>

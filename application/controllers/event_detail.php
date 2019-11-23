@@ -21,8 +21,12 @@ class event_detail extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-
-	 function countseat(){
+	function pos($s_id){
+		$data['sem_id'] = $s_id;
+		$this->load->view('positioning',$data);
+	}
+	 function countseat($s_id){
+		$seatnum = $this->seminar_data->countseat_db($s_id);
 		 return $seatnum;
 	 }
 	 function scan($p_id=null){
@@ -80,11 +84,15 @@ class event_detail extends CI_Controller {
 		$userstatus = $this->seminar_data->userinftrx($s_id,$userid);
 		$data['user_id'] = $userid;
 		$data['username'] = $username;
+		$data['seat'] = $this->countseat($s_id);
 		if(empty($userstatus->atten_status)){
 			$data['registered'] = "";
 		}
 		else{	
 			$data['registered'] = $userstatus->atten_status;
+		}
+		if( (!empty($userid)) && ($userid == 1) ){
+			$data['verifiedpos'] = 1;
 		}
 		
 		$this->load->view('event_detail',$data);

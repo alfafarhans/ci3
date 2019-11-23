@@ -14,6 +14,14 @@ class seminar_data extends CI_Model{
                }
       }
     */
+    function countseat_db($s_id){
+      $this->db->select('booking_id');
+      $this->db->from('user_trx ');
+      $this->db->where('atten_status','Booked');
+      $this->db->where('seminar_id',$s_id);
+      $query = $this->db->get();
+      return $query->num_rows();
+    }
     function getcityfilter(){
       $curdate = date('Y-m-d');
       $this->db->select('seminar_city');
@@ -83,39 +91,6 @@ class seminar_data extends CI_Model{
     $this->db->order_by('seminar_date', 'ASC');
     return $this->db->get('seminar',$limit,$offset);
     
-    }
-
-    function testfil ($category=null,$city=null){ //for test
-      $this->db->select('*');
-      if($category != null){
-          $toarr = explode(',',$category);
-          $arrlength = count($toarr);//arr length start 1
-          if($arrlength === 1){
-            $this->db->like('seminar_tag',$toarr[0]);
-          }
-          else if($arrlength > 1){
-            $this->db->like('seminar_tag',$toarr[0]);
-            for ($i=1; $i<$arrlength; $i++) { 
-               $this->db->or_like('seminar_tag',$toarr[$i]);
-            }
-          }
-      }
-      
-      if($city != null){
-          $toarr1 = explode(',',$city);
-          $arrlength1 = count($toarr1);//arr length start 1
-          if($arrlength1 === 1){
-            $this->db->where('seminar_city',$toarr1[0]);
-          }
-          else if($arrlength1 > 1){
-            $this->db->where('seminar_city',$toarr1[0]);
-            for ($i=1; $i<$arrlength1; $i++) { 
-              $this->db->or_where('seminar_city',$toarr1[$i]);
-            }
-          }
-      }
-      $query = $this->db->get('seminar');
-      return $query;
     }
     function scan_update($payid){
       $this->db->where('payment_id',$payid);
@@ -207,7 +182,7 @@ class seminar_data extends CI_Model{
     $this->db->where('t.user_id', $u_id);
     $this->db->like('s.seminar_name', $key);
     $this->db->join('seminar s','s.seminar_id = t.seminar_id');
-    $this->db->order_by('s.seminar_name', 'ASC');
+    $this->db->order_by('s.seminar_date', 'ASC');
     return $this->db->get();
   }
   function search_seminar($key = null/*,$type = null*/){
