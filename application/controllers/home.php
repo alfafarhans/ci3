@@ -226,7 +226,7 @@ class home extends CI_Controller {
 		$output .= '
 		<div id="rightbody3">
 			<div id="objright3">
-				<img src="'.base_url().'asset/pict/banner/'.$value['seminar_banner'].'">
+				<img src="'.base_url().'asset/pict/banner/'.$value['seminar_id'].'.png">
 			</div>
 			<div id="objright4">
 				<div id="desc">
