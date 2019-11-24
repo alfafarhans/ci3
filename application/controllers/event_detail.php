@@ -21,6 +21,20 @@ class event_detail extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+	 function getposcert($s_id){
+		$namex = round($this->input->post('namex'),0);
+		$namey = round($this->input->post('namey'),0);
+		$qrx = round($this->input->post('qrx'),0);
+		$qry = round($this->input->post('qry'),0);
+		$txtalgn = $this->input->post('txtalgn');
+		$textsize = $this->input->post('textsize');
+		$data = $namex.','.$qrx.','.$namey.','.$qry.','.$txtalgn.','.$textsize;
+		$sts = $this->seminar_data->update_pos_db($s_id,$data);
+		if($sts){
+			echo 'oke';
+		}
+		
+	 }
 	function pos($s_id){
 		$data['sem_id'] = $s_id;
 		$this->load->view('positioning',$data);

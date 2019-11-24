@@ -52,13 +52,14 @@ class profile extends CI_Controller {
 		$datanew = $this->profile_data->get_cer($seminar_id,$user_id);
 		foreach($datanew as $value)
 		   { 
-			$coordx = explode(',', $value['cert_coord_x']);
-			$coordy = explode(',', $value['cert_coord_y']);
+			$coordx = explode(',', $value['cert_coord']);
+			$textalgn = $coordx[4];
+			$textsize = $coordx[5];
 			$source = "".base_url()."asset/pict/sert_template/".$value['seminar_id'].".png";
 			$cnx	=	$coordx[0];//forname
-			$cny	=	$coordy[0];
+			$cny	=	$coordx[2];
 			$cqrx	=	$coordx[1];  //forQR
-			$cqry	=	$coordy[1]; 
+			$cqry	=	$coordx[3]; 
 			$bk_id  = 	$value['booking_id'];
 			$sem_name = $value['seminar_name'];
 			$complatename = $value['first_name'].' '.$value['last_name'];
@@ -72,7 +73,9 @@ class profile extends CI_Controller {
 				'cqry' => $cqry,
 				'bk_id' => $bk_id,
 				'sem_name'=> $sem_name,
-				'complatename'=> $complatename
+				'complatename'=> $complatename,
+				'textalgn'=> $textalgn,
+				'textsize'=> $textsize
 			   )
 			);
 	}

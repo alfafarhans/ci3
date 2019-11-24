@@ -14,6 +14,13 @@ class seminar_data extends CI_Model{
                }
       }
     */
+    function update_pos_db($s_id,$data){
+      $this->db->where('seminar_id',$s_id);
+      $this->db->set('cert_coord',$data);
+      $query = $this->db->update('seminar');
+      if($query){return true;}
+      else{return false;}
+    }
     function countseat_db($s_id){
       $this->db->select('booking_id');
       $this->db->from('user_trx ');
