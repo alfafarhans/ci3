@@ -1,19 +1,21 @@
 <?php 
 class seminar_data extends CI_Model{
-  
-    /*cekdata
-  function cekemail($value){
-    $this->db->query("SELECT email FROM user");
-    $this->db->where('email',$value);
-    $query = $this->db->get('user');
-         if($query->num_rows()>0){
-               return false;
-             }
-           else{
-                return true;
-               }
-      }
-    */
+  function cekseminarid($number){
+    $this->db->where('seminar_id ',$number);
+    $query =  $this->db->get('seminar');
+    if($query->num_rows()>0){
+      return false;
+    }
+    else{
+      return true;
+    }
+    
+  }
+   function insert_sem_db($data,$table){
+    $this->db->insert($table,$data);
+
+   }
+
     function update_pos_db($s_id,$data){
       $this->db->where('seminar_id',$s_id);
       $this->db->set('cert_coord',$data);
@@ -184,7 +186,7 @@ class seminar_data extends CI_Model{
   }*/
 
   function search_user_his($key = null,$u_id){
-    $this->db->select("s.seminar_id, s.seminar_name, s.seminar_date, s.seminar_banner, s.seminar_held, t.atten_status" );
+    $this->db->select("s.seminar_id, s.seminar_name, s.seminar_date, s.seminar_held, t.atten_status" );
     $this->db->from('user_trx t');
     $this->db->where('t.user_id', $u_id);
     $this->db->like('s.seminar_name', $key);

@@ -375,7 +375,7 @@ elseif ($par == "myevent") {
 	$outputcnt .='
 		<div id="rightbody3" class="rightbody3">
 			<div id="objright3">
-				<img src="'.base_url().'asset/pict/banner/'.$value['seminar_banner'].'">
+				<img src="'.base_url().'asset/pict/banner/'.$value['seminar_id'].'.png">
 			</div>
 			<div id="objright4">
 				<div id="desc">

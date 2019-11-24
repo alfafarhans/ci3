@@ -205,7 +205,7 @@ function getAverageRGB(imgEl) {
                         }
                         echo'
                     <div id="leftposttop">
-                        <img id="imps" src="'.base_url().'asset/pict/banner/'. $value['seminar_banner'].'">
+                        <img id="imps" src="'.base_url().'asset/pict/banner/'. $value['seminar_id'].'.png">
                     </div>
             
                     <div id="rightposttop">

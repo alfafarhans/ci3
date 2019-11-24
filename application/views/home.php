@@ -434,9 +434,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- bagian navbar  -->
     <?php if(!empty($user_id))
     {
-        echo '
-        
-            
+        echo '    
             <div id="navbar_kanan">
                 <a id="a" href="'.base_url().'ads">Advertising </a>
 
@@ -478,10 +476,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     }
     else{
         echo '
-        
-            
             <div id="navbar_kanan">
-                <a id="a" href="'.base_url().'ads">Advertising </a> 
                 <a id="a" href="'.base_url().'login/">Sign in</a>
 
                 <img class="schico" id="img" src="'.base_url().'asset/pict/icon/search-icon2.png">
@@ -494,15 +489,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
                 
                 <div id="dropdown-content2">
-                    <a href="'.base_url().'ads"> Advertising </a> 
-                    <a href="'.base_url().'login/"> Sign In </a> 
+                    <a href="'.base_url().'ads"> test </a>
+                    <a href="'.base_url().'login/"> test </a> 
                 </div>
 
 
             </div>
-        </div>
-        
-</script>'
+        </div>'
         ;
     }
     

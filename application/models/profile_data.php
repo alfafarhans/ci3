@@ -20,7 +20,7 @@ class profile_data extends CI_Model{
       return $this->db->get('user');
     }
    function get_seminar_history($userid=null){
-    $this->db->select("s.seminar_id,s.seminar_name,s.seminar_date,s.seminar_banner,s.seminar_held, t.atten_status");
+    $this->db->select("s.seminar_id,s.seminar_name,s.seminar_date,s.seminar_held, t.atten_status");
     $this->db->from('user_trx t');
     $this->db->where('t.user_id', $userid);
     $this->db->join('seminar s','s.seminar_id = t.seminar_id');

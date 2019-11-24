@@ -4,6 +4,23 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/ads.css">
+    <script type="text/javascript" src="<?php echo base_url();?>asset/js/jquery-3.4.1.min.js"></script>
+
+    <script type="text/javascript">
+
+$(function() {
+
+    $('#jdrop').on('click', function() {  //.dropdown-content
+            let wit = $('#jdrop').width();
+            wit += 29.8;
+            console.log(wit);
+            $("#jcdrop").css("width", wit);
+            $('#jcdrop').slideDown( "fast" );
+        });
+
+});
+    
+    </script>
 </head>
 <body>
     
@@ -16,24 +33,47 @@
 
     <div id="top">
         <div id="navbar_kiri">
-            <a href="'.base_url().'home"> Seminar Go </a>
+            <a href="home"> Seminar Go </a>
         </div>
-        <div id="navbar_kanan">
-            <a id="a" href="'.base_url().'login/">Sign in</a>
 
-            <img class="schico" id="img" src="'.base_url().'asset/pict/icon/search-icon2.png">
-                
-               
-                <div class="humbermenico" id="container">
-                    <div class="humbermenico" id="bar1"></div>
-                    <div class="humbermenico" id="bar2"></div>
-                    <div class="humbermenico" id="bar3"></div>
-                </div>
-                
-            <div id="dropdown-content2">
-                <a href="'.base_url().'ads"> Advertising </a> 
-                <a href="'.base_url().'login/"> Sign In </a> 
-            </div>
+        
+        <div id="navbar_kanan">
+            <?php if(!empty($user_id))
+                    { echo '
+                                <div id="jdrop" class="dropdown">
+                                    <div id="jdrop" class="p"> Welcome '.$username.' ! </div>
+                                    ';
+                                    $path = './asset/pict/profile/'.$user_id.'.png';
+                                    if(file_exists($path)){
+                                        echo' <img id="jdrop" class="imgdrop" src="'.base_url().'asset/pict/profile/'.$user_id.'.png">
+                                    ';}
+                                    else{
+                                        echo' <img id="jdrop" class="imgdrop" src="'.base_url().'asset/pict/profile/default.png">
+                                    ';
+                                    }
+
+                                if( (!empty($user_id)) && ($user_id == 1)  ){
+                                    echo'</div>
+                                            <div id="jcdrop" class="dropdown-content">
+                                                <a href="'.base_url().'profile_admin/Admin"> Profile </a> 
+                                                <a href="'.base_url().'logout"> Sign Out </a>
+                                            </div>
+                                        </div>
+                                    </div> ';
+                                    }
+                                else{
+                                    echo'
+                                </div>
+                                    <div id="jcdrop" class="dropdown-content">
+                                        <a href="'.base_url().'profile/myprofile/1"> Profile </a> 
+                                        <a href="'.base_url().'profile/myprofile/2"> My Event </a> 
+                                        <a href="'.base_url().'profile/myprofile/3"> Settings </a> 
+                                        <a href="'.base_url().'logout"> Sign Out </a>
+                                    </div>
+                             ';
+                                    }
+                    }
+            ?>
         </div>
     </div>
 
@@ -58,8 +98,9 @@
                 </div>
             </div>
 
+
             <div id="mainright">
-                <form method="post" action="#" enctype="multipart/form-data" id="myform">    
+                <form method="post" action="./ads/insertads" enctype="multipart/form-data" id="myform">    
                     <div id="rightbody2">
                         <div id="objright2">
                             <div id="row">
@@ -132,103 +173,103 @@
                                 <div id="col-75"> 
                                     <div id="col-30"> 
                                         <label id="container">Business
-                                            <input type="checkbox" name="business">
+                                            <input type="checkbox" name="category[]" value="business">
                                             <span id="checkmark"></span>
                                         </label>
                                     </div>
                                     <div id="col-30"> 
                                         <label id="container">Charity & Causes
-                                            <input type="checkbox" name="charity">
+                                            <input type="checkbox" name="category[]" value="charity">
                                             <span id="checkmark"></span>
                                         </label>
                                     </div>
                                     <div id="col-30"> 
                                         <label id="container">Family & Education
-                                            <input type="checkbox"name="family">
+                                            <input type="checkbox" name="category[]" value="family">
                                             <span id="checkmark"></span>
                                         </label>
                                     </div>
                                     <div id="col-30"> 
                                         <label id="container">Fashion
-                                            <input type="checkbox" name="fashion">
+                                            <input type="checkbox" name="category[]" value="fashion">
                                             <span id="checkmark"></span>
                                         </label>
                                     </div>
                                     <div id="col-30"> 
                                         <label id="container">Film & Media
-                                            <input type="checkbox" name="film">
+                                            <input type="checkbox" name="category[]" value="film">
                                             <span id="checkmark"></span>
                                         </label>
                                     </div>
                                     <div id="col-30"> 
                                         <label id="container">Food & Drink
-                                            <input type="checkbox" name="fooddrink">
+                                            <input type="checkbox" name="category[]" value="fooddrink">
                                             <span id="checkmark"></span>
                                         </label>
                                     </div>
                                     <div id="col-30"> 
                                         <label id="container">Goverment
-                                            <input type="checkbox" name="goverment">
+                                            <input type="checkbox" name="category[]" value="goverment">
                                             <span id="checkmark"></span>
                                         </label>
                                     </div>
                                     <div id="col-30"> 
                                         <label id="container">Health
-                                            <input type="checkbox" name="health">
+                                            <input type="checkbox" name="category[]" value="health">
                                             <span id="checkmark"></span>
                                         </label>
                                     </div>
                                     <div id="col-30"> 
                                         <label id="container">Hobbies
-                                            <input type="checkbox" name="hobbies">
+                                            <input type="checkbox" name="category[]" value="hobbies">
                                             <span id="checkmark"></span>
                                         </label>
                                     </div>
                                     <div id="col-30"> 
                                         <label id="container">Holiday
-                                            <input type="checkbox" name="holiday">
+                                            <input type="checkbox" name="category[]" value="holiday">
                                             <span id="checkmark"></span>
                                         </label>
                                     </div>
                                     <div id="col-30"> 
                                         <label id="container">Home & Lifefstyle
-                                            <input type="checkbox" name="homelifefstyle">
+                                            <input type="checkbox" name="category[]" value="homelifefstyle">
                                             <span id="checkmark"></span>
                                         </label>
                                     </div>
                                     <div id="col-30"> 
                                         <label id="container">Otomotif
-                                            <input type="checkbox" name="otomotif">
+                                            <input type="checkbox" name="category[]" value="otomotif">
                                             <span id="checkmark"></span>
                                         </label>
                                     </div>
                                     <div id="col-30"> 
                                         <label id="container">School Activies
-                                            <input type="checkbox" name="schoolactivies">
+                                            <input type="checkbox" name="category[]" value="schoolactivies">
                                             <span id="checkmark"></span>
                                         </label>
                                     </div>
                                     <div id="col-30"> 
                                         <label id="container">Science & Tech
-                                            <input type="checkbox" name="sciencetech">
+                                            <input type="checkbox" name="category[]" value="sciencetech">
                                             <span id="checkmark"></span>
                                         </label>
                                     </div>
                                     <div id="col-30"> 
                                         <label id="container">Spiritually
-                                            <input type="checkbox" name="spiritually">
+                                            <input type="checkbox" name="category[]" value="spiritually">
                                             <span id="checkmark"></span>
                                         </label>
                                     </div>
                                     <div id="col-30"> 
                                         <label id="container">Sport & Fitness
-                                            <input type="checkbox" name="sportfitness">
+                                            <input type="checkbox" name="category[]" value="sportfitness">
                                             <span id="checkmark"></span>
                                         </label>
                                     </div>
                                     <div id="col-30"> 
                                         <label id="container">Travel & Outdoor
-                                            <input type="checkbox" name="traveloutdoor">
+                                            <input type="checkbox" name="category[]" value="traveloutdoor">
                                             <span id="checkmark"></span>
                                         </label>
                                     </div>
