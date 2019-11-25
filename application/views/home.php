@@ -439,7 +439,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     {
         echo '    
             <div id="navbar_kanan">
-                <a id="a" href="'.base_url().'ads">Advertising </a>
+                <a id="a" href="'.base_url().'ads/user">Advertising </a>
 
                 <div id="jdrop" class="dropdown">
                     <div id="jdrop" class="p"> Welcome '.$username.' ! </div>
@@ -480,6 +480,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     else{
         echo '
             <div id="navbar_kanan">
+                <a id="a" href="'.base_url().'register">Advertising </a>
                 <a id="a" href="'.base_url().'login/">Sign in</a>
 
                 <img class="schico" id="img" src="'.base_url().'asset/pict/icon/search-icon2.png">
