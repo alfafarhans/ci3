@@ -72,7 +72,7 @@ $(function() {
 
     <div id="top">
         <div id="navbar_kiri">
-            <a href="home"> Seminar Go </a>
+            <a href="<?php echo base_url();?>"> Seminar Go </a>
         </div>
 
         

@@ -97,7 +97,7 @@
                 ';
                 }
 
-        if( (!empty($user_id)) && ($user_id == 7320006)  ){
+        if( (!empty($user_id)) && ($user_id == 1)  ){
                     echo'
                  </div>
                 <div id="jcdrop" class="dropdown-content">
