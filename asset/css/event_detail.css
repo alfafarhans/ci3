@@ -173,6 +173,7 @@ body{
 
     #flexbod{
         display: flex;
+        position: relative;
     }
 
     #padding{
@@ -271,6 +272,29 @@ font-weight: bold;
                 background-color: #E5D600;
                 color: #063A74; 
                 transition: 0.5s;                
+            }
+
+        #body #bodyartikel2 #padding #apos{
+            color: #FFFFFF;
+            background-color: #50B03B;
+            border: 1px solid #50B03B;
+            position: absolute;
+            left: 350px;
+            top: 25px;
+            display: block;
+            text-align: center;
+            width: auto;
+            padding: 12px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+        }   
+
+            #body #bodyartikel2 #padding #apos:hover {
+                background-color: #1D780A;
+                border: 1px solid #1D780A;
+                color: #FFFFFF;
+                transition: 0.5s;            
             }
 
         #body #bodyartikel2 #padding #a2{

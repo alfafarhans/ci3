@@ -143,6 +143,16 @@ $(function() {
             </div>
         </div>
     </div>
+
+    <!-- bagian footer  -->
+
+    <div id="infofooter600">
+    </div>
+
+    <div id="footer">
+        <p>Copyright © 2019 </p>
+    </div>
+    </div>
 </body>
 </html>
 

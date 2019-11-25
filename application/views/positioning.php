@@ -3,59 +3,125 @@
 <head>
 <script type="text/javascript" src="<?php echo base_url();?>asset/js/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="<?php echo base_url();?>asset/js/jquery-ui.min.js"></script>
-<style>
-	body{
-		margin:0;/*dont*/
-	}
+<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/positioning.css">
 
-	#box {
-    top: 0;/*dont*/
-    left: 0;/*dont*/
-	width : 100px;/*dont*/
-	height: 100px;/*dont*/
-	cursor: move;
-	background-color :gray;
-	text-align:center
+	<script type="text/javascript">
 
-	}
-	#name {
-    top: 0;/*dont*/
-    left: 0;/*dont*/
-	width : 600px;/*dont*/
-	text-align:left;/*dont*/ 
-	cursor: move;
-	line-height: 0.8;
-	}
+	$(function() {
 
-	#results {
-		text-align: center;
-	}
-	#containment { 
-		position:relative;
-		background-size: cover;
-		width: 1122px; /*dont*/
-		height:793px;/*dont*/
-		background-color:black;
-	 }
-	
+		$('#jdrop').on('click', function() {  //.dropdown-content
+				let wit = $('#jdrop').width();
+				wit += 29.8;
+				console.log(wit);
+				$("#jcdrop").css("width", wit);
+				$('#jcdrop').slideDown( "fast" );
+			});
 
-</style>
+	});
 
+	</script>
 </head>
-<body>
-<div>Test Position</div>
-<input type="number" id="textsize" name="textsize" value="16" placeholder="Text Size">
-<select id = "textalgn" name="textalgn">
-						<option value="left"selected>Left</option>
-						<option value="center">Center</option>
-						<option value="right">Right</option>
-</select>
-<button id="get">Get Position</button>
-	<div id="containment" style="background-image: url(<?php echo base_url().'asset/pict/sert_template/'.$sem_id.'.png'; ?>);">
-		<div id="name">The Longest Name Ever Ever</div>
-		<div id="box">QR CODE</div>
-</div>
 
+<body>
+
+<div id="wrapper">
+
+    <div id="topr">
+    </div>
+
+    <!-- bagian navbar  -->
+
+    <div id="top">
+        <div id="navbar_kiri">
+            <a href="<?php echo base_url(); ?>home"> Seminar Go </a>
+        </div>
+
+        
+        <div id="navbar_kanan">
+            <?php if(!empty($user_id))
+                    { echo '
+                                <div id="jdrop" class="dropdown">
+                                    <div id="jdrop" class="p"> Welcome '.$username.' ! </div>
+                                    ';
+                                    $path = './asset/pict/profile/'.$user_id.'.png';
+                                    if(file_exists($path)){
+                                        echo' <img id="jdrop" class="imgdrop" src="'.base_url().'asset/pict/profile/'.$user_id.'.png">
+                                    ';}
+                                    else{
+                                        echo' <img id="jdrop" class="imgdrop" src="'.base_url().'asset/pict/profile/default.png">
+                                    ';
+                                    }
+
+                                if( (!empty($user_id)) && ($user_id == 1)  ){
+                                    echo'</div>
+                                            <div id="jcdrop" class="dropdown-content">
+                                                <a href="'.base_url().'profile_admin/Admin"> Profile </a> 
+                                                <a href="'.base_url().'logout"> Sign Out </a>
+                                            </div>
+                                        </div>
+                                    </div> ';
+                                    }
+                                else{
+                                    echo'
+                                </div>
+                                    <div id="jcdrop" class="dropdown-content">
+                                        <a href="'.base_url().'profile/myprofile/1"> Profile </a> 
+                                        <a href="'.base_url().'profile/myprofile/2"> My Event </a> 
+                                        <a href="'.base_url().'profile/myprofile/3"> Settings </a> 
+                                        <a href="'.base_url().'logout"> Sign Out </a>
+                                    </div>
+                             ';
+                                    }
+                    }
+            ?>
+        </div>
+	</div>
+	
+	<!-- bagian isi  -->
+	<div id="body">
+		<div id="containertop">
+			<div id="judul">Set Position</div>
+			<div id="contpage">
+				<div id="objright2">
+					<div id="row">
+						<div id="col-25">
+							Text Size
+						</div>
+						<div id="col-75">
+							<input type="number" id="textsize" name="textsize" value="16" placeholder="Text Size">
+						</div>
+					</div>
+
+					<div id="row">
+						<div id="col-25">
+							Align Position
+						</div>
+						<div id="col-75">
+							<select id = "textalgn" name="textalgn">
+								<option value="left"selected>Left</option>
+								<option value="center">Center</option>
+								<option value="right">Right</option>
+							</select>
+						</div>
+					</div>
+
+					<div id="row">
+						<div id="col-25">
+						</div>
+						<div id="col-75">
+							<button id="get">Get Position</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<center>
+			<div id="containment" style="background-image: url(<?php echo base_url().'asset/pict/sert_template/'.$sem_id.'.png'; ?>);">
+				<div id="name">The Longest Name Ever Ever</div>
+				<div id="box">QR CODE</div>
+			</div>
+		</center>
+	</div>
 
 <script type="text/javascript">
 var top1,left1,left2,top2,textalgn,txtsize,resnameleft1,resnametop1;//name,qr
@@ -149,5 +215,12 @@ $(function() {
 });
 </script>
 
+<div id="infofooter600">
+    </div>
+
+    <div id="footer">
+        <p>Copyright © 2019 </p>
+    </div>
+    </div>
 </body>
 </html>

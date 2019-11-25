@@ -419,6 +419,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </script>
 </head>
 <body>
+
+<!-- bagian navbar  -->
+
     <div id="wrapper">
 
     <div id="topr">
@@ -431,7 +434,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
     
             <div id = "result_sem" ></div>
-    <!-- bagian navbar  -->
+    
     <?php if(!empty($user_id))
     {
         echo '    
