@@ -32,7 +32,7 @@
 		return false;
     }
     //all trigerstate
-    $('#jdrop').on('click', function() {  //.dropdown-content
+    $('#jdrop').click(function () { //.dropdown-content
             let wit = $('#jdrop').width();
             wit += 29.8;
             console.log(wit);
@@ -40,13 +40,13 @@
             $('#jcdrop').slideDown( "fast" );
         });
 
-    $('#app-pay').on('click', function() {
+    $('#app-pay').click(function () {
         $("div#leftbody > div.objleft" ).removeClass("active");
         $(this).parent().addClass("active");
         let urli = "<?php echo base_url(); ?>profile_admin/changepage/app-pay";
         navToContent(urli);
         });
-    $('#app-sem').on('click', function() {
+    $('#app-sem').click(function () {
         $("div#leftbody > div.objleft" ).removeClass("active");
         $(this).parent().addClass("active");
         let urli = "<?php echo base_url(); ?>profile_admin/changepage/app-sem";
