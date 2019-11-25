@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 24, 2019 at 03:59 PM
+-- Generation Time: Nov 25, 2019 at 05:49 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.1
 
@@ -59,6 +59,7 @@ INSERT INTO `payment` (`payment_id`, `bill_name`, `bill_bank_name`, `bill_number
 (2891733, 'Muhammad Irfan Nazmi', 'Mandiri', '44444666666', '35.000', '2019-11-19', '2019-11-19'),
 (3658742, 'Muhammad Irfan Nazmi', 'Mandiri', '44444666666', '35.000', '2019-11-19', '2019-11-19'),
 (4127382, 'Muhammad Irfan Nazmi', 'Mandiri', '11111111', '35.000', '2019-11-19', '2019-11-19'),
+(4812950, '', '', '', '0.000', '2019-11-25', '0000-00-00'),
 (5148232, '', '', '', '0.000', '2019-11-23', '0000-00-00'),
 (6137892, '', '', '', '0.000', '2019-11-21', '0000-00-00'),
 (6921585, 'Muhammad Irfan Nazmi', 'Mandiri', '89809', '40.000', '2019-11-23', '2019-11-23'),
@@ -110,8 +111,7 @@ INSERT INTO `seminar` (`seminar_id`, `seminar_name`, `seminar_date`, `seminar_ci
 (14, 'Unikom Career Days 2019', '2019-12-23 08:30:00', 'Bandung', 'auditorium miracle lantai 4, gedung lama, unikom bandung', 100, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Maecenas sed enim ut sem viverra. Consectetur libero id faucibus nisl tincidunt eget. Pretium viverra suspendisse potenti nullam ac tortor vitae. A condimentum vitae sapien pellentesque habitant morbi tristique senectus. At risus viverra adipiscing at in tellus. Eu nisl nunc mi ipsum faucibus vitae. Adipiscing tristique risus nec feugiat in fermentum posuere urna nec. Sed cras ornare arcu dui vivamus arcu felis bibendum ut. Et molestie ac feugiat sed lectus vestibulum mattis. Morbi tincidunt ornare massa eget', 'business,industri,homelifefstyle', '0.000', 'Kemeja', 'https://maps.google.com/maps?q=Universitas%20Komputer%20Indonesia%20(UNIKOM)&t=&z=13&ie=UTF8&iwloc=&output=embed', '321,900'),
 (15, 'Development Scholarship, Career, Entrepreneurship', '2019-11-28 08:30:00', 'Depok', 'Jl. Margonda Raya No.100, Pondok Cina, Kecamatan Beji, Kota Depok, Jawa Barat 16424', 100, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Maecenas sed enim ut sem viverra. Consectetur libero id faucibus nisl tincidunt eget. Pretium viverra suspendisse potenti nullam ac tortor vitae. A condimentum vitae sapien pellentesque habitant morbi tristique senectus. At risus viverra adipiscing at in tellus. Eu nisl nunc mi ipsum faucibus vitae. Adipiscing tristique risus nec feugiat in fermentum posuere urna nec. Sed cras ornare arcu dui vivamus arcu felis bibendum ut. Et molestie ac feugiat sed lectus vestibulum mattis. Morbi tincidunt ornare massa eget', 'goverment,schoolactivies,business', '40.000', 'Kemeja Bebas', 'https://maps.google.com/maps?q=Jl.%20Margonda%20Raya%20No.100%2C%20Pondok%20Cina%2C%20Kecamatan%20Beji%2C%20Kota%20Depok%2C%20Jawa%20Barat%2016424&t=&z=13&ie=UTF8&iwloc=&output=embed', '0'),
 (16, 'Engineer Cerdas Digital di Era Industri 4.0', '2019-11-18 08:00:00', 'Bekasi', 'Mercubuana Jatisampurna, Jl. Raya Kranggan No.6, RT.006/RW.008, Jatiraden, Kec. Jatisampurna, Kota Bks, Jawa Barat 17433', 100, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Maecenas sed enim ut sem viverra. Consectetur libero id faucibus nisl tincidunt eget. Pretium viverra suspendisse potenti nullam ac tortor vitae. A condimentum vitae sapien pellentesque habitant morbi tristique senectus. At risus viverra adipiscing at in tellus. Eu nisl nunc mi ipsum faucibus vitae. Adipiscing tristique risus nec feugiat in fermentum posuere urna nec. Sed cras ornare arcu dui vivamus arcu felis bibendum ut. Et molestie ac feugiat sed lectus vestibulum mattis. Morbi tincidunt ornare massa eget', 'sciencetech,business,section', '35.000', 'Batik', 'https://maps.google.com/maps?q=mercubuana%20jatisampurna&t=&z=13&ie=UTF8&iwloc=&output=embed', '568,1000'),
-(233, 'Indonesia E-FEST 2060', '2020-03-19 09:42:00', 'ca', 'ased', 100, 'as', 'asd', '123.000', 'kotak', '123', ''),
-(1231, 'National Youth S1ummit', '2020-03-19 09:42:00', '123', '123', 0, '', '', '0.000', '', '', '');
+(29548, 'TEST', '2019-11-30 00:00:00', 'bogor', ' Fill seminar held address a', 500, ' Fill seminar description a', 'charity', '60.000', 'batik', '', '');
 
 -- --------------------------------------------------------
 
@@ -191,6 +191,13 @@ CREATE TABLE `user_trx_ads` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Dumping data for table `user_trx_ads`
+--
+
+INSERT INTO `user_trx_ads` (`ads_id`, `user_id`, `seminar_id`, `ads_payment_id`, `ads_trx_status`) VALUES
+(83615, 2, 29548, 4812950, 'Review By Admin');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -238,7 +245,7 @@ ALTER TABLE `user_trx_ads`
 -- AUTO_INCREMENT for table `seminar`
 --
 ALTER TABLE `seminar`
-  MODIFY `seminar_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1232;
+  MODIFY `seminar_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29549;
 
 --
 -- AUTO_INCREMENT for table `user`

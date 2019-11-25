@@ -120,7 +120,7 @@ class event_detail extends CI_Controller {
 		$this->load->helper('string');
 	do {
 		$bookid =  random_string('nozero', 6);
-		$resbook = $this->seminar_data->cekbooking($bookid);
+		$resbook = $this->seminar_data->cekspecode($bookid,'booking_id','user_trx');
 		if ($resbook){
 			$reservedid = $bookid;
 		}

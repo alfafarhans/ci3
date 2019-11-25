@@ -37,7 +37,8 @@ class ads extends CI_Controller {
 
 
 	}
-	function insertads(){
+	function insertads($userid=null){
+		if(!empty($userid)){
 		$semname = $this->input->post('semname');
 		$semdate = $this->input->post('semdate');
 		$semtime = $this->input->post('semtime');
@@ -54,7 +55,7 @@ class ads extends CI_Controller {
 		$this->load->helper('string');
 		do {
 			$bookid =  random_string('nozero', 5);
-			$resbook = $this->seminar_data->cekseminarid($bookid);
+			$resbook = $this->seminar_data->cekspecode($bookid,'seminar_id','seminar');
 			if ($resbook){
 				$reservedid = $bookid;
 			}
@@ -73,52 +74,84 @@ class ads extends CI_Controller {
 			'seminar_drcode' => $semdress
 			);
 		
-		$inssts = $this->seminar_data->insert_sem_db($data,'seminar');
+		$inssts = $this->seminar_data->input_data($data,'seminar');
+			//
+		if ($inssts) {
+
+			$zero = 0 ;
+			$curdate = date('Y-m-d'); 
+			do {
+				$bookid =  random_string('nozero', 6);
+				$resbook = $this->seminar_data->cekspecode($bookid,'payment_id','payment');
+				if ($resbook){
+					$reserved_adspayid = $bookid;
+				}
+			} while ($resbook == false);
+
+			$data_adspayid = array(
+				'payment_id' => $reserved_adspayid.$zero,
+				'payment_created' =>  $curdate);
+
+			$inssts_pay_id = $this->seminar_data->input_data($data_adspayid,'payment');
+			//
+		if ($inssts_pay_id) {
+			do {
+				$bookid =  random_string('nozero', 5);
+				$resbook = $this->seminar_data->cekspecode($bookid,'ads_id','user_trx_ads');
+				if ($resbook){
+					$reserved_adsid = $bookid;
+				}
+			} while ($resbook == false);
+
+			$dataads = array(
+				'ads_id' => $reserved_adsid,
+				'user_id' => $userid,
+				'seminar_id' => $reservedid,
+				'ads_payment_id' => $reserved_adspayid.$zero,
+				'ads_trx_status' => 'Review By Admin'
+				);
 			
+			$inssts_usertrxads = $this->seminar_data->input_data($dataads,'user_trx_ads');
+		}
+		//
+		if($inssts_usertrxads){
+			$stsup = $this->up_pict($reservedid);
+			if($stsup){
+				redirect('ads/user');
+				}
+			}	
+		}
+	 }	
 	}
 
-	private function up_pict($s_id,$type) { //do upload file after insert
-		if($type == 1){
-			$item = 'semban';
-			$urli = 'banner';
+	private function up_pict($s_id) { //do upload file after insert
+		$config0['upload_path']          = './asset/pict/sert_template/';
+		$config0['allowed_types']        = 'jpg|png|jpeg';
+		$config0['file_name']            = $s_id.'.png'; //this
+		$config0['overwrite']			= true;
+		$config0['max_size']             = 0; // 1MB
+		$this->load->library('upload');
+		$this->upload->initialize($config0);
+		$this->upload->do_upload('semcert') ;//this
+		
+
+		$config1['upload_path']          = './asset/pict/banner/';
+		$config1['allowed_types']        = 'jpg|png|jpeg';
+		$config1['file_name']            = $s_id.'.png'; //this
+		$config1['overwrite']			= true;
+		$config1['max_size']             = 0; // 1MB
+		$this->upload->initialize($config1);
+		$this->upload->do_upload('semban') ;//this
+		return true;
 		}
-		else if($type == 2){
-			$item = 'semcert';
-			$urli = 'sert_template';
-		}
-		$config['upload_path']          = './asset/pict/temporary/';
-		$config['allowed_types']        = 'jpg|png|jpeg';
-		$config['file_name']            = $s_id.'.png'; //this
-		$config['overwrite']			= true;
-		$config['max_size']             = 0; // 1MB
-		$this->load->library('upload', $config);
-		if ($this->upload->do_upload($item)) { //this
-		$gbr = $this->upload->data();
-		$config['image_library']='gd2';
-		$config['source_image']='./asset/pict/temporary/'.$gbr['file_name'];
-		$config['create_thumb']= FALSE;
-		$config['maintain_ratio']= FALSE;
-		$config['quality']= '100%';
-		$config['new_image']= './asset/pict/'.$urli.'/'.$gbr['file_name']; //this
-		$this->load->library('image_lib', $config);
-		$resizex =$this->image_lib->resize();	
-		if($resizex){
-				unlink('./asset/pict/temporary/'.$gbr['file_name']);
-				return true;
-				}
-		}
-		else{
-			$error = $this->upload->display_errors();
-			echo $error;
-		}
-	}
+
 
 
 function changepage ($par){
 	$userid = $this->session->userdata('user_id');
 
 	if($par == "profile"){
-		echo '<form method="post" action="./ads/insertads" enctype="multipart/form-data" id="myform">    
+		echo '<form method="post" action="./insertads/'.$userid.'" enctype="multipart/form-data" id="myform">    
 		<div id="rightbody2">
 			<div id="objright2">
 				<div id="row">

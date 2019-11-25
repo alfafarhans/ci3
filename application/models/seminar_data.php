@@ -1,8 +1,8 @@
 <?php 
 class seminar_data extends CI_Model{
-  function cekseminarid($number){
-    $this->db->where('seminar_id ',$number);
-    $query =  $this->db->get('seminar');
+  function cekspecode($number,$entity,$table){
+    $this->db->where($entity,$number);
+    $query =  $this->db->get($table);
     if($query->num_rows()>0){
       return false;
     }
@@ -11,9 +11,12 @@ class seminar_data extends CI_Model{
     }
     
   }
-   function insert_sem_db($data,$table){
-    $this->db->insert($table,$data);
 
+   function input_data($data,$table){
+    $query = $this->db->insert($table,$data);
+    if($query){
+      return true;
+    }
    }
 
     function update_pos_db($s_id,$data){
@@ -147,22 +150,8 @@ class seminar_data extends CI_Model{
       }
 }
 
-    function input_data($data,$table){
-    
-      $this->db->insert($table,$data);
-      }
       
-    function cekbooking($number){
-      $this->db->where('booking_id ',$number);
-      $query =  $this->db->get('user_trx');
-      if($query->num_rows()>0){
-        return false;
-      }
-      else{
-        return true;
-      }
-      
-    }
+  
     function getseminar()
     {
     $curdate = date('Y-m-d');
