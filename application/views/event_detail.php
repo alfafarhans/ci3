@@ -258,7 +258,7 @@ function getAverageRGB(imgEl) {
                  if(!empty($verifiedpos)){
                     foreach ($seminar as $value) {
                         echo 
-                    '<a href='. base_url().'event_detail/pos/'.$value['seminar_id'].'> Positioning </a>';
+                    '<a id="apos" href='. base_url().'event_detail/pos/'.$value['seminar_id'].'> Positioning </a>';
                         }
                  }
             

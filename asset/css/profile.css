@@ -456,13 +456,13 @@ body{
     }
 
         #objright4 #botaatt a{
+            color: #FFFFFF;
             background-color: #50B03B;
+            border: 1px solid #50B03B;
             display: block;
             width: 170px;
             text-align: center;
-            color: #FFFFFF;
             padding: 12px 15px;
-            border: 1px solid #50B03B;
             border-radius: 4px;
             cursor: pointer;
             text-decoration: none;
