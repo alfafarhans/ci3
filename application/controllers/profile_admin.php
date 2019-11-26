@@ -40,7 +40,7 @@ class profile_admin extends CI_Controller {
 		$userid = $this->session->userdata('user_id');
 		
 		if($par == "app-pay"){
-			$userdata = $this->profile_data->get_alltrx($userid);
+			$userdata = $this->profile_data->get_alltrx();
 			if($userdata){
 			foreach ($userdata->result_array() as $value) {
 				$daynum = date('d', strtotime($value['payment_created']));
@@ -56,7 +56,7 @@ class profile_admin extends CI_Controller {
 						'.$value['seminar_name'].' ('.$value['seminar_price'].')
 						</div>  
 						<div id="kettx">
-							'.$daynum.'/'.$mounth.'/'.$year.' | '.$value['bill_bank_name'].' | '.$value['bill_name']/*$firstfill.'&nbsp;'.$value['last_name']*/.' | '.$value['bill_number'].' | <a href="'.base_url().'asset/pict/payment/'.$value['payment_id'].'.png" target="_blank"> bukti_tf.png </a>
+							'.$daynum.'/'.$mounth.'/'.$year.' | '.$value['bill_bank_name'].' | '.$value['bill_name']/*$firstfill.'&nbsp;'.$value['last_name']*/.' | '.$value['bill_number'].' | <a href="'.base_url().'asset/pict/payment/'.$value['payment_id'].'.png" target="_blank">Open Image</a>
 						</div> 
 					</div>
 				</div>
@@ -78,37 +78,75 @@ class profile_admin extends CI_Controller {
 			}//first if
 		elseif ($par == "app-sem") {
 			
-			echo '<div id="rightbody3">
+			$userdata = $this->profile_data->get_alltrx_ads($userid);
+			if($userdata){
+			foreach ($userdata->result_array() as $value) {
+
+			if($value['ads_trx_status'] != "Published"){
+				
+				$daynum = date('d', strtotime($value['seminar_date']));
+				$mounth = date('F', strtotime($value['seminar_date']));
+				$year = date('Y', strtotime($value['seminar_date']));
+
+				echo '<div id="rightbody3">
 				<div id="objright3">
-					<img src="'.base_url().'asset/pict/banner/Indonesia_Ves_2019_2019_2019-09_12.png">
+					<img src="'.base_url().'asset/pict/banner/'.$value['seminar_id'].'.png">
 				</div>
 				<div id="objright4">
 					<div id="desc">
 						<div id="namatx">
-							Indonesia Ves 2019 
+						'.$value['seminar_name'].'
 						</div>  
 						<div id="datetx">
-							30 October 2019
+						'.$daynum.'&nbsp;'.$mounth.'&nbsp;'.$year.'
 						</div> 
 						<div id="kettx">
-							Jl. Pintu Satu Senayan, RT.1/RW.3, Gelora, Tanahabang, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 10270 
+						'.$value['seminar_held'].' 
 						</div> 
-					</div>
+					</div>';
+					
+				if($value['ads_trx_status'] == "Review by admin"){
+								echo '
+								<div id="bota2">
+									<a id=""  href="'.base_url().'event_detail/'.$value['seminar_id'].'">Check</a>
+								</div>
+								<div id="bota2">
+									<a id="cekdetail-sem"  href="'.base_url().'profile_admin/chsts/'.$value['ads_id'].'">Reupload</a>
+								</div>
+								<div id="bota3">
+									<a id="app-sem"  href="'.base_url().'profile_admin/chsts/'.$value['ads_id'].'">Approve</a>
+								</div>
+								<div id="bota4">
+									<a id="dec-sem"  href="'.base_url().'profile_admin/chsts/'.$value['ads_id'].'">Rejected Event</a>
+									</div>
+							</div>';
+							}
+				elseif ($value['ads_trx_status'] == "Waiting to Payment") {
+							echo'<div id="bota2">
+									<a id="cekdetail-sem"  href="#">Waiting user for upload</a>
+								
+						</div>';
+						}
+				elseif ($value['ads_trx_status'] == "Payment Confirmation") {
+								echo '	<div id="bota3">	
+								<a href="'.base_url().'asset/pict/payment/'.$value['payment_id'].'.png" target="_blank">Open Image</a>
+								</div>		
+								<div id="bota3">
+									<a id="app-sem"  href="'.base_url().'profile_admin/chsts_app_ads/'.$value['ads_id'].'">Approve</a>
+								</div>
+								<div id="bota4">
+									<a id="dec-sem"  href="'.base_url().'profile_admin/chsts_dec_ads/'.$value['ads_id'].'">Decline</a>
+								</div>
+							</div>';
+						}
+					}
 
-					<div id="bota2">
-						<a id="cekdetail-sem"  href="#">Cek</a>
-					</div>
-					<div id="bota3">
-						<a id="app-sem"  href="#">Approve</a>
-					</div>
-					<div id="bota4">
-						<a id="dec-sem"  href="#">Decline</a>
-					</div>
-				</div>
-				
-			';
+				}
+			}
+
 			
-		}//second if
+			
+		}/*second if*/
 
 	}
 		function appv($p_id=null){

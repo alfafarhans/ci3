@@ -5,6 +5,273 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/event_detail.css">
     <script type="text/javascript" src="<?php echo base_url();?>asset/js/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+    <div id="wrapper">
+        
+    <div id="topr">
+    </div>
+
+    <!-- bagian navbar  -->
+    <?php if(!empty($user_id))
+    {
+      
+        echo '
+        <div id="top">
+            <div id="navbar_kiri">
+                <a href="'.base_url().'home"> Seminar Go </a>
+            </div>
+            
+            <div id="navbar_kanan">
+
+                <div id="jdrop" class="dropdown">
+                    <div id="jdrop" class="p"> Welcome '.$username.' ! </div>
+                    ';
+        $path = './asset/pict/profile/'.$user_id.'.png';
+        if(file_exists($path)){
+                   echo' <img id="jdrop" class="imgdrop" src="'.base_url().'asset/pict/profile/'.$user_id.'.png">
+                ';}
+                else{
+                    echo' <img id="jdrop" class="imgdrop" src="'.base_url().'asset/pict/profile/default.png">
+                ';
+                }
+                if( (!empty($user_id)) && ($user_id == 1)  ){
+                    echo'
+                 </div>
+                <div id="jcdrop" class="dropdown-content">
+                <a href="'.base_url().'profile_admin/Admin"> Profile </a> 
+                <a href="'.base_url().'logout"> Sign Out </a></div>
+                </div>
+            </div> ';
+                    }
+             else{
+                echo'</div>
+                       <div id="jcdrop" class="dropdown-content">
+                       <a href="'.base_url().'profile/myprofile/1"> Profile </a> 
+                       <a href="'.base_url().'profile/myprofile/2"> My Event </a> 
+                       <a href="'.base_url().'profile/myprofile/3"> Settings </a> 
+                       <a href="'.base_url().'logout"> Sign Out </a></div>
+                       </div>
+                   </div> ';
+                    }
+        
+    }
+    else{
+        echo '
+        <div id="top">
+            <div id="navbar_kiri">
+                <a href="'.base_url().'home"> Seminar Go </a>
+            </div>
+            
+            <div id="navbar_kanan">
+            <a id="a" href="'.base_url().'ads">Advertising </a> 
+            <a id="a" href="'.base_url().'login/">Sign in</a>
+            </div>
+        </div> ';
+    }
+    
+    ?>   
+
+    <!-- bagian isi  -->
+  
+    <div id="body">
+        <div id="bodyartikel2">
+            <div id="shadow">
+                <div id="flexbod">
+                <?php
+                
+                $seatsts = false;
+
+                    foreach ($seminar as $value) {
+                        if($value['seminar_price'] == 0){
+                            $price = "FREE";
+                        }
+                        else {
+                            $price = $value['seminar_price'];
+                        }
+                        echo'
+                    <div id="leftposttop">
+                        <img id="imps" src="'.base_url().'asset/pict/banner/'. $value['seminar_id'].'.png">
+                    </div>
+            
+                    <div id="rightposttop">
+                        <div id="padding">
+                            <div id="desc">
+                                <h2> '.$value['seminar_name'].' </h2> 
+                                <p> Rp&nbsp;'.$price.' </p>
+                            </div>
+
+                            <img id="qrcode" src="'.base_url('event_detail/renderqr/'.$value['seminar_id'].'/'.$user_id.'').'" alt="">
+                        </div>
+                    </div>';
+                    if($seat<=$value['seminar_seat'] ){
+                        $seatsts = true;
+                         }
+                    }
+                    
+                ?>
+            </div>
+        </div>
+
+            <div id="shadow">
+                <div id="flexbod">
+                    <div id="leftpost">
+                        <div id="padding">
+                <?php
+
+                
+
+                $userid = $this->session->userdata('user_id');
+
+                if($seatsts){
+                            if( (!empty($userid)) && (!empty($registered)) ){
+
+                            $register_fill = str_replace(" ","&nbsp;",$registered);
+                                foreach ($seminar as $value) {
+                                    echo 
+                                '<a id="a1" href="'.base_url().'payment/confirmation/'.$value['seminar_id'].'/'.$userid.'" >'.$register_fill.'</a>';
+                                    }
+                                    
+                                $this->session->unset_userdata('seminar_id');
+                            }
+
+                            else if(!empty($userid)){
+                                foreach ($seminar as $value) {
+
+                                    echo 
+                                '<a id="a1" href="#" onClick="send('.$value['seminar_id'].','.$userid.');"> Daftar </a>';
+                                    }
+                                    
+                                $this->session->unset_userdata('seminar_id');
+                            }
+                            else{
+                                echo
+                                '<a id="a1" href='. base_url().'login/> Daftar </a>';
+                            }
+                }
+                else{
+                    echo "SEAT FULL";
+                }
+                    ?>
+                        </div>
+                    </div>
+                    <div id="rightpost">
+                        <div id="padding">
+                         <?php
+                         $userid = $this->session->userdata('user_id');
+                         if( (!empty($userid)) && (!empty($registered)) ){
+                        foreach ($seminar as $value) {
+                          echo  '<a class="cancle" id="a2" href="./cancle/'.$value['seminar_id'].'/'.$userid.'/0"> Cancel </a>';
+                        }
+                    }
+                    if(!empty($verifiedpos)){
+                        foreach ($seminar as $value) {
+                            echo 
+                        '<a id="apos" href='. base_url().'event_detail/pos/'.$value['seminar_id'].'> Positioning </a>';
+                            }
+                     }
+                            ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="shadow">
+                <div id="flexbod">
+                    <div id="leftpost">
+                    <?php
+                    
+                    foreach ($seminar as $value) {
+                //convert time
+                $dayname = date('l', strtotime($value['seminar_date']));
+                $daynum = date('d', strtotime($value['seminar_date']));
+                $mounth = date('m', strtotime($value['seminar_date']));
+                $year = date('Y', strtotime($value['seminar_date']));
+                $hours =  date('H', strtotime($value['seminar_date']));
+                $minute =  date('i', strtotime($value['seminar_date']));
+                $month_num =$mounth; 
+                $month_name = date("F", mktime(0, 0, 0, $month_num, 10));  
+                $sbstr =  substr($dayname,0,3);
+
+
+                echo ' 
+                <div id="obj-post">
+                <div id="obj-judul"> Available Seat </div>';
+                if($seatsts){
+                    echo'<p>'.$seat.'/'.$value['seminar_seat'].'</p>';
+                }
+                else{
+                    echo'<p>Sorry no space here</p>';
+                }
+                echo ' 
+            </div>
+                    <div id="obj-post">
+                        <div id="obj-judul"> Date and Time </div>
+                        <p>'.$sbstr.',&nbsp;'.$daynum.'&nbsp;'.$month_name.'&nbsp;'.$year.',&nbsp;'.$hours.'.'.$minute.'</p>
+                    </div>
+
+                    <div id="obj-post">
+                        <div id="obj-judul"> Location </div>
+                        <p>'.$value['seminar_held'].'</p>
+                    </div>
+
+                    <div id="obj-post">
+                        <div id="obj-judul"> Dress Code </div>
+                        <p>'.$value['seminar_drcode'].'</p>
+                    </div>';
+                    }
+            
+                    ?>
+                    </div>
+            
+                    <div id="rightpost">
+                    <?php
+                    foreach ($seminar as $value) {
+                        //convert to array
+                        $cnvt = explode(',' , $value['seminar_tag']);
+
+                        echo 
+                        '<div id="obj-post">
+                            <div id="obj-judul"> Description </div>
+                            <p> '.$value['seminar_desc'].'</p>
+                        </div>
+                        <div id="obj-post">
+                            <div id="obj-judul"> Tag </div>
+                            <p>';
+                        foreach ($cnvt as $newloop) {
+                            echo'
+                                <a href="#">'.$newloop.'</a>' ;
+                            }
+                            echo' </p>
+                        </div>
+                        </div>
+                        </div>
+                            
+                        <div id="flexbod">
+                            <iframe width="100%" height="250px" src="'.$value['seminar_maps'].'" frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+                            </iframe>
+                        </div>';
+                        }
+            
+            ?>
+                 
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <!-- bagian footer  -->
+
+    <div id="infofooter600">
+    </div>
+
+    <div id="footer">
+        <p>Copyright © 2019 </p>
+    </div>
+    </div>
     <script type="text/javascript">
    function send(eventid,userid) {
                 $.ajax({
@@ -39,9 +306,6 @@
 
 
     $(function() {
-        if (window.location.href.indexOf('reload')==-1) {
-                window.location.replace(window.location.href+'?reload');
-            }
         //avg color
 var rgb = getAverageRGB(document.getElementById('imps'));
 document.getElementById('rightposttop').style.backgroundColor = 'rgb('+rgb.r+','+rgb.g+','+rgb.b+')';
@@ -121,253 +385,5 @@ function getAverageRGB(imgEl) {
     });
 
     </script>
-</head>
-<body>
-    <div id="wrapper">
-        
-    <div id="topr">
-    </div>
-
-    <!-- bagian navbar  -->
-    <?php if(!empty($user_id))
-    {
-      
-        echo '
-        <div id="top">
-            <div id="navbar_kiri">
-                <a href="'.base_url().'home"> Seminar Go </a>
-            </div>
-            
-            <div id="navbar_kanan">
-
-                <div id="jdrop" class="dropdown">
-                    <div id="jdrop" class="p"> Welcome '.$username.' ! </div>
-                    ';
-        $path = './asset/pict/profile/'.$user_id.'.png';
-        if(file_exists($path)){
-                   echo' <img id="jdrop" class="imgdrop" src="'.base_url().'asset/pict/profile/'.$user_id.'.png">
-                ';}
-                else{
-                    echo' <img id="jdrop" class="imgdrop" src="'.base_url().'asset/pict/profile/default.png">
-                ';
-                }
-                if( (!empty($user_id)) && ($user_id == 1)  ){
-                    echo'
-                 </div>
-                <div id="jcdrop" class="dropdown-content">
-                <a href="'.base_url().'profile_admin/Admin"> Profile </a> 
-                <a href="'.base_url().'logout"> Sign Out </a></div>
-                </div>
-            </div> ';
-                    }
-             else{
-                echo'</div>
-                       <div id="jcdrop" class="dropdown-content">
-                       <a href="'.base_url().'profile/myprofile/1"> Profile </a> 
-                       <a href="'.base_url().'profile/myprofile/2"> My Event </a> 
-                       <a href="'.base_url().'profile/myprofile/3"> Settings </a> 
-                       <a href="'.base_url().'logout"> Sign Out </a></div>
-                       </div>
-                   </div> ';
-                    }
-        
-    }
-    else{
-        echo '
-        <div id="top">
-            <div id="navbar_kiri">
-                <a href="'.base_url().'home"> Seminar Go </a>
-            </div>
-            
-            <div id="navbar_kanan">
-            <a id="a" href="'.base_url().'ads">Advertising </a> 
-            <a id="a" href="'.base_url().'login/">Sign in</a>
-            </div>
-        </div> ';
-    }
-    
-    ?>   
-
-    <!-- bagian isi  -->
-  
-    <div id="body">
-        <div id="bodyartikel2">
-            <div id="shadow">
-                <div id="flexbod">
-                <?php
-                
-                    foreach ($seminar as $value) {
-                        if($value['seminar_price'] == 0){
-                            $price = "FREE";
-                        }
-                        else {
-                            $price = $value['seminar_price'];
-                        }
-                        echo'
-                    <div id="leftposttop">
-                        <img id="imps" src="'.base_url().'asset/pict/banner/'. $value['seminar_id'].'.png">
-                    </div>
-            
-                    <div id="rightposttop">
-                        <div id="padding">
-                            <div id="desc">
-                                <h2> '.$value['seminar_name'].' </h2> 
-                                <p> Rp&nbsp;'.$price.' </p>
-                            </div>
-
-                            <img id="qrcode" src="'.base_url('event_detail/renderqr/'.$value['seminar_id'].'/'.$user_id.'').'" alt="">
-                        </div>
-                    </div>';
-                    }
-            
-                ?>
-            </div>
-        </div>
-
-            <div id="shadow">
-                <div id="flexbod">
-                    <div id="leftpost">
-                        <div id="padding">
-                <?php
-
-                $userid = $this->session->userdata('user_id');
-                if( (!empty($userid)) && (!empty($registered)) ){
-
-				$register_fill = str_replace(" ","&nbsp;",$registered);
-                    foreach ($seminar as $value) {
-                        echo 
-                    '<a id="a1" href="'.base_url().'payment/confirmation/'.$value['seminar_id'].'/'.$userid.'" >'.$register_fill.'</a>';
-                        }
-                        
-					$this->session->unset_userdata('seminar_id');
-                }
-
-                else if(!empty($userid)){
-                    foreach ($seminar as $value) {
-                        echo 
-                    '<a id="a1" href="#" onClick="send('.$value['seminar_id'].','.$userid.');"> Daftar </a>';
-                        }
-                        
-					$this->session->unset_userdata('seminar_id');
-                }
-                else{
-                    echo
-                    '<a id="a1" href='. base_url().'login/> Daftar </a>';
-                 }
-                 
-                 if(!empty($verifiedpos)){
-                    foreach ($seminar as $value) {
-                        echo 
-                    '<a id="apos" href='. base_url().'event_detail/pos/'.$value['seminar_id'].'> Positioning </a>';
-                        }
-                 }
-            
-                    ?>
-                        </div>
-                    </div>
-                    <div id="rightpost">
-                        <div id="padding"> <?php
-                         $userid = $this->session->userdata('user_id');
-                         if( (!empty($userid)) && (!empty($registered)) ){
-                        foreach ($seminar as $value) {
-                          echo  '<a class="cancle" id="a2" href="./cancle/'.$value['seminar_id'].'/'.$userid.'/0"> Cancel </a>';
-                        }
-                    }
-                            ?>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="shadow">
-                <div id="flexbod">
-                    <div id="leftpost">
-                    <?php
-                    
-                    foreach ($seminar as $value) {
-                //convert time
-                $dayname = date('l', strtotime($value['seminar_date']));
-                $daynum = date('d', strtotime($value['seminar_date']));
-                $mounth = date('m', strtotime($value['seminar_date']));
-                $year = date('Y', strtotime($value['seminar_date']));
-                $hours =  date('H', strtotime($value['seminar_date']));
-                $minute =  date('i', strtotime($value['seminar_date']));
-                $month_num =$mounth; 
-                $month_name = date("F", mktime(0, 0, 0, $month_num, 10));  
-                $sbstr =  substr($dayname,0,3);
-
-
-                echo ' 
-                <div id="obj-post">
-                <div id="obj-judul"> Available Seat </div>
-                <p>'.$seat.'/'.$value['seminar_seat'].'</p>
-            </div>
-                    <div id="obj-post">
-                        <div id="obj-judul"> Date and Time </div>
-                        <p>'.$sbstr.',&nbsp;'.$daynum.'&nbsp;'.$month_name.'&nbsp;'.$year.',&nbsp;'.$hours.'.'.$minute.'</p>
-                    </div>
-
-                    <div id="obj-post">
-                        <div id="obj-judul"> Location </div>
-                        <p>'.$value['seminar_held'].'</p>
-                    </div>
-
-                    <div id="obj-post">
-                        <div id="obj-judul"> Dress Code </div>
-                        <p>'.$value['seminar_drcode'].'</p>
-                    </div>';
-                    }
-            
-                    ?>
-                    </div>
-            
-                    <div id="rightpost">
-                    <?php
-                    foreach ($seminar as $value) {
-                        //convert to array
-                        $cnvt = explode(',' , $value['seminar_tag']);
-
-                        echo 
-                        '<div id="obj-post">
-                            <div id="obj-judul"> Description </div>
-                            <p> '.$value['seminar_desc'].'</p>
-                        </div>
-                        <div id="obj-post">
-                            <div id="obj-judul"> Tag </div>
-                            <p>';
-                        foreach ($cnvt as $newloop) {
-                            echo'
-                                <a href="#">'.$newloop.'</a>' ;
-                            }
-                            echo' </p>
-                        </div>
-                        </div>
-                        </div>
-                            
-                        <div id="flexbod">
-                            <iframe width="100%" height="250px" src="'.$value['seminar_maps'].'" frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
-                            </iframe>
-                        </div>';
-                        }
-            
-            ?>
-                 
-            </div>
-        </div>
-    </div>
-
-
-
-
-
-    <!-- bagian footer  -->
-
-    <div id="infofooter600">
-    </div>
-
-    <div id="footer">
-        <p>Copyright © 2019 </p>
-    </div>
-    </div>
 </body>
 </html>

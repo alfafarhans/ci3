@@ -599,6 +599,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- bagian isi  -->
     <div id="body">
         <div id="postinduk">
+        
         </div>
 
         <div id="postinduk2">

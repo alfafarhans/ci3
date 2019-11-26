@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 25, 2019 at 05:49 PM
+-- Generation Time: Nov 26, 2019 at 04:42 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.1
 
@@ -40,7 +40,7 @@ CREATE TABLE `organization` (
 --
 
 CREATE TABLE `payment` (
-  `payment_id` int(16) NOT NULL,
+  `payment_id` int(8) NOT NULL,
   `bill_name` varchar(25) NOT NULL,
   `bill_bank_name` varchar(15) NOT NULL,
   `bill_number` varchar(25) NOT NULL,
@@ -54,20 +54,20 @@ CREATE TABLE `payment` (
 --
 
 INSERT INTO `payment` (`payment_id`, `bill_name`, `bill_bank_name`, `bill_number`, `user_paid`, `payment_created`, `paid_date`) VALUES
-(2361872, '', '', '', '0.000', '2019-11-21', '0000-00-00'),
-(2567834, 'Muhammad Irfan Nazmi', 'Mandiri', '89809', '40.000', '2019-11-23', '2019-11-23'),
-(2891733, 'Muhammad Irfan Nazmi', 'Mandiri', '44444666666', '35.000', '2019-11-19', '2019-11-19'),
-(3658742, 'Muhammad Irfan Nazmi', 'Mandiri', '44444666666', '35.000', '2019-11-19', '2019-11-19'),
-(4127382, 'Muhammad Irfan Nazmi', 'Mandiri', '11111111', '35.000', '2019-11-19', '2019-11-19'),
-(4812950, '', '', '', '0.000', '2019-11-25', '0000-00-00'),
-(5148232, '', '', '', '0.000', '2019-11-23', '0000-00-00'),
-(6137892, '', '', '', '0.000', '2019-11-21', '0000-00-00'),
-(6921585, 'Muhammad Irfan Nazmi', 'Mandiri', '89809', '40.000', '2019-11-23', '2019-11-23'),
-(6927382, 'Muhammad Irfan Nazmi', 'Mandiri', '44444666666', '40.000', '2019-11-19', '2019-11-19'),
-(7168542, 'Muhammad Irfan Nazmi', 'Mandiri', '11111111', '35.000', '2019-11-21', '2019-11-23'),
-(9168353, 'Muhammad Irfan Nazmi', 'BCA', '11111111', '25.000', '2019-11-19', '2019-11-19'),
-(9186472, '', '', '', '0.000', '2019-11-24', '0000-00-00'),
-(9814232, '', '', '', '0.000', '2019-11-21', '0000-00-00');
+(1234520, 'test', 'ters', '', '35.000', '0000-00-00', '0000-00-00'),
+(1234560, 'test', '', '', '0.000', '0000-00-00', '0000-00-00'),
+(1934520, 'test', 'ters', '', '35.000', '0000-00-00', '0000-00-00'),
+(2234520, 'test', 'ters', '', '35.000', '0000-00-00', '0000-00-00'),
+(3234560, 'test', '', '', '0.000', '0000-00-00', '0000-00-00'),
+(3634560, 'test', '', '', '0.000', '0000-00-00', '0000-00-00'),
+(3834520, 'test', 'ters', '', '35.000', '0000-00-00', '0000-00-00'),
+(3934520, 'test', 'ters', '', '35.000', '0000-00-00', '0000-00-00'),
+(4334520, 'test', 'ters', '', '35.000', '0000-00-00', '0000-00-00'),
+(5234520, 'test', 'ters', '', '35.000', '0000-00-00', '0000-00-00'),
+(5634520, 'test', 'ters', '', '35.000', '0000-00-00', '0000-00-00'),
+(7241862, 'Muhammad Irfan Nazmi', 'Mandiri', '11111111', '0.000', '2019-11-26', '2019-11-26'),
+(7961452, '', '', '', '0.000', '2019-11-26', '0000-00-00'),
+(8934560, 'test', '', '', '0.000', '0000-00-00', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -110,7 +110,7 @@ INSERT INTO `seminar` (`seminar_id`, `seminar_name`, `seminar_date`, `seminar_ci
 (13, 'Teknologi Informasi di Era Industri 4.0', '2019-11-18 08:00:00', 'Bekasi', 'Mercubuana Jatisampurna, Jl. Raya Kranggan No.6, RT.006/RW.008, Jatiraden, Kec. Jatisampurna, Kota Bks, Jawa Barat 17433', 100, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Maecenas sed enim ut sem viverra. Consectetur libero id faucibus nisl tincidunt eget. Pretium viverra suspendisse potenti nullam ac tortor vitae. A condimentum vitae sapien pellentesque habitant morbi tristique senectus. At risus viverra adipiscing at in tellus. Eu nisl nunc mi ipsum faucibus vitae. Adipiscing tristique risus nec feugiat in fermentum posuere urna nec. Sed cras ornare arcu dui vivamus arcu felis bibendum ut. Et molestie ac feugiat sed lectus vestibulum mattis. Morbi tincidunt ornare massa eget', 'goverment,teknologi informasi,sciencetech,business', '35.000', 'Kemeja Bebas', 'https://maps.google.com/maps?q=mercubuana%20jatisampurna&t=&z=13&ie=UTF8&iwloc=&output=embed', '531,145,299,609,center,40'),
 (14, 'Unikom Career Days 2019', '2019-12-23 08:30:00', 'Bandung', 'auditorium miracle lantai 4, gedung lama, unikom bandung', 100, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Maecenas sed enim ut sem viverra. Consectetur libero id faucibus nisl tincidunt eget. Pretium viverra suspendisse potenti nullam ac tortor vitae. A condimentum vitae sapien pellentesque habitant morbi tristique senectus. At risus viverra adipiscing at in tellus. Eu nisl nunc mi ipsum faucibus vitae. Adipiscing tristique risus nec feugiat in fermentum posuere urna nec. Sed cras ornare arcu dui vivamus arcu felis bibendum ut. Et molestie ac feugiat sed lectus vestibulum mattis. Morbi tincidunt ornare massa eget', 'business,industri,homelifefstyle', '0.000', 'Kemeja', 'https://maps.google.com/maps?q=Universitas%20Komputer%20Indonesia%20(UNIKOM)&t=&z=13&ie=UTF8&iwloc=&output=embed', '321,900'),
 (15, 'Development Scholarship, Career, Entrepreneurship', '2019-11-28 08:30:00', 'Depok', 'Jl. Margonda Raya No.100, Pondok Cina, Kecamatan Beji, Kota Depok, Jawa Barat 16424', 100, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Maecenas sed enim ut sem viverra. Consectetur libero id faucibus nisl tincidunt eget. Pretium viverra suspendisse potenti nullam ac tortor vitae. A condimentum vitae sapien pellentesque habitant morbi tristique senectus. At risus viverra adipiscing at in tellus. Eu nisl nunc mi ipsum faucibus vitae. Adipiscing tristique risus nec feugiat in fermentum posuere urna nec. Sed cras ornare arcu dui vivamus arcu felis bibendum ut. Et molestie ac feugiat sed lectus vestibulum mattis. Morbi tincidunt ornare massa eget', 'goverment,schoolactivies,business', '40.000', 'Kemeja Bebas', 'https://maps.google.com/maps?q=Jl.%20Margonda%20Raya%20No.100%2C%20Pondok%20Cina%2C%20Kecamatan%20Beji%2C%20Kota%20Depok%2C%20Jawa%20Barat%2016424&t=&z=13&ie=UTF8&iwloc=&output=embed', '0'),
-(16, 'Engineer Cerdas Digital di Era Industri 4.0', '2019-11-18 08:00:00', 'Bekasi', 'Mercubuana Jatisampurna, Jl. Raya Kranggan No.6, RT.006/RW.008, Jatiraden, Kec. Jatisampurna, Kota Bks, Jawa Barat 17433', 100, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Maecenas sed enim ut sem viverra. Consectetur libero id faucibus nisl tincidunt eget. Pretium viverra suspendisse potenti nullam ac tortor vitae. A condimentum vitae sapien pellentesque habitant morbi tristique senectus. At risus viverra adipiscing at in tellus. Eu nisl nunc mi ipsum faucibus vitae. Adipiscing tristique risus nec feugiat in fermentum posuere urna nec. Sed cras ornare arcu dui vivamus arcu felis bibendum ut. Et molestie ac feugiat sed lectus vestibulum mattis. Morbi tincidunt ornare massa eget', 'sciencetech,business,section', '35.000', 'Batik', 'https://maps.google.com/maps?q=mercubuana%20jatisampurna&t=&z=13&ie=UTF8&iwloc=&output=embed', '568,1000'),
+(16, 'Engineer Cerdas Digital di Era Industri 4.0', '2019-11-30 08:00:00', 'Bekasi', 'Mercubuana Jatisampurna, Jl. Raya Kranggan No.6, RT.006/RW.008, Jatiraden, Kec. Jatisampurna, Kota Bks, Jawa Barat 17433', 100, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Maecenas sed enim ut sem viverra. Consectetur libero id faucibus nisl tincidunt eget. Pretium viverra suspendisse potenti nullam ac tortor vitae. A condimentum vitae sapien pellentesque habitant morbi tristique senectus. At risus viverra adipiscing at in tellus. Eu nisl nunc mi ipsum faucibus vitae. Adipiscing tristique risus nec feugiat in fermentum posuere urna nec. Sed cras ornare arcu dui vivamus arcu felis bibendum ut. Et molestie ac feugiat sed lectus vestibulum mattis. Morbi tincidunt ornare massa eget', 'sciencetech,business,section', '35.000', 'Batik', 'https://maps.google.com/maps?q=mercubuana%20jatisampurna&t=&z=13&ie=UTF8&iwloc=&output=embed', '568,1000'),
 (29548, 'TEST', '2019-11-30 00:00:00', 'bogor', ' Fill seminar held address a', 500, ' Fill seminar description a', 'charity', '60.000', 'batik', '', '');
 
 -- --------------------------------------------------------
@@ -138,10 +138,7 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`user_id`, `password`, `email`, `first_name`, `last_name`, `date_born`, `user_gender`, `user_phone`, `user_address`, `user_jobs`) VALUES
 (1, 'e77989ed21758e78331b20e477fc5582', 'mynameisnazmi41@gmail.com', 'admin', 'admin', '2019-11-01', '', '', '', ''),
-(2, 'e77989ed21758e78331b20e477fc5582', 'alfafarhansyarief@yahoo.co.id', 'Muhammad Irfan', 'Nazmi', '2019-11-29', 'Wanita', '089638056837', 'JL.H Nawawi Rt04/02 No 92 kel.cirimekar kec.cibinong kab.bogor', 'MAN INT'),
-(3, 'e77989ed21758e78331b20e477fc5582', 'irfannz@outlook.com', 'Muhammad Irfan', 'Nazmi', '0000-00-00', '', '', '', ''),
-(4, '0cc175b9c0f1b6a831c399e269772661', 'yanualdi@test.com', 'Muhammad', 'Nazmi', '0000-00-00', '', '', '', ''),
-(5, 'e77989ed21758e78331b20e477fc5582', 'fajarbarokah98@yahoo.co.id', 'fajar', 'barokah', '0000-00-00', '', '', '', '');
+(2, 'e77989ed21758e78331b20e477fc5582', 'alfafarhansyarief@yahoo.co.id', 'Alfa Farhan ', 'Syarief', '2019-10-16', 'Wanita', '089638056837', 'JL.H Nawawi Rt04/02 No 92 kel.cirimek1ar kec.cibinong kab.bogor11', 'test1');
 
 -- --------------------------------------------------------
 
@@ -153,7 +150,7 @@ CREATE TABLE `user_trx` (
   `booking_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `seminar_id` int(11) NOT NULL,
-  `payment_id` int(16) NOT NULL,
+  `payment_id` int(8) NOT NULL,
   `atten_status` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -162,19 +159,8 @@ CREATE TABLE `user_trx` (
 --
 
 INSERT INTO `user_trx` (`booking_id`, `user_id`, `seminar_id`, `payment_id`, `atten_status`) VALUES
-(236187, 2, 3, 2361872, 'Waiting Payment'),
-(256783, 4, 15, 2567834, 'Booked'),
-(289173, 3, 16, 2891733, 'Attend On Stage'),
-(365874, 2, 10, 3658742, 'Booked'),
-(412738, 2, 13, 4127382, 'Attend On Stage'),
-(514823, 2, 7, 5148232, 'Waiting Payment'),
-(613789, 2, 1, 6137892, 'Waiting Payment'),
-(692158, 5, 15, 6921585, 'Booked'),
-(692738, 2, 15, 6927382, 'Booked'),
-(716854, 2, 12, 7168542, 'Booked'),
-(916835, 3, 6, 9168353, 'Attend On Stage'),
-(918647, 2, 5, 9186472, 'Waiting Payment'),
-(981423, 2, 4, 9814232, 'Waiting Payment');
+(724186, 2, 15, 7241862, 'Waiting Confirmation'),
+(796145, 2, 16, 7961452, 'Waiting Payment');
 
 -- --------------------------------------------------------
 
@@ -195,7 +181,10 @@ CREATE TABLE `user_trx_ads` (
 --
 
 INSERT INTO `user_trx_ads` (`ads_id`, `user_id`, `seminar_id`, `ads_payment_id`, `ads_trx_status`) VALUES
-(83615, 2, 29548, 4812950, 'Review By Admin');
+(12311, 2, 10, 1234520, 'Published'),
+(12312, 2, 15, 5634520, 'Payment Confirmation'),
+(12315, 2, 16, 1234520, 'Review by admin'),
+(12323, 2, 4, 5634520, 'Waiting to Payment');
 
 --
 -- Indexes for dumped tables

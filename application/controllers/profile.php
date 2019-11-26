@@ -85,16 +85,12 @@ class profile extends CI_Controller {
 			$file = $_FILES['profilepic']['name'];
 			if(!empty($file)){
 			$this->up_pict($userid);}
-			$firstname = $this->input->post('firstname');
 			$status = $this->input->post('status');
-			$lastname = $this->input->post('lastname');
 			$tanggallahir = $this->input->post('tanggallahir');
 			$nohp = $this->input->post('nohp');
 			$sex = $this->input->post('sex');
 			$alamat = $this->input->post('alamat');
 			$data = array(
-				'first_name' => $firstname,
-				'last_name' => $lastname,
 				'date_born' => $tanggallahir,
 				'user_phone' => $nohp,
 				'user_gender' => $sex,
@@ -212,7 +208,7 @@ class profile extends CI_Controller {
 					Firstname 
 				</div>
 				<div id="col-75"> 
-					<input type="text" id="firstname" name="firstname" placeholder="Firstname" value='.ucwords($firstnamefill).'>
+					<input type="text" id="firstname" name="firstname" value='.ucwords($firstnamefill).' disabled>
 				</div>
 			</div>
 			<div id="row">
@@ -220,7 +216,7 @@ class profile extends CI_Controller {
 				Lastname 
 			</div>
 			<div id="col-75"> 
-				<input type="text" id="lastname" name="lastname" placeholder="Lastname" value='.ucwords($value['last_name']).'>
+					<input type="text" id="lastname" name="lastname" value='.ucwords($value['last_name']).' disabled>
 			</div>
 		</div>
 			<div id="row">

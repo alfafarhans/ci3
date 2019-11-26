@@ -45,20 +45,18 @@ class seminar_data extends CI_Model{
 
     function filter($category=null,$city=null, $price=null,$datestart="anydate",$datemax=null, $limit = null, $offset = null ){
       $curdate = date('Y-m-d');
-      $this->db->select("*");
+      $this->db->select("s.seminar_id,s.seminar_name,s.seminar_date,s.seminar_city,t.ads_trx_status");
       
       if($city != null){
         $toarr1 = explode(',',$city);
         $arrlength1 = count($toarr1);//arr length start 1
-        $arrsubs = $arrlength1;
-        $arrsubs--;
         if($arrlength1 === 1){
-          $this->db->where('seminar_city',$toarr1[0]);
+          $this->db->where('s.seminar_city',$toarr1[0]);
         }
         else if($arrlength1 > 1){
           $this->db->group_start();
           for ($i=0; $i<$arrlength1; $i++) { 
-            $this->db->or_where('seminar_city',$toarr1[$i]);
+            $this->db->or_where('s.seminar_city',$toarr1[$i]);
           }
           $this->db->group_end();
         }
@@ -67,41 +65,42 @@ class seminar_data extends CI_Model{
       $toarr = explode(',',$category);
       $arrlength = count($toarr);//arr length start 1
       if($arrlength === 1){
-        $this->db->like('seminar_tag',$toarr[0]);
+        $this->db->like('s.seminar_tag',$toarr[0]);
       }
       else if($arrlength > 1){
         $this->db->group_start();
         for ($i=0; $i<$arrlength; $i++) { 
-           $this->db->or_like('seminar_tag',$toarr[$i]);
+           $this->db->or_like('s.seminar_tag',$toarr[$i]);
         }
         $this->db->group_end();
       }
   }
       if (!empty($datemax)) {
-        $this->db->where('seminar_date >= ',$datestart);
-        $this->db->where('seminar_date <=',$datemax);
+        $this->db->where('s.seminar_date >= ',$datestart);
+        $this->db->where('s.seminar_date <=',$datemax);
       }
       elseif($datestart == "anydate"){
-        $this->db->where('seminar_date >=', $curdate);
+        $this->db->where('s.seminar_date >=', $curdate);
       }
       elseif(!empty($datestart)){
-        $this->db->where('DATE(seminar_date)',$datestart);
+        $this->db->where('DATE(s.seminar_date)',$datestart);
       }
 
       
       if (!empty($price)) {
         if($price == "free"){
-          $this->db->where('seminar_price', 0);
+          $this->db->where('s.seminar_price', 0);
         }
         else{
-          $this->db->where('seminar_price >', 0);
+          $this->db->where('s.seminar_price >', 0);
         }
       }
 
      
-  
-    $this->db->order_by('seminar_date', 'ASC');
-    return $this->db->get('seminar',$limit,$offset);
+    $this->db->join('user_trx_ads t','t.seminar_id = s.seminar_id');
+    $this->db->where('t.ads_trx_status', 'Published');
+    $this->db->order_by('s.seminar_date', 'ASC');
+    return $this->db->get('seminar s',$limit,$offset);
     
     }
     function scan_update($payid){

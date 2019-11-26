@@ -110,7 +110,22 @@ class profile_data extends CI_Model{
         }
         
       }
-    
+      function get_alltrx_ads(){
+        $this->db->select('t.ads_trx_status,t.ads_id,p.payment_id,s.seminar_id,s.seminar_name,s.seminar_date,s.seminar_held');
+        $this->db->from('user_trx_ads t'); 
+        $this->db->join('seminar s', 's.seminar_id= t.seminar_id');
+        $this->db->join('payment p', 'p.payment_id= t.ads_payment_id');
+        $this->db->order_by('p.payment_created','asc');         
+        $query = $this->db->get(); 
+        if($query->num_rows() > 0)
+        {
+            return $query;
+        }
+        else
+        {
+            return false;
+        }
+      }
 
 
       }//endclass
