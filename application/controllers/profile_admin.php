@@ -36,6 +36,24 @@ class profile_admin extends CI_Controller {
 		}
 	}
 	
+	function chsts ($para,$adsid){
+		if($para == 1){
+			$qeury = $this->profile_data->chsts_db($adsid,'Reupload');
+		}
+		elseif ($para == 2){
+			$qeury = $this->profile_data->chsts_db($adsid,'Approve');
+		}
+		elseif ($para == 2){
+			$qeury = $this->profile_data->chsts_db($adsid,'Rejected Event');
+		}
+
+		if($qeury){
+			redirect('profile_admin/Admin');
+		}
+
+
+	}
+
 	function changepage ($par){
 		$userid = $this->session->userdata('user_id');
 		
@@ -111,15 +129,15 @@ class profile_admin extends CI_Controller {
 									<a id=""  href="'.base_url().'event_detail/'.$value['seminar_id'].'">Check</a>
 								</div>
 								<div id="bota2">
-									<a id="cekdetail-sem"  href="'.base_url().'profile_admin/chsts/'.$value['ads_id'].'">Reupload</a>
+									<a id=""  href="'.base_url().'profile_admin/chsts/1/'.$value['ads_id'].'">Reupload</a>
 								</div>
 								<div id="bota3">
-									<a id="app-sem"  href="'.base_url().'profile_admin/chsts/'.$value['ads_id'].'">Approve</a>
+									<a id="app-sem"  href="'.base_url().'profile_admin/chsts/2/'.$value['ads_id'].'">Approve</a>
 								</div>
 								<div id="bota4">
-									<a id="dec-sem"  href="'.base_url().'profile_admin/chsts/'.$value['ads_id'].'">Rejected Event</a>
+									<a id="dec-sem"  href="'.base_url().'profile_admin/chsts/3/'.$value['ads_id'].'">Rejected Event</a>
 									</div>
-							</div>';
+							';
 							}
 				elseif ($value['ads_trx_status'] == "Waiting to Payment") {
 							echo'<div id="bota2">
@@ -136,9 +154,10 @@ class profile_admin extends CI_Controller {
 								</div>
 								<div id="bota4">
 									<a id="dec-sem"  href="'.base_url().'profile_admin/chsts_dec_ads/'.$value['ads_id'].'">Decline</a>
-								</div>
+							
 							</div>';
 						}
+						echo '</div></div>';
 					}
 
 				}

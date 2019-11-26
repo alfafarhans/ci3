@@ -127,6 +127,19 @@ class profile_data extends CI_Model{
         }
       }
 
+      function chsts_db($ads_id,$sts){
+        $this->db->set('ads_trx_status',$sts);
+        $this->db->where('ads_id',$ads_id);
+        $updater = $this->db->update('user_trx_ads');
+
+        if($updater){
+          return true;
+        }
+        else {
+          return false;
+        }
+        
+      }
 
       }//endclass
 ?>

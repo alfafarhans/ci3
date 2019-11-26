@@ -303,15 +303,7 @@
         }
     }
 
-
-
-    $(function() {
-        //avg color
-var rgb = getAverageRGB(document.getElementById('imps'));
-document.getElementById('rightposttop').style.backgroundColor = 'rgb('+rgb.r+','+rgb.g+','+rgb.b+')';
-document.getElementById('leftposttop').style.backgroundColor = 'rgb('+rgb.r+','+rgb.g+','+rgb.b+')';
- 
-function getAverageRGB(imgEl) {
+    function getAverageRGB(imgEl) {
     
     var blockSize = 5, // only visit every 5 pixels
         defaultRGB = {r:0,g:0,b:0}, // for non-supporting envs
@@ -356,6 +348,14 @@ function getAverageRGB(imgEl) {
     return rgb;
     
 }
+
+    $(function() {
+        //avg color
+var rgb = getAverageRGB(document.getElementById('imps'));
+document.getElementById('rightposttop').style.backgroundColor = 'rgb('+rgb.r+','+rgb.g+','+rgb.b+')';
+document.getElementById('leftposttop').style.backgroundColor = 'rgb('+rgb.r+','+rgb.g+','+rgb.b+')';
+ 
+
         let a1 = $('#a1').html();
         if(a1 == "Booked"){
             $('#a1').attr("href","javascript:void(0);");

@@ -149,29 +149,15 @@ class seminar_data extends CI_Model{
       }
 }
 
-      
-  
-    function getseminar()
-    {
-    $curdate = date('Y-m-d');
-    $this->db->where('seminar_date >=', $curdate);
-		$query =  $this->db->get('seminar');
-    return $query->result_array();
-  }
 
   function get_seminar_detail($id=null){
+    $curdate =  date('Y-m-d');
+    $this->db->select("seminar_price,seminar_id,seminar_name,seminar_seat,seminar_date,seminar_held,seminar_drcode,seminar_tag,seminar_desc,seminar_maps");
     $this->db->where('seminar_id',$id);
-    $query = $this->db->get('seminar');
-    return $query->result_array();
+    $this->db->where('seminar_date >=', $curdate);
+    return $this->db->get('seminar');
   }
-  /*
-  function get_seminar_price($id = null){
-    $this->db->SELECT("seminar_price");
-    $this->db->from('seminar');
-    $this->db->where('seminar_id',$id);
-    $query = $this->db->get();
-    return $query->row();
-  }*/
+ 
 
   function search_user_his($key = null,$u_id){
     $this->db->select("s.seminar_id, s.seminar_name, s.seminar_date, s.seminar_held, t.atten_status" );

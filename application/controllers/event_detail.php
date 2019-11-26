@@ -89,27 +89,33 @@ class event_detail extends CI_Controller {
 	
 	public function detail($s_id=null)//this should use ID parameter
 	{	//http://localhost:8080/ci3/index.php/home
-
-		$data['seminar']= $this->seminar_data->get_seminar_detail($s_id);
-	//	$checkuser = $this->seminar_data->userinftrx($s_id);
-		$this->session->set_userdata('seminar_id', $s_id);
-		$userid = $this->session->userdata('user_id');//session user
-		$username = $this->session->userdata('user_name');//lastname
-		$userstatus = $this->seminar_data->userinftrx($s_id,$userid);
-		$data['user_id'] = $userid;
-		$data['username'] = $username;
-		$data['seat'] = $this->countseat($s_id);
-		if(empty($userstatus->atten_status)){
-			$data['registered'] = "";
-		}
-		else{	
-			$data['registered'] = $userstatus->atten_status;
-		}
-		if( (!empty($userid)) && ($userid == 1) ){
-			$data['verifiedpos'] = 1;
-		}
 		
-		$this->load->view('event_detail',$data);
+		$result = $this->seminar_data->get_seminar_detail($s_id);
+		if($result->num_rows() > 0){
+				$data['seminar']= $result->result_array();
+			//	$checkuser = $this->seminar_data->userinftrx($s_id);
+				$this->session->set_userdata('seminar_id', $s_id);
+				$userid = $this->session->userdata('user_id');//session user
+				$username = $this->session->userdata('user_name');//lastname
+				$userstatus = $this->seminar_data->userinftrx($s_id,$userid);
+				$data['user_id'] = $userid;
+				$data['username'] = $username;
+				$data['seat'] = $this->countseat($s_id);
+				if(empty($userstatus->atten_status)){
+					$data['registered'] = "";
+				}
+				else{	
+					$data['registered'] = $userstatus->atten_status;
+				}
+				if( (!empty($userid)) && ($userid == 1) ){
+					$data['verifiedpos'] = 1;
+				}
+				
+				$this->load->view('event_detail',$data);
+		}
+		else{
+			redirect('home');
+		}
 	}
 
 	function applyevent($eventid = null,$userid = null){
