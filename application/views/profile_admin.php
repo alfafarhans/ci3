@@ -17,6 +17,30 @@
     }
 
     $(function() {
+
+       window.approve = function(ads_id,s_id){
+                        let ads_val_maps = $("#"+ads_id).val();
+                       // alert(ads_val);
+                        $.ajax({
+                        url:"<?php echo base_url(); ?>profile_admin/chsts_app_ads/",
+                        method:"POST",
+                        data:{maps:ads_val_maps,adsid:ads_id,sid:s_id},
+                        
+                        success:function(data){
+                            var responParse = JSON.parse(data);
+                                    if( responParse.sts == true  ){
+                                        alert(responParse.msg);
+                                        window.location.replace("<?php echo base_url();?>profile_admin/Admin/2");
+                                    }
+                                    else{
+                                        alert(responParse.msg);
+                                        window.location.replace("<?php echo base_url();?>profile_admin/Admin/2");
+                                    }
+                            
+                                }
+                        }); 
+                    }
+
         function navToContent(url){
 		$.ajax({
 			type: "GET",

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 26, 2019 at 04:42 PM
+-- Generation Time: Nov 27, 2019 at 01:28 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.1
 
@@ -76,7 +76,7 @@ INSERT INTO `payment` (`payment_id`, `bill_name`, `bill_bank_name`, `bill_number
 --
 
 CREATE TABLE `seminar` (
-  `seminar_id` int(11) NOT NULL,
+  `seminar_id` int(6) NOT NULL,
   `seminar_name` varchar(50) NOT NULL,
   `seminar_date` datetime NOT NULL,
   `seminar_city` varchar(20) NOT NULL,
@@ -147,9 +147,9 @@ INSERT INTO `user` (`user_id`, `password`, `email`, `first_name`, `last_name`, `
 --
 
 CREATE TABLE `user_trx` (
-  `booking_id` int(11) NOT NULL,
+  `booking_id` int(7) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `seminar_id` int(11) NOT NULL,
+  `seminar_id` int(6) NOT NULL,
   `payment_id` int(8) NOT NULL,
   `atten_status` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -169,10 +169,10 @@ INSERT INTO `user_trx` (`booking_id`, `user_id`, `seminar_id`, `payment_id`, `at
 --
 
 CREATE TABLE `user_trx_ads` (
-  `ads_id` int(11) NOT NULL,
+  `ads_id` int(6) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `seminar_id` int(11) NOT NULL,
-  `ads_payment_id` int(16) NOT NULL,
+  `seminar_id` int(6) NOT NULL,
+  `ads_payment_id` int(8) NOT NULL,
   `ads_trx_status` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -234,13 +234,13 @@ ALTER TABLE `user_trx_ads`
 -- AUTO_INCREMENT for table `seminar`
 --
 ALTER TABLE `seminar`
-  MODIFY `seminar_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29549;
+  MODIFY `seminar_id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29549;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables

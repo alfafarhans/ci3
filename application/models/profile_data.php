@@ -97,6 +97,27 @@ class profile_data extends CI_Model{
         }
       }
 
+      function approve_ads_db($maps,$adsid,$sid){
+
+        $this->db->set('seminar_maps',$maps);
+        $this->db->where('seminar_id',$sid);
+        $updater = $this->db->update('seminar');
+        if($updater){
+            $this->db->set('ads_trx_status','Published');
+            $this->db->where('ads_id',$adsid);
+            $updater2 = $this->db->update('user_trx_ads');
+            if($updater2){
+              return true;
+            }
+            else{
+              return false;
+            }
+        }
+        else{
+          return false;
+        }
+
+      }
       function denied($p_id){
         $this->db->set('atten_status','Reupload');
         $this->db->where('payment_id',$p_id);

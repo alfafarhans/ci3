@@ -36,6 +36,27 @@ class profile_admin extends CI_Controller {
 		}
 	}
 	
+	function chsts_app_ads(){
+		$maps = $this->input->post('maps');	
+		$adsid = $this->input->post('adsid');	
+		$sid = $this->input->post('sid');
+		$qeury = $this->profile_data->approve_ads_db($maps,$adsid,$sid);
+		if($qeury){
+			$sts = true;
+			$msg = "Success";
+		}
+		else{
+			$sts = false;
+			$msg = "Eror";
+		}
+		echo json_encode(
+			array(
+				'sts' => $sts,
+				'msg' => $msg
+				)
+			);
+	}
+
 	function chsts ($para,$adsid){
 		if($para == 1){
 			$qeury = $this->profile_data->chsts_db($adsid,'Reupload');
@@ -43,7 +64,7 @@ class profile_admin extends CI_Controller {
 		elseif ($para == 2){
 			$qeury = $this->profile_data->chsts_db($adsid,'Approve');
 		}
-		elseif ($para == 2){
+		elseif ($para == 3){
 			$qeury = $this->profile_data->chsts_db($adsid,'Rejected Event');
 		}
 
@@ -129,7 +150,7 @@ class profile_admin extends CI_Controller {
 									<a id=""  href="'.base_url().'event_detail/'.$value['seminar_id'].'">Check</a>
 								</div>
 								<div id="bota2">
-									<a id=""  href="'.base_url().'profile_admin/chsts/1/'.$value['ads_id'].'">Reupload</a>
+									<a id=""  href="'.base_url().'profile_admin/chsts/1/'.$value['ads_id'].'">Reupload all data</a>
 								</div>
 								<div id="bota3">
 									<a id="app-sem"  href="'.base_url().'profile_admin/chsts/2/'.$value['ads_id'].'">Approve</a>
@@ -150,11 +171,11 @@ class profile_admin extends CI_Controller {
 								<a href="'.base_url().'asset/pict/payment/'.$value['payment_id'].'.png" target="_blank">Open Image</a>
 								</div>		
 								<div id="bota3">
-									<a id="app-sem"  href="'.base_url().'profile_admin/chsts_app_ads/'.$value['ads_id'].'">Approve</a>
+									<button id="app-sem" onClick="approve('.$value['ads_id'].','.$value['seminar_id'].')" >Approve</button>
 								</div>
 								<div id="bota4">
-									<a id="dec-sem"  href="'.base_url().'profile_admin/chsts_dec_ads/'.$value['ads_id'].'">Decline</a>
-							
+									<a id="dec-sem"  href="'.base_url().'profile_admin/chsts_dec_ads/'.$value['ads_id'].'">Decline payment</a>
+									<input type="text" id="'.$value['ads_id'].'" name="maps">
 							</div>';
 						}
 						echo '</div></div>';
