@@ -118,53 +118,58 @@ class event_detail extends CI_Controller {
 		}
 	}
 
-	function applyevent($eventid = null,$userid = null){
-		
-	$cekuser = $this->seminar_data->cekseminar_user($eventid,$userid);
-	if($cekuser){
-		//$data_price = $this->seminar_data->get_seminar_price($eventid);
-		$this->load->helper('string');
-	do {
-		$bookid =  random_string('nozero', 6);
-		$resbook = $this->seminar_data->cekspecode($bookid,'booking_id','user_trx');
-		if ($resbook){
-			$reservedid = $bookid;
+	function applyevent($eventid = null,$userid = null , $evval){
+		if($evval == 0){
+			$evsts = "Booked";
 		}
-	} while ($resbook == false);
-
-
-		if($resbook){
-			$curdate = date('Y-m-d'); 
-			
-			$data1 = array(
-					'payment_id' => $reservedid.$userid,
-					//'seminar_price' => $data_price->seminar_price,
-					'payment_created' =>  $curdate);
-			$data2 = array(
-						'booking_id' => $reservedid,
-						'user_id' => $userid,
-						'seminar_id' => $eventid,
-						'payment_id' => $reservedid.$userid,
-						'atten_status' => 'Waiting Payment' );
-
-				$this->seminar_data->input_data($data1,'payment');
-				$this->seminar_data->input_data($data2,'user_trx');
-				$msg = "THANK YOU !!!";
-				//redirect('home');
-		}	
 		else{
-			echo "EROR INSERT";
+			$evsts = "Waiting Payment";
 		}
-	}
-	else{
-		$msg = "You already registered";
-	}	
-		echo json_encode(
-			array(
-				'msg' => $msg
-			   )
-			);
 
-	}
+			$cekuser = $this->seminar_data->cekseminar_user($eventid,$userid);
+			if($cekuser){
+				//$data_price = $this->seminar_data->get_seminar_price($eventid);
+				$this->load->helper('string');
+			do {
+				$bookid =  random_string('nozero', 6);
+				$resbook = $this->seminar_data->cekspecode($bookid,'booking_id','user_trx');
+				if ($resbook){
+					$reservedid = $bookid;
+				}
+			} while ($resbook == false);
+
+
+				if($resbook){
+					$curdate = date('Y-m-d'); 
+					
+					$data1 = array(
+							'payment_id' => $reservedid.$userid,
+							'payment_created' =>  $curdate);
+					$data2 = array(
+								'booking_id' => $reservedid,
+								'user_id' => $userid,
+								'seminar_id' => $eventid,
+								'payment_id' => $reservedid.$userid,
+								'atten_status' => $evsts );
+
+						$this->seminar_data->input_data($data1,'payment');
+						$this->seminar_data->input_data($data2,'user_trx');
+						$msg = "THANK YOU !!!";
+						//redirect('home');
+				}	
+				else{
+					echo "EROR INSERT";
+				}
+			}
+			else{
+				$msg = "You already registered";
+			}	
+				echo json_encode(
+					array(
+						'msg' => $msg
+					)
+					);
+
+			}
 
 }

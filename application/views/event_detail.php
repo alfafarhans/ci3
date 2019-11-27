@@ -139,7 +139,7 @@
                                 foreach ($seminar as $value) {
 
                                     echo 
-                                '<a id="a1" href="#" onClick="send('.$value['seminar_id'].','.$userid.');"> Daftar </a>';
+                                '<a id="a1" href="#" onClick="send('.$value['seminar_id'].','.$userid.','.$value['seminar_price'].');"> Daftar </a>';
                                     }
                                     
                                 $this->session->unset_userdata('seminar_id');
@@ -273,16 +273,22 @@
     </div>
     </div>
     <script type="text/javascript">
-   function send(eventid,userid) {
+   function send(eventid,userid,ev_val) {
                 $.ajax({
 					type: "POST",
-					url: "<?php echo base_url();?>event_detail/applyevent/"+eventid+"/"+userid,
+					url: "<?php echo base_url();?>event_detail/applyevent/"+eventid+"/"+userid+"/"+ev_val,
 					cache: false,
 					success: function(data){
                         var responParse = JSON.parse(data);
                         if(responParse.msg.length > 0 ){
                             alert(responParse.msg);
-                            window.location.replace("<?php echo base_url();?>payment/confirmation/"+eventid+"/"+userid);
+                            if(ev_val == 0){
+                                window.location.reload();
+                            }
+                            else{
+                                window.location.replace("<?php echo base_url();?>payment/confirmation/"+eventid+"/"+userid);
+                            }
+                            
                         }
                         else{
                             alert(responParse.msg);

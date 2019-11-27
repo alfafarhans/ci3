@@ -67,9 +67,12 @@ class profile_admin extends CI_Controller {
 		elseif ($para == 3){
 			$qeury = $this->profile_data->chsts_db($adsid,'Rejected Event');
 		}
+		elseif ($para == 4){
+			$qeury = $this->profile_data->chsts_db($adsid,'Payment Reject');
+		}
 
 		if($qeury){
-			redirect('profile_admin/Admin');
+			redirect('profile_admin/Admin/2');
 		}
 
 
@@ -156,7 +159,7 @@ class profile_admin extends CI_Controller {
 									<a id="app-sem"  href="'.base_url().'profile_admin/chsts/2/'.$value['ads_id'].'">Approve</a>
 								</div>
 								<div id="bota4">
-									<a id="dec-sem"  href="'.base_url().'profile_admin/chsts/3/'.$value['ads_id'].'">Rejected Event</a>
+									<a id="dec-sem"  href="'.base_url().'profile_admin/chsts/3/'.$value['ads_id'].'">Reject Event</a>
 									</div>
 							';
 							}
@@ -175,7 +178,7 @@ class profile_admin extends CI_Controller {
 									<input type="text" id="'.$value['ads_id'].'" name="maps">
 								</div>
 								<div id="bota4">
-									<a id="dec-sem"  href="'.base_url().'profile_admin/chsts_dec_ads/'.$value['ads_id'].'">Decline payment</a>
+									<a id="dec-sem"  href="'.base_url().'profile_admin/chsts/4/'.$value['ads_id'].'">Reject Payment</a>
 									
 							</div>';
 						}
