@@ -171,11 +171,12 @@ class profile_admin extends CI_Controller {
 								<a href="'.base_url().'asset/pict/payment/'.$value['payment_id'].'.png" target="_blank">Open Image</a>
 								</div>		
 								<div id="bota3">
-									<button id="app-sem" onClick="approve('.$value['ads_id'].','.$value['seminar_id'].')" >Approve</button>
+									<a id="app-sem" href"javascript:void(0);" onClick="approve('.$value['ads_id'].','.$value['seminar_id'].')" >Approve</a>
+									<input type="text" id="'.$value['ads_id'].'" name="maps">
 								</div>
 								<div id="bota4">
 									<a id="dec-sem"  href="'.base_url().'profile_admin/chsts_dec_ads/'.$value['ads_id'].'">Decline payment</a>
-									<input type="text" id="'.$value['ads_id'].'" name="maps">
+									
 							</div>';
 						}
 						echo '</div></div>';
