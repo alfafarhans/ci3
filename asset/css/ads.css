@@ -241,9 +241,86 @@ body{
         border-radius: 10px;
     }
 
+    #body #bodyartikel2 #mainright #rightbody3 {
+        width: 100%;
+        height: 100%;
+        margin-top: 10px;
+        border: 1px solid #D8D8D8;
+        border-radius: 10px;
+        display: flex;
+        position: relative;
+    }
+    
     #body #bodyartikel2 #mainright #rightbody4 {
         border-radius: 10px;
         display: flex;
+    }
+
+#objright3{
+width: 27%;
+flex-grow: 1;
+max-height: 250px;
+}
+
+#objright3 img{
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px 0 0 10px ;
+    margin-bottom: -4px;
+}
+
+#objright4{
+width: 80%;
+padding: 25px 30px 20px 30px;
+position: relative;
+}
+
+#objright4 #desc{
+    padding-right: 30px;
+}
+
+    #objright4 #desc #namatx{
+        font-size: 18px;
+        font-weight: bold;
+        text-align: left;
+        color: #484848;
+        padding-bottom: 10px;
+    }
+
+    #objright4 #desc #datetx {
+        text-align: left;
+        font-size: 15px;
+    } 
+
+    #objright4 #desc #kettx {
+        margin-top: 5px;
+        text-align: left;
+        font-size: 15px;
+    } 
+
+#bota2{
+    bottom: 15px;
+    position: absolute;
+}
+
+    #bota2 a{
+        background-color: #A0C6EA;
+        color: #135799;
+        display: block;
+        text-align: center;
+        width: 170px;
+        text-decoration: none;
+        padding: 12px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 13px;
+    }
+
+    #bota2 a:hover{
+        background-color: rgb(88, 144, 207);
+        color: #ffffff;
+        transition: 0.5s;
     }
  
 #objright{

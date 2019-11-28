@@ -377,7 +377,31 @@ function changepage ($par){
 		}//first if
 	elseif ($par == "myeventads") {
 		
-		echo 'TEST' ;
+		echo '
+		<div id="rightbody3">
+			<div id="objright3">
+				<img src="'.base_url().'asset/pict/banner/54698.png">
+			</div>
+
+			<div id="objright4">
+				<div id="desc">
+					<div id="namatx">
+						Seminar Aishteru her 
+					</div>  
+					<div id="datetx">
+						17 December 2019 
+					</div> 
+					<div id="kettx">
+						Jl Kh Noer Ali No.1 Bekasi 
+					</div> 
+				</div>
+
+				<div id="bota2">
+					<a id=""  href="#">Review By Admin</a>
+				</div>
+			</div>
+		</div>
+		' ;
 		
 	}//second if
 

@@ -77,46 +77,46 @@ $(function() {
 
         
         <div id="navbar_kanan">
-            <?php if(!empty($user_id))
-                    { echo '
-                                <div id="jdrop" class="dropdown">
-                                    <div id="jdrop" class="p"> Welcome '.$username.' ! </div>
-                                    ';
-                                    $path = './asset/pict/profile/'.$user_id.'.png';
-                                    if(file_exists($path)){
-                                        echo' <img id="jdrop" class="imgdrop" src="'.base_url().'asset/pict/profile/'.$user_id.'.png">
-                                    ';}
-                                    else{
-                                        echo' <img id="jdrop" class="imgdrop" src="'.base_url().'asset/pict/profile/default.png">
-                                    ';
-                                    }
+            <?php if(!empty($user_id)){ 
+                echo '
+                    <div id="jdrop" class="dropdown">
+                        <div id="jdrop" class="p"> Welcome '.$username.' ! </div>
+                ';
+                $path = './asset/pict/profile/'.$user_id.'.png';
+                if(file_exists($path)){
+                    echo' <img id="jdrop" class="imgdrop" src="'.base_url().'asset/pict/profile/'.$user_id.'.png">
+                ';}
+                else{
+                    echo' <img id="jdrop" class="imgdrop" src="'.base_url().'asset/pict/profile/default.png">
+                ';}
 
-                                if( (!empty($user_id)) && ($user_id == 1)  ){
-                                    echo'</div>
-                                            <div id="jcdrop" class="dropdown-content">
-                                                <a href="'.base_url().'profile_admin/Admin"> Profile </a> 
-                                                <a href="'.base_url().'logout"> Sign Out </a>
-                                            </div>
-                                        </div>
-                                    </div> ';
-                                    }
-                                else{
-                                    echo'
+                    if( (!empty($user_id)) && ($user_id == 1)  ){
+                        echo'
+                            </div>
+                            <div id="jcdrop" class="dropdown-content">
+                                <a href="'.base_url().'profile_admin/Admin"> Profile </a> 
+                                <a href="'.base_url().'logout"> Sign Out </a>
+                            </div>
+                        </div>
+                    </div> 
+                    ';}
+                    
+                    else{
+                        echo'
+                            </div>
+                                <div id="jcdrop" class="dropdown-content">
+                                    <a href="'.base_url().'profile/myprofile/1"> Profile </a> 
+                                    <a href="'.base_url().'profile/myprofile/2"> My Event </a> 
+                                    <a href="'.base_url().'profile/myprofile/3"> Settings </a> 
+                                    <a href="'.base_url().'logout"> Sign Out </a>
                                 </div>
-                                    <div id="jcdrop" class="dropdown-content">
-                                        <a href="'.base_url().'profile/myprofile/1"> Profile </a> 
-                                        <a href="'.base_url().'profile/myprofile/2"> My Event </a> 
-                                        <a href="'.base_url().'profile/myprofile/3"> Settings </a> 
-                                        <a href="'.base_url().'logout"> Sign Out </a>
-                                    </div>
-                             ';
-                                    }
-                    }
-            ?>
+                    ';}
+            }?>
         </div>
     </div>
 
         <!-- bagian isi  -->
+        
     <div id="body">
         <div id="bodyartikel2">
             <div id="toppost">

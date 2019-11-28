@@ -168,6 +168,15 @@ body{
             margin-top: 0;
         }
 
+        #register #confail {
+            position: relative;
+        }
+
+            #register #alerts {
+                position: absolute;
+                color: #D60B3E;
+            }
+
 #row:after {
     content: "";
     display: table;

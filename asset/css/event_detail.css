@@ -217,6 +217,12 @@ body{
             padding: 10px 0;
         }
 
+        #body #bodyartikel2 #leftpost2{
+            flex-basis: 140px;
+            flex-grow: 5;
+            padding: 10px 0 40px;
+        }
+
         #body #bodyartikel2 #rightpost{
             flex-basis: 100px;
             flex-grow: 13;

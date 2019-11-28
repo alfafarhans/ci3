@@ -178,7 +178,7 @@
 
             <div id="shadow">
                 <div id="flexbod">
-                    <div id="leftpost">
+                    <div id="leftpost2">
                     <?php
                     
                     foreach ($seminar as $value) {

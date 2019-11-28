@@ -147,37 +147,36 @@ class profile_admin extends CI_Controller {
 						</div> 
 					</div>';
 					
-				if($value['ads_trx_status'] == "Review by admin"){
+				if($value['ads_trx_status'] == "Review By Admin"){
 								echo '
-								<div id="bota2">
-									<a id=""  href="'.base_url().'event_detail/'.$value['seminar_id'].'">Check</a>
+								<div id="botacek">
+									<a id="" href="'.base_url().'event_detail/'.$value['seminar_id'].'">Check</a>
 								</div>
-								<div id="bota2">
+								<div id="botareup">
 									<a id=""  href="'.base_url().'profile_admin/chsts/1/'.$value['ads_id'].'">Reupload all data</a>
 								</div>
-								<div id="bota3">
+								<div id="botaapp">
 									<a id="app-sem"  href="'.base_url().'profile_admin/chsts/2/'.$value['ads_id'].'">Approve</a>
 								</div>
-								<div id="bota4">
+								<div id="botarej">
 									<a id="dec-sem"  href="'.base_url().'profile_admin/chsts/3/'.$value['ads_id'].'">Reject Event</a>
 									</div>
 							';
 							}
 				elseif ($value['ads_trx_status'] == "Waiting to Payment") {
-							echo'<div id="bota2">
-									<a id="cekdetail-sem"  href="#">Waiting user for upload</a>
-								
-						</div>';
+							echo'<div id="botawait">
+									<a id="cekdetail-sem"  href="#">Waiting User For Upload</a>
+								</div>';
 						}
 				elseif ($value['ads_trx_status'] == "Payment Confirmation") {
-								echo '	<div id="bota3">	
-								<a href="'.base_url().'asset/pict/payment/'.$value['payment_id'].'.png" target="_blank">Open Image</a>
+								echo '	<div id="botacek">	
+								<a href="'.base_url().'asset/pict/payment/'.$value['payment_id'].'.png" target="_blank">Check TF</a>
 								</div>		
-								<div id="bota3">
-									<a id="app-sem" href"javascript:void(0);" onClick="approve('.$value['ads_id'].','.$value['seminar_id'].')" >Approve</a>
-									<input type="text" id="'.$value['ads_id'].'" name="maps">
-								</div>
-								<div id="bota4">
+								<div id="botaapppay">
+									<a id="app-sem" href"javascript:void(0);" onClick="approve('.$value['ads_id'].','.$value['seminar_id'].')" >Approve</a>';
+									//<input type="text" id="'.$value['ads_id'].'" name="maps">
+								echo ' </div>
+								<div id="botarejpay">
 									<a id="dec-sem"  href="'.base_url().'profile_admin/chsts/4/'.$value['ads_id'].'">Reject Payment</a>
 									
 							</div>';
