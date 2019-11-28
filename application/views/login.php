@@ -20,9 +20,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div id="navbar_kiri">
             <a href="<?php echo base_url();?>home"> Seminar Go </a>
         </div>
-        <div id="navbar_kanan">
-            <a id="a" href="<?php echo base_url();?>register">Advertising </a> 
-        </div>
     </div>   
 
     <!-- bagian isi  -->

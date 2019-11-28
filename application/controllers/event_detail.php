@@ -34,9 +34,13 @@ class event_detail extends CI_Controller {
 			echo 'oke';
 		}
 		
-	 }
+	}
 	function pos($s_id){
+		$userid = $this->session->userdata('user_id');
+		$username = $this->session->userdata('user_name');
 		$data['sem_id'] = $s_id;
+		$data['user_id'] = $userid;
+		$data['username'] = $username;
 		$this->load->view('positioning',$data);
 	}
 	 function countseat($s_id){

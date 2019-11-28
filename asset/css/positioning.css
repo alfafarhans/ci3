@@ -25,7 +25,7 @@ body{
     position: relative;
     z-index: 1;
     background-color: #A0C6EA;
-    height: 57px;
+    height: 61px;
 }
 
 #top{
@@ -36,6 +36,7 @@ body{
     display: flex;
     background-color: #71A4D6;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    height: 61px;
 }
 
     #navbar_kiri{

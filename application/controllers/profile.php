@@ -356,7 +356,7 @@ elseif ($par == "myevent") {
 			}
 			else if( ($value['atten_status'] == "Attend On Stage") && ($currdate > $fulldate) ){
 				$out = '<div id="botaatt">
-						<a id="bota1" href="'.base_url().'event_detail/'.$value['seminar_id'].'">'.$value['atten_status'].'</a>
+						<a href="'.base_url().'event_detail/'.$value['seminar_id'].'">'.$value['atten_status'].'</a>
 						
 						</div>
 						
@@ -413,7 +413,7 @@ elseif ($par == "setting") {
 						Email
 					</div>
 					<div id="col-75"> 
-						<input type="email" id="email" name="email" value="'.$value['email'].'" required>
+						<input type="email" id="email" name="email" value="'.$value['email'].'" disabled>
 					</div>
 				</div>
 

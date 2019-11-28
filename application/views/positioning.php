@@ -24,58 +24,102 @@
 
 <body>
 
-<div id="wrapper">
+	<!-- bagian navbar  -->
+
+	<div id="wrapper">
 
     <div id="topr">
     </div>
 
-    <!-- bagian navbar  -->
-
     <div id="top">
         <div id="navbar_kiri">
-            <a href="<?php echo base_url(); ?>home"> Seminar Go </a>
+            <a id="hideico" href="<?php echo base_url(); ?>home"> Seminar Go </a>
         </div>
+    
+    <?php if(!empty($user_id)){
 
-        
-        <div id="navbar_kanan">
-            <?php if(!empty($user_id))
-                    { echo '
-                                <div id="jdrop" class="dropdown">
-                                    <div id="jdrop" class="p"> Welcome '.$username.' ! </div>
-                                    ';
-                                    $path = './asset/pict/profile/'.$user_id.'.png';
-                                    if(file_exists($path)){
-                                        echo' <img id="jdrop" class="imgdrop" src="'.base_url().'asset/pict/profile/'.$user_id.'.png">
-                                    ';}
-                                    else{
-                                        echo' <img id="jdrop" class="imgdrop" src="'.base_url().'asset/pict/profile/default.png">
-                                    ';
-                                    }
+        if( (!empty($user_id)) && ($user_id == 1)  ){
+            echo'
 
-                                if( (!empty($user_id)) && ($user_id == 1)  ){
-                                    echo'</div>
-                                            <div id="jcdrop" class="dropdown-content">
-                                                <a href="'.base_url().'profile_admin/Admin"> Profile </a> 
-                                                <a href="'.base_url().'logout"> Sign Out </a>
-                                            </div>
-                                        </div>
-                                    </div> ';
-                                    }
-                                else{
-                                    echo'
-                                </div>
-                                    <div id="jcdrop" class="dropdown-content">
-                                        <a href="'.base_url().'profile/myprofile/1"> Profile </a> 
-                                        <a href="'.base_url().'profile/myprofile/2"> My Event </a> 
-                                        <a href="'.base_url().'profile/myprofile/3"> Settings </a> 
-                                        <a href="'.base_url().'logout"> Sign Out </a>
-                                    </div>
-                             ';
-                                    }
-                    }
-            ?>
-        </div>
-	</div>
+            <div id="navbar_kanan">
+                <div id="jdrop" class="dropdown">
+                    <div id="jdrop" class="p"> Welcome '.$username.' ! </div>
+                    ';
+
+                    $path = './asset/pict/profile/'.$user_id.'.png';
+                    if(file_exists($path)){
+                        echo' <img id="jdrop" class="imgdrop" src="'.base_url().'asset/pict/profile/'.$user_id.'.png">
+                    ';}
+
+                    else{
+                        echo' <img id="jdrop" class="imgdrop" src="'.base_url().'asset/pict/profile/default.png">
+                    ';}
+                
+                echo' </div>
+
+                <div id="jcdrop" class="dropdown-content">
+                    <a href="'.base_url().'profile_admin/Admin"> Profile </a> 
+                    <a href="'.base_url().'logout"> Sign Out </a>
+                </div>
+            </div>
+        </div>  
+        ';}
+
+        else{
+            echo'
+  
+            <div id="navbar_kanan">
+                <a id="a" href="'.base_url().'ads/user">Advertising </a>
+
+                <div id="jdrop" class="dropdown">
+                    <div id="jdrop" class="p"> Welcome '.$username.' ! </div>
+                    ';
+                    $path = './asset/pict/profile/'.$user_id.'.png';
+                    if(file_exists($path)){
+                        echo' <img id="jdrop" class="imgdrop" src="'.base_url().'asset/pict/profile/'.$user_id.'.png">
+                    ';}
+
+                    else{
+                        echo' <img id="jdrop" class="imgdrop" src="'.base_url().'asset/pict/profile/default.png">
+                    ';}
+
+                echo'</div>
+
+                <div id="jcdrop" class="dropdown-content">
+                    <a href="'.base_url().'profile/myprofile/1"> Profile </a> 
+                    <a href="'.base_url().'profile/myprofile/2"> My Event </a> 
+                    <a href="'.base_url().'profile/myprofile/3"> Settings </a> 
+                    <a href="'.base_url().'logout"> Sign Out </a>
+                </div>
+            </div>
+        </div> 
+        ';}
+    }
+
+    else{
+        echo '
+            <div id="navbar_kanan">
+                <a id="a" href="'.base_url().'login/">Advertising </a>
+                <a id="a" href="'.base_url().'login/">Sign in</a>
+
+                <img class="schico" id="img" src="'.base_url().'asset/pict/icon/search-icon2.png">
+            
+                    <div class="humbermenico" id="container">
+                        <div class="humbermenico" id="bar1"></div>
+                        <div class="humbermenico" id="bar2"></div>
+                        <div class="humbermenico" id="bar3"></div>
+                    </div>
+                
+                <div id="dropdown-content2">
+                    <a href="'.base_url().'login/"> Advertising </a>
+                    <a href="'.base_url().'login/"> Sign In </a> 
+                </div>
+            </div>
+        </div>'
+        ;
+    }
+    
+    ?>
 	
 	<!-- bagian isi  -->
 	<div id="body">
