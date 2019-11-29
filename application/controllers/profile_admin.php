@@ -158,7 +158,7 @@ class profile_admin extends CI_Controller {
 									</div>
 							';
 							}
-				elseif (($value['ads_trx_status'] == "Waiting to Payment") || ($value['ads_trx_status'] == "Payment Reject")) {
+				elseif (($value['ads_trx_status'] == "Waiting for Payment") || ($value['ads_trx_status'] == "Payment Reject")) {
 							echo'<div id="botawait">
 									<a id="cekdetail-sem"  href="#">Waiting User For Upload</a>
 								</div>';
@@ -167,11 +167,11 @@ class profile_admin extends CI_Controller {
 								echo '	<div id="botacek">	
 								<a href="'.base_url().'asset/pict/payment/'.$value['payment_id'].'.png" target="_blank">Check TF</a>
 								</div>		
-								<div id="botaapppay">
+								<div id="botaapp">
 									<a id="app-sem" href"javascript:void(0);" onClick="approve('.$value['ads_id'].','.$value['seminar_id'].')" >Approve</a>';
 									//<input type="text" id="'.$value['ads_id'].'" name="maps">
 								echo ' </div>
-								<div id="botarejpay">
+								<div id="botarej">
 									<a id="dec-sem"  href="'.base_url().'profile_admin/chsts/4/'.$value['ads_id'].'">Reject Payment</a>
 									
 							</div>';
@@ -182,8 +182,6 @@ class profile_admin extends CI_Controller {
 				}
 			}
 
-			
-			
 		}/*second if*/
 
 	}

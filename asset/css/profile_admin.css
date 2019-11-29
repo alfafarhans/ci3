@@ -306,47 +306,14 @@ body{
             transition: 0.5s;
         }
 
-    #botareup{
-        width: 110px;
-        bottom: 15px;
-        left: 145px;
-        position: absolute;
-    }
-
-        #botareup a{
-            background-color: #D3C747;
-            color: #ffffff;
-            display: block;
-            text-align: center;
-            width: 100%;
-            text-decoration: none;
-            padding: 12px 20px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 13px;
-        }
-
-        #botareup a:hover{
-            background-color: #8F840D;
-            color: #ffffff;
-            transition: 0.5s;
-        }
-
     #botaapp{
         width: 50px;
         bottom: 15px;
-        left: 300px;
-        position: absolute;
-    }
-
-    #botaapppay{
-        width: 50px;
-        bottom: 15px;
         left: 145px;
         position: absolute;
     }
 
-        #botaapppay a, #botaapp a{
+        #botaapp a{
             color: #FFFFFF;
             background-color: #50B03B;
             display: block;
@@ -359,27 +326,20 @@ body{
             font-size: 13px;
         }
 
-        #botaapppay a:hover, #botaapp a:hover {
+        #botaapp a:hover {
             background-color: #1D780A;
             color: #FFFFFF;
             transition: 0.5s;
         }
 
     #botarej{
-        width: 70px;
-        bottom: 15px;
-        left: 395px;
-        position: absolute;
-    }
-
-    #botarejpay{
         width: 100px;
         bottom: 15px;
         left: 240px;
         position: absolute;
     }
 
-        #botarejpay a, #botarej a{
+        #botarej a{
             background-color: #D60B3E;
             color: #FFFFFF;
             display: block;
@@ -392,7 +352,7 @@ body{
             font-size: 13px;
         }
 
-        #botarejpay a:hover, #botarej a:hover {
+        #botarej a:hover {
             background-color: rgb(151, 0, 38);
             color: #FFFFFF;
             transition: 0.5s;
