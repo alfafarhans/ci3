@@ -62,7 +62,7 @@ class profile_admin extends CI_Controller {
 			$qeury = $this->profile_data->chsts_db($adsid,'Reupload');
 		}
 		elseif ($para == 2){
-			$qeury = $this->profile_data->chsts_db($adsid,'Approve');
+			$qeury = $this->profile_data->chsts_db($adsid,'Waiting to Payment');
 		}
 		elseif ($para == 3){
 			$qeury = $this->profile_data->chsts_db($adsid,'Rejected Event');
