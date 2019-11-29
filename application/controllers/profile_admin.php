@@ -58,19 +58,16 @@ class profile_admin extends CI_Controller {
 	}
 
 	function chsts ($para,$adsid){
-		if($para == 1){
-			$qeury = $this->profile_data->chsts_db($adsid,'Reupload');
-		}
-		elseif ($para == 2){
-			$qeury = $this->profile_data->chsts_db($adsid,'Waiting to Payment');
+		if ($para == 2){
+			$qeury = $this->profile_data->chsts_db($adsid,'Waiting for Payment');
 		}
 		elseif ($para == 3){
-			$qeury = $this->profile_data->chsts_db($adsid,'Rejected Event');
+			$qeury = $this->profile_data->chsts_db($adsid,'Rejected Event'); //trxx and all data
 		}
 		elseif ($para == 4){
 			$qeury = $this->profile_data->chsts_db($adsid,'Payment Reject');
 		}
-
+		
 		if($qeury){
 			redirect('profile_admin/Admin/2');
 		}
@@ -118,6 +115,7 @@ class profile_admin extends CI_Controller {
 				echo 'NO ONE REGISTER';
 			}
 			}//first if
+
 		elseif ($par == "app-sem") {
 			
 			$userdata = $this->profile_data->get_alltrx_ads($userid);
@@ -152,9 +150,6 @@ class profile_admin extends CI_Controller {
 								<div id="botacek">
 									<a id="" href="'.base_url().'event_detail/'.$value['seminar_id'].'">Check</a>
 								</div>
-								<div id="botareup">
-									<a id=""  href="'.base_url().'profile_admin/chsts/1/'.$value['ads_id'].'">Reupload all data</a>
-								</div>
 								<div id="botaapp">
 									<a id="app-sem"  href="'.base_url().'profile_admin/chsts/2/'.$value['ads_id'].'">Approve</a>
 								</div>
@@ -163,12 +158,12 @@ class profile_admin extends CI_Controller {
 									</div>
 							';
 							}
-				elseif ($value['ads_trx_status'] == "Waiting to Payment") {
+				elseif (($value['ads_trx_status'] == "Waiting to Payment") || ($value['ads_trx_status'] == "Payment Reject")) {
 							echo'<div id="botawait">
 									<a id="cekdetail-sem"  href="#">Waiting User For Upload</a>
 								</div>';
 						}
-				elseif ($value['ads_trx_status'] == "Payment Confirmation") {
+				elseif ($value['ads_trx_status'] == "Waiting Confirmation") {
 								echo '	<div id="botacek">	
 								<a href="'.base_url().'asset/pict/payment/'.$value['payment_id'].'.png" target="_blank">Check TF</a>
 								</div>		

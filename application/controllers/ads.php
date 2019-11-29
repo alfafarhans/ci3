@@ -377,31 +377,70 @@ function changepage ($par){
 		}//first if
 	elseif ($par == "myeventads") {
 		
-		echo '
+	$userid = $this->session->userdata('user_id');
+
+	if(!empty($userid)){
+		$qeury = $this->seminar_data->readusersts_db($userid);
+		if($qeury->num_rows() > 0){
+			foreach($qeury->result_array() as $value)
+			{
+				$daynum = date('d', strtotime($value['seminar_date']));
+				$mounth = date('F', strtotime($value['seminar_date']));
+				$year =  date('Y', strtotime($value['seminar_date']));
+
+			echo '
 		<div id="rightbody3">
 			<div id="objright3">
-				<img src="'.base_url().'asset/pict/banner/54698.png">
+				<img src="'.base_url().'asset/pict/banner/'.$value['seminar_id'].'.png">
 			</div>
 
 			<div id="objright4">
 				<div id="desc">
 					<div id="namatx">
-						Seminar Aishteru her 
+					'.$value['seminar_name'].' 
 					</div>  
 					<div id="datetx">
-						17 December 2019 
+						'.$daynum.'&nbsp;'.$mounth.'&nbsp;'.$year.' 
 					</div> 
 					<div id="kettx">
-						Jl Kh Noer Ali No.1 Bekasi 
+					'.$value['seminar_held'].'
 					</div> 
-				</div>
+				</div>';
 
-				<div id="bota2">
-					<a id=""  href="#">Review By Admin</a>
-				</div>
+				if($value['ads_trx_status'] == "Waiting for Payment"){
+					echo '<div id="bota2">
+					<a id="a1" href="'.base_url().'payment/confirmation/'.$value['seminar_id'].'/'.$userid.'/1/" >Waiting for payment</a>
+					</div>
+					';
+				}
+				elseif($value['ads_trx_status'] == "Payment Reject"){
+					echo '<div id="bota2">
+					<a id="a1" href="'.base_url().'payment/confirmation/'.$value['seminar_id'].'/'.$userid.'/1/" >Reupload your Payment</a>
+					</div>
+					';
+				}
+				else{
+					echo'
+					<div id="bota2">
+						<a id=""  href="#">'.$value['ads_trx_status'].'</a>
+					</div>';
+				}
+
+				
+
+				echo '
 			</div>
 		</div>
 		' ;
+		}
+		}
+		else{
+			echo 'NO REQUESTING ADS'; 
+		}
+		
+
+	}
+		
 		
 	}//second if
 

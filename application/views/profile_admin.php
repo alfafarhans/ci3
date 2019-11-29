@@ -5,91 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/profile_admin.css">
     <script type="text/javascript" src="<?php echo base_url();?>asset/js/jquery-3.4.1.min.js"></script>
-    <script type="text/javascript">
-    window.onclick = function(event) {
-        if ( (!event.target.matches('.dropdown')) &&(!event.target.matches('.imgdrop')) && (!event.target.matches('.result_sem')) && (!event.target.matches('.result_loc')) && (!event.target.matches('.p')) ){
-            $('#jcdrop').slideUp("fast");
-            $("#result_sem").html("");
-            $("#result_loc").html("");
-            $('#seminar').val("");
-            $('#location').val("");
-        }
-    }
-
-    $(function() {
-
-       window.approve = function(ads_id,s_id){
-                        let ads_val_maps = $("#"+ads_id).val();
-                       // alert(ads_val);
-                        $.ajax({
-                        url:"<?php echo base_url(); ?>profile_admin/chsts_app_ads/",
-                        method:"POST",
-                        data:{maps:ads_val_maps,adsid:ads_id,sid:s_id},
-                        
-                        success:function(data){
-                            var responParse = JSON.parse(data);
-                                    if( responParse.sts == true  ){
-                                        alert(responParse.msg);
-                                        window.location.replace("<?php echo base_url();?>profile_admin/Admin/2");
-                                    }
-                                    else{
-                                        alert(responParse.msg);
-                                        window.location.replace("<?php echo base_url();?>profile_admin/Admin/2");
-                                    }
-                            
-                                }
-                        }); 
-                    }
-
-        function navToContent(url){
-		$.ajax({
-			type: "GET",
-			url: url,
-			cache: false,
-			beforeSend: function(data){
-				$("#mainright").html("");
-			},
-			success: function(data){
-				$("#mainright").html(data);
-			}
-		});
-		return false;
-    }
-    //all trigerstate
-    $('#jdrop').click(function () { //.dropdown-content
-            let wit = $('#jdrop').width();
-            wit += 29.8;
-            console.log(wit);
-            $("#jcdrop").css("width", wit);
-            $('#jcdrop').slideDown( "fast" );
-        });
-
-    $('#app-pay').click(function () {
-        $("div#leftbody > div.objleft" ).removeClass("active");
-        $(this).parent().addClass("active");
-        let urli = "<?php echo base_url(); ?>profile_admin/changepage/app-pay";
-        navToContent(urli);
-        });
-    $('#app-sem').click(function () {
-        $("div#leftbody > div.objleft" ).removeClass("active");
-        $(this).parent().addClass("active");
-        let urli = "<?php echo base_url(); ?>profile_admin/changepage/app-sem";
-        navToContent(urli);
-        });
-    $(document).ready(function() {
-        let state = <?php echo $state?>;
-        if(state == 1){
-            $('#app-pay').click();
-        }
-        else if (state == 2) {
-            $('#app-sem').click();
-        }
-     });
-    });
-    
-
-    </script>
-	
 </head>
 <body>
     <div id="wrapper">
@@ -191,5 +106,90 @@
         <p>Copyright © 2019 </p>
     </div>
     </div>
+    
+    <script type="text/javascript">
+    window.onclick = function(event) {
+        if ( (!event.target.matches('.dropdown')) &&(!event.target.matches('.imgdrop')) && (!event.target.matches('.result_sem')) && (!event.target.matches('.result_loc')) && (!event.target.matches('.p')) ){
+            $('#jcdrop').slideUp("fast");
+            $("#result_sem").html("");
+            $("#result_loc").html("");
+            $('#seminar').val("");
+            $('#location').val("");
+        }
+    }
+
+    $(function() {
+
+       window.approve = function(ads_id,s_id){
+                        let ads_val_maps = $("#"+ads_id).val();
+                       // alert(ads_val);
+                        $.ajax({
+                        url:"<?php echo base_url(); ?>profile_admin/chsts_app_ads/",
+                        method:"POST",
+                        data:{maps:ads_val_maps,adsid:ads_id,sid:s_id},
+                        
+                        success:function(data){
+                            var responParse = JSON.parse(data);
+                                    if( responParse.sts == true  ){
+                                        alert(responParse.msg);
+                                        window.location.replace("<?php echo base_url();?>profile_admin/Admin/2");
+                                    }
+                                    else{
+                                        alert(responParse.msg);
+                                        window.location.replace("<?php echo base_url();?>profile_admin/Admin/2");
+                                    }
+                            
+                                }
+                        }); 
+                    }
+
+        function navToContent(url){
+		$.ajax({
+			type: "GET",
+			url: url,
+			cache: false,
+			beforeSend: function(data){
+				$("#mainright").html("");
+			},
+			success: function(data){
+				$("#mainright").html(data);
+			}
+		});
+		return false;
+    }
+    //all trigerstate
+    $('#jdrop').click(function () { //.dropdown-content
+            let wit = $('#jdrop').width();
+            wit += 29.8;
+            console.log(wit);
+            $("#jcdrop").css("width", wit);
+            $('#jcdrop').slideDown( "fast" );
+        });
+
+    $('#app-pay').click(function () {
+        $("div#leftbody > div.objleft" ).removeClass("active");
+        $(this).parent().addClass("active");
+        let urli = "<?php echo base_url(); ?>profile_admin/changepage/app-pay";
+        navToContent(urli);
+        });
+    $('#app-sem').click(function () {
+        $("div#leftbody > div.objleft" ).removeClass("active");
+        $(this).parent().addClass("active");
+        let urli = "<?php echo base_url(); ?>profile_admin/changepage/app-sem";
+        navToContent(urli);
+        });
+    $(document).ready(function() {
+        let state = <?php echo $state?>;
+        if(state == 1){
+            $('#app-pay').click();
+        }
+        else if (state == 2) {
+            $('#app-sem').click();
+        }
+     });
+    });
+    
+
+    </script>
 </body>
 </html>

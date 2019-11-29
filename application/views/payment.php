@@ -103,7 +103,7 @@
             <div id="rightbody">
                 <div id="content">
                     <div id="judul">
-                        Ringkasan Tagihan
+                    Bill Summary
                     </div>
                     <div id="judul">
                     <?php 
@@ -159,20 +159,26 @@
                 ?>
                  <?php 
                     foreach ($seminar as $value) {
-                        echo '<form method="post" action="'.base_url().'payment/updata/'.$value['payment_id'].'/'.$s_id.'" enctype="multipart/form-data">';
+                        if( empty($value['payment_id']) ){
+                            $pay_id = $value['ads_payment_id'];
+                        }
+                        else{
+                            $pay_id = $value['payment_id'];
+                        }
+                        echo '<form method="post" action="'.base_url().'payment/updata/'.$pay_id.'/'.$s_id.'" enctype="multipart/form-data">';
                      }
             ?>
+
                 <div id="judul2">
-                    Mohon lengkapi data pembayaran anda
+                Please complete your payment data
                 </div>
                 <div id="postpembayaran">
-                    Pastikan kesesuaian data rekening pengirim dengan rekening yang anda kirimkan. Data yang di input masih dapat anda ubah di event yang anda ikuti. Jika ada ketidaksesuaian data, 
-                    kami akan langsung informasikan dari notifikasi. 
+                Ensure that the sender's account data matches the account you are sending. Data that you input can still be changed in the event you are following. If there are data discrepancies, we will inform you immediately.
                 </div>
                
                 <div id="row">
                     <div id="col-25">
-                        Nama bank pengirim
+                    The name of the sending bank
                     </div>
                     <div id="col-75">
                     <!--errr-->
@@ -181,7 +187,7 @@
                 </div>
                 <div id="row">
                     <div id="col-25">
-                        Nama rekening pengirim
+                    The sender's account name
                     </div>
                     <div id="col-75">
                         <input type="text" id="namakirim" name="billname">
@@ -189,7 +195,7 @@
                 </div>
                 <div id="row">
                     <div id="col-25">
-                        No rekening pengirim
+                    Sender's account number
                     </div>
                     <div id="col-75">
                         <input type="number" id="norek" name="norek">
@@ -197,7 +203,7 @@
                 </div>
                 <div id="row">
                     <div id="col-25">
-                        Bukti pembayaran
+                    Proof of payment
                     </div>
                     <div id="col-75">
                         <input type="file" id="buktipem" name="buktiimg">

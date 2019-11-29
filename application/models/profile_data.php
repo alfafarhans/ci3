@@ -1,7 +1,8 @@
 <?php 
 class profile_data extends CI_Model{
-
   
+  
+   
 
   function get_cer ($seminarid=null,$userid=null){
     $this->db->select('u.first_name,u.last_name,t.booking_id,s.seminar_name,s.seminar_id,s.cert_coord');

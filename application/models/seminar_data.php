@@ -1,5 +1,13 @@
 <?php 
 class seminar_data extends CI_Model{
+  function readusersts_db ($userid=null){
+    $this->db->select('s.seminar_name,s.seminar_date,s.seminar_held,t.ads_trx_status,s.seminar_id,t.ads_payment_id');
+    $this->db->from('user_trx_ads t');
+    $this->db->where('t.user_id', $userid);
+    $this->db->join('seminar s','s.seminar_id = t.seminar_id');
+    return $this->db->get();
+  }
+
   function cekspecode($number,$entity,$table){
     $this->db->where($entity,$number);
     $query =  $this->db->get($table);
@@ -192,15 +200,21 @@ class seminar_data extends CI_Model{
       return $query->row();
     }
   }
-  function payment_detail ($seminarid=null,$userid=null){
-      $this->db->select('seminar_name,seminar_date,seminar_held,seminar_price,payment_id');
-      $this->db->from('user_trx');
-      $this->db->where('user_trx.user_id', $userid);
-      $this->db->where('user_trx.seminar_id', $seminarid);
-      $this->db->join('seminar','seminar.seminar_id = user_trx.seminar_id');
-      //$this->db->join('city','city.user_id = users.u_id')
+  function payment_detail ($seminarid=null,$userid=null,$mode=null){
+    if($mode == 1){
+      $paymentid =  "t.ads_payment_id";
+      $table = "user_trx_ads t";
+    }
+    else{
+      $paymentid =  "t.payment_id";
+      $table = "user_trx t";
+    }
+      $this->db->select('s.seminar_name,s.seminar_date,s.seminar_held,s.seminar_price,'.$paymentid);
+      $this->db->from($table);
+      $this->db->where('t.user_id', $userid);
+      $this->db->where('t.seminar_id', $seminarid);
+      $this->db->join('seminar s','s.seminar_id = t.seminar_id');
       return $this->db->get()->result_array();
-     
     }
 
 

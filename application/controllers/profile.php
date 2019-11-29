@@ -334,7 +334,7 @@ elseif ($par == "myevent") {
 				}
 			else if($value['atten_status'] == "Waiting Payment"){
 			$out = '	<div id="bota">
-					<a id="bota1" href="'.base_url().'payment/confirmation/'.$value['seminar_id'].'/'.$userid.'">' .$value['atten_status'].'</a>
+					<a id="bota1" href="'.base_url().'payment/confirmation/'.$value['seminar_id'].'/'.$userid.'/0/">' .$value['atten_status'].'</a>
 					</div>
 					<div id="bota2">
 						<a href="'.base_url().'/event_detail/cancle/'.$value['seminar_id'].'/'.$userid.'/1"> Cancel </a>
@@ -345,13 +345,13 @@ elseif ($par == "myevent") {
 					<a id="bota1" href="'.base_url().'event_detail/'.$value['seminar_id'].'">'.$value['atten_status'].'</a>
 					</div>
 					<div id="bota2">
-						<a style="width:80px" href="'.base_url().'payment/confirmation/'.$value['seminar_id'].'/'.$userid.'"> ReUpload </a>
+						<a style="width:80px" href="'.base_url().'payment/confirmation/'.$value['seminar_id'].'/'.$userid.'/0/"> ReUpload </a>
 						</div>';
 			}
 			else if($value['atten_status'] == "Missing Attendance" ){
 				$out = '
 					<div id="botamiss">
-						<a href="'.base_url().'payment/confirmation/'.$value['seminar_id'].'/'.$userid.'">Missing Attendance</a>
+						<a href="#">Missing Attendance</a>
 						</div>'	;
 			}
 			else if( ($value['atten_status'] == "Attend On Stage") && ($currdate > $fulldate) ){
@@ -360,8 +360,7 @@ elseif ($par == "myevent") {
 						
 						</div>
 						
-					<div id="bota2"><a style="width:80px" onClick= "get_cer('.$userid.','.$value['seminar_id'].')" href="#">Certificate</a></div>';
-						
+					<div id="bota2"><a style="width:80px" onClick= "get_cer('.$userid.','.$value['seminar_id'].')" href="#">Certificate</a></div>';		
 			}
 			else{
 				$out = '<div id="bota">

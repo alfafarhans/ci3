@@ -129,7 +129,7 @@
                             $register_fill = str_replace(" ","&nbsp;",$registered);
                                 foreach ($seminar as $value) {
                                     echo 
-                                '<a id="a1" href="'.base_url().'payment/confirmation/'.$value['seminar_id'].'/'.$userid.'" >'.$register_fill.'</a>';
+                                '<a id="a1" href="'.base_url().'payment/confirmation/'.$value['seminar_id'].'/'.$userid.'/0/" >'.$register_fill.'</a>';
                                     }
                                     
                                 $this->session->unset_userdata('seminar_id');

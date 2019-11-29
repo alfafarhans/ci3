@@ -21,14 +21,14 @@ class payment extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function confirmation($seminar_id=null,$user_id=null){ //confirmpage
+	public function confirmation($seminar_id=null,$user_id=null,$mode=null){ //confirmpage
 		$userid = $this->session->userdata('user_id');
 		if( (!empty($userid))  &&  ($user_id == $userid)  ){
 		$username = $this->session->userdata('user_name');
 		$data['user_id'] = $userid;
 		$data['username'] = $username;
 		$data['s_id'] = $seminar_id;
-		$data['seminar']= $this->seminar_data->payment_detail($seminar_id,$user_id);
+		$data['seminar']= $this->seminar_data->payment_detail($seminar_id,$user_id,$mode);
 		$this->load->view('payment',$data);
 		}
 		else{
@@ -36,9 +36,25 @@ class payment extends CI_Controller {
 		}
 
 	}
+
+	
 	function updata($payment_id,$s_id){
 		$userid = $this->session->userdata('user_id');
 		if(!empty($userid)){
+
+			if (strpos($payment_id, '0') !== false) {
+				$redir = "ads/user/2";
+				$table = "user_trx_ads";
+				$where = "ads_payment_id";
+				$status = "ads_trx_status";
+				
+			}
+			else{
+				$redir = "event_detail/".$s_id;
+				$table = "user_trx";
+				$where = "payment_id";
+				$status = "atten_status";
+			}
 		$billname = $this->input->post('billname');  
 		$billbank = $this->input->post('billbank');	//err
 		$norek = $this->input->post('norek');	
@@ -50,10 +66,10 @@ class payment extends CI_Controller {
 			$updating = $this->profile_data->update_data($data,'payment','payment_id' ,$payment_id);
 			$this -> up_pict($payment_id);
 			if($updating){
-				$data1 = array('atten_status' => "Waiting Confirmation");
-				$updater = $this->profile_data->update_data($data1,'user_trx','payment_id' ,$payment_id);
+				$data1 = array($status => "Waiting Confirmation");
+				$updater = $this->profile_data->update_data($data1,$table,$where ,$payment_id);
 				if($updater){
-					redirect(base_url().'event_detail/'.$s_id.'','refresh');
+				redirect(base_url().$redir,'refresh');
 				}
 
 			}			
