@@ -390,6 +390,12 @@ function changepage ($par){
 
 			echo '
 		<div id="rightbody3">
+			<div id="objright5">
+				Your ads status will not appear if your ads got rejected by administrator
+			</div>
+		</div>
+
+		<div id="rightbody3">
 			<div id="objright3">
 				<img src="'.base_url().'asset/pict/banner/'.$value['seminar_id'].'.png">
 			</div>

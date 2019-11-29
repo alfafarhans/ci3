@@ -256,6 +256,11 @@ body{
         display: flex;
     }
 
+#objright5{
+    padding: 15px;
+    color: #D60B3E;
+}
+
 #objright3{
 width: 27%;
 flex-grow: 1;
