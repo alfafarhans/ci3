@@ -275,11 +275,57 @@ body{
             font-size: 15px;
         } 
 
-    #botacek{
-        width: 70px;
-        bottom: 15px;
+    #items1{
+        width: 50px;
+        right: 60px;
+        top: 15px;
         position: absolute;
     }
+
+        #items1 a{
+            color: #FFFFFF;
+            background-color: #50B03B;
+            display: block;
+            text-align: center;
+            width: 100%;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        #items1 a:hover {
+            background-color: #1D780A;
+            color: #FFFFFF;
+            transition: 0.5s;
+        }
+
+    #items2{
+        width: 50px;
+        right: 60px;
+        top: 55px;
+        position: absolute;
+    }
+
+        #items2 a{
+            background-color: #D60B3E;
+            color: #FFFFFF;
+            display: block;
+            text-align: center;
+            width: 100%;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        #items2 a:hover {
+            background-color: rgb(151, 0, 38);
+            color: #FFFFFF;
+            transition: 0.5s;
+        }
 
     #botawait{
         width: 150px;
@@ -287,7 +333,7 @@ body{
         position: absolute;
     }
 
-        #botacek a, #botawait a{
+        #botawait a{
             background-color: #4D88C0;
             color: #FFFFFF;
             display: block;
@@ -305,11 +351,21 @@ body{
             color: #FFFFFF;
             transition: 0.5s;
         }
+ 
+    input[type=text]{
+        position: absolute;
+        bottom: 15px;
+        width: 100px;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px 0 0 4px;
+        resize: vertical;
+        font-size: 13px;
+    }
 
     #botaapp{
         width: 50px;
         bottom: 15px;
-        left: 145px;
         position: absolute;
     }
 
@@ -326,7 +382,27 @@ body{
             font-size: 13px;
         }
 
-        #botaapp a:hover {
+    #botaapppay{
+        width: 50px;
+        bottom: 15px;
+        left: 155px;
+        position: absolute;
+    }
+
+        #botaapppay a{
+            color: #FFFFFF;
+            background-color: #50B03B;
+            display: block;
+            text-align: center;
+            width: 100%;
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        #botaapppay a:hover, #botaapp a:hover {
             background-color: #1D780A;
             color: #FFFFFF;
             transition: 0.5s;
@@ -335,11 +411,18 @@ body{
     #botarej{
         width: 100px;
         bottom: 15px;
-        left: 240px;
+        left: 125px;
         position: absolute;
     }
 
-        #botarej a{
+    #botarejpay{
+        width: 100px;
+        bottom: 15px;
+        left: 250px;
+        position: absolute;
+    }
+
+        #botarej a, #botarejpay a{
             background-color: #D60B3E;
             color: #FFFFFF;
             display: block;
@@ -352,7 +435,7 @@ body{
             font-size: 13px;
         }
 
-        #botarej a:hover {
+        #botarej a:hover, #botarejpay a:hover {
             background-color: rgb(151, 0, 38);
             color: #FFFFFF;
             transition: 0.5s;
