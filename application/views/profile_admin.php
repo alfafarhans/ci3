@@ -123,6 +123,7 @@
        window.approve = function(ads_id,s_id){
                         let ads_val_maps = $("#"+ads_id).val();
                        // alert(ads_val);
+                       if(ads_val_maps.length > 0 ){
                         $.ajax({
                         url:"<?php echo base_url(); ?>profile_admin/chsts_app_ads/",
                         method:"POST",
@@ -141,6 +142,12 @@
                             
                                 }
                         }); 
+
+                       }
+                       else{
+                           alert('Dont forget the Maps !');
+                       }
+                        
                     }
 
         function navToContent(url){

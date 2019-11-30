@@ -56,7 +56,7 @@ class payment extends CI_Controller {
 				$status = "atten_status";
 			}
 		$billname = $this->input->post('billname');  
-		$billbank = $this->input->post('billbank');	//err
+		$billbank = $this->input->post('billbank');	
 		$norek = $this->input->post('norek');	
 		$data = array(
 			'bill_name' => $billname,

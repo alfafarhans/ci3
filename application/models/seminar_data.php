@@ -118,6 +118,7 @@ class seminar_data extends CI_Model{
       if($query){return true;}
       else{return false;}
     }
+
     function deletetrx($eventid,$userid){
       $this->db->select('payment_id');
       $this->db->where('seminar_id', $eventid);

@@ -6,21 +6,7 @@ class profile_admin extends CI_Controller {
 		parent::__construct();
 		$this->load->model('profile_data');
 	}
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/user_guide/general/urls.html
-	 */
+
     
 	public function Admin($direct = 1)
 	{	$userid = $this->session->userdata('user_id');
@@ -58,21 +44,16 @@ class profile_admin extends CI_Controller {
 	}
 
 	function chsts ($para,$adsid){
-		if ($para == 2){
+		if ($para == 1){
 			$qeury = $this->profile_data->chsts_db($adsid,'Waiting for Payment');
 		}
-		elseif ($para == 3){
-			$qeury = $this->profile_data->chsts_db($adsid,'Rejected Event'); //trxx and all data
-		}
-		elseif ($para == 4){
+		elseif ($para == 2){
 			$qeury = $this->profile_data->chsts_db($adsid,'Payment Reject');
 		}
 		
 		if($qeury){
 			redirect('profile_admin/Admin/2');
 		}
-
-
 	}
 
 	function changepage ($par){
@@ -151,10 +132,10 @@ class profile_admin extends CI_Controller {
 									<a id="" href="'.base_url().'event_detail/'.$value['seminar_id'].'">Check</a>
 								</div>
 								<div id="botaapp">
-									<a id="app-sem"  href="'.base_url().'profile_admin/chsts/2/'.$value['ads_id'].'">Approve</a>
+									<a id="app-sem"  href="'.base_url().'profile_admin/chsts/1/'.$value['ads_id'].'">Approve</a>
 								</div>
 								<div id="botarej">
-									<a id="dec-sem"  href="'.base_url().'profile_admin/chsts/3/'.$value['ads_id'].'">Reject Event</a>
+									<a id="dec-sem"  href="'.base_url().'profile_admin/deletetrxads/'.$value['ads_id'].'">Reject Event</a>
 									</div>
 							';
 							}
@@ -168,11 +149,11 @@ class profile_admin extends CI_Controller {
 								<a href="'.base_url().'asset/pict/payment/'.$value['payment_id'].'.png" target="_blank">Check TF</a>
 								</div>		
 								<div id="botaapp">
-									<a id="app-sem" href"javascript:void(0);" onClick="approve('.$value['ads_id'].','.$value['seminar_id'].')" >Approve</a>';
-									//<input type="text" id="'.$value['ads_id'].'" name="maps">
-								echo ' </div>
+									<a id="app-sem" href"javascript:void(0);" onClick="approve('.$value['ads_id'].','.$value['seminar_id'].')" >Approve</a>
+									<input type="text" id="'.$value['ads_id'].'" name="maps">
+								</div>
 								<div id="botarej">
-									<a id="dec-sem"  href="'.base_url().'profile_admin/chsts/4/'.$value['ads_id'].'">Reject Payment</a>
+									<a id="dec-sem"  href="'.base_url().'profile_admin/chsts/2/'.$value['ads_id'].'">Reject Payment</a>
 									
 							</div>';
 						}
@@ -185,6 +166,15 @@ class profile_admin extends CI_Controller {
 		}/*second if*/
 
 	}
+	
+	function deletetrxads($ads_id=null){
+		$deleteads = $this->profile_data->deletetrxads_db($ads_id);
+		if($deleteads){
+			redirect('profile_admin/Admin/2');
+		}
+	}
+	
+
 		function appv($p_id=null){
 			$userupdate = $this->profile_data->approved($p_id);
 			if($userupdate){

@@ -107,13 +107,20 @@
                     </div>
                     <div id="judul">
                     <?php 
-                        foreach ($seminar as $value) {
-                            echo 'Rp&nbsp;'.$value['seminar_price'];
+                        if( empty($value['payment_id']) ){
+                            echo 'Rp&nbsp;100.000,-';
                         }
+                        else{
+                            foreach ($seminar as $value) {
+                                echo 'Rp&nbsp;'.$value['seminar_price'];
+                            }
+                        }
+
+                       
                         ?>
                     </div>
                     <div id="isi">
-                        Silahkan lakukan transfer ke rekening berikut.
+                    Please do the transfer to the following account.
                         <div id="box">
                             <div id="flex">
                                 <img src="<?= base_url(); ?>asset/pict/bank/BCA.png">
@@ -135,7 +142,7 @@
             </div>
             <div id="leftbody">
                 <div id="judul">
-                    Pembayaran
+                Payment
                 </div>
                 <?php 
                     foreach ($seminar as $value) {

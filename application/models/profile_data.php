@@ -1,6 +1,27 @@
 <?php 
 class profile_data extends CI_Model{
   
+  function deletetrxads_db($adsid){
+    $this->db->select('ads_payment_id,seminar_id');
+    $this->db->where('ads_id', $adsid);
+    $query = $this->db->get('user_trx_ads');
+    $getval = $query->row();
+    $pay_id = $getval->ads_payment_id;
+    $sem_id = $getval->seminar_id;
+    if($query->num_rows() == 1){
+      $this->db->where('ads_id', $adsid);
+      $query2 = $this->db->delete('user_trx_ads');
+      if($query2){
+        $this->db->where('payment_id', $pay_id);
+        $query3 = $this->db->delete('payment');
+        if($query3){
+          $this->db->where('seminar_id', $sem_id);
+          $query4 = $this->db->delete('seminar');
+          return true;
+        }
+      }
+    }
+  }
   
    
 
@@ -99,20 +120,34 @@ class profile_data extends CI_Model{
       }
 
       function approve_ads_db($maps,$adsid,$sid){
+        $this->db->select('ads_payment_id');
+        $this->db->where('ads_id', $adsid);
+        $query = $this->db->get('user_trx_ads');
+        $getval = $query->row();
+        $pay_id = $getval->ads_payment_id; //updatedata userpaid
 
         $this->db->set('seminar_maps',$maps);
         $this->db->where('seminar_id',$sid);
         $updater = $this->db->update('seminar');
         if($updater){
-            $this->db->set('ads_trx_status','Published');
-            $this->db->where('ads_id',$adsid);
-            $updater2 = $this->db->update('user_trx_ads');
-            if($updater2){
-              return true;
-            }
-            else{
-              return false;
-            }
+            $this->db->set('user_paid', 100.000);
+            $this->db->where('payment_id',$pay_id);
+            $updater3 = $this->db->update('payment');
+                        if($updater3){
+                          $this->db->set('ads_trx_status','Published');
+                          $this->db->where('ads_id',$adsid);
+                          $updater2 = $this->db->update('user_trx_ads');
+                              if($updater2){
+                                return true;
+                              }
+                              else{
+                                return false;
+                              }
+                    }
+                    else {
+                      return false;
+                    }
+
         }
         else{
           return false;
