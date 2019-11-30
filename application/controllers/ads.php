@@ -376,6 +376,14 @@ function changepage ($par){
 	</form>';
 		}//first if
 	elseif ($par == "myeventads") {
+
+		echo ' 
+		<div id="rightbody3">
+			<div id="objright5">
+				Your ads status will not appear if your ads got rejected by administrator
+			</div>
+		</div>
+		';
 		
 	$userid = $this->session->userdata('user_id');
 
@@ -389,11 +397,6 @@ function changepage ($par){
 				$year =  date('Y', strtotime($value['seminar_date']));
 
 			echo '
-		<div id="rightbody3">
-			<div id="objright5">
-				Your ads status will not appear if your ads got rejected by administrator
-			</div>
-		</div>
 
 		<div id="rightbody3">
 			<div id="objright3">
