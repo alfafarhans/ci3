@@ -129,7 +129,7 @@ class ads extends CI_Controller {
 		$config0['allowed_types']        = 'jpg|png|jpeg';
 		$config0['file_name']            = $s_id.'.png'; //this
 		$config0['overwrite']			= true;
-		$config0['max_size']             = 5000; // 1MB
+		$config0['max_size']             = 0; // 1MB
 		$this->load->library('upload');
 		$this->upload->initialize($config0);
 		$this->upload->do_upload('semcert') ;//this
@@ -139,7 +139,7 @@ class ads extends CI_Controller {
 		$config1['allowed_types']        = 'jpg|png|jpeg';
 		$config1['file_name']            = $s_id.'.png'; //this
 		$config1['overwrite']			= true;
-		$config1['max_size']             = 5000; // 1MB
+		$config1['max_size']             = 0; // 1MB
 		$this->upload->initialize($config1);
 		$this->upload->do_upload('semban') ;//this
 		return true;
