@@ -107,11 +107,12 @@
                     </div>
                     <div id="judul">
                     <?php 
+                     foreach ($seminar as $value) {
+                         
                         if( empty($value['payment_id']) ){
                             echo 'Rp&nbsp;100.000,-';
                         }
                         else{
-                            foreach ($seminar as $value) {
                                 echo 'Rp&nbsp;'.$value['seminar_price'];
                             }
                         }
