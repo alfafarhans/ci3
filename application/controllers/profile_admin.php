@@ -81,11 +81,11 @@ class profile_admin extends CI_Controller {
 					</div>
 				</div>
 				<div id="bota">
-					<div id="items">
-						<a id="app-pay"  href="'.base_url().'profile_admin/appv/'.$value['payment_id'].'">Approve</a>
+					<div id="items1">
+						<a href="'.base_url().'profile_admin/appv/'.$value['payment_id'].'">Approve</a>
 					</div>
-					<div id="items">
-						<a id="den-pay" href="'.base_url().'profile_admin/dnnd/'.$value['payment_id'].'">Denied</a>
+					<div id="items2">
+						<a href="'.base_url().'profile_admin/dnnd/'.$value['payment_id'].'">Denied</a>
 					</div>
 				</div>
 			</div>';
@@ -128,9 +128,8 @@ class profile_admin extends CI_Controller {
 					
 				if($value['ads_trx_status'] == "Review By Admin"){
 								echo '
-								<div id="botacek">
-									<a id="" href="'.base_url().'event_detail/'.$value['seminar_id'].'">Check</a>
-								</div>
+								<a id="" href="'.base_url().'event_detail/'.$value['seminar_id'].'">Check</a>
+								
 								<div id="botaapp">
 									<a id="app-sem"  href="'.base_url().'profile_admin/chsts/1/'.$value['ads_id'].'">Approve</a>
 								</div>
@@ -148,11 +147,11 @@ class profile_admin extends CI_Controller {
 								echo '	<div id="botacek">	
 								<a href="'.base_url().'asset/pict/payment/'.$value['payment_id'].'.png" target="_blank">Check TF</a>
 								</div>		
-								<div id="botaapp">
+								<input type="text" id="'.$value['ads_id'].'" name="maps">
+								<div id="botaapppay">
 									<a id="app-sem" href"javascript:void(0);" onClick="approve('.$value['ads_id'].','.$value['seminar_id'].')" >Approve</a>
-									<input type="text" id="'.$value['ads_id'].'" name="maps">
 								</div>
-								<div id="botarej">
+								<div id="botarejpay">
 									<a id="dec-sem"  href="'.base_url().'profile_admin/chsts/2/'.$value['ads_id'].'">Reject Payment</a>
 									
 							</div>';
