@@ -439,6 +439,12 @@ position: relative;
         width: 75%;
     }
 
+        #font3{
+            color: #D60B3E;
+            font-size: 13px;
+            margin-top: 2px;
+        }
+
     #objright2 img{
         max-width: 100px;
     }

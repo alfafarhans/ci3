@@ -44,10 +44,13 @@ class seminar_data extends CI_Model{
     }
     function getcityfilter(){
       $curdate = date('Y-m-d');
-      $this->db->select('seminar_city');
-      $this->db->where('seminar_date >=', $curdate);
+      $this->db->select('s.seminar_city');
+      $this->db->from('seminar s');
+      $this->db->where('s.seminar_date >=', $curdate);
+      $this->db->where('t.ads_trx_status', 'Published');
+      $this->db->join('user_trx_ads t','s.seminar_id = t.seminar_id');
      $this->db->order_by('seminar_city', 'ASC');
-      return $this->db->get('seminar');
+      return $this->db->get();
     }
 
 
@@ -158,13 +161,19 @@ class seminar_data extends CI_Model{
       }
 }
 
+  function get_seminar_detail($id=null,$uid=null){
 
-  function get_seminar_detail($id=null){
     $curdate =  date('Y-m-d');
-    $this->db->select("seminar_price,seminar_id,seminar_name,seminar_seat,seminar_date,seminar_held,seminar_drcode,seminar_tag,seminar_desc,seminar_maps");
-    $this->db->where('seminar_id',$id);
-    $this->db->where('seminar_date >=', $curdate);
-    return $this->db->get('seminar');
+    $this->db->select("s.seminar_price,s.seminar_id,s.seminar_name,s.seminar_seat,s.seminar_date,s.seminar_held,s.seminar_drcode,s.seminar_tag,s.seminar_desc,s.seminar_maps");
+    $this->db->from('seminar s');
+    $this->db->where('s.seminar_id',$id);
+    $this->db->where('s.seminar_date >=', $curdate);
+    if($uid != 1){
+      $this->db->where('t.ads_trx_status', 'Published');
+    }
+    $this->db->join('user_trx_ads t','s.seminar_id = t.seminar_id');
+    return $this->db->get();
+   
   }
  
 

@@ -350,7 +350,9 @@ function changepage ($par){
 						Banner or Poster
 					</div>
 					<div id="col-75"> 
-						<input type="file" name="semban" id="semban">
+						<input type="file" name="semban" id="semban"> 
+						<div id="font3"> Max size 2 Mb
+						</div>
 					</div>
 				</div>
 
@@ -360,6 +362,8 @@ function changepage ($par){
 					</div>
 					<div id="col-75"> 
 						<input type="file" name="semcert" id="semcert">
+						<div id="font3"> Max size 2 Mb
+						</div>
 					</div>
 				</div>
 

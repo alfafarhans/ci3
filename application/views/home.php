@@ -383,11 +383,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 });
 
         $('#jdrop').on('click', function() {  //.dropdown-content
-            let wit = $('#jdrop').width();
-            wit += 29.8;
-            console.log(wit);
-            $("#jcdrop").css("width", wit);
-            $('#jcdrop').slideDown( "fast" );
+            let rwidth = $(window).width();
+            if (rwidth > 768){
+                let wit = $('#jdrop').width();
+                wit += 29.8;
+                console.log(wit);
+                $("#jcdrop").css("width", wit);
+                $('#jcdrop').slideDown( "fast" );
+            }
+
+            else{
+                $('#jcdrop').slideDown( "fast" );
+            }
         });
         //seminar seacrh
         $('#seminar').on('keyup', function() {
@@ -438,7 +445,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     
     <?php if(!empty($user_id)){
 
-        if( (!empty($user_id)) && ($user_id == 1)  ){
+        if( (!empty($user_id)) && ($user_id == 1)  ){ //if user admin
             echo'
 
             <div id="navbar_kanan">
@@ -465,11 +472,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>  
         ';}
 
-        else{
+        else{ //if user standard
             echo'
   
             <div id="navbar_kanan">
                 <a id="a" href="'.base_url().'ads/user">Advertising </a>
+
+                <img class="schico" id="img" src="'.base_url().'asset/pict/icon/search-icon2.png">
 
                 <div id="jdrop" class="dropdown">
                     <div id="jdrop" class="p"> Welcome '.$username.' ! </div>
@@ -496,7 +505,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         ';}
     }
 
-    else{
+    else{ // if not login
         echo '
             <div id="navbar_kanan">
                 <a id="a" href="'.base_url().'login/">Advertising </a>

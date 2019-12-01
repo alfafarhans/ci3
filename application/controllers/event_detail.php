@@ -6,21 +6,6 @@ class event_detail extends CI_Controller {
 		parent::__construct();		
 		$this->load->model('seminar_data');
 	}
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/user_guide/general/urls.html
-	 */
 	 function getposcert($s_id){
 		$namex = round($this->input->post('namex'),0);
 		$namey = round($this->input->post('namey'),0);
@@ -37,11 +22,18 @@ class event_detail extends CI_Controller {
 	}
 	function pos($s_id){
 		$userid = $this->session->userdata('user_id');
-		$username = $this->session->userdata('user_name');
-		$data['sem_id'] = $s_id;
-		$data['user_id'] = $userid;
-		$data['username'] = $username;
-		$this->load->view('positioning',$data);
+		if( !empty($userid) && $userid == 1 ){
+			$userid = $this->session->userdata('user_id');
+			$username = $this->session->userdata('user_name');
+			$data['sem_id'] = $s_id;
+			$data['user_id'] = $userid;
+			$data['username'] = $username;
+			$this->load->view('positioning',$data);
+	}
+	else{
+		redirect('home');
+	}
+		
 	}
 	 function countseat($s_id){
 		$seatnum = $this->seminar_data->countseat_db($s_id);
@@ -94,32 +86,38 @@ class event_detail extends CI_Controller {
 	public function detail($s_id=null)//this should use ID parameter
 	{	//http://localhost:8080/ci3/index.php/home
 		
-		$result = $this->seminar_data->get_seminar_detail($s_id);
-		if($result->num_rows() > 0){
-				$data['seminar']= $result->result_array();
-			//	$checkuser = $this->seminar_data->userinftrx($s_id);
-				$this->session->set_userdata('seminar_id', $s_id);
-				$userid = $this->session->userdata('user_id');//session user
-				$username = $this->session->userdata('user_name');//lastname
-				$userstatus = $this->seminar_data->userinftrx($s_id,$userid);
-				$data['user_id'] = $userid;
-				$data['username'] = $username;
-				$data['seat'] = $this->countseat($s_id);
-				if(empty($userstatus->atten_status)){
-					$data['registered'] = "";
+		$userid = $this->session->userdata('user_id');//session user
+		$result = $this->seminar_data->get_seminar_detail($s_id,$userid);
+		if($result){
+					if($result->num_rows() > 0){
+						$data['seminar']= $result->result_array();
+					//	$checkuser = $this->seminar_data->userinftrx($s_id);
+						$this->session->set_userdata('seminar_id', $s_id);
+						$username = $this->session->userdata('user_name');//lastname
+						$userstatus = $this->seminar_data->userinftrx($s_id,$userid);
+						$data['user_id'] = $userid;
+						$data['username'] = $username;
+						$data['seat'] = $this->countseat($s_id);
+						if(empty($userstatus->atten_status)){
+							$data['registered'] = "";
+						}
+						else{	
+							$data['registered'] = $userstatus->atten_status;
+						}
+						if( (!empty($userid)) && ($userid == 1) ){
+							$data['verifiedpos'] = 1;
+						}
+						
+						$this->load->view('event_detail',$data);
 				}
-				else{	
-					$data['registered'] = $userstatus->atten_status;
+				else{
+					redirect('home');
 				}
-				if( (!empty($userid)) && ($userid == 1) ){
-					$data['verifiedpos'] = 1;
-				}
-				
-				$this->load->view('event_detail',$data);
 		}
 		else{
 			redirect('home');
 		}
+				
 	}
 
 	function applyevent($eventid = null,$userid = null , $evval){

@@ -8,18 +8,18 @@ class profile_admin extends CI_Controller {
 	}
 
     
-	public function Admin($direct = 1)
+  	function Admin($direct = 1)
 	{	$userid = $this->session->userdata('user_id');
 		$username = $this->session->userdata('user_name');
-		if(empty($userid)){//if not signing
-			$this->load->view('home');
-		}
-		else{	//setting user if already login
-			$data['user_id'] = $userid;
-			$data['username'] = $username;
-			$data['state'] = $direct;
-			$this->load->view('profile_admin',$data);
-		}
+			if( !empty($userid) && $userid == 1 ){
+					$data['user_id'] = $userid;
+					$data['username'] = $username;
+					$data['state'] = $direct;
+					$this->load->view('profile_admin',$data);	
+			}
+			else{
+				redirect('home');
+			}
 	}
 	
 	function chsts_app_ads(){

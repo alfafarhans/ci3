@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/event_detail.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/event_detail_resolusi.css">
     <script type="text/javascript" src="<?php echo base_url();?>asset/js/jquery-3.4.1.min.js"></script>
 </head>
 <body>
@@ -15,7 +16,6 @@
     <!-- bagian navbar  -->
     <?php if(!empty($user_id))
     {
-      
         echo '
         <div id="top">
             <div id="navbar_kiri">
@@ -27,17 +27,17 @@
                 <div id="jdrop" class="dropdown">
                     <div id="jdrop" class="p"> Welcome '.$username.' ! </div>
                     ';
-        $path = './asset/pict/profile/'.$user_id.'.png';
-        if(file_exists($path)){
-                   echo' <img id="jdrop" class="imgdrop" src="'.base_url().'asset/pict/profile/'.$user_id.'.png">
-                ';}
-                else{
-                    echo' <img id="jdrop" class="imgdrop" src="'.base_url().'asset/pict/profile/default.png">
-                ';
-                }
+                    $path = './asset/pict/profile/'.$user_id.'.png';
+                    if(file_exists($path)){
+                    echo' <img id="jdrop" class="imgdrop" src="'.base_url().'asset/pict/profile/'.$user_id.'.png">
+                    ';}
+                    else{
+                        echo' <img id="jdrop" class="imgdrop" src="'.base_url().'asset/pict/profile/default.png">
+                    ';}
+
                 if( (!empty($user_id)) && ($user_id == 1)  ){
                     echo'
-                 </div>
+                </div>
                 <div id="jcdrop" class="dropdown-content">
                 <a href="'.base_url().'profile_admin/Admin"> Profile </a> 
                 <a href="'.base_url().'logout"> Sign Out </a></div>
@@ -53,7 +53,7 @@
                        <a href="'.base_url().'logout"> Sign Out </a></div>
                        </div>
                    </div> ';
-                    }
+                }
         
     }
     else{
@@ -62,10 +62,9 @@
             <div id="navbar_kiri">
                 <a href="'.base_url().'home"> Seminar Go </a>
             </div>
-            
+
             <div id="navbar_kanan">
-            <a id="a" href="'.base_url().'ads">Advertising </a> 
-            <a id="a" href="'.base_url().'login/">Sign in</a>
+                <a id="a" href="'.base_url().'login/">Sign in</a>
             </div>
         </div> ';
     }
@@ -382,11 +381,18 @@ document.getElementById('leftposttop').style.backgroundColor = 'rgb('+rgb.r+','+
         }
         //ALL TRIGEER
         $('#jdrop').on('click', function() {  //.dropdown-content
-            let wit = $('#jdrop').width();
-            wit += 29.8;
-            console.log(wit);
-            $("#jcdrop").css("width", wit);
-            $('#jcdrop').slideDown( "fast" );
+            let rwidth = $(window).width();
+            if (rwidth > 768){
+                let wit = $('#jdrop').width();
+                wit += 29.8;
+                console.log(wit);
+                $("#jcdrop").css("width", wit);
+                $('#jcdrop').slideDown( "fast" );
+            }
+
+            else{
+                $('#jcdrop').slideDown( "fast" );
+            }
         });
     });
 
