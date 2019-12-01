@@ -38,6 +38,7 @@ class ads extends CI_Controller {
 
 	}
 	function insertads($userid=null){
+	
 		if(!empty($userid)){
 		$semname = $this->input->post('semname');
 		$semdate = $this->input->post('semdate');
@@ -149,7 +150,6 @@ class ads extends CI_Controller {
 
 function changepage ($par){
 	$userid = $this->session->userdata('user_id');
-
 	if($par == "profile"){
 		echo '<form method="post" action="./insertads/'.$userid.'" enctype="multipart/form-data" id="myform">    
 		<div id="rightbody2">

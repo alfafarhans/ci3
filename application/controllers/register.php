@@ -39,7 +39,8 @@ class register extends CI_Controller {
 			'password' => $enpass,
 			'email' => $email,
 			'first_name' => $first_name,
-			'last_name' => $last_name
+			'last_name' => $last_name,
+			'org_id' => 1
 			);
 		$cek = $this->login_reg->cekemail($email);
 			if( $cek ){

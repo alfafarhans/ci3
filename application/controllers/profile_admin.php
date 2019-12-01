@@ -43,9 +43,16 @@ class profile_admin extends CI_Controller {
 			);
 	}
 
-	function chsts ($para,$adsid){
+	function chsts ($para,$adsid,$u_id=null){
 		if ($para == 1){
-			$qeury = $this->profile_data->chsts_db($adsid,'Waiting for Payment');
+			$resultpay = $this->profile_data->cek_orguser_db($u_id);//if true user shouldpay
+			if($resultpay){
+				$setsts = "Waiting for Payment";
+			}
+			else{	
+				$setsts = "Published";
+			}
+			$qeury = $this->profile_data->chsts_db($adsid,$setsts);
 		}
 		elseif ($para == 2){
 			$qeury = $this->profile_data->chsts_db($adsid,'Payment Reject');
@@ -131,7 +138,7 @@ class profile_admin extends CI_Controller {
 								<a id="" href="'.base_url().'event_detail/'.$value['seminar_id'].'">Check</a>
 								
 								<div id="botaapp">
-									<a id="app-sem"  href="'.base_url().'profile_admin/chsts/1/'.$value['ads_id'].'">Approve</a>
+									<a id="app-sem"  href="'.base_url().'profile_admin/chsts/1/'.$value['ads_id'].'/'.$value['user_id'].'">Approve</a>
 								</div>
 								<div id="botarej">
 									<a id="dec-sem"  href="'.base_url().'profile_admin/deletetrxads/'.$value['ads_id'].'">Reject Event</a>

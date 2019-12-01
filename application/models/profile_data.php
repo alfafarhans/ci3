@@ -1,6 +1,17 @@
 <?php 
 class profile_data extends CI_Model{
   
+  function cek_orguser_db($uid=null){
+    $this->db->select('org_id');
+    $this->db->where('user_id',$uid); 
+    $query = $this->db->get('user')->row();
+            if($query->org_id == 1){
+              return true;
+            }
+            else{
+              return false;
+            }
+  }
   function deletetrxads_db($adsid){
     $this->db->select('ads_payment_id,seminar_id');
     $this->db->where('ads_id', $adsid);
@@ -168,7 +179,7 @@ class profile_data extends CI_Model{
         
       }
       function get_alltrx_ads(){
-        $this->db->select('t.ads_trx_status,t.ads_id,p.payment_id,s.seminar_id,s.seminar_name,s.seminar_date,s.seminar_held');
+        $this->db->select('t.ads_trx_status,t.user_id,t.ads_id,p.payment_id,s.seminar_id,s.seminar_name,s.seminar_date,s.seminar_held');
         $this->db->from('user_trx_ads t'); 
         $this->db->join('seminar s', 's.seminar_id= t.seminar_id');
         $this->db->join('payment p', 'p.payment_id= t.ads_payment_id');
