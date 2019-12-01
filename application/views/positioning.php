@@ -5,21 +5,7 @@
 <script type="text/javascript" src="<?php echo base_url();?>asset/js/jquery-ui.min.js"></script>
 <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/positioning.css">
 
-	<script type="text/javascript">
-
-	$(function() {
-
-		$('#jdrop').on('click', function() {  //.dropdown-content
-				let wit = $('#jdrop').width();
-				wit += 29.8;
-				console.log(wit);
-				$("#jcdrop").css("width", wit);
-				$('#jcdrop').slideDown( "fast" );
-			});
-
-	});
-
-	</script>
+	
 </head>
 
 <body>
@@ -166,8 +152,21 @@
 			</div>
 		</center>
 	</div>
-
 <script type="text/javascript">
+
+$(function() {
+
+    $('#jdrop').on('click', function() {  //.dropdown-content
+            let wit = $('#jdrop').width();
+            wit += 29.8;
+            console.log(wit);
+            $("#jcdrop").css("width", wit);
+            $('#jcdrop').slideDown( "fast" );
+        });
+
+});
+
+
 var top1,left1,left2,top2,textalgn,txtsize,resnameleft1,resnametop1;//name,qr
 var coordinates = function(element) {
     element = $(element);

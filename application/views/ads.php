@@ -6,60 +6,7 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/ads.css">
     <script type="text/javascript" src="<?php echo base_url();?>asset/js/jquery-3.4.1.min.js"></script>
 
-    <script type="text/javascript">
-
-$(function() {
-
-    $('#jdrop').click(function () { //.dropdown-content
-            let wit = $('#jdrop').width();
-            wit += 29.8;
-            console.log(wit);
-            $("#jcdrop").css("width", wit);
-            $('#jcdrop').slideDown( "fast" );
-        });
-
-    function navToContent(url){
-		$.ajax({
-			type: "GET",
-			url: url,
-			cache: false,
-			beforeSend: function(data){
-				$("#mainright").html("");
-			},
-			success: function(data){
-				$("#mainright").html(data);
-			}
-		});
-		return false;
-    }
-
-    $('#profile').click(function () {
-        $("div#leftbody > div.objleft" ).removeClass("active");
-        $(this).parent().addClass("active");
-        let urli = "<?php echo base_url(); ?>ads/changepage/profile";
-        navToContent(urli);
-        });
-    $('#myeventads').click(function () {
-        $("div#leftbody > div.objleft" ).removeClass("active");
-        $(this).parent().addClass("active");
-        let urli = "<?php echo base_url(); ?>ads/changepage/myeventads";
-        navToContent(urli);
-        });
-        
-    $(document).ready(function() {
-        let state = <?php echo $state?>;
-        if(state == 1){
-            $('#profile').click();
-        }
-        else if (state == 2) {
-            $('#myeventads').click();
-        }
-     });
-
-
-});
     
-    </script>
 </head>
 <body>
     
@@ -153,6 +100,61 @@ $(function() {
         <p>Copyright © 2019 </p>
     </div>
     </div>
+
+    <script type="text/javascript">
+
+$(function() {
+
+    $('#jdrop').click(function () { //.dropdown-content
+            let wit = $('#jdrop').width();
+            wit += 29.8;
+            console.log(wit);
+            $("#jcdrop").css("width", wit);
+            $('#jcdrop').slideDown( "fast" );
+        });
+
+    function navToContent(url){
+		$.ajax({
+			type: "GET",
+			url: url,
+			cache: false,
+			beforeSend: function(data){
+				$("#mainright").html("");
+			},
+			success: function(data){
+				$("#mainright").html(data);
+			}
+		});
+		return false;
+    }
+
+    $('#profile').click(function () {
+        $("div#leftbody > div.objleft" ).removeClass("active");
+        $(this).parent().addClass("active");
+        let urli = "<?php echo base_url(); ?>ads/changepage/profile";
+        navToContent(urli);
+        });
+    $('#myeventads').click(function () {
+        $("div#leftbody > div.objleft" ).removeClass("active");
+        $(this).parent().addClass("active");
+        let urli = "<?php echo base_url(); ?>ads/changepage/myeventads";
+        navToContent(urli);
+        });
+        
+    $(document).ready(function() {
+        let state = <?php echo $state?>;
+        if(state == 1){
+            $('#profile').click();
+        }
+        else if (state == 2) {
+            $('#myeventads').click();
+        }
+     });
+
+
+});
+    
+    </script>
 </body>
 </html>
 

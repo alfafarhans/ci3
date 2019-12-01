@@ -271,6 +271,7 @@
         <p>Copyright © 2019 </p>
     </div>
     </div>
+    
     <script type="text/javascript">
    function send(eventid,userid,ev_val) {
                 $.ajax({

@@ -8,6 +8,225 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/home.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/home_resolusi.css">
     <script type="text/javascript" src="<?php echo base_url();?>asset/js/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+
+<!-- bagian navbar  -->
+
+    <div id="wrapper">
+
+    <div id="topr">
+    </div>
+
+    <div id="top">
+        <div id="navbar_kiri">
+            <a id="hideico" href="home"> Seminar Go </a>
+            <img id="img" class="result_semcio" src="asset/pict/icon/search-icon.png">
+            <input type="text" id="seminar" name="seminar" class = "result_sem" placeholder="Cari seminar">
+        </div>
+    
+        <div id = "result_sem" ></div>
+    
+    <?php if(!empty($user_id)){
+
+        if( (!empty($user_id)) && ($user_id == 1)  ){ //if user admin
+            echo'
+
+            <div id="navbar_kanan">
+                <div id="jdrop" class="dropdown">
+                    <div id="jdrop" class="p"> Welcome '.$username.' ! </div>
+                    ';
+
+                    $path = './asset/pict/profile/'.$user_id.'.png';
+                    if(file_exists($path)){
+                        echo' <img id="jdrop" class="imgdrop" src="'.base_url().'asset/pict/profile/'.$user_id.'.png">
+                    ';}
+
+                    else{
+                        echo' <img id="jdrop" class="imgdrop" src="'.base_url().'asset/pict/profile/default.png">
+                    ';}
+                
+                echo' </div>
+
+                <div id="jcdrop" class="dropdown-content">
+                    <a href="'.base_url().'profile_admin/Admin"> Profile </a> 
+                    <a href="'.base_url().'logout"> Sign Out </a>
+                </div>
+            </div>
+        </div>  
+        ';}
+
+        else{ //if user standard
+            echo'
+  
+            <div id="navbar_kanan">
+                <a id="a" href="'.base_url().'ads/user">Advertising </a>
+
+                <img class="schico" id="img" src="'.base_url().'asset/pict/icon/search-icon2.png">
+
+                <div id="jdrop" class="dropdown">
+                    <div id="jdrop" class="p"> Welcome '.$username.' ! </div>
+                    ';
+                    $path = './asset/pict/profile/'.$user_id.'.png';
+                    if(file_exists($path)){
+                        echo' <img id="jdrop" class="imgdrop" src="'.base_url().'asset/pict/profile/'.$user_id.'.png">
+                    ';}
+
+                    else{
+                        echo' <img id="jdrop" class="imgdrop" src="'.base_url().'asset/pict/profile/default.png">
+                    ';}
+
+                echo'</div>
+
+                <div id="jcdrop" class="dropdown-content">
+                    <a href="'.base_url().'profile/myprofile/1"> Profile </a> 
+                    <a href="'.base_url().'profile/myprofile/2"> My Event </a> 
+                    <a href="'.base_url().'profile/myprofile/3"> Settings </a> 
+                    <a href="'.base_url().'logout"> Sign Out </a>
+                </div>
+            </div>
+        </div> 
+        ';}
+    }
+
+    else{ // if not login
+        echo '
+            <div id="navbar_kanan">
+                <a id="a" href="'.base_url().'login/">Advertising </a>
+                <a id="a" href="'.base_url().'login/">Sign in</a>
+
+                <img class="schico" id="img" src="'.base_url().'asset/pict/icon/search-icon2.png">
+            
+                    <div class="humbermenico" id="container">
+                        <div class="humbermenico" id="bar1"></div>
+                        <div class="humbermenico" id="bar2"></div>
+                        <div class="humbermenico" id="bar3"></div>
+                    </div>
+                
+                <div id="dropdown-content2">
+                    <a href="'.base_url().'login/"> Advertising </a>
+                    <a href="'.base_url().'login/"> Sign In </a> 
+                </div>
+            </div>
+        </div>'
+        ;
+    }
+    
+    ?>  
+
+    <!-- bagian header  -->
+    <div id="header">
+        <div id="headerimg">
+            <div id="container">
+                <div id="container2">
+                    <h1> Solution Your Seminar Gateway </h1>
+                    
+                    <!-- bagian pencarian  -->
+
+                    <div id="smart">
+                        <div id="item">
+                            <a id="locact" href="javascript:void(0);"> Location
+                                <div id="i" class="icon">
+                                </div>
+                            </a>
+                            
+                        </div>
+
+                        <div id="item">
+                            <a id="catact" href="javascript:void(0);"> Category 
+                                <div id="i" class="iconcat">
+                                </div>
+                            </a>
+                        </div>
+
+                        <div id="item">
+                            <div class="custom-select">
+                                <select id="date">
+                                    <option value="anydate" selected> Any Date </option>
+                                    <option value="today"> Today </option>
+                                    <option value="tomorrow"> Tomorrow</option>
+                                    <option value="thisweekend"> This Weekend</option>
+                                    <option value="thisweek"> This Week</option>
+                                    <option value="nextweek"> Next Week</option>
+                                    <option value="thismonth"> This Month</option>
+                                    <option value="nextmonth"> Next Month</option>
+                                <select>
+                            </div>
+                        </div>
+
+                        <div id="item">
+                            <div class="custom-select">
+                                <select id="price">
+                                    <option value="" selected> Any Price </option>
+                                    <option value="free"> Free </option>
+                                    <option value="paid"> Paid </option>
+                                <select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="checkboxbox">
+        <div id="checkboxloc">
+            <div id="checkjudul">
+                    Where You Want ?
+                </div>
+                <div id="row">
+
+                <?php  
+                    $param = "";
+                    foreach($seminar->result_array() as $value){  
+                    if($param != $value['seminar_city']){
+                        $param = $value['seminar_city'];
+                        $strfil1 =  str_replace(" ","-",$value['seminar_city']);
+                        $strfil2 = strtolower($strfil1);
+                    echo '<div id="col-25">
+                    <label id="container">'.$value['seminar_city'].'
+                        <input type="checkbox" id="location" name="triger" class="val_city" value="'.$strfil2.'">
+                        <span id="checkmark"></span>
+                    </label>
+                </div>';
+                }
+                }
+                ?>  
+            </div>
+        </div>
+   
+        <div id="checkboxcat">
+            <div id="checkjudul">
+                What Category You Like ?
+            </div>
+            <div id="row" class = "catnoderow">
+               
+            </div>
+        </div>
+    </div>
+
+    <!-- bagian isi  -->
+    <div id="body">
+        <div id="postinduk">
+        
+        </div>
+
+        <div id="postinduk2">
+            <a id="a2"  href="javascript:void(0);" >&laquo; Back </a>
+            <a id="a1"  href="javascript:void(0);" > Next &raquo; </a> 
+        </div>  
+    </div>  
+    <!-- bagian footer  -->
+    
+    <div id="infofooter2">
+    </div>
+
+    <div id="footer">
+        <p>Copyright © 2019 </p>
+    </div>
+    
+    </div>
+
     <script type="text/javascript">
 
     window.onclick = function(event) {
@@ -424,228 +643,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         });*/
   
     </script>
-</head>
-<body>
-
-<!-- bagian navbar  -->
-
-    <div id="wrapper">
-
-    <div id="topr">
-    </div>
-
-    <div id="top">
-        <div id="navbar_kiri">
-            <a id="hideico" href="home"> Seminar Go </a>
-            <img id="img" class="result_semcio" src="asset/pict/icon/search-icon.png">
-            <input type="text" id="seminar" name="seminar" class = "result_sem" placeholder="Cari seminar">
-        </div>
-    
-        <div id = "result_sem" ></div>
-    
-    <?php if(!empty($user_id)){
-
-        if( (!empty($user_id)) && ($user_id == 1)  ){ //if user admin
-            echo'
-
-            <div id="navbar_kanan">
-                <div id="jdrop" class="dropdown">
-                    <div id="jdrop" class="p"> Welcome '.$username.' ! </div>
-                    ';
-
-                    $path = './asset/pict/profile/'.$user_id.'.png';
-                    if(file_exists($path)){
-                        echo' <img id="jdrop" class="imgdrop" src="'.base_url().'asset/pict/profile/'.$user_id.'.png">
-                    ';}
-
-                    else{
-                        echo' <img id="jdrop" class="imgdrop" src="'.base_url().'asset/pict/profile/default.png">
-                    ';}
-                
-                echo' </div>
-
-                <div id="jcdrop" class="dropdown-content">
-                    <a href="'.base_url().'profile_admin/Admin"> Profile </a> 
-                    <a href="'.base_url().'logout"> Sign Out </a>
-                </div>
-            </div>
-        </div>  
-        ';}
-
-        else{ //if user standard
-            echo'
-  
-            <div id="navbar_kanan">
-                <a id="a" href="'.base_url().'ads/user">Advertising </a>
-
-                <img class="schico" id="img" src="'.base_url().'asset/pict/icon/search-icon2.png">
-
-                <div id="jdrop" class="dropdown">
-                    <div id="jdrop" class="p"> Welcome '.$username.' ! </div>
-                    ';
-                    $path = './asset/pict/profile/'.$user_id.'.png';
-                    if(file_exists($path)){
-                        echo' <img id="jdrop" class="imgdrop" src="'.base_url().'asset/pict/profile/'.$user_id.'.png">
-                    ';}
-
-                    else{
-                        echo' <img id="jdrop" class="imgdrop" src="'.base_url().'asset/pict/profile/default.png">
-                    ';}
-
-                echo'</div>
-
-                <div id="jcdrop" class="dropdown-content">
-                    <a href="'.base_url().'profile/myprofile/1"> Profile </a> 
-                    <a href="'.base_url().'profile/myprofile/2"> My Event </a> 
-                    <a href="'.base_url().'profile/myprofile/3"> Settings </a> 
-                    <a href="'.base_url().'logout"> Sign Out </a>
-                </div>
-            </div>
-        </div> 
-        ';}
-    }
-
-    else{ // if not login
-        echo '
-            <div id="navbar_kanan">
-                <a id="a" href="'.base_url().'login/">Advertising </a>
-                <a id="a" href="'.base_url().'login/">Sign in</a>
-
-                <img class="schico" id="img" src="'.base_url().'asset/pict/icon/search-icon2.png">
-            
-                    <div class="humbermenico" id="container">
-                        <div class="humbermenico" id="bar1"></div>
-                        <div class="humbermenico" id="bar2"></div>
-                        <div class="humbermenico" id="bar3"></div>
-                    </div>
-                
-                <div id="dropdown-content2">
-                    <a href="'.base_url().'login/"> Advertising </a>
-                    <a href="'.base_url().'login/"> Sign In </a> 
-                </div>
-            </div>
-        </div>'
-        ;
-    }
-    
-    ?>  
-
-    <!-- bagian header  -->
-    <div id="header">
-        <div id="headerimg">
-            <div id="container">
-                <div id="container2">
-                    <h1> Solution Your Seminar Gateway </h1>
-                    
-                    <!-- bagian pencarian  -->
-
-                    <div id="smart">
-                        <div id="item">
-                            <a id="locact" href="javascript:void(0);"> Location
-                                <div id="i" class="icon">
-                                </div>
-                            </a>
-                            
-                        </div>
-
-                        <div id="item">
-                            <a id="catact" href="javascript:void(0);"> Category 
-                                <div id="i" class="iconcat">
-                                </div>
-                            </a>
-                        </div>
-
-                        <div id="item">
-                            <div class="custom-select">
-                                <select id="date">
-                                    <option value="anydate" selected> Any Date </option>
-                                    <option value="today"> Today </option>
-                                    <option value="tomorrow"> Tomorrow</option>
-                                    <option value="thisweekend"> This Weekend</option>
-                                    <option value="thisweek"> This Week</option>
-                                    <option value="nextweek"> Next Week</option>
-                                    <option value="thismonth"> This Month</option>
-                                    <option value="nextmonth"> Next Month</option>
-                                <select>
-                            </div>
-                        </div>
-
-                        <div id="item">
-                            <div class="custom-select">
-                                <select id="price">
-                                    <option value="" selected> Any Price </option>
-                                    <option value="free"> Free </option>
-                                    <option value="paid"> Paid </option>
-                                <select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="checkboxbox">
-        <div id="checkboxloc">
-            <div id="checkjudul">
-                    Where You Want ?
-                </div>
-                <div id="row">
-
-                <?php  
-                    $param = "";
-                    foreach($seminar->result_array() as $value){  
-                    if($param != $value['seminar_city']){
-                        $param = $value['seminar_city'];
-                        $strfil1 =  str_replace(" ","-",$value['seminar_city']);
-                        $strfil2 = strtolower($strfil1);
-                    echo '<div id="col-25">
-                    <label id="container">'.$value['seminar_city'].'
-                        <input type="checkbox" id="location" name="triger" class="val_city" value="'.$strfil2.'">
-                        <span id="checkmark"></span>
-                    </label>
-                </div>';
-                }
-                }
-                ?>  
-            </div>
-        </div>
-   
-        <div id="checkboxcat">
-            <div id="checkjudul">
-                What Category You Like ?
-            </div>
-            <div id="row" class = "catnoderow">
-               
-            </div>
-        </div>
-    </div>
-
-    <!-- bagian isi  -->
-    <div id="body">
-        <div id="postinduk">
-        
-        </div>
-
-        <div id="postinduk2">
-            <a id="a2"  href="javascript:void(0);" >&laquo; Back </a>
-            <a id="a1"  href="javascript:void(0);" > Next &raquo; </a> 
-        </div>  
-    </div>  
-    <!-- bagian footer  -->
-    
-    <div id="infofooter2">
-    </div>
-
-    <div id="footer">
-        <p>Copyright © 2019 </p>
-    </div>
-    
-    </div>
-
-    <script>
-   
-</script>
 
 </body>
 </html>

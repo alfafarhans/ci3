@@ -5,30 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/payment.css">
     <script type="text/javascript" src="<?php echo base_url();?>asset/js/jquery-3.4.1.min.js"></script>
-    <script type="text/javascript">
-    window.onclick = function(event) {
-        if ( (!event.target.matches('.dropdown')) &&(!event.target.matches('.imgdrop')) && (!event.target.matches('.result_sem')) && (!event.target.matches('.result_loc')) && (!event.target.matches('.p')) ){
-            $('#jcdrop').slideUp("fast");
-            $("#result_sem").html("");
-            $("#result_loc").html("");
-            $('#seminar').val("");
-            $('#location').val("");
-        }
-    }
-
-    $(function() {
-
-        //ALL TRIGEER
-        $('#jdrop').on('click', function() {  //.dropdown-content
-            let wit = $('#jdrop').width();
-            wit += 29.8;
-            console.log(wit);
-            $("#jcdrop").css("width", wit);
-            $('#jcdrop').slideDown( "fast" );
-        });
-    });
-
-    </script>
+    
 </head>
 <body>
     <div id="wrapper">
@@ -234,5 +211,30 @@
         <p>Copyright © 2019 </p>
     </div>
     </div>
+
+    <script type="text/javascript">
+    window.onclick = function(event) {
+        if ( (!event.target.matches('.dropdown')) &&(!event.target.matches('.imgdrop')) && (!event.target.matches('.result_sem')) && (!event.target.matches('.result_loc')) && (!event.target.matches('.p')) ){
+            $('#jcdrop').slideUp("fast");
+            $("#result_sem").html("");
+            $("#result_loc").html("");
+            $('#seminar').val("");
+            $('#location').val("");
+        }
+    }
+
+    $(function() {
+
+        //ALL TRIGEER
+        $('#jdrop').on('click', function() {  //.dropdown-content
+            let wit = $('#jdrop').width();
+            wit += 29.8;
+            console.log(wit);
+            $("#jcdrop").css("width", wit);
+            $('#jcdrop').slideDown( "fast" );
+        });
+    });
+
+    </script>
 </body>
 </html>
