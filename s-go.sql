@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.8.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 27, 2019 at 07:40 PM
--- Server version: 10.4.6-MariaDB
--- PHP Version: 7.3.9
+-- Generation Time: Dec 01, 2019 at 01:50 PM
+-- Server version: 10.1.37-MariaDB
+-- PHP Version: 7.3.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -29,9 +29,19 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `organization` (
-  `org_id` int(11) NOT NULL,
+  `org_id` int(6) NOT NULL,
   `org_name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `organization`
+--
+
+INSERT INTO `organization` (`org_id`, `org_name`) VALUES
+(1, 'User'),
+(2, 'Universitas Mercu Buana '),
+(3, 'Universitas Gunadarma'),
+(4, 'Universitas Padjajaran');
 
 -- --------------------------------------------------------
 
@@ -56,10 +66,13 @@ CREATE TABLE `payment` (
 INSERT INTO `payment` (`payment_id`, `bill_name`, `bill_bank_name`, `bill_number`, `user_paid`, `payment_created`, `paid_date`) VALUES
 (1111110, 'Sample', 'Sample', '123456789', '0.000', '2019-11-28', '2019-11-28'),
 (1827342, '', '', '', '0.000', '2019-11-27', '0000-00-00'),
-(2385190, '', '', '', '0.000', '2019-11-27', '0000-00-00'),
 (4682592, 'Alfa Farhan', 'Bca', '77777777', '35.000', '2019-11-27', '2019-11-27'),
+(5186930, '', '', '', '0.000', '2019-12-01', '0000-00-00'),
 (5892472, '', '', '', '0.000', '2019-11-27', '0000-00-00'),
+(6415730, '', '', '', '0.000', '2019-12-01', '0000-00-00'),
 (7623182, '', '', '', '0.000', '2019-11-27', '0000-00-00'),
+(8523790, '', '', '', '0.000', '2019-12-01', '0000-00-00'),
+(8714360, '', '', '', '0.000', '2019-12-01', '0000-00-00'),
 (9764312, '', '', '', '0.000', '2019-11-27', '0000-00-00');
 
 -- --------------------------------------------------------
@@ -103,8 +116,7 @@ INSERT INTO `seminar` (`seminar_id`, `seminar_name`, `seminar_date`, `seminar_ci
 (13, 'Teknologi Informasi di Era Industri 4.0', '2019-11-18 08:00:00', 'Bekasi', 'Mercubuana Jatisampurna, Jl. Raya Kranggan No.6, RT.006/RW.008, Jatiraden, Kec. Jatisampurna, Kota Bks, Jawa Barat 17433', 100, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Maecenas sed enim ut sem viverra. Consectetur libero id faucibus nisl tincidunt eget. Pretium viverra suspendisse potenti nullam ac tortor vitae. A condimentum vitae sapien pellentesque habitant morbi tristique senectus. At risus viverra adipiscing at in tellus. Eu nisl nunc mi ipsum faucibus vitae. Adipiscing tristique risus nec feugiat in fermentum posuere urna nec. Sed cras ornare arcu dui vivamus arcu felis bibendum ut. Et molestie ac feugiat sed lectus vestibulum mattis. Morbi tincidunt ornare massa eget', 'goverment,teknologi informasi,sciencetech,business', '35000', 'Kemeja Bebas', 'https://maps.google.com/maps?q=mercubuana%20jatisampurna&t=&z=13&ie=UTF8&iwloc=&output=embed', '531,145,299,609,center,40'),
 (14, 'Unikom Career Days 2019', '2019-12-23 08:30:00', 'Bandung', 'auditorium miracle lantai 4, gedung lama, unikom bandung', 100, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Maecenas sed enim ut sem viverra. Consectetur libero id faucibus nisl tincidunt eget. Pretium viverra suspendisse potenti nullam ac tortor vitae. A condimentum vitae sapien pellentesque habitant morbi tristique senectus. At risus viverra adipiscing at in tellus. Eu nisl nunc mi ipsum faucibus vitae. Adipiscing tristique risus nec feugiat in fermentum posuere urna nec. Sed cras ornare arcu dui vivamus arcu felis bibendum ut. Et molestie ac feugiat sed lectus vestibulum mattis. Morbi tincidunt ornare massa eget', 'business,industri,homelifefstyle', '0', 'Kemeja', 'https://maps.google.com/maps?q=Universitas%20Komputer%20Indonesia%20(UNIKOM)&t=&z=13&ie=UTF8&iwloc=&output=embed', '321,900'),
 (15, 'Development Scholarship, Career, Entrepreneurship', '2019-11-28 08:30:00', 'Depok', 'Jl. Margonda Raya No.100, Pondok Cina, Kecamatan Beji, Kota Depok, Jawa Barat 16424', 100, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Maecenas sed enim ut sem viverra. Consectetur libero id faucibus nisl tincidunt eget. Pretium viverra suspendisse potenti nullam ac tortor vitae. A condimentum vitae sapien pellentesque habitant morbi tristique senectus. At risus viverra adipiscing at in tellus. Eu nisl nunc mi ipsum faucibus vitae. Adipiscing tristique risus nec feugiat in fermentum posuere urna nec. Sed cras ornare arcu dui vivamus arcu felis bibendum ut. Et molestie ac feugiat sed lectus vestibulum mattis. Morbi tincidunt ornare massa eget', 'goverment,schoolactivies,business', '40000', 'Kemeja Bebas', 'https://maps.google.com/maps?q=Jl.%20Margonda%20Raya%20No.100%2C%20Pondok%20Cina%2C%20Kecamatan%20Beji%2C%20Kota%20Depok%2C%20Jawa%20Barat%2016424&t=&z=13&ie=UTF8&iwloc=&output=embed', '0'),
-(16, 'Engineer Cerdas Digital di Era Industri 4.0', '2019-11-30 08:00:00', 'Bekasi', 'Mercubuana Jatisampurna, Jl. Raya Kranggan No.6, RT.006/RW.008, Jatiraden, Kec. Jatisampurna, Kota Bks, Jawa Barat 17433', 100, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Maecenas sed enim ut sem viverra. Consectetur libero id faucibus nisl tincidunt eget. Pretium viverra suspendisse potenti nullam ac tortor vitae. A condimentum vitae sapien pellentesque habitant morbi tristique senectus. At risus viverra adipiscing at in tellus. Eu nisl nunc mi ipsum faucibus vitae. Adipiscing tristique risus nec feugiat in fermentum posuere urna nec. Sed cras ornare arcu dui vivamus arcu felis bibendum ut. Et molestie ac feugiat sed lectus vestibulum mattis. Morbi tincidunt ornare massa eget', 'sciencetech,business,section', '35000', 'Batik', 'https://maps.google.com/maps?q=mercubuana%20jatisampurna&t=&z=13&ie=UTF8&iwloc=&output=embed', '568,1000'),
-(54698, 'Seminar Aishteru her', '2019-12-17 09:00:00', 'Bekasi', 'Jl Kh Noer Ali No.1 Bekasi', 100, 'Lorem Ipsum', 'business,hobbies,sciencetech', '35000', 'Batik', '', '');
+(16, 'Engineer Cerdas Digital di Era Industri 4.0', '2019-11-30 08:00:00', 'Bekasi', 'Mercubuana Jatisampurna, Jl. Raya Kranggan No.6, RT.006/RW.008, Jatiraden, Kec. Jatisampurna, Kota Bks, Jawa Barat 17433', 100, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Maecenas sed enim ut sem viverra. Consectetur libero id faucibus nisl tincidunt eget. Pretium viverra suspendisse potenti nullam ac tortor vitae. A condimentum vitae sapien pellentesque habitant morbi tristique senectus. At risus viverra adipiscing at in tellus. Eu nisl nunc mi ipsum faucibus vitae. Adipiscing tristique risus nec feugiat in fermentum posuere urna nec. Sed cras ornare arcu dui vivamus arcu felis bibendum ut. Et molestie ac feugiat sed lectus vestibulum mattis. Morbi tincidunt ornare massa eget', 'sciencetech,business,section', '35000', 'Batik', 'https://maps.google.com/maps?q=mercubuana%20jatisampurna&t=&z=13&ie=UTF8&iwloc=&output=embed', '568,1000');
 
 -- --------------------------------------------------------
 
@@ -114,6 +126,7 @@ INSERT INTO `seminar` (`seminar_id`, `seminar_name`, `seminar_date`, `seminar_ci
 
 CREATE TABLE `user` (
   `user_id` int(11) NOT NULL,
+  `org_id` int(6) NOT NULL,
   `password` varchar(35) NOT NULL,
   `email` varchar(35) NOT NULL,
   `first_name` varchar(20) NOT NULL,
@@ -129,9 +142,10 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`user_id`, `password`, `email`, `first_name`, `last_name`, `date_born`, `user_gender`, `user_phone`, `user_address`, `user_jobs`) VALUES
-(1, 'e77989ed21758e78331b20e477fc5582', 'mynameisnazmi41@gmail.com', 'admin', 'admin', '2019-11-01', '', '', '', ''),
-(2, 'e77989ed21758e78331b20e477fc5582', 'alfafarhansyarief@yahoo.co.id', 'Alfa Farhan ', 'Syarief', '1998-10-22', 'Pria', '081314519410', 'JL. KH Noer Ali No.1 Jakasampurna Bekasi Barat', 'NOC');
+INSERT INTO `user` (`user_id`, `org_id`, `password`, `email`, `first_name`, `last_name`, `date_born`, `user_gender`, `user_phone`, `user_address`, `user_jobs`) VALUES
+(1, 2, 'e77989ed21758e78331b20e477fc5582', 'mynameisnazmi41@gmail.com', 'admin', 'admin', '2019-11-01', '', '', '', ''),
+(2, 1, 'e77989ed21758e78331b20e477fc5582', 'alfafarhansyarief@yahoo.co.id', 'Alfa Farhan ', 'Syarief', '1998-10-22', 'Pria', '081314519410', 'JL. KH Noer Ali No.1 Jakasampurna Bekasi Barat', 'NOC'),
+(10, 2, 'e77989ed21758e78331b20e477fc5582', 'irfannz@outlook.com', 'Muhammad', 'Nazmi', '0000-00-00', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -153,7 +167,7 @@ CREATE TABLE `user_trx` (
 
 INSERT INTO `user_trx` (`booking_id`, `user_id`, `seminar_id`, `payment_id`, `atten_status`) VALUES
 (182734, 2, 10, 1827342, 'Missing Attendance'),
-(468259, 2, 16, 4682592, 'Booked'),
+(468259, 2, 16, 4682592, 'Missing Attendance'),
 (589247, 2, 15, 5892472, 'Waiting Payment'),
 (762318, 2, 5, 7623182, 'Attend On Stage'),
 (976431, 2, 14, 9764312, 'Booked');
@@ -192,12 +206,17 @@ INSERT INTO `user_trx_ads` (`ads_id`, `user_id`, `seminar_id`, `ads_payment_id`,
 (13, 1, 13, 1111110, 'Published'),
 (14, 1, 14, 1111110, 'Published'),
 (15, 1, 15, 1111110, 'Published'),
-(16, 1, 16, 1111110, 'Published'),
-(82417, 2, 54698, 2385190, 'Review By Admin');
+(16, 1, 16, 1111110, 'Published');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `organization`
+--
+ALTER TABLE `organization`
+  ADD PRIMARY KEY (`org_id`);
 
 --
 -- Indexes for table `payment`
@@ -215,7 +234,8 @@ ALTER TABLE `seminar`
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`user_id`);
+  ADD PRIMARY KEY (`user_id`),
+  ADD KEY `org_idfk` (`org_id`);
 
 --
 -- Indexes for table `user_trx`
@@ -243,17 +263,23 @@ ALTER TABLE `user_trx_ads`
 -- AUTO_INCREMENT for table `seminar`
 --
 ALTER TABLE `seminar`
-  MODIFY `seminar_id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54699;
+  MODIFY `seminar_id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63753;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `user`
+--
+ALTER TABLE `user`
+  ADD CONSTRAINT `org_idfk` FOREIGN KEY (`org_id`) REFERENCES `organization` (`org_id`);
 
 --
 -- Constraints for table `user_trx`
