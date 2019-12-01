@@ -39,22 +39,23 @@
                     echo'
                 </div>
                 <div id="jcdrop" class="dropdown-content">
-                <a href="'.base_url().'profile_admin/Admin"> Profile </a> 
-                <a href="'.base_url().'logout"> Sign Out </a></div>
+                    <div id="jdrop" class="p2"> Welcome '.$username.' ! </div>
+                    <a href="'.base_url().'profile_admin/Admin"> Profile </a> 
+                    <a href="'.base_url().'logout"> Sign Out </a></div>
                 </div>
             </div> ';
                     }
              else{
                 echo'</div>
                        <div id="jcdrop" class="dropdown-content">
-                       <a href="'.base_url().'profile/myprofile/1"> Profile </a> 
-                       <a href="'.base_url().'profile/myprofile/2"> My Event </a> 
-                       <a href="'.base_url().'profile/myprofile/3"> Settings </a> 
-                       <a href="'.base_url().'logout"> Sign Out </a></div>
+                            <div id="jdrop" class="p2"> Welcome '.$username.' ! </div>
+                            <a href="'.base_url().'profile/myprofile/1"> Profile </a> 
+                            <a href="'.base_url().'profile/myprofile/2"> My Event </a> 
+                            <a href="'.base_url().'profile/myprofile/3"> Settings </a> 
+                            <a href="'.base_url().'logout"> Sign Out </a></div>
                        </div>
                    </div> ';
                 }
-        
     }
     else{
         echo '

@@ -4,9 +4,9 @@
 
 @media (min-width: 320px) and (max-width: 393px) {
 
-  #navbar_kanan {
-    right: 0;
-  }
+   #navbar_kanan {
+      right: 0;
+   }
 
   .dropdown {
     display: block;
@@ -76,7 +76,6 @@
   #navbar_kanan {
     right: 0;
   }
-  
   .dropdown {
     display: block;
   }

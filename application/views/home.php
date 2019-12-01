@@ -49,6 +49,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 echo' </div>
 
                 <div id="jcdrop" class="dropdown-content">
+                    <div id="jdrop" class="p2"> Welcome '.$username.' ! </div>
                     <a href="'.base_url().'profile_admin/Admin"> Profile </a> 
                     <a href="'.base_url().'logout"> Sign Out </a>
                 </div>
@@ -79,6 +80,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 echo'</div>
 
                 <div id="jcdrop" class="dropdown-content">
+                    <div id="jdrop" class="p2"> Welcome '.$username.' ! </div>
+                    <a id="a3" href="'.base_url().'ads/user">Advertising </a>
                     <a href="'.base_url().'profile/myprofile/1"> Profile </a> 
                     <a href="'.base_url().'profile/myprofile/2"> My Event </a> 
                     <a href="'.base_url().'profile/myprofile/3"> Settings </a> 

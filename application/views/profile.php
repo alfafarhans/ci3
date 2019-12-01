@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/profile.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/css/profile_resolusi.css">
     <script type="text/javascript" src="<?php echo base_url();?>asset/js/jquery-3.4.1.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url();?>asset/js/jspdf.min.js"></script>
 	<style>
@@ -37,22 +38,24 @@
                     echo' <img id="jdrop" class="imgdrop" src="'.base_url().'asset/pict/profile/default.png">
                 ';
                 }
-    if( (!empty($user_id)) && ($user_id == 7320006)  ){
+    if( (!empty($user_id)) && ($user_id == 1)  ){
                     echo'
                  </div>
                 <div id="jcdrop" class="dropdown-content">
-                <a href="'.base_url().'profile_admin/Admin"> Profile </a> 
-                <a href="'.base_url().'logout"> Sign Out </a></div>
+                    <div id="jdrop" class="p2"> Welcome '.$username.' ! </div>
+                    <a href="'.base_url().'profile_admin/Admin"> Profile </a> 
+                    <a href="'.base_url().'logout"> Sign Out </a></div>
                 </div>
             </div> ';
                     }
              else{
                 echo'</div>
                        <div id="jcdrop" class="dropdown-content">
-                       <a href="'.base_url().'profile/myprofile/1"> Profile </a> 
-                       <a href="'.base_url().'profile/myprofile/2"> My Event </a> 
-                       <a href="'.base_url().'profile/myprofile/3"> Settings </a> 
-                       <a href="'.base_url().'logout"> Sign Out </a></div>
+                            <div id="jdrop" class="p2"> Welcome '.$username.' ! </div>
+                            <a href="'.base_url().'profile/myprofile/1"> Profile </a> 
+                            <a href="'.base_url().'profile/myprofile/2"> My Event </a> 
+                            <a href="'.base_url().'profile/myprofile/3"> Settings </a> 
+                            <a href="'.base_url().'logout"> Sign Out </a></div>
                        </div>
                    </div> ';
                     }
@@ -281,14 +284,22 @@
 
 
                 
-                //all trigerstate
-                $('#jdrop').on('click', function() {  //.dropdown-content
-                        let wit = $('#jdrop').width();
-                        wit += 29.8;
-                        console.log(wit);
-                        $("#jcdrop").css("width", wit);
-                        $('#jcdrop').slideDown( "fast" );
-                    });
+        //all trigerstate
+        $('#jdrop').on('click', function() {  //.dropdown-content
+            let rwidth = $(window).width();
+            if (rwidth > 768){
+                let wit = $('#jdrop').width();
+                wit += 29.8;
+                console.log(wit);
+                $("#jcdrop").css("width", wit);
+                $('#jcdrop').slideDown( "fast" );
+            }
+
+            else{
+                $('#jcdrop').slideDown( "fast" );
+            }
+        });
+
                 $('#profile').on('click', function() {
                     $("div#leftbody > div.objleft" ).removeClass("active");
                     $(this).parent().addClass("active");
