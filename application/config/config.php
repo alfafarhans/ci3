@@ -25,7 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 // Ganti jadi IP di hari H
 
-$config['base_url'] = 'http://192.168.90.62/ci3/';
+$config['base_url'] = 'http://localhost/ci3/';
 
 /*
 |--------------------------------------------------------------------------
