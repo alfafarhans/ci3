@@ -7,6 +7,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../asset/css/login.css">
+    <link rel="stylesheet" type="text/css" href="../asset/css/login_resolusi.css">
 	
 </head>
 <body>

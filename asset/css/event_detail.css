@@ -188,15 +188,21 @@ body{
         padding: 15px;
     }
 
-    #price{
-        padding: 15px;
-        position: relative;
-        top: 50%;
+    #padding2{
+        padding-left: 10px;
     }
 
         #body #bodyartikel2 #leftposttop{
             flex-grow: 1;
             background-color: #5890CF;
+            position: relative;
+        }
+
+        #body #bodyartikel2 #leftposttop2{
+            display: none;
+            flex-grow: 1;
+            background-color: #5890CF;
+            position: relative;
         }
 
         #body #bodyartikel2 #rightposttop{
@@ -207,13 +213,23 @@ body{
         }
 
             #desc{
-                color: white;
+                color: #ffffff;
                 position: absolute;
+                left: -10px;
+            }
+
+            #desc2{
+                color: #ffffff;
                 left: -10px;
             }
 
             #qrcode{
                 position: absolute;
+                bottom: 30px;
+                right: 30px;
+            }
+
+            #qrcode2{
                 bottom: 30px;
                 right: 30px;
             }
@@ -236,12 +252,36 @@ body{
             padding: 10px 0;
         }
 
+        #body #bodyartikel2 #rightpost2{
+            flex-basis: 100px;
+            flex-grow: 13;
+            padding: 10px 0 40px;
+        }
+
 #obj-post{
-padding: 30px 0 0 50px;
-padding-right: 50px;
+    padding: 30px 50px 0 50px;
+    position: relative;
 }
 
-    #obj-post a{
+#obj-post2{
+    display: none;
+    padding: 30px 50px 0 50px;
+    position: relative;
+}
+
+#tag-flex{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#tag-flex2{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+    #obj-post a, #obj-post2 a{
+        margin-bottom: 7px;
         background-color: #ffffff;
         border-radius: 30px;
         cursor: pointer;
@@ -253,15 +293,15 @@ padding-right: 50px;
         margin-right: 7px;
     }
 
-    #obj-post a:hover{
+    #obj-post a:hover, #obj-post2 a:hover{
         border: 1px solid #063A74;
         color: #063A74;
         transition: 0.5s;
     }
 
 #obj-judul{
-font-size: 20px;
-font-weight: bold;
+    font-size: 20px;
+    font-weight: bold;
 }
 
         #body #bodyartikel2 img{
@@ -269,11 +309,11 @@ font-weight: bold;
             margin-bottom: -3px;
         }
 
-        #body #bodyartikel2 #padding #a1{
+        #body #bodyartikel2 #padding2 #a1{
             background-color: #FFEF00;
             display: block;
             text-align: center;
-            width: auto;
+            width: 280px;
             color: #063A74;
             padding: 12px 20px;
             border: none;
@@ -282,39 +322,38 @@ font-weight: bold;
             text-decoration: none;
         }   
 
-            #body #bodyartikel2 #padding #a1:hover {
+            #body #bodyartikel2 #padding2 #a1:hover {
                 background-color: #E5D600;
                 color: #063A74; 
                 transition: 0.5s;                
             }
 
-        #body #bodyartikel2 #padding #apos{
+        #body #bodyartikel2 #padding2 #apos{
             color: #FFFFFF;
             background-color: #50B03B;
             border: 1px solid #50B03B;
-            position: absolute;
             left: 350px;
             top: 25px;
             display: block;
             text-align: center;
-            width: auto;
+            width: 130px;
             padding: 12px 20px;
             border-radius: 4px;
             cursor: pointer;
             text-decoration: none;
         }   
 
-            #body #bodyartikel2 #padding #apos:hover {
+            #body #bodyartikel2 #padding2 #apos:hover {
                 background-color: #1D780A;
                 border: 1px solid #1D780A;
                 color: #FFFFFF;
                 transition: 0.5s;            
             }
 
-        #body #bodyartikel2 #padding #a2{
+        #body #bodyartikel2 #padding2 #a2{
             background-color: #F23059;
             display: block;
-            width: 50px;
+            width: 130px;
             text-align: center;
             color: #ffffff;
             padding: 12px 20px;
@@ -324,7 +363,7 @@ font-weight: bold;
             text-decoration: none;
         } 
 
-            #body #bodyartikel2 #padding #a2:hover {
+            #body #bodyartikel2 #padding2 #a2:hover {
                 background-color: #A50023;
                 color: #ffffff; 
                 transition: 0.5s;

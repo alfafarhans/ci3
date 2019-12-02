@@ -107,16 +107,31 @@
                     if($seat<=$value['seminar_seat'] ){
                         $seatsts = true;
                          }
-                    }
                     
-                ?>
-            </div>
+                    
+                    echo '
+                    </div>
+                    <div id="flexbod">
+                        <div id="leftposttop2">
+                            <div id="padding">
+                                <div id="desc2">
+                                    <h2> '.$value['seminar_name'].' </h2> 
+                                    <p> Rp&nbsp;'.$price.' </p>
+                                </div>
+
+                                <img id="qrcode2" src="'.base_url('event_detail/renderqr/'.$value['seminar_id'].'/'.$user_id.'').'" alt="">
+                            </div>
+                        </div>
+                    </div>'
+                    ;} 
+        ?>
         </div>
 
             <div id="shadow">
                 <div id="flexbod">
                     <div id="leftpost">
-                        <div id="padding">
+                        <div id="tag-flex">
+                            <div id="padding2">
                 <?php
 
                 
@@ -153,10 +168,8 @@
                     echo "SEAT FULL";
                 }
                     ?>
-                        </div>
                     </div>
-                    <div id="rightpost">
-                        <div id="padding">
+                    <div id="padding2">
                          <?php
                          $userid = $this->session->userdata('user_id');
                          if( (!empty($userid)) && (!empty($registered)) ){
@@ -171,6 +184,7 @@
                             }
                      }
                             ?>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -207,24 +221,42 @@
             </div>
                     <div id="obj-post">
                         <div id="obj-judul"> Date and Time </div>
-                        <p>'.$sbstr.',&nbsp;'.$daynum.'&nbsp;'.$month_name.'&nbsp;'.$year.',&nbsp;'.$hours.'.'.$minute.'</p>
-                    </div>
-
-                    <div id="obj-post">
-                        <div id="obj-judul"> Location </div>
-                        <p>'.$value['seminar_held'].'</p>
+                        <p>'.$sbstr.',&nbsp;'.$daynum.'&nbsp;'.$month_name.'&nbsp;'.$year.'<br>'.$hours.'.'.$minute.'</p>
                     </div>
 
                     <div id="obj-post">
                         <div id="obj-judul"> Dress Code </div>
                         <p>'.$value['seminar_drcode'].'</p>
                     </div>';
+
+                    $cnvt = explode(',' , $value['seminar_tag']);
+
+                        echo 
+                        '<div id="obj-post2">
+                            <div id="obj-judul"> Description </div>
+                            <p> '.$value['seminar_desc'].'</p>
+                        </div>
+
+                        <div id="obj-post2">
+                            <div id="obj-judul"> Location </div>
+                            <p>'.$value['seminar_held'].'</p>
+                        </div>
+
+                        <div id="obj-post2">
+                            <div id="obj-judul"> Tag </div>
+                            <div id="tag-flex2">';
+                        foreach ($cnvt as $newloop) {
+                            echo'
+                                <a href="#">'.$newloop.'</a>' ;
+                            }
+                            echo' </div>
+                        </div>';
                     }
             
                     ?>
                     </div>
             
-                    <div id="rightpost">
+                    <div id="rightpost2">
                     <?php
                     foreach ($seminar as $value) {
                         //convert to array
@@ -235,14 +267,20 @@
                             <div id="obj-judul"> Description </div>
                             <p> '.$value['seminar_desc'].'</p>
                         </div>
+
+                        <div id="obj-post">
+                            <div id="obj-judul"> Location </div>
+                            <p>'.$value['seminar_held'].'</p>
+                        </div>
+
                         <div id="obj-post">
                             <div id="obj-judul"> Tag </div>
-                            <p>';
+                            <div id="tag-flex2">';
                         foreach ($cnvt as $newloop) {
                             echo'
                                 <a href="#">'.$newloop.'</a>' ;
                             }
-                            echo' </p>
+                            echo' </div>
                         </div>
                         </div>
                         </div>
@@ -371,7 +409,6 @@ document.getElementById('leftposttop').style.backgroundColor = 'rgb('+rgb.r+','+
         }
         else if(a1 == "Waiting&nbsp;Confirmation"){ 
             $('#a1').attr("href","javascript:void(0);");
-            $('#a2').css("width", 80);
             $('#a2').html("Reupload"); 
             $('#a2').attr("href","<?php $userid = $this->session->userdata('user_id'); foreach ($seminar as $value) { echo base_url().'payment/confirmation/'.$value['seminar_id'].'/'.$userid ;  }?>"); 
             $('#a1').click (function () {  alert("WE WANT TO SEE YOUR INTEND, SOON AS SPEED OF LIGHT");  });  

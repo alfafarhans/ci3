@@ -56,7 +56,7 @@ body{
         }
 
     #navbar_kanan {
-        margin-right: 18px;
+        right: 17px;
         display: inline-flex;
         justify-content: flex-end;
         background-color: #71A4D6;

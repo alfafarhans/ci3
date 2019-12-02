@@ -33,6 +33,45 @@
     padding: 10px 30px;
   }
 
+  #body #bodyartikel2 {
+    width: 90vw;
+  }
+
+  #body #bodyartikel2 img{
+    max-width: 90vw;
+  }
+
+  #body #bodyartikel2 #leftposttop2{
+    display: block;
+  }
+
+  #body #bodyartikel2 #rightposttop{
+    display: none;
+  }
+
+  #body #bodyartikel2 #rightpost2{
+    display: none;
+  }
+
+  #obj-post, #obj-post2{
+    display: block;
+    padding: 30px 30px 0 30px;
+  }
+
+  #body #bodyartikel2 #padding2 #a1{
+    width: 72vw;
+  }  
+
+  #body #bodyartikel2 #padding2 #a2{
+    width: 72vw;
+    margin-top: 10px;
+  }  
+
+  #body #bodyartikel2 #padding2 #apos{
+    width: 72vw;
+    margin-top: 10px;
+  }  
+
 }
 
 /* 394PX Very Small --------------------------------------------------------------------*/
@@ -64,6 +103,45 @@
   #navbar_kanan .p2{
     display: block;
   }
+
+  #body #bodyartikel2 {
+    width: 90vw;
+  }
+
+  #body #bodyartikel2 img{
+    max-width: 90vw;
+  }
+  
+  #body #bodyartikel2 #leftposttop2{
+    display: block;
+  }
+
+  #body #bodyartikel2 #rightposttop{
+    display: none;
+  }
+
+  #body #bodyartikel2 #rightpost2{
+    display: none;
+  }
+
+  #obj-post, #obj-post2{
+    display: block;
+    padding: 30px 30px 0 30px;
+  }
+
+  #body #bodyartikel2 #padding2 #a1{
+    width: 75vw;
+  }  
+
+  #body #bodyartikel2 #padding2 #a2{
+    width: 75vw;
+    margin-top: 10px;
+  }  
+
+  #body #bodyartikel2 #padding2 #apos{
+    width: 75vw;
+    margin-top: 10px;
+  }  
 
 }
 
@@ -97,6 +175,27 @@
     display: block;
   }
 
+  #body #bodyartikel2 {
+    width: 90vw;
+  }
+
+  #body #bodyartikel2 img{
+    max-width: 253px;
+  }
+
+  #body #bodyartikel2 #leftpost2{
+    width: 100px;
+    flex-grow: 3;
+}
+
+  #obj-post, #obj-post2{
+    padding: 30px 30px 0 30px;
+  }
+
+  #body #bodyartikel2 #padding2 #a1{
+    width: 200px;
+  }  
+
 }
 
 /* 768PX Medium --------------------------------------------------------------------*/
@@ -105,6 +204,22 @@
 
 @media (min-width: 768px) and (max-width: 991px) {
 
+  #body #bodyartikel2 {
+    width: 90vw;
+  }
+
+  #body #bodyartikel2 img{
+    max-width: 33vw;
+  }
+
+  #obj-post, #obj-post2{
+    padding: 30px 30px 0 30px;
+  }
+
+  #body #bodyartikel2 #padding2 #a1{
+    width: 200px;
+  }  
+
 }
 
 /* 992PX Large --------------------------------------------------------------------*/
@@ -112,6 +227,11 @@
 /* 992PX --------------------------------------------------------------------*/
 
 @media (min-width: 992px) and (max-width: 1199px) {
+
+  #body #bodyartikel2 {
+    width: 90vw;
+  }
+
 }
 
 @media (min-width: 1200px) {
