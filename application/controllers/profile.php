@@ -62,7 +62,7 @@ class profile extends CI_Controller {
 			$cqry	=	$coordx[3]; 
 			$bk_id  = 	$value['booking_id'];
 			$sem_name = $value['seminar_name'];
-			$complatename = $value['first_name'].' '.$value['last_name'];
+			$complatename = $value['first_name'].''.$value['last_name'];
 		   }
 		echo json_encode(
 			array(
