@@ -179,6 +179,13 @@ body{
         #body #bodyartikel2 #toppost {
             width: 100%;
             position: relative;
+            margin-bottom: 10px;
+        }
+
+        #body #bodyartikel2 #toppost2 {
+            display: none;
+            width: 100%;
+            position: relative;
             margin-bottom: 20px;
         }
 
@@ -239,8 +246,8 @@ body{
     }   
 
     #body #bodyartikel2 #mainright{
-        width: 73%;
-        margin-left: 290px;
+        width: 730px;
+        margin-left: 270px;
     }
 
         #body #bodyartikel2 #mainright #rightbody {
@@ -251,6 +258,7 @@ body{
         #body #bodyartikel2 #mainright #rightbody2 {
             border: 1px solid #D8D8D8;
             border-radius: 10px;
+            position: relative;
         }
 
         #body #bodyartikel2 #mainright #rightbody3 {
@@ -280,26 +288,27 @@ body{
 
     #objright2 #col-25{
         float: left;
+        padding: 12px 0 20px; 
+        width: 25%;
+        margin-top: 6px;
+    }
+
+    #objright2 #col-25v2{
+        float: left;
         padding: 15px 0 20px; 
         width: 25%;
         margin-top: 6px;
     }
 
-    #objright2 #avatar{
-        float: left;
-        padding: 10px 0 10px; 
-        width: 15%;
-    }
-
-    #objright2 #upload{
-        float: left;
-        padding: 10px 20px 10px; 
-        width: 60%;
-    }
-
     #objright2 #col-75{
         float: left;
         padding: 10px 0 10px; 
+        width: 75%;
+    }
+
+    #objright2 #col-75v2{
+        float: left;
+        padding: 10px 0 0; 
         width: 75%;
     }
 
@@ -314,6 +323,10 @@ body{
             border-radius: 4px;
             resize: vertical;
         }
+
+    #objright2 input[type=file] {
+        width: 150px;
+    }
 
     #objright2 input[type=submit] {
         background-color: #A0C6EA;
@@ -360,6 +373,7 @@ body{
     #objright4 #desc{
         position: absolute;
         padding-right: 30px;
+        background-color: none;
     }
 
         #objright4 #desc #namaseminar{
@@ -371,18 +385,26 @@ body{
         }
 
         #objright4 #desc #dateseminar {
+            font-size: 14px;
             text-align: left;
-            font-size: 15px;
+            font-size: 14px;
         } 
 
         #objright4 #desc #locseminar {
+            font-size: 14px;
+            margin-top: 5px;
+            text-align: left;
+        } 
+
+        #objright4 #desc #locseminar2 {
+            font-size: 14px;
+            display: none;
             margin-top: 5px;
             text-align: left;
         } 
 
     #objright4 #bota{
         position: absolute;
-        margin-top: 77px;
         bottom: 15px;
     }
 
@@ -409,7 +431,6 @@ body{
 
     #objright4 #bota2{
         position: absolute;
-        margin-top: 77px;
         bottom: 15px;
         left: 240px;
     }
@@ -435,7 +456,6 @@ body{
 
     #objright4 #botabok{
         position: absolute;
-        margin-top: 77px;
         bottom: 15px;
     }
 
@@ -461,7 +481,6 @@ body{
 
     #objright4 #botaatt{
         position: absolute;
-        margin-top: 77px;
         bottom: 15px;
     }
 
@@ -487,7 +506,6 @@ body{
 
     #objright4 #botamiss{
         position: absolute;
-        margin-top: 77px;
         bottom: 15px;
     }
 

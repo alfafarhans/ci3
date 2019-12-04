@@ -175,7 +175,7 @@ class profile extends CI_Controller {
 		<div id="objtop">
 			<center>
 			<h1> Profile </h1> 
-			Please complete your data. Your personal data is needed for the administration needs of the seminar you are participating in
+			Please complete your data. Your personal data is needed for the administration process
 			</center>
 		</div>';
 		
@@ -184,10 +184,10 @@ class profile extends CI_Controller {
 	<div id="rightbody2">
 		<div id="objright2">
 			<div id="row">
-				<div id="col-25"> 
+				<div id="col-25v2"> 
 					Profile Picture
 				</div>
-				<div id="avatar">'; 
+				<div id="col-75v2">'; 
 
 				$path = './asset/pict/profile/'.$userid.'.png';
         if(file_exists($path)){
@@ -197,8 +197,10 @@ class profile extends CI_Controller {
 				 }
 				
 				
-				 $outputcnt .= '</div>
-				<div id="upload"> 
+				 $outputcnt .= '</div> </div>
+			<div id="row">
+				<div id="col-25v2"> </div>
+				<div id="col-75v2"> 
 					<input type="file" name="profilepic" accept="image/*" id = "file">
 				</div>
 			</div>
@@ -360,7 +362,7 @@ elseif ($par == "myevent") {
 						
 						</div>
 						
-					<div id="bota2"><a style="width:80px" onClick= "get_cer('.$userid.','.$value['seminar_id'].')" href="#">Certificate</a></div>';		
+					<div id="bota2"><a style="width:70px" onClick= "get_cer('.$userid.','.$value['seminar_id'].')" href="#">Certificate</a></div>';		
 			}
 			else{
 				$out = '<div id="bota">
@@ -382,6 +384,8 @@ elseif ($par == "myevent") {
 					</div> 
 					<div id="locseminar">
 					'.ucwords($value['seminar_held']).'</div>  
+					<div id="locseminar2">
+					'.$value['seminar_city'].'</div>  
 				</div>
 					'.$out.'
 			</div>

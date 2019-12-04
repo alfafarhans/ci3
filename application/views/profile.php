@@ -260,6 +260,7 @@
                             let responParse = JSON.parse(data);
                            // console.log(responParse.head);
                             //console.log(responParse.cnt);
+                            $("#toppost").css("height", "auto"); 
                             $("#mainright").css("height", "100%");
                             $("#toppost").html(responParse.head);
                             $("#mainright").html(responParse.cnt);

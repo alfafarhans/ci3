@@ -115,7 +115,7 @@
                         <div id="leftposttop2">
                             <div id="padding">
                                 <div id="desc2">
-                                    <h2> '.$value['seminar_name'].' </h2> 
+                                    <p> '.$value['seminar_name'].' </h2> 
                                     <p> Rp&nbsp;'.$price.' </p>
                                 </div>
 
