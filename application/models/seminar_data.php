@@ -177,7 +177,6 @@ class seminar_data extends CI_Model{
    
   }
  
-
   function search_user_his($key = null,$u_id){
     $this->db->select("s.seminar_id, s.seminar_name, s.seminar_date, s.seminar_held, t.atten_status" );
     $this->db->from('user_trx t');

@@ -8,6 +8,25 @@
     right: 0;
   }
 
+  #body #bodyartikel{
+    width: 90%;
+  }
+
+  #register #col-25{
+    width: 100%;
+    padding: 0;
+  }
+
+  #register #col-25r{
+    width: 100%;
+    padding: 0;
+  }
+
+  #register #col-75{
+    width: 100%;
+    padding: 0;
+  }
+
 }
 
 /* 394PX Very Small --------------------------------------------------------------------*/
@@ -20,6 +39,21 @@
     right: 0;
   }
 
+  #body #bodyartikel{
+    width: 90%;
+  }
+
+  #register #col-25{
+    width: 30%;
+  }
+
+  #register #col-25r{
+    width: 100%;
+  }
+
+  #register #col-75{
+      width: 70%;
+  }
 }
 
 /* 576PX Small --------------------------------------------------------------------*/
@@ -31,6 +65,22 @@
   #navbar_kanan {
     right: 0;
   }
+
+  #body #bodyartikel {
+    width: 80%;
+  }
+
+  #register #col-25{
+    width: 25%;
+  }
+
+  #register #col-25r{
+    width: 25%;
+  }
+
+  #register #col-75{
+      width: 75%;
+  }
   
 }
 
@@ -40,6 +90,13 @@
 
 @media (min-width: 768px) and (max-width: 991px) {
 
+  #register #col-25{
+    width: 25%;
+  }
+
+  #register #col-75{
+      width: 75%;
+  }
 }
 
 /* 992PX Large --------------------------------------------------------------------*/

@@ -32,20 +32,47 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <h1> Create your account </h1>
 
             <div id="register">
-                <label for="email"> Email </label>
-                <input type="email" id="email" name="email" placeholder="You@seminar-go.com" >
 
-                <label for="firstname"> First Name </label>
-                <input type="text" id="firstname" name="firstname" placeholder="ex: Thomas Cruise " >
+                <div id="row">
+                    <div id="col-25">
+                        <label for="email"> Email </label>
+                    </div>
+                    <div id="col-75">
+                        <input type="email" id="email" name="email" placeholder="You@seminar-go.com" >
+                    </div>
+                </div>
+
+                <div id="row">
+                    <div id="col-25">
+                        <label for="firstname"> First Name </label>
+                    </div>
+                    <div id="col-75">
+                        <input type="text" id="firstname" name="firstname" placeholder="ex: Thomas Cruise " >
+                    </div>
+                </div>
                 
-                <label for="lastname"> Last Name </label>
-                <input type="text" id="lastname" name="lastname" placeholder="ex: Mapother">
+                <div id="row">
+                    <div id="col-25">
+                        <label for="lastname"> Last Name </label>
+                    </div>
+                    <div id="col-75">
+                        <input type="text" id="lastname" name="lastname" placeholder="ex: Mapother">
+                    </div>
+                </div>
                 
-                <label for="password"> Password </label>
-                <input type="password" id="password" name="password" placeholder="Password" required>
-                  
-                <div id="rights">
-                    <input type="submit" id="submit" name="submit" value="Register">
+                <div id="row">
+                    <div id="col-25">
+                        <label for="password"> Password </label>
+                    </div>
+                    <div id="col-75">
+                        <input type="password" id="password" name="password" placeholder="Password" required>
+                    </div>
+                </div>
+                
+                <div id="row">
+                    <div id="col-25r">
+                        <input type="submit" id="submit" name="submit" value="Register">
+                    </div>
                 </div>
             </div>
 
