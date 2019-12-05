@@ -82,10 +82,10 @@
         <div id="bodyartikel2">
             <div id="rightbody">
                 <div id="content">
-                    <div id="judul">
+                    <div id="judul3">
                     Bill Summary
                     </div>
-                    <div id="judul">
+                    <div id="judul3">
                     <?php 
                      foreach ($seminar as $value) {
                          
@@ -156,6 +156,48 @@
                         echo '<form method="post" action="'.base_url().'payment/updata/'.$pay_id.'/'.$s_id.'" enctype="multipart/form-data">';
                      }
             ?>
+
+            <div id="rightbody2">
+                <div id="content">
+                    <div id="judul3">
+                    Bill Summary
+                    </div>
+                    <div id="judul3">
+                    <?php 
+                     foreach ($seminar as $value) {
+                         
+                        if( empty($value['payment_id']) ){
+                            echo 'Rp&nbsp;100.000,-';
+                        }
+                        else{
+                                echo 'Rp&nbsp;'.$value['seminar_price'];
+                            }
+                        }
+
+                       
+                        ?>
+                    </div>
+                    <div id="isi">
+                    Please do the transfer to the following account.
+                        <div id="box">
+                            <div id="flex">
+                                <img src="<?= base_url(); ?>asset/pict/bank/BCA.png">
+                                <div id="slot2">
+                                    BCA Account
+                                </div>
+                            </div>
+                            <div id="flex2">
+                                <div id="namaacc">
+                                    Alfa Farhan
+                                </div>
+                                <div id="noacc">
+                                    41517320004 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
                 <div id="judul2">
                 Please complete your payment data

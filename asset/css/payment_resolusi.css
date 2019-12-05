@@ -33,6 +33,32 @@
     padding: 10px 30px;
   }
 
+  #body #bodyartikel2 {
+    width: 90vw;
+  }
+
+  #body #bodyartikel2 #leftbody {
+    width: 100%;
+  }
+
+  #leftbody #col-25{
+    width: 100%;
+    padding: 0 0 5px; 
+  }
+
+  #leftbody #col-75{
+    width: 100%;
+    padding: 0 0 5px; 
+  }
+
+  #body #bodyartikel2 #rightbody {
+    display: none;
+  }
+
+  #body #bodyartikel2 #rightbody2 {
+    display: block;
+  }
+
 }
 
 /* 394PX Very Small --------------------------------------------------------------------*/
@@ -62,6 +88,32 @@
   }
 
   #navbar_kanan .p2{
+    display: block;
+  }
+
+  #body #bodyartikel2 {
+    width: 80vw;
+  }
+
+  #body #bodyartikel2 #leftbody {
+    width: 100%;
+  }
+
+  #leftbody #col-25{
+    width: 100%;
+    padding: 0 0 5px; 
+  }
+
+  #leftbody #col-75{
+    width: 100%;
+    padding: 0 0 5px; 
+  }
+
+  #body #bodyartikel2 #rightbody {
+    display: none;
+  }
+
+  #body #bodyartikel2 #rightbody2 {
     display: block;
   }
 
@@ -97,6 +149,22 @@
     display: block;
   }
 
+  #body #bodyartikel2 {
+    width: 550px;
+  }
+
+  #body #bodyartikel2 #leftbody {
+    width: 100%;
+  }
+
+  #body #bodyartikel2 #rightbody {
+    display: none;
+  }
+
+  #body #bodyartikel2 #rightbody2 {
+    display: block;
+  }
+
 }
 
 /* 768PX Medium --------------------------------------------------------------------*/
@@ -105,6 +173,29 @@
 
 @media (min-width: 768px) and (max-width: 991px) {
 
+  #body #bodyartikel2 {
+    width: 750px;
+  }
+
+  #body #bodyartikel2 #leftbody {
+    width: 440px;
+  }
+
+  #leftbody #col-25{
+    width: 100%;
+    padding: 0 0 5px; 
+  }
+
+  #leftbody #col-75{
+    width: 100%;
+    padding: 0 0 5px; 
+  }
+
+  #body #bodyartikel2 #rightbody {
+    margin-left: 475px;
+    width: 280px;
+  }
+
 }
 
 /* 992PX Large --------------------------------------------------------------------*/
@@ -112,6 +203,20 @@
 /* 992PX --------------------------------------------------------------------*/
 
 @media (min-width: 992px) and (max-width: 1199px) {
+
+  #body #bodyartikel2 {
+    width: 950px
+  }
+
+  #body #bodyartikel2 #leftbody {
+    width: 560px;
+  }
+
+  #body #bodyartikel2 #rightbody {
+    margin-left: 595px;
+    width: 350px;
+  }
+
 }
 
 @media (min-width: 1200px) {

@@ -283,11 +283,20 @@ body{
             box-shadow: 0 1px 8px 0 rgba(0,0,0,.12);
         }
 
-            #body #bodyartikel2 #rightbody #content {
+        #body #bodyartikel2 #rightbody2 {
+            width: 100%;
+            position: relative;
+            box-shadow: 0 1px 8px 0 rgba(0,0,0,.12);
+            display: none;
+            border: 1px solid #D8D8D8;
+            border-top: none;
+        }
+
+            #content {
                 padding: 0 15px;
             }
 
-                #content #judul{
+                #content #judul3{
                     font-size: 18px;
                     font-weight: bold;
                     color: #484848;
