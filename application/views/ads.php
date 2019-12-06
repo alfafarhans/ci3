@@ -78,6 +78,15 @@
 		        </div>
             </div>
 
+            <div id="topmenu">
+                <div class="objleft2">
+                    <a href="javascript:void(0);" id ="profile2"> Advertising Form </a>
+                </div>
+                <div class="objleft2">
+                    <a href="javascript:void(0);" id ="myeventads2"> My Status Ads</a>
+                </div>
+            </div>
+
             <div id="leftbody">
                 <div class="objleft">
                     <a href="javascript:void(0);" id ="profile"> Advertising Form </a>
@@ -86,7 +95,6 @@
                     <a href="javascript:void(0);" id ="myeventads"> My Status Ads</a>
                 </div>
             </div>
-
 
             <div id="mainright">
                 
@@ -150,17 +158,31 @@ $(function() {
         let urli = "<?php echo base_url(); ?>ads/changepage/myeventads";
         navToContent(urli);
         });
+
+    $('#profile2').click(function () {
+        $("div#topmenu > div.objleft2" ).removeClass("active2");
+        $(this).parent().addClass("active2");
+        let urli = "<?php echo base_url(); ?>ads/changepage/profile";
+        navToContent(urli);
+        });
+    $('#myeventads2').click(function () {
+        $("div#topmenu > div.objleft2" ).removeClass("active2");
+        $(this).parent().addClass("active2");
+        let urli = "<?php echo base_url(); ?>ads/changepage/myeventads";
+        navToContent(urli);
+        });
         
     $(document).ready(function() {
         let state = <?php echo $state?>;
         if(state == 1){
             $('#profile').click();
+            $('#profile2').click();
         }
         else if (state == 2) {
             $('#myeventads').click();
+            $('#myeventads2').click();
         }
      });
-
 
 });
     

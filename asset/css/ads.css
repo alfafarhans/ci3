@@ -187,8 +187,15 @@ body{
                 color: rgb(0, 22, 49);
             }
 
+        #body #bodyartikel2 #topmenu {
+            display: none;
+            width: 100%;
+            position: relative;
+            margin-bottom: 10px;
+        }
+
         #body #bodyartikel2 #leftbody {
-            width: 250px;
+            width: 230px;
             position: absolute;
         }
 
@@ -203,9 +210,23 @@ body{
         display: block;
         text-decoration: none;
         width: 100%;
-        padding-top: 20px;
-        padding-bottom: 20px;
-        padding-left: 15px;
+        padding: 20px 0 20px 15px;
+        color: #000000;
+        cursor: pointer;
+        font-size: 18px;
+    }
+
+.objleft2{
+    border: 1px solid #D8D8D8;
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
+    .objleft2 a{
+        display: block;
+        text-decoration: none;
+        width: 100%;
+        padding: 20px 15px 20px 15px;
         color: #000000;
         cursor: pointer;
         font-size: 18px;
@@ -233,14 +254,28 @@ body{
         cursor: pointer;
         font-size: 18px;
         color: #063A74;
-        padding-top: 20px;
-        padding-bottom: 20px;
-        padding-left: 15px;
+        padding: 20px 0 20px 15px;
+    }   
+
+.active2{
+    border-radius: 10px;
+    margin-right: 10px;
+    border: 1px solid #063A74;
+}
+
+    .active2 a{
+        display: block;
+        text-decoration: none;
+        width: 100%;
+        cursor: pointer;
+        font-size: 18px;
+        color: #063A74;
+        padding: 20px 15px 20px 15px;
     }   
 
 #body #bodyartikel2 #mainright{
     width: 73%;
-    margin-left: 290px;
+    margin-left: 270px;
 }
 
     #body #bodyartikel2 #mainright #rightbody2 {
@@ -427,18 +462,6 @@ position: relative;
             -ms-transform: rotate(45deg);
             transform: rotate(45deg);
         }  
-
-    #objright2 #avatar{
-        float: left;
-        padding: 10px 0 10px; 
-        width: 15%;
-    }
-
-    #objright2 #upload{
-        float: left;
-        padding: 10px 20px 10px; 
-        width: 60%;
-    }
 
     #objright2 #col-75{
         float: left;
