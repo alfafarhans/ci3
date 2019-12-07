@@ -156,7 +156,7 @@
 
                                 var sources = {
                                     background : sourcen,//d
-                                    qrcode : "http://localhost/ci3/profile/renderqr/"+sourceqr
+                                    qrcode : "<?php echo base_url(); ?>profile/renderqr/"+sourceqr
                                 };
 
                                 loadImages(sources, function(images) {

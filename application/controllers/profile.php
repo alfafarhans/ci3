@@ -39,7 +39,7 @@ class profile extends CI_Controller {
 	function renderqr($bk_id){
 		$this->load->library('Ciqrcode');
 			QRcode::png(
-				$bk_id,
+				base_url().'verified/user/'.$bk_id,
 				$outfile = false,
 				$level = QR_ECLEVEL_H,
 				$size = 5,

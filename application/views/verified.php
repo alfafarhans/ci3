@@ -38,10 +38,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div id="mainright">
                 <div id="objright2">
                     <center>
-                    Thank you to <b> Alfa Farhan Syarief </b> for attending in 
-                    <h2>Machine Learning dan IoT</h2>
-                    on <b id="red"> Saturday, 07 December 2019 </b>
+                    <?php   foreach($user_data->result_array() as $value){  
+                        $dayname = date('l', strtotime($value['seminar_date']));
+                        $daynum = date('d', strtotime($value['seminar_date']));
+                        $mounth = date('F', strtotime($value['seminar_date']));
+                        $year =  date('Y', strtotime($value['seminar_date']));
+                    ?>
+                    Thank you to <b> <?= $value['first_name'].' '.$value['last_name']; ?> </b> for attending in 
+                    <h2><?= $value['seminar_name']; ?></h2>
+                    on <b id="red"> <?= $dayname.', '.$daynum.' '.$mounth.' '.$year;  ?></b>
+                    <?php } ?>
                     </center>
+                    
                 </div>
             </div>
         </div>

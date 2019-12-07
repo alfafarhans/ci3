@@ -1,6 +1,21 @@
 <?php 
 class seminar_data extends CI_Model{
- 
+ function cek_verified($b_id){
+  $this->db->select('s.seminar_name,s.seminar_date,u.first_name,u.last_name');
+  $this->db->from('user_trx t'); 
+  $this->db->where('t.booking_id', $b_id);
+  $this->db->where('t.atten_status', 'Attend On Stage');
+  $this->db->join('seminar s', 's.seminar_id= t.seminar_id');
+  $this->db->join('user u', 'u.user_id= t.user_id');      
+  $query = $this->db->get();
+  if($query->num_rows()>0){
+    return $query;
+  }
+  else{
+    return false;
+  }
+ }
+
   function readusersts_db ($userid=null){
     $this->db->select('s.seminar_name,s.seminar_date,s.seminar_held,t.ads_trx_status,s.seminar_id,t.ads_payment_id');
     $this->db->from('user_trx_ads t');
